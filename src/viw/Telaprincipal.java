@@ -121,6 +121,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
 
         jPanel2.setBackground(new java.awt.Color(51, 102, 255));
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-vendas-24.png"))); // NOI18N
         jButton1.setText("P.D.V");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +130,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/estoque (1).png"))); // NOI18N
         jButton3.setText("Estoque");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -137,18 +139,22 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/gestão (1).png"))); // NOI18N
         jButton4.setText("G.Vendas");
 
         jLabel1.setBackground(new java.awt.Color(102, 153, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sistema (1).png"))); // NOI18N
 
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/gra (1).png"))); // NOI18N
         jButton5.setText("Gráficos");
 
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/clientes (1).png"))); // NOI18N
         jButton6.setText("Clientes");
 
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fornece (1).png"))); // NOI18N
         jButton7.setText("Fornecedor");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -157,6 +163,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
             }
         });
 
+        jButton8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pagar (1).png"))); // NOI18N
         jButton8.setText(" Pagar");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +172,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
             }
         });
 
+        jButton9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/receber (1).png"))); // NOI18N
         jButton9.setText("Receber");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
