@@ -332,7 +332,7 @@ public class PDV extends javax.swing.JFrame {
         jButton4.setText("Pedidos");
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/gra (1).png"))); // NOI18N
-        jButton6.setText("Fl.caixa");
+        jButton6.setText("Caixa");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -478,8 +478,8 @@ public class PDV extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-     Modulovendas modulo = new Modulovendas();
-     modulo.setVisible(true);
+      MovimetacaoCaixa caixa = new MovimetacaoCaixa();
+      caixa.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**

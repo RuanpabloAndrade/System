@@ -207,7 +207,7 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nome", "Telefone", "Data de Nascimento", "CPF"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
