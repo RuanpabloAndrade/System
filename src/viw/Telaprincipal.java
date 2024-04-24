@@ -10,7 +10,8 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-
+//DESENVOLVER UM METODO DE PAGAMENTO DE CREDITO E DEBITO NO PDV E DAR VIDA AS BOTOES no pdv E dar vida aos botoes no modulo de vendas
+//TERMINAR O MODULO DE GERENCIAMENTO DE CLIENTES
 /**
  *
  * @author ruan
@@ -153,6 +154,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/clientes (1).png"))); // NOI18N
         jButton6.setText("Clientes");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fornece (1).png"))); // NOI18N
@@ -702,6 +708,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
        PDV pdv = new PDV();
        pdv.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+       Clientes clientes = new Clientes();
+       clientes.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();
