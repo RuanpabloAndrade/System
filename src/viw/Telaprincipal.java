@@ -101,7 +101,6 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -148,8 +147,8 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sistema (1).png"))); // NOI18N
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/gra (1).png"))); // NOI18N
-        jButton5.setText("Gráficos");
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pediso (1).png"))); // NOI18N
+        jButton5.setText("Pedidos");
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/clientes (1).png"))); // NOI18N
@@ -602,10 +601,6 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenu3.setText("CRM");
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pediso (1).png"))); // NOI18N
-        jMenu4.setText("Pedidos");
-        jMenuBar1.add(jMenu4);
-
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/orça (1).png"))); // NOI18N
         jMenu5.setText("Orçamento");
         jMenuBar1.add(jMenu5);
@@ -867,7 +862,6 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;

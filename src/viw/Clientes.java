@@ -103,6 +103,11 @@ public class Clientes extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/prazo (1).png"))); // NOI18N
         jButton6.setText("Co.Prazo");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/parcelamento (1).jpg"))); // NOI18N
@@ -313,6 +318,11 @@ public class Clientes extends javax.swing.JFrame {
       RecebimentosCliente Receba = new RecebimentosCliente();
       Receba.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+       Comprasprazocliente prazo = new Comprasprazocliente();
+       prazo.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
