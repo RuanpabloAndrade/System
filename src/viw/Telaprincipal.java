@@ -149,6 +149,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pediso (1).png"))); // NOI18N
         jButton5.setText("Pedidos");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/clientes (1).png"))); // NOI18N
@@ -708,6 +713,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
        Clientes clientes = new Clientes();
        clientes.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Pedidos pedido = new Pedidos();
+        pedido.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();
