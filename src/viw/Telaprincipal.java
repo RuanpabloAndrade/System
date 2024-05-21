@@ -104,7 +104,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenu5 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
+        Finança = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -618,8 +618,13 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenu6.setText("Financeiro");
         jMenuBar1.add(jMenu6);
 
-        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fun (1).png"))); // NOI18N
-        jMenu8.setText("Gerenciamento de Vendas");
+        Finança.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fun (1).png"))); // NOI18N
+        Finança.setText("Gerenciamento de Vendas");
+        Finança.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FinançaActionPerformed(evt);
+            }
+        });
 
         jMenuItem8.setText("Total de Vendas");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
@@ -627,7 +632,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
                 jMenuItem8ActionPerformed(evt);
             }
         });
-        jMenu8.add(jMenuItem8);
+        Finança.add(jMenuItem8);
 
         jMenuItem9.setText("Vendas a Vista");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
@@ -635,7 +640,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
                 jMenuItem9ActionPerformed(evt);
             }
         });
-        jMenu8.add(jMenuItem9);
+        Finança.add(jMenuItem9);
 
         jMenuItem10.setText("Vendas a Prazo");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
@@ -643,7 +648,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
                 jMenuItem10ActionPerformed(evt);
             }
         });
-        jMenu8.add(jMenuItem10);
+        Finança.add(jMenuItem10);
 
         jMenuItem11.setText("Resumo Financeiro");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
@@ -651,9 +656,9 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
                 jMenuItem11ActionPerformed(evt);
             }
         });
-        jMenu8.add(jMenuItem11);
+        Finança.add(jMenuItem11);
 
-        jMenuBar1.add(jMenu8);
+        jMenuBar1.add(Finança);
 
         jMenu9.setText("Ordem de Serviço");
         jMenuBar1.add(jMenu9);
@@ -740,7 +745,8 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        // TODO add your handling code here:
+       ResumoFinanceiro Financiero = new ResumoFinanceiro();
+       Financiero.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -757,6 +763,10 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
       VendasprazoGerenciamento prazo = new VendasprazoGerenciamento();
       prazo.setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void FinançaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinançaActionPerformed
+      
+    }//GEN-LAST:event_FinançaActionPerformed
 
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();
@@ -879,6 +889,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Finança;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -914,7 +925,6 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
