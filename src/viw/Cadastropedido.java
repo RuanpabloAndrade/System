@@ -10,7 +10,7 @@ package viw;
  * @author ruan
  */
 public class Cadastropedido extends javax.swing.JFrame {
-
+//Ao clicar no botao "Inserir item" a tela de estoque abrirá mas somente o botão de inserir em pedido Funvionará o resti ficará desativado
     /**
      * Creates new form Cadastropedido
      */
