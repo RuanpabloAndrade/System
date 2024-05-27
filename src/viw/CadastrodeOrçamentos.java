@@ -10,7 +10,7 @@ package viw;
  */
 public class CadastrodeOrçamentos extends javax.swing.JFrame {
     
-//Resolver o problema de informar a quantidade do prdofuto antes de inseri-lo em pedidos ou orçamentos (Fazer uma tela perguntando a quantidade do produto ao clicar no botão inserir Orçamento)
+
 //botão para inserir desconto;
 //OBSERVAÇÃO ao colocar um numero no campo de parcelamento o preço total do orçamento deve ser dividido pelo numero informado
 //Ao clicar no botao "Inserir item" a tela de estoque abrirá mas somente o botão de inserir em orçamento Funvionará o resti ficará desativado

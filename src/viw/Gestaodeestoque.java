@@ -4,6 +4,8 @@
  */
 package viw;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ruan
@@ -100,10 +102,20 @@ public class Gestaodeestoque extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sair (1).png"))); // NOI18N
         jButton5.setText("I.Pedido");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/orça (1).png"))); // NOI18N
         jButton8.setText("I.Orçamento");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -249,6 +261,14 @@ public class Gestaodeestoque extends javax.swing.JFrame {
       Cdastropeoduto produto = new Cdastropeoduto();
       produto.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+       JOptionPane.showInputDialog(null,"Informe a quantidade do Produto");
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+       JOptionPane.showInputDialog(null,"Informe a quantidade do Produto");
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

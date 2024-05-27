@@ -193,6 +193,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jButton10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fun (1).png"))); // NOI18N
         jButton10.setText("Caixa");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -799,6 +804,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
        Orçamentos orçamento = new Orçamentos();
       orçamento.setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+       Fluxodecaixa caixa = new Fluxodecaixa();
+       caixa.setVisible(true);
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();

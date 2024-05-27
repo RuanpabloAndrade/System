@@ -358,13 +358,13 @@ public class MovimetacaoCaixa extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Data/hora", "Dinheiro", "Crédito", "Débito", "Total"
+                "Data/hora", "Produto", "Dinheiro", "Crédito", "Débito", "Total"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
