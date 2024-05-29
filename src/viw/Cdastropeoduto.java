@@ -245,7 +245,7 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         jFormattedTextField14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel18.setText("Lucro Atacado:");
+        jLabel18.setText("Categoria:");
 
         jFormattedTextField15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 

@@ -199,13 +199,13 @@ public class Gestaodeestoque extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Descrição", "Quantidade", "Est. Crítico", "Validade", "Preço"
+                "Código", "Descrição", "Quantidade", "Est. Crítico", "Categoria", "Validade", "Preço"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
