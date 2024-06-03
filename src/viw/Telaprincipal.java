@@ -101,6 +101,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuItem20 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
@@ -112,7 +117,6 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
-        jMenu9 = new javax.swing.JMenu();
 
         jButton2.setText("jButton2");
 
@@ -192,7 +196,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
 
         jButton10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fun (1).png"))); // NOI18N
-        jButton10.setText("Caixa");
+        jButton10.setText("O.Serviço");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -611,7 +615,33 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenuBar1.add(jMenu2);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/crm (1).png"))); // NOI18N
-        jMenu3.setText("CRM");
+        jMenu3.setText("Fluxo de Caixa");
+
+        jMenuItem17.setText("Analise de Vendas ");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem17);
+
+        jMenuItem15.setText("Indicativos Gerais");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem15);
+
+        jMenuItem16.setText("Analise de Produtos");
+        jMenu3.add(jMenuItem16);
+
+        jMenuItem18.setText("Analise Financeira");
+        jMenu3.add(jMenuItem18);
+
+        jMenuItem20.setText("Fluxo Sobre Fornecedores");
+        jMenu3.add(jMenuItem20);
+
         jMenuBar1.add(jMenu3);
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/orça (1).png"))); // NOI18N
@@ -687,9 +717,6 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         Finança.add(jMenuItem11);
 
         jMenuBar1.add(Finança);
-
-        jMenu9.setText("Ordem de Serviço");
-        jMenuBar1.add(jMenu9);
 
         setJMenuBar(jMenuBar1);
 
@@ -806,9 +833,18 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-       Fluxodecaixa caixa = new Fluxodecaixa();
-       caixa.setVisible(true);
+      
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+           Indicativos indica = new Indicativos();
+           indica.setVisible(true);
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+      Fluxodecaixa caixa = new Fluxodecaixa();
+       caixa.setVisible(true);
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();
@@ -967,7 +1003,6 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -975,7 +1010,12 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
