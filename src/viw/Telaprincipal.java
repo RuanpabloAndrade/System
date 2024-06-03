@@ -545,6 +545,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
             }
         });
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/usuario (1).png"))); // NOI18N
         jMenuItem2.setText("Usuarios");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -554,6 +555,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu1.add(jMenuItem2);
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/clientes (1).png"))); // NOI18N
         jMenuItem3.setText("Clientes");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -563,6 +565,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu1.add(jMenuItem3);
 
+        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fornece (1).png"))); // NOI18N
         jMenuItem4.setText("Fornecedores");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -572,6 +575,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu1.add(jMenuItem4);
 
+        jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fun (1).png"))); // NOI18N
         jMenuItem5.setText("Funcionários");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
