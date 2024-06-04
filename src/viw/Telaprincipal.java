@@ -585,6 +585,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu1.add(jMenuItem5);
 
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pagar (1).png"))); // NOI18N
         jMenuItem6.setText("Contas a pagar");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -594,6 +595,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu1.add(jMenuItem6);
 
+        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/receber (1).png"))); // NOI18N
         jMenuItem7.setText("Contas a receber");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -603,6 +605,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu1.add(jMenuItem7);
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pro (1).png"))); // NOI18N
         jMenuItem1.setText("Produtos");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -837,7 +840,8 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-      
+        TelaOS os = new TelaOS();
+        os.setVisible(true);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed

@@ -11,7 +11,7 @@ package viw;
 public class CadastrodeOrçamentos extends javax.swing.JFrame {
     
 
-//botão para inserir desconto;
+//Ao inserir o um numero no campo desconto deve ser subtraindo o valor no campo "Total do Orçamento" de forma automatica e fazer o mesmo com o campo taxa(aumentar no caso) Veja como fazer isso no video :"Java mysql sistema completo Os","Nome do video :Cadastro de Clientes Pesquisando e Populando uma tabela com rs2xml" link no numero de whatsap(voce";
 //OBSERVAÇÃO ao colocar um numero no campo de parcelamento o preço total do orçamento deve ser dividido pelo numero informado
 //Ao clicar no botao "Inserir item" a tela de estoque abrirá mas somente o botão de inserir em orçamento Funvionará o resti ficará desativado
 
@@ -255,7 +255,7 @@ public class CadastrodeOrçamentos extends javax.swing.JFrame {
         jLabel16.setText("Valor da parcela:");
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Crédito", "Debito", "Pix" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Crédito", "Debito", "Pix", "Outros" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

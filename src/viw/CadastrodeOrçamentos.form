@@ -680,11 +680,12 @@
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
+              <StringArray count="5">
                 <StringItem index="0" value="Dinheiro"/>
                 <StringItem index="1" value="Cr&#xe9;dito"/>
                 <StringItem index="2" value="Debito"/>
                 <StringItem index="3" value="Pix"/>
+                <StringItem index="4" value="Outros"/>
               </StringArray>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
