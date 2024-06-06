@@ -872,7 +872,8 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-           
+           ResumoClientes Clientes = new ResumoClientes();
+           Clientes.setVisible(true);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed

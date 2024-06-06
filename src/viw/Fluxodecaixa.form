@@ -289,7 +289,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Total de Contas Para Receber:"/>
+                <Property name="text" type="java.lang.String" value="Total de Vendas Cr&#xe9;dito:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField3">
@@ -306,7 +306,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Total de Contas Para Pagar(Sa&#xed;da:"/>
+                <Property name="text" type="java.lang.String" value="Total de Vendas D&#xe9;bito"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField4">
@@ -323,7 +323,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Saldo(Pagar e Receber):"/>
+                <Property name="text" type="java.lang.String" value="Total de Vendas a Prazo:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField5">
@@ -357,7 +357,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Soma total (Sa&#xed;da e Entrada):"/>
+                <Property name="text" type="java.lang.String" value="Total De Vendas(Outros):"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField7">

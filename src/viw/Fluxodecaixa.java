@@ -9,7 +9,7 @@ package viw;
  * @author ruan
  */
 public class Fluxodecaixa extends javax.swing.JFrame {
-//fazer o botão de analise de produtos semelhante ao gerencimaneto de clientes
+
     /**
      * Creates new form Fluxodecaixa
      */
@@ -102,17 +102,17 @@ public class Fluxodecaixa extends javax.swing.JFrame {
         jFormattedTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Total de Contas Para Receber:");
+        jLabel5.setText("Total de Vendas Crédito:");
 
         jFormattedTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel6.setText("Total de Contas Para Pagar(Saída:");
+        jLabel6.setText("Total de Vendas Débito");
 
         jFormattedTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel7.setText("Saldo(Pagar e Receber):");
+        jLabel7.setText("Total de Vendas a Prazo:");
 
         jFormattedTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -122,7 +122,7 @@ public class Fluxodecaixa extends javax.swing.JFrame {
         jFormattedTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel9.setText("Soma total (Saída e Entrada):");
+        jLabel9.setText("Total De Vendas(Outros):");
 
         jFormattedTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
