@@ -647,6 +647,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenu3.add(jMenuItem15);
 
         jMenuItem16.setText("Analise de Produtos");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem16);
 
         jMenuItem18.setText("Analise Financeira");
@@ -880,6 +885,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
       Fluxodecaixa caixa = new Fluxodecaixa();
        caixa.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+      Indicativosprodutos product = new Indicativosprodutos();
+      product.setVisible(true);
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();
