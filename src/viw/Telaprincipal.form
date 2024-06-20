@@ -169,11 +169,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Analise Financeira"/>
               </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem20">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Fluxo Sobre Fornecedores"/>
-              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem18ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -214,14 +212,6 @@
               <Image iconType="3" name="/imagens/estoque (1).png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Estoque"/>
-          </Properties>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu6">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagens/Financieo (1).png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Financeiro"/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="Finan&#xe7;a">
@@ -266,36 +256,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem11ActionPerformed"/>
               </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu4">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagens/cancelar (1).png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Cancelamentos"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem19">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Or&#xe7;amentos"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem21">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Pedidos"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem22">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ordem de Servi&#xe7;o"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem23">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Compras"/>
-              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

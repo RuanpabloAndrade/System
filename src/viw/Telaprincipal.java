@@ -105,23 +105,16 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
-        jMenuItem20 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
         Finança = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem19 = new javax.swing.JMenuItem();
-        jMenuItem21 = new javax.swing.JMenuItem();
-        jMenuItem22 = new javax.swing.JMenuItem();
-        jMenuItem23 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
 
         jButton2.setText("jButton2");
@@ -655,10 +648,12 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenu3.add(jMenuItem16);
 
         jMenuItem18.setText("Analise Financeira");
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem18);
-
-        jMenuItem20.setText("Fluxo Sobre Fornecedores");
-        jMenu3.add(jMenuItem20);
 
         jMenuBar1.add(jMenu3);
 
@@ -689,10 +684,6 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/estoque (1).png"))); // NOI18N
         jMenu7.setText("Estoque");
         jMenuBar1.add(jMenu7);
-
-        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Financieo (1).png"))); // NOI18N
-        jMenu6.setText("Financeiro");
-        jMenuBar1.add(jMenu6);
 
         Finança.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fun (1).png"))); // NOI18N
         Finança.setText("Gerenciamento de Vendas");
@@ -735,23 +726,6 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         Finança.add(jMenuItem11);
 
         jMenuBar1.add(Finança);
-
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar (1).png"))); // NOI18N
-        jMenu4.setText("Cancelamentos");
-
-        jMenuItem19.setText("Orçamentos");
-        jMenu4.add(jMenuItem19);
-
-        jMenuItem21.setText("Pedidos");
-        jMenu4.add(jMenuItem21);
-
-        jMenuItem22.setText("Ordem de Serviço");
-        jMenu4.add(jMenuItem22);
-
-        jMenuItem23.setText("Compras");
-        jMenu4.add(jMenuItem23);
-
-        jMenuBar1.add(jMenu4);
 
         jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/recebimentos (1).png"))); // NOI18N
         jMenu8.setText("Fiscal");
@@ -890,6 +864,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
       Indicativosprodutos product = new Indicativosprodutos();
       product.setVisible(true);
     }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+      AnaliseFiananceira Financeiro = new AnaliseFiananceira();
+      Financeiro.setVisible(true);
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();
@@ -1045,9 +1024,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
@@ -1061,12 +1038,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem20;
-    private javax.swing.JMenuItem jMenuItem21;
-    private javax.swing.JMenuItem jMenuItem22;
-    private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
