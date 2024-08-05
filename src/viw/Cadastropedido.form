@@ -386,7 +386,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Pesquisar Cliente(Nome):"/>
+            <Property name="text" type="java.lang.String" value="Pesquisar Cliente/Fornecedor:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
@@ -445,7 +445,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="CPF:"/>
+            <Property name="text" type="java.lang.String" value="CPF/CNPJ:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField4">

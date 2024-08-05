@@ -167,7 +167,7 @@ public class Cadastropedido extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Pesquisar Cliente(Nome):");
+        jLabel1.setText("Pesquisar Cliente/Fornecedor:");
 
         jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -185,7 +185,7 @@ public class Cadastropedido extends javax.swing.JFrame {
         jFormattedTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("CPF:");
+        jLabel5.setText("CPF/CNPJ:");
 
         jFormattedTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
