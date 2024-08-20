@@ -31,6 +31,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         Fontesecorescontasreceber();
         ContasreceberLogico();
         Carregarusu();
+        DesignTabela();
     }
 
     /**
@@ -503,10 +504,9 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jPanel7.setBounds(160, 420, 350, 140);
 
         tabela.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tabela.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null}
             },
@@ -522,6 +522,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
                 return canEdit [columnIndex];
             }
         });
+        tabela.setFocusable(false);
+        tabela.setRowHeight(25);
+        tabela.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabela.setShowVerticalLines(false);
+        tabela.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tabela);
 
         getContentPane().add(jScrollPane2);
@@ -735,7 +740,13 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void DesignTabela(){
+        tabela.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabela.getTableHeader().setOpaque(false);
+        tabela.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabela.getTableHeader().setForeground( new Color(255,255,255));
+        tabela.setRowHeight(25);
+    }
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
       Telausuario usuario = new Telausuario();
       usuario.setVisible(true);

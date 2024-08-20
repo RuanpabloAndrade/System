@@ -5,6 +5,8 @@
 package viw;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,9 +26,8 @@ public class PDV extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         setExtendedState(PDV.MAXIMIZED_BOTH);
-        
-        
-         
+        DesignTabelapdv();
+       
         
         
     }
@@ -53,9 +54,7 @@ public class PDV extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jFormattedTextField3 = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        Tabelapdv = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jFormattedTextField4 = new javax.swing.JFormattedTextField();
@@ -197,47 +196,28 @@ public class PDV extends javax.swing.JFrame {
         jPanel1.add(jFormattedTextField3);
         jFormattedTextField3.setBounds(390, 330, 320, 60);
 
-        jTable1.setFont(new java.awt.Font("Times New Roman", 1, 11)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabelapdv.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        Tabelapdv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "C. barras", "Descrição", "QTD", "V. Unitário", "Total"
+                "Descrição", "Quantidade", "Valor Unitário", "Total"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        Tabelapdv.setFocusable(false);
+        Tabelapdv.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        Tabelapdv.setRowHeight(25);
+        Tabelapdv.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        Tabelapdv.setShowVerticalLines(false);
+        Tabelapdv.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(Tabelapdv);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(740, 130, 430, 250);
-
-        jPanel6.setBackground(new java.awt.Color(0, 51, 153));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("LISTA DE PRODUTOS");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(148, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(133, 133, 133))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(0, 3, Short.MAX_VALUE)
-                .addComponent(jLabel5))
-        );
-
-        jPanel1.add(jPanel6);
-        jPanel6.setBounds(740, 110, 430, 20);
+        jScrollPane1.setBounds(740, 110, 580, 270);
 
         jPanel7.setBackground(new java.awt.Color(0, 51, 153));
 
@@ -249,22 +229,22 @@ public class PDV extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(178, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(261, 261, 261)
                 .addComponent(jLabel6)
-                .addGap(176, 176, 176))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jLabel6)
-                .addGap(0, 3, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(0, 3, Short.MAX_VALUE)
+                .addComponent(jLabel6))
         );
 
         jPanel1.add(jPanel7);
-        jPanel7.setBounds(740, 410, 430, 20);
+        jPanel7.setBounds(740, 410, 580, 20);
         jPanel1.add(jFormattedTextField4);
-        jFormattedTextField4.setBounds(740, 430, 430, 60);
+        jFormattedTextField4.setBounds(740, 430, 580, 60);
 
         jPanel8.setBackground(new java.awt.Color(0, 51, 153));
 
@@ -276,22 +256,22 @@ public class PDV extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(83, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(70, 70, 70))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jLabel7)
-                .addGap(0, 3, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(0, 3, Short.MAX_VALUE)
+                .addComponent(jLabel7))
         );
 
         jPanel1.add(jPanel8);
-        jPanel8.setBounds(740, 520, 210, 20);
+        jPanel8.setBounds(740, 540, 280, 20);
         jPanel1.add(jFormattedTextField5);
-        jFormattedTextField5.setBounds(740, 540, 210, 60);
+        jFormattedTextField5.setBounds(740, 560, 280, 60);
 
         jPanel9.setBackground(new java.awt.Color(0, 51, 153));
 
@@ -303,10 +283,10 @@ public class PDV extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(103, Short.MAX_VALUE)
                 .addComponent(jLabel8)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(96, 96, 96))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,9 +296,9 @@ public class PDV extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel9);
-        jPanel9.setBounds(970, 520, 200, 20);
+        jPanel9.setBounds(1070, 540, 250, 20);
         jPanel1.add(jFormattedTextField6);
-        jFormattedTextField6.setBounds(970, 540, 200, 60);
+        jFormattedTextField6.setBounds(1070, 560, 250, 60);
 
         jPanel10.setBackground(new java.awt.Color(51, 153, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -427,16 +407,17 @@ public class PDV extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel10Layout.createSequentialGroup()
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel10Layout.createSequentialGroup()
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(4, 4, 4)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -444,9 +425,9 @@ public class PDV extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -548,6 +529,14 @@ public class PDV extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void DesignTabelapdv(){
+        Tabelapdv.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        Tabelapdv.getTableHeader().setOpaque(false);
+        Tabelapdv.getTableHeader().setBackground(new Color(32, 136, 203));
+        Tabelapdv.getTableHeader().setForeground( new Color(255,255,255));
+        Tabelapdv.setRowHeight(25);
+    }
+        
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
        Vizualizarfornecedor fornecedor = new Vizualizarfornecedor();
        fornecedor.setVisible(true);
@@ -634,6 +623,7 @@ public class PDV extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tabelapdv;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -657,7 +647,6 @@ public class PDV extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -670,11 +659,9 @@ public class PDV extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
