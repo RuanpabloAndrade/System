@@ -46,6 +46,11 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
       </Properties>
 
       <Layout>
@@ -158,15 +163,15 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton10" min="-2" pref="111" max="-2" attributes="0"/>
+                      <Component id="jButton10" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" pref="109" max="-2" attributes="0"/>
+                      <Component id="jButton5" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton6" min="-2" pref="114" max="-2" attributes="0"/>
+                      <Component id="jButton6" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton7" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="jButton7" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton8" min="-2" pref="139" max="-2" attributes="0"/>
+                      <Component id="jButton8" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -178,11 +183,11 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton1" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="jButton3" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                          <Component id="jButton5" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="jButton6" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="jButton7" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="jButton8" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="jButton10" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="jButton5" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="jButton6" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="jButton7" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="jButton8" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="jButton10" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="24" max="32767" attributes="0"/>
                   </Group>
@@ -383,7 +388,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="tabelacliente">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="4">
@@ -429,9 +434,16 @@
                     </Column>
                   </TableColumnModel>
                 </Property>
-                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                <Property name="focusable" type="boolean" value="false"/>
+                <Property name="rowHeight" type="int" value="25"/>
+                <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="5f" green="39" red="e8" type="rgb"/>
                 </Property>
+                <Property name="showVerticalLines" type="boolean" value="false"/>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                </Property>
+                <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>

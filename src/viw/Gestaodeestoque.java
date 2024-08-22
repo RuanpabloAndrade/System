@@ -4,6 +4,8 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +20,7 @@ public class Gestaodeestoque extends javax.swing.JFrame {
     public Gestaodeestoque() {
         initComponents();
         setLocationRelativeTo(this);
+        Funçãodesigntabelaestoque();
     }
 
     /**
@@ -43,9 +46,8 @@ public class Gestaodeestoque extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tabelaestoque = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -162,10 +164,6 @@ public class Gestaodeestoque extends javax.swing.JFrame {
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa (1).png"))); // NOI18N
         jButton6.setText("Pesquisar");
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/apagar (1).png"))); // NOI18N
-        jButton7.setText("Limpar");
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -173,16 +171,12 @@ public class Gestaodeestoque extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jFormattedTextField1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7)))
-                .addContainerGap())
+                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,12 +186,11 @@ public class Gestaodeestoque extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
+                    .addComponent(jButton6))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaestoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -208,7 +201,13 @@ public class Gestaodeestoque extends javax.swing.JFrame {
                 "Código", "Descrição", "Quantidade", "Est. Crítico", "Categoria", "Validade", "Preço"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        tabelaestoque.setFocusable(false);
+        tabelaestoque.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tabelaestoque.setRowHeight(25);
+        tabelaestoque.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelaestoque.setShowVerticalLines(false);
+        tabelaestoque.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tabelaestoque);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -257,6 +256,13 @@ public class Gestaodeestoque extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Funçãodesigntabelaestoque(){
+        tabelaestoque.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelaestoque.getTableHeader().setOpaque(false);
+        tabelaestoque.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelaestoque.getTableHeader().setForeground( new Color(255,255,255));
+        tabelaestoque.setRowHeight(25);
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       Cdastropeoduto produto = new Cdastropeoduto();
       produto.setVisible(true);
@@ -312,7 +318,6 @@ public class Gestaodeestoque extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
@@ -322,6 +327,6 @@ public class Gestaodeestoque extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tabelaestoque;
     // End of variables declaration//GEN-END:variables
 }
