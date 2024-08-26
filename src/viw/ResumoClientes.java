@@ -4,6 +4,9 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author ruan
@@ -16,6 +19,7 @@ public class ResumoClientes extends javax.swing.JFrame {
     public ResumoClientes() {
         initComponents();
         setLocationRelativeTo(this);
+        desingtabelaresumoclientes();
     }
 
     /**
@@ -36,7 +40,7 @@ public class ResumoClientes extends javax.swing.JFrame {
         jFormattedTextField3 = new javax.swing.JFormattedTextField();
         jFormattedTextField4 = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaresumoclientes = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -80,7 +84,7 @@ public class ResumoClientes extends javax.swing.JFrame {
 
         jFormattedTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaresumoclientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -91,7 +95,13 @@ public class ResumoClientes extends javax.swing.JFrame {
                 "Cliente", "Telefone", "Data de Nascimento", "Total comprado"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelaresumoclientes.setFocusable(false);
+        tabelaresumoclientes.setRowHeight(25);
+        tabelaresumoclientes.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelaresumoclientes.setShowVerticalLines(false);
+        tabelaresumoclientes.setSurrendersFocusOnKeystroke(true);
+        tabelaresumoclientes.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelaresumoclientes);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Clientes Que mais Compram:");
@@ -181,7 +191,13 @@ public class ResumoClientes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void desingtabelaresumoclientes(){
+        tabelaresumoclientes.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelaresumoclientes.getTableHeader().setOpaque(false);
+        tabelaresumoclientes.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelaresumoclientes.getTableHeader().setForeground( new Color(255,255,255));
+        tabelaresumoclientes.setRowHeight(25);
+    }
     /**
      * @param args the command line arguments
      */
@@ -231,6 +247,6 @@ public class ResumoClientes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaresumoclientes;
     // End of variables declaration//GEN-END:variables
 }

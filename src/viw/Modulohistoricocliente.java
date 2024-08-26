@@ -4,6 +4,9 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author ruan
@@ -16,6 +19,7 @@ public class Modulohistoricocliente extends javax.swing.JFrame {
     public Modulohistoricocliente() {
         initComponents();
          setLocationRelativeTo(this);
+         designtabelahisotrico();
     }
 
     /**
@@ -42,7 +46,7 @@ public class Modulohistoricocliente extends javax.swing.JFrame {
         jFormattedTextField4 = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelahisotrico = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -148,7 +152,7 @@ public class Modulohistoricocliente extends javax.swing.JFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelahisotrico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -159,7 +163,12 @@ public class Modulohistoricocliente extends javax.swing.JFrame {
                 "Número da Compra", "Produto", "Quantidade", "Preço Unitário", "Total", "Data"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelahisotrico.setFocusable(false);
+        tabelahisotrico.setRowHeight(25);
+        tabelahisotrico.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelahisotrico.setShowVerticalLines(false);
+        tabelahisotrico.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelahisotrico);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -214,6 +223,13 @@ public class Modulohistoricocliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void  designtabelahisotrico(){
+        tabelahisotrico.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelahisotrico.getTableHeader().setOpaque(false);
+        tabelahisotrico.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelahisotrico.getTableHeader().setForeground( new Color(255,255,255));
+        tabelahisotrico.setRowHeight(25);
+    }
     /**
      * @param args the command line arguments
      */
@@ -265,6 +281,6 @@ public class Modulohistoricocliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelahisotrico;
     // End of variables declaration//GEN-END:variables
 }
