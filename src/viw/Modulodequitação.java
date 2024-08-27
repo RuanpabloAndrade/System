@@ -4,6 +4,9 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author ruan
@@ -16,6 +19,7 @@ public class Modulodequitação extends javax.swing.JFrame {
     public Modulodequitação() {
         initComponents();
         setLocationRelativeTo(this);
+        designtabelaquitaçãoconta();
     }
 
     /**
@@ -40,7 +44,7 @@ public class Modulodequitação extends javax.swing.JFrame {
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        moduloquitacao = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -117,7 +121,7 @@ public class Modulodequitação extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/crm (1).png"))); // NOI18N
         jButton2.setText("Aplicar Datas");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        moduloquitacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -128,7 +132,12 @@ public class Modulodequitação extends javax.swing.JFrame {
                 "Fornecedor", "Valor", "N.Documento", "Data do Pagamento"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        moduloquitacao.setFocusable(false);
+        moduloquitacao.setRowHeight(25);
+        moduloquitacao.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        moduloquitacao.setShowVerticalLines(false);
+        moduloquitacao.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(moduloquitacao);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/receber (1).png"))); // NOI18N
         jButton3.setText("Confirmar Pagamento");
@@ -207,7 +216,13 @@ public class Modulodequitação extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+     private void designtabelaquitaçãoconta(){
+        moduloquitacao.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        moduloquitacao.getTableHeader().setOpaque(false);
+        moduloquitacao.getTableHeader().setBackground(new Color(32, 136, 203));
+        moduloquitacao.getTableHeader().setForeground( new Color(255,255,255));
+        moduloquitacao.setRowHeight(25);
+     }
     /**
      * @param args the command line arguments
      */
@@ -259,6 +274,6 @@ public class Modulodequitação extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable moduloquitacao;
     // End of variables declaration//GEN-END:variables
 }

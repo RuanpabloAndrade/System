@@ -4,6 +4,9 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author ruan
@@ -16,6 +19,7 @@ public class Extratocliente extends javax.swing.JFrame {
     public Extratocliente() {
         initComponents();
           setLocationRelativeTo(this);
+          designtabelaextratocliente();
     }
 
     /**
@@ -45,7 +49,7 @@ public class Extratocliente extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jFormattedTextField7 = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaextratocliente = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -135,7 +139,7 @@ public class Extratocliente extends javax.swing.JFrame {
 
         jFormattedTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaextratocliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -146,7 +150,12 @@ public class Extratocliente extends javax.swing.JFrame {
                 "Produto", "Total", "Valor Pago", "Troco"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelaextratocliente.setFocusable(false);
+        tabelaextratocliente.setRowHeight(25);
+        tabelaextratocliente.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelaextratocliente.setShowVerticalLines(false);
+        tabelaextratocliente.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelaextratocliente);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Últimas Compras Realizadas Pelo Cliente:");
@@ -237,7 +246,13 @@ public class Extratocliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void designtabelaextratocliente(){
+        tabelaextratocliente.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelaextratocliente.getTableHeader().setOpaque(false);
+        tabelaextratocliente.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelaextratocliente.getTableHeader().setForeground( new Color(255,255,255));
+        tabelaextratocliente.setRowHeight(25);
+    }
     private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextField2ActionPerformed
@@ -297,6 +312,6 @@ public class Extratocliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaextratocliente;
     // End of variables declaration//GEN-END:variables
 }

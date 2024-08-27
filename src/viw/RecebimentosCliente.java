@@ -4,6 +4,9 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author ruan
@@ -16,8 +19,17 @@ public class RecebimentosCliente extends javax.swing.JFrame {
     public RecebimentosCliente() {
         initComponents();
          setLocationRelativeTo(this);
+         designtabelarecebimentos();
     }
 
+    
+    private void  designtabelarecebimentos(){
+        tabelarecebimentos.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelarecebimentos.getTableHeader().setOpaque(false);
+        tabelarecebimentos.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelarecebimentos.getTableHeader().setForeground( new Color(255,255,255));
+        tabelarecebimentos.setRowHeight(25);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,7 +49,7 @@ public class RecebimentosCliente extends javax.swing.JFrame {
         jFormattedTextField3 = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelarecebimentos = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jFormattedTextField4 = new javax.swing.JFormattedTextField();
@@ -108,7 +120,7 @@ public class RecebimentosCliente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Identificação do Cliente:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelarecebimentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -119,7 +131,11 @@ public class RecebimentosCliente extends javax.swing.JFrame {
                 "Código", "Descrição/Produto", "Valor Pago", "Restante da Conta", "Data"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelarecebimentos.setFocusable(false);
+        tabelarecebimentos.setRowHeight(25);
+        tabelarecebimentos.setShowVerticalLines(false);
+        tabelarecebimentos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelarecebimentos);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -160,7 +176,7 @@ public class RecebimentosCliente extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -268,6 +284,6 @@ public class RecebimentosCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelarecebimentos;
     // End of variables declaration//GEN-END:variables
 }

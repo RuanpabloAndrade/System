@@ -4,6 +4,9 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author ruan
@@ -16,6 +19,7 @@ public class Moduloparcelamentocliente extends javax.swing.JFrame {
     public Moduloparcelamentocliente() {
         initComponents();
          setLocationRelativeTo(this);
+         designtabelaparcelamentocliente();
     }
 
     /**
@@ -37,7 +41,7 @@ public class Moduloparcelamentocliente extends javax.swing.JFrame {
         jFormattedTextField3 = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaparcelamentocliente = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -104,7 +108,7 @@ public class Moduloparcelamentocliente extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Identificação do Cliente:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaparcelamentocliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -115,7 +119,13 @@ public class Moduloparcelamentocliente extends javax.swing.JFrame {
                 "Código", "Documento", "Parcela", "Total", "Vencimento", "Valor da Parcela"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelaparcelamentocliente.setFocusable(false);
+        tabelaparcelamentocliente.setRowHeight(25);
+        tabelaparcelamentocliente.setRowSelectionAllowed(false);
+        tabelaparcelamentocliente.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelaparcelamentocliente.setShowVerticalLines(false);
+        tabelaparcelamentocliente.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelaparcelamentocliente);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -162,7 +172,13 @@ public class Moduloparcelamentocliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public void  designtabelaparcelamentocliente(){
+        tabelaparcelamentocliente.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelaparcelamentocliente.getTableHeader().setOpaque(false);
+        tabelaparcelamentocliente.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelaparcelamentocliente.getTableHeader().setForeground( new Color(255,255,255));
+        tabelaparcelamentocliente.setRowHeight(25);
+    }
     /**
      * @param args the command line arguments
      */
@@ -209,6 +225,6 @@ public class Moduloparcelamentocliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaparcelamentocliente;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,9 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author ruan
@@ -16,6 +19,7 @@ public class Comprasprazocliente extends javax.swing.JFrame {
     public Comprasprazocliente() {
         initComponents();
          setLocationRelativeTo(this);
+         designtabelacomprasprazo();
     }
 
     /**
@@ -41,7 +45,7 @@ public class Comprasprazocliente extends javax.swing.JFrame {
         jFormattedTextField4 = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaextratocliente = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -138,12 +142,12 @@ public class Comprasprazocliente extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaextratocliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -154,7 +158,12 @@ public class Comprasprazocliente extends javax.swing.JFrame {
                 "Numero da Compra", "Produto", "Quantidade", "Preço Unitário", "Total", "Data Vencimento"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelaextratocliente.setFocusable(false);
+        tabelaextratocliente.setRowHeight(25);
+        tabelaextratocliente.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelaextratocliente.setShowVerticalLines(false);
+        tabelaextratocliente.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelaextratocliente);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -204,7 +213,13 @@ public class Comprasprazocliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ public void designtabelacomprasprazo(){
+     tabelaextratocliente.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+       tabelaextratocliente.getTableHeader().setOpaque(false);
+        tabelaextratocliente.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelaextratocliente.getTableHeader().setForeground( new Color(255,255,255));
+        tabelaextratocliente.setRowHeight(25);
+ }
     /**
      * @param args the command line arguments
      */
@@ -255,6 +270,6 @@ public class Comprasprazocliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaextratocliente;
     // End of variables declaration//GEN-END:variables
 }
