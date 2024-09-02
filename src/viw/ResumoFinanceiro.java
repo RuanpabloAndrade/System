@@ -1,5 +1,8 @@
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -17,6 +20,7 @@ public class ResumoFinanceiro extends javax.swing.JFrame {
     public ResumoFinanceiro() {
         initComponents();
         setLocationRelativeTo(this);
+        designtabelaresumofinanceiro();
     }
 
     /**
@@ -41,7 +45,7 @@ public class ResumoFinanceiro extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tabelafincanceiro = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -63,6 +67,7 @@ public class ResumoFinanceiro extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -107,7 +112,7 @@ public class ResumoFinanceiro extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Análise de Comparação de Vendas Mensal:");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabelafincanceiro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -126,7 +131,12 @@ public class ResumoFinanceiro extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        tabelafincanceiro.setFocusable(false);
+        tabelafincanceiro.setRowHeight(25);
+        tabelafincanceiro.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelafincanceiro.setShowVerticalLines(false);
+        tabelafincanceiro.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tabelafincanceiro);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Ultimas Vendas Realizadas:");
@@ -232,7 +242,13 @@ public class ResumoFinanceiro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void designtabelaresumofinanceiro(){
+        tabelafincanceiro.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelafincanceiro.getTableHeader().setOpaque(false);
+        tabelafincanceiro.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelafincanceiro.getTableHeader().setForeground( new Color(255,255,255));
+        tabelafincanceiro.setRowHeight(25);
+    }
     /**
      * @param args the command line arguments
      */
@@ -284,7 +300,7 @@ public class ResumoFinanceiro extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable tabelafincanceiro;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,9 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author ruan
@@ -16,6 +19,7 @@ public class Indicadoresindividuais extends javax.swing.JFrame {
     public Indicadoresindividuais() {
         initComponents();
         setLocationRelativeTo(this);
+        designtabelaindividuais();
     }
 
     /**
@@ -47,7 +51,7 @@ public class Indicadoresindividuais extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jFormattedTextField8 = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaindividuais = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -120,7 +124,7 @@ public class Indicadoresindividuais extends javax.swing.JFrame {
 
         jFormattedTextField8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaindividuais.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -131,7 +135,12 @@ public class Indicadoresindividuais extends javax.swing.JFrame {
                 "Código", "Descrição", "Quantidade", "Preço"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelaindividuais.setFocusable(false);
+        tabelaindividuais.setRowHeight(25);
+        tabelaindividuais.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelaindividuais.setShowVerticalLines(false);
+        tabelaindividuais.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelaindividuais);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa (1).png"))); // NOI18N
@@ -197,10 +206,11 @@ public class Indicadoresindividuais extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -247,7 +257,13 @@ public class Indicadoresindividuais extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+      private void designtabelaindividuais(){
+            tabelaindividuais.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelaindividuais.getTableHeader().setOpaque(false);
+        tabelaindividuais.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelaindividuais.getTableHeader().setForeground( new Color(255,255,255));
+        tabelaindividuais.setRowHeight(25);
+      }
     /**
      * @param args the command line arguments
      */
@@ -305,6 +321,6 @@ public class Indicadoresindividuais extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaindividuais;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,8 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 //deve ser imprimido um cupom cquando fechar o caixa, abrir e sangria com especificações vendas, valores etc
 /**
@@ -18,6 +20,7 @@ public class MovimetacaoCaixa extends javax.swing.JFrame {
     public MovimetacaoCaixa() {
         initComponents();
         setLocationRelativeTo(this);
+        designtabelamovimentacaocaixa();
     }
 
     /**
@@ -72,7 +75,7 @@ public class MovimetacaoCaixa extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tabelamovimentacao = new javax.swing.JTable();
         jLabel19 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
 
@@ -363,7 +366,7 @@ public class MovimetacaoCaixa extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabelamovimentacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -374,7 +377,12 @@ public class MovimetacaoCaixa extends javax.swing.JFrame {
                 "Data/hora", "Produto", "Dinheiro", "Crédito", "Débito", "Total"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        tabelamovimentacao.setFocusable(false);
+        tabelamovimentacao.setRowHeight(25);
+        tabelamovimentacao.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelamovimentacao.setShowVerticalLines(false);
+        tabelamovimentacao.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tabelamovimentacao);
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel19.setText("Movimentação Caixa");
@@ -477,6 +485,14 @@ public class MovimetacaoCaixa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void designtabelamovimentacaocaixa(){
+        tabelamovimentacao.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelamovimentacao.getTableHeader().setOpaque(false);
+        tabelamovimentacao.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelamovimentacao.getTableHeader().setForeground( new Color(255,255,255));
+        tabelamovimentacao.setRowHeight(25);
+    }
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
        Sangria sangria = new Sangria();
        sangria.setVisible(true);
@@ -567,6 +583,6 @@ public class MovimetacaoCaixa extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tabelamovimentacao;
     // End of variables declaration//GEN-END:variables
 }
