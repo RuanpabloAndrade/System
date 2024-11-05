@@ -4,6 +4,9 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author ruan
@@ -16,8 +19,17 @@ public class VendasavistaGerenciamento extends javax.swing.JFrame {
     public VendasavistaGerenciamento() {
         initComponents();
          setLocationRelativeTo(this);
+         FuncaoDesigntabelavista();
     }
 
+    
+    private void  FuncaoDesigntabelavista(){
+     tabelavista.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelavista.getTableHeader().setOpaque(false);
+        tabelavista.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelavista.getTableHeader().setForeground( new Color(255,255,255));
+        tabelavista.setRowHeight(25);
+   }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,14 +51,14 @@ public class VendasavistaGerenciamento extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jFormattedTextField3 = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelavista = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
@@ -137,18 +149,23 @@ public class VendasavistaGerenciamento extends javax.swing.JFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelavista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "N.Compra", "Decrição Produto", "Quantidade", "Total", "Lucro ", "Data", "Saída"
+                "N.Compra", "Decrição Produto", "Quantidade", "Total", "Data", "Saída"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelavista.setFocusable(false);
+        tabelavista.setRowHeight(25);
+        tabelavista.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelavista.setShowVerticalLines(false);
+        tabelavista.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelavista);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -242,6 +259,6 @@ public class VendasavistaGerenciamento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelavista;
     // End of variables declaration//GEN-END:variables
 }

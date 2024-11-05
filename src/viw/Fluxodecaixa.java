@@ -4,6 +4,9 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author ruan
@@ -16,6 +19,7 @@ public class Fluxodecaixa extends javax.swing.JFrame {
     public Fluxodecaixa() {
         initComponents();
           setLocationRelativeTo(this);
+          Funcaodesgintabelafinafluxo();
     }
 
     /**
@@ -54,7 +58,7 @@ public class Fluxodecaixa extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelafinanceiro = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -65,7 +69,7 @@ public class Fluxodecaixa extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
@@ -242,7 +246,7 @@ public class Fluxodecaixa extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setText("Vendas Realizadas No Periodo Informado");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelafinanceiro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -253,7 +257,12 @@ public class Fluxodecaixa extends javax.swing.JFrame {
                 "Cliente", "Data/Hora", "Produto", "Quantidade", "Total"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelafinanceiro.setFocusable(false);
+        tabelafinanceiro.setRowHeight(25);
+        tabelafinanceiro.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelafinanceiro.setShowVerticalLines(false);
+        tabelafinanceiro.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelafinanceiro);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel13.setText("Pesquisar Fluxo Fiananceiro(Por data);");
@@ -348,6 +357,13 @@ public class Fluxodecaixa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void  Funcaodesgintabelafinafluxo(){
+        tabelafinanceiro.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelafinanceiro.getTableHeader().setOpaque(false);
+        tabelafinanceiro.getTableHeader().setBackground(new Color(32, 136, 203));
+       tabelafinanceiro.getTableHeader().setForeground( new Color(255,255,255));
+        tabelafinanceiro.setRowHeight(25);
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        ResumoFinanceiro Financeiro = new ResumoFinanceiro();
        Financeiro.setVisible(true);
@@ -419,6 +435,6 @@ public class Fluxodecaixa extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelafinanceiro;
     // End of variables declaration//GEN-END:variables
 }

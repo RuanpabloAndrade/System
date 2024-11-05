@@ -57,7 +57,7 @@ public class Modulodequitação extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
@@ -118,6 +118,7 @@ public class Modulodequitação extends javax.swing.JFrame {
 
         jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/crm (1).png"))); // NOI18N
         jButton2.setText("Aplicar Datas");
 
@@ -139,9 +140,11 @@ public class Modulodequitação extends javax.swing.JFrame {
         moduloquitacao.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(moduloquitacao);
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/receber (1).png"))); // NOI18N
         jButton3.setText("Confirmar Pagamento");
 
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar (1).png"))); // NOI18N
         jButton4.setText("Cancelar Datas");
 

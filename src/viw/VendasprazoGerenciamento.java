@@ -4,6 +4,9 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author ruan
@@ -16,8 +19,16 @@ public class VendasprazoGerenciamento extends javax.swing.JFrame {
     public VendasprazoGerenciamento() {
         initComponents();
          setLocationRelativeTo(this);
+         FuncaoDesigntabelaprazo();
     }
 
+    private void FuncaoDesigntabelaprazo(){
+        tabelaprazo.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelaprazo.getTableHeader().setOpaque(false);
+        tabelaprazo.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelaprazo.getTableHeader().setForeground( new Color(255,255,255));
+       tabelaprazo.setRowHeight(25);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,14 +50,14 @@ public class VendasprazoGerenciamento extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jFormattedTextField3 = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaprazo = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
@@ -132,7 +143,7 @@ public class VendasprazoGerenciamento extends javax.swing.JFrame {
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaprazo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -143,7 +154,12 @@ public class VendasprazoGerenciamento extends javax.swing.JFrame {
                 "N.venda", "Descrição Produto", "Quantidade", "Total", "Lucro", "Data", "Saída"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelaprazo.setFocusable(false);
+        tabelaprazo.setRowHeight(25);
+        tabelaprazo.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelaprazo.setShowVerticalLines(false);
+        tabelaprazo.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelaprazo);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -237,6 +253,6 @@ public class VendasprazoGerenciamento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaprazo;
     // End of variables declaration//GEN-END:variables
 }

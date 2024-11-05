@@ -4,6 +4,9 @@
  */
 package viw;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author ruan
@@ -17,8 +20,17 @@ public class Custos extends javax.swing.JFrame {
     public Custos() {
         initComponents();
          setLocationRelativeTo(this);
+         FuncaodesignCustos();
     }
 
+    
+    private void FuncaodesignCustos(){
+         tabelacustos.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelacustos.getTableHeader().setOpaque(false);
+        tabelacustos.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelacustos.getTableHeader().setForeground( new Color(255,255,255));
+        tabelacustos.setRowHeight(25);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +44,7 @@ public class Custos extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelacustos = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -43,7 +55,7 @@ public class Custos extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
@@ -66,7 +78,7 @@ public class Custos extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelacustos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -85,7 +97,12 @@ public class Custos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tabelacustos.setFocusable(false);
+        tabelacustos.setRowHeight(25);
+        tabelacustos.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelacustos.setShowVerticalLines(false);
+        tabelacustos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelacustos);
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
         jLabel2.setText("Lista de Custos em Ordem Crescente:");
@@ -196,6 +213,6 @@ public class Custos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelacustos;
     // End of variables declaration//GEN-END:variables
 }
