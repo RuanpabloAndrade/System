@@ -109,6 +109,9 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenuItem25 = new javax.swing.JMenuItem();
         jMenuItem26 = new javax.swing.JMenuItem();
         jMenuItem27 = new javax.swing.JMenuItem();
+        jMenuItem28 = new javax.swing.JMenuItem();
+        jMenuItem29 = new javax.swing.JMenuItem();
+        jMenuItem30 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
@@ -131,8 +134,9 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
 
         jLabel2.setText("jLabel2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(950, 650));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(51, 102, 255));
@@ -657,6 +661,25 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenuItem27.setText("Orçamentos");
         jMenu2.add(jMenuItem27);
 
+        jMenuItem28.setText("Vendas");
+        jMenuItem28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem28ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem28);
+
+        jMenuItem29.setText("Compras");
+        jMenu2.add(jMenuItem29);
+
+        jMenuItem30.setText("Fluxo de Caixa");
+        jMenuItem30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem30ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem30);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/crm (1).png"))); // NOI18N
@@ -929,6 +952,16 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
        pdv.setVisible(true);
     }//GEN-LAST:event_jMenuItem19ActionPerformed
 
+    private void jMenuItem28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem28ActionPerformed
+       Opcaorelatoriovendas vendas = new Opcaorelatoriovendas();
+       vendas.setVisible(true);
+    }//GEN-LAST:event_jMenuItem28ActionPerformed
+
+    private void jMenuItem30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem30ActionPerformed
+      Iocaorelatoriofluxo fluxoopcao = new Iocaorelatoriofluxo();
+      fluxoopcao.setVisible(true);
+    }//GEN-LAST:event_jMenuItem30ActionPerformed
+
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();
         DefaultTableModel modelo=(DefaultTableModel) tabela.getModel();
@@ -1107,7 +1140,10 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JMenuItem jMenuItem26;
     private javax.swing.JMenuItem jMenuItem27;
+    private javax.swing.JMenuItem jMenuItem28;
+    private javax.swing.JMenuItem jMenuItem29;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem30;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
