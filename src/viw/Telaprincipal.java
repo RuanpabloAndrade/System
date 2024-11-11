@@ -10,8 +10,10 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-//DESENVOLVER UM METODO DE PAGAMENTO DE CREDITO E DEBITO NO PDV E DAR VIDA AS BOTOES no pdv E dar vida aos botoes no modulo de vendas
-//TERMINAR O MODULO DE GERENCIAMENTO DE CLIENTES
+//NO MENU ITEM ESTOQUE NO BOTAO ESTOQUE NO SUBBOTAO DE NOTA DE ENTRADA O MODULO DE FLUXO DE FORNECEDORAS
+//LOCALIZADO NA TELA (ANALISE FINANCEIRA) DEVE SER ALIMENTADO PELAS FUNCIONALIADES, RESULTADO E VARIAVEIS DE NOTA DE ENTRADA LOCALIZADO POR SUA VEZ NO NOTAO ESTOQUE
+//O BOTAO DE CERTIFICADO DE GARANTIA DEVE SER EMITIDO UM PDF ESTILO RELATORIO
+//
 /**
  *
  * @author ruan
@@ -122,6 +124,10 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
+        jMenuItem31 = new javax.swing.JMenuItem();
+        jMenuItem32 = new javax.swing.JMenuItem();
+        jMenuItem33 = new javax.swing.JMenuItem();
+        jMenuItem34 = new javax.swing.JMenuItem();
         Finança = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -637,30 +643,39 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/relatorio (1).png"))); // NOI18N
         jMenu2.setText("Relatórios");
 
+        jMenuItem20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/clientes (1).png"))); // NOI18N
         jMenuItem20.setText("Clientes Cadastrados");
         jMenu2.add(jMenuItem20);
 
+        jMenuItem21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pro (1).png"))); // NOI18N
         jMenuItem21.setText("Produtos");
         jMenu2.add(jMenuItem21);
 
+        jMenuItem22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Financieo (1).png"))); // NOI18N
         jMenuItem22.setText("Ordem de Serviço");
         jMenu2.add(jMenuItem22);
 
+        jMenuItem23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pediso (1).png"))); // NOI18N
         jMenuItem23.setText("Pedidos");
         jMenu2.add(jMenuItem23);
 
+        jMenuItem24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fornece (1).png"))); // NOI18N
         jMenuItem24.setText("Fornecedores");
         jMenu2.add(jMenuItem24);
 
+        jMenuItem25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pagar (1).png"))); // NOI18N
         jMenuItem25.setText("Contas a Pagar");
         jMenu2.add(jMenuItem25);
 
+        jMenuItem26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/receber (1).png"))); // NOI18N
         jMenuItem26.setText("Contas a Receber");
         jMenu2.add(jMenuItem26);
 
+        jMenuItem27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/orça (1).png"))); // NOI18N
         jMenuItem27.setText("Orçamentos");
         jMenu2.add(jMenuItem27);
 
+        jMenuItem28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fun (1).png"))); // NOI18N
         jMenuItem28.setText("Vendas");
         jMenuItem28.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -669,9 +684,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu2.add(jMenuItem28);
 
+        jMenuItem29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icons8-vendas-24.png"))); // NOI18N
         jMenuItem29.setText("Compras");
         jMenu2.add(jMenuItem29);
 
+        jMenuItem30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/crm (1).png"))); // NOI18N
         jMenuItem30.setText("Fluxo de Caixa");
         jMenuItem30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -727,6 +744,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
             }
         });
 
+        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/orça (1).png"))); // NOI18N
         jMenuItem12.setText("Gerenciamento");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -735,16 +753,46 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu5.add(jMenuItem12);
 
+        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/prazo (1).png"))); // NOI18N
         jMenuItem13.setText("Concluidos");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem13);
 
+        jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/recebimentos (1).png"))); // NOI18N
         jMenuItem14.setText("Cancelados");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem14);
 
         jMenuBar1.add(jMenu5);
 
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/estoque (1).png"))); // NOI18N
         jMenu7.setText("Estoque");
+
+        jMenuItem31.setText("Nota de Entrada");
+        jMenuItem31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem31ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem31);
+
+        jMenuItem32.setText("Compras");
+        jMenu7.add(jMenuItem32);
+
+        jMenuItem33.setText("Certificado de Garantia");
+        jMenu7.add(jMenuItem33);
+
+        jMenuItem34.setText("Consultar Preços");
+        jMenu7.add(jMenuItem34);
+
         jMenuBar1.add(jMenu7);
 
         Finança.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fun (1).png"))); // NOI18N
@@ -962,6 +1010,21 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
       fluxoopcao.setVisible(true);
     }//GEN-LAST:event_jMenuItem30ActionPerformed
 
+    private void jMenuItem31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem31ActionPerformed
+       Notadeentrada cadastro = new Notadeentrada();
+       cadastro.setVisible(true);
+    }//GEN-LAST:event_jMenuItem31ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+      Orçamentosconcluidos concluidos = new Orçamentosconcluidos();
+      concluidos.setVisible(true);
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        Orçamentosnãocooncluidos naoconclui = new Orçamentosnãocooncluidos();
+         naoconclui.setVisible(true);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();
         DefaultTableModel modelo=(DefaultTableModel) tabela.getModel();
@@ -1144,6 +1207,10 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     private javax.swing.JMenuItem jMenuItem29;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem30;
+    private javax.swing.JMenuItem jMenuItem31;
+    private javax.swing.JMenuItem jMenuItem32;
+    private javax.swing.JMenuItem jMenuItem33;
+    private javax.swing.JMenuItem jMenuItem34;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
