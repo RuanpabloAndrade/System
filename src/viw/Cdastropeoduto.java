@@ -12,6 +12,9 @@ import java.awt.Font;
  * @author ruan
  */
 public class Cdastropeoduto extends javax.swing.JFrame {
+    //APÓS O CADASTRO DO PRODUTO NA TELA DE (CADASTRODEPRODUTO) DEVE APARECER UM JOPTIONCONFIRMDIALOG PERGUNTANDO SE O USUARIO DESEJA DAR ENTRADA NA NOTS FISCAL NA TELA NOTADEENTRADA APOS O USUARIO ESCOLHER (SIM) A TELA DEVE APARECER IMEDIATAMENTE
+   // O MODULO DE ALIMETNAÇÃO DE ATUALIZAÇÃO DE PRODUTOS NO  ESTOQUE DEVE SER ALIEMTNADO NA TELA DE CADSATRO DE PRODUTO NÃO SENDO NECESSARIO A ATULIA\ZAÇAO DA TELA DE ENTRADADENOTA COM EXCESSÃO DOS MODULOS DE ANALISE DE FORNCEDORES POR QUE TODAS AS INFORMÇÕES DESSE MODULO SERAO ALIMENTADAS PELA TELA DE NOTADEENTRADA
+    
     /**
      * Creates new form Cdastropeoduto
      */
@@ -368,10 +371,10 @@ public class Cdastropeoduto extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jComboBox2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

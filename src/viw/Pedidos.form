@@ -303,7 +303,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tw Cen MT Condensed" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Pesquisar Pedido Por Nome(Nome Cliente):"/>
+                <Property name="text" type="java.lang.String" value="Pesquisar Pedido Por Nome(Nome Cliente/Fronecedor):"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
@@ -337,7 +337,7 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
                     <Column editable="true" title="Numero do Pedido" type="java.lang.Object"/>
-                    <Column editable="true" title="Cliente" type="java.lang.Object"/>
+                    <Column editable="true" title="Cliente/Fornecedor" type="java.lang.Object"/>
                     <Column editable="true" title="Telefone" type="java.lang.Object"/>
                     <Column editable="true" title="Email" type="java.lang.Object"/>
                   </Table>

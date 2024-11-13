@@ -15,6 +15,7 @@ public class Pedidos extends javax.swing.JFrame {
 // ao inserir um item deve continuar na tela de estoque para inserir mais se desejar ao
     //(ao inserir um item a tela de estoque não pode sumir deve ficar para se o usuario desejar inserir mais)
     //(ao inserir um item depois de dar baixa os produtos devem ser descontados do estoque)
+    //depois de dar baixa deve aparecer um joptionconfirmdialog pergutnando se quer dar entrada na nota fiscal se o usuario escolher sim deve aparecer automaticamente a tela de notaentrada(caso seja um pedido de fornecedo e não cliente
     /**
      * Creates new form Pedidos
      */
@@ -151,7 +152,7 @@ public class Pedidos extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
-        jLabel2.setText("Pesquisar Pedido Por Nome(Nome Cliente):");
+        jLabel2.setText("Pesquisar Pedido Por Nome(Nome Cliente/Fronecedor):");
 
         jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -194,7 +195,7 @@ public class Pedidos extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Numero do Pedido", "Cliente", "Telefone", "Email"
+                "Numero do Pedido", "Cliente/Fornecedor", "Telefone", "Email"
             }
         ));
         tabelapedidos.setFocusable(false);

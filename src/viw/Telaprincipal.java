@@ -702,6 +702,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/crm (1).png"))); // NOI18N
         jMenu3.setText("Fluxo de Caixa");
 
+        jMenuItem17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/crm (1).png"))); // NOI18N
         jMenuItem17.setText("Analise de Vendas ");
         jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -710,6 +711,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu3.add(jMenuItem17);
 
+        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/clientes (1).png"))); // NOI18N
         jMenuItem15.setText("Indicativos Clientes");
         jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -718,6 +720,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu3.add(jMenuItem15);
 
+        jMenuItem16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fornece (1).png"))); // NOI18N
         jMenuItem16.setText("Analise de Produtos");
         jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -726,6 +729,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu3.add(jMenuItem16);
 
+        jMenuItem18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/gra (1).png"))); // NOI18N
         jMenuItem18.setText("Analise Financeira");
         jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
