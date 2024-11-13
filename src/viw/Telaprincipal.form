@@ -339,6 +339,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem31">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/Pagar (1).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nota de Entrada"/>
               </Properties>
               <Events>
@@ -347,16 +350,28 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem32">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/prazo (1).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Compras"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem33">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/relatorio (1).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Certificado de Garantia"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem33ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem34">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/lupa (1).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Consultar Pre&#xe7;os"/>
               </Properties>
             </MenuItem>
@@ -375,6 +390,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/fun (1).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Total de Vendas"/>
               </Properties>
               <Events>
@@ -383,6 +401,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/receber (1).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Vendas a Vista"/>
               </Properties>
               <Events>
@@ -391,6 +412,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem10">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/or&#xe7;a (1).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Vendas a Prazo"/>
               </Properties>
               <Events>
@@ -399,6 +423,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/ca (2).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Resumo Financeiro"/>
               </Properties>
               <Events>
@@ -409,6 +436,9 @@
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+B"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagens/gra (1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Vender"/>
               </Properties>

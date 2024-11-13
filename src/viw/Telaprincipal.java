@@ -780,6 +780,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/estoque (1).png"))); // NOI18N
         jMenu7.setText("Estoque");
 
+        jMenuItem31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pagar (1).png"))); // NOI18N
         jMenuItem31.setText("Nota de Entrada");
         jMenuItem31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -788,12 +789,20 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu7.add(jMenuItem31);
 
+        jMenuItem32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/prazo (1).png"))); // NOI18N
         jMenuItem32.setText("Compras");
         jMenu7.add(jMenuItem32);
 
+        jMenuItem33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/relatorio (1).png"))); // NOI18N
         jMenuItem33.setText("Certificado de Garantia");
+        jMenuItem33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem33ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem33);
 
+        jMenuItem34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa (1).png"))); // NOI18N
         jMenuItem34.setText("Consultar Preços");
         jMenu7.add(jMenuItem34);
 
@@ -807,6 +816,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
             }
         });
 
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fun (1).png"))); // NOI18N
         jMenuItem8.setText("Total de Vendas");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -815,6 +825,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         Finança.add(jMenuItem8);
 
+        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/receber (1).png"))); // NOI18N
         jMenuItem9.setText("Vendas a Vista");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -823,6 +834,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         Finança.add(jMenuItem9);
 
+        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/orça (1).png"))); // NOI18N
         jMenuItem10.setText("Vendas a Prazo");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -831,6 +843,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         Finança.add(jMenuItem10);
 
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
         jMenuItem11.setText("Resumo Financeiro");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -840,6 +853,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         Finança.add(jMenuItem11);
 
         jMenuItem19.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/gra (1).png"))); // NOI18N
         jMenuItem19.setText("Vender");
         jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1028,6 +1042,10 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         Orçamentosnãocooncluidos naoconclui = new Orçamentosnãocooncluidos();
          naoconclui.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void jMenuItem33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem33ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem33ActionPerformed
 
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();
