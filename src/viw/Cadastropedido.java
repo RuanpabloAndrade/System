@@ -21,7 +21,7 @@ public class Cadastropedido extends javax.swing.JFrame {
     //essa tela tambem deve alimentar o modulo de gerenciamento de cliente
     //Se o usuario escolher Cliente no combobox "Tipo de pedido" o combobox "Pesquisar Cliente/Fronecedor" deve atualizar com as informaçoes da tebela clientes
     //Se o usuario escolher Fornecedor interno no combobox "Tipo de pedido" o combobox "Pesquisar Cliente/Fronecedor" deve atualizar com as informaçoes da tebela fornecedores
-   //
+    //Logo apos escolher o prdouto na combobox deve aparecer um jotpionpane pergutando qual a quantidade daquele produto para ser aplicado na tabela
     /**
      * Creates new form Cadastropedido
      */
