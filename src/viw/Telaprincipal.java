@@ -102,6 +102,9 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem37 = new javax.swing.JMenuItem();
+        jMenuItem38 = new javax.swing.JMenuItem();
+        jMenuItem39 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem20 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
@@ -135,6 +138,9 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem35 = new javax.swing.JMenuItem();
+        jMenuItem36 = new javax.swing.JMenuItem();
 
         jButton2.setText("jButton2");
 
@@ -638,6 +644,33 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Pediso (1).png"))); // NOI18N
+        jMenuItem37.setText("Pedidos");
+        jMenuItem37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem37ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem37);
+
+        jMenuItem38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/extrato (1).png"))); // NOI18N
+        jMenuItem38.setText("Ordem de Serviço");
+        jMenuItem38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem38ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem38);
+
+        jMenuItem39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/orça (1).png"))); // NOI18N
+        jMenuItem39.setText("Orçamento");
+        jMenuItem39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem39ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem39);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/relatorio (1).png"))); // NOI18N
@@ -868,6 +901,29 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenu8.setText("Fiscal");
         jMenuBar1.add(jMenu8);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/usuario (1).png"))); // NOI18N
+        jMenu4.setText("Controle Interno");
+
+        jMenuItem35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fun (1).png"))); // NOI18N
+        jMenuItem35.setText("Funcionários");
+        jMenuItem35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem35ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem35);
+
+        jMenuItem36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/gestão (1).png"))); // NOI18N
+        jMenuItem36.setText("Usuários");
+        jMenuItem36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem36ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem36);
+
+        jMenuBar1.add(jMenu4);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -1047,6 +1103,31 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem33ActionPerformed
 
+    private void jMenuItem35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem35ActionPerformed
+         Vizualizarfuncionario Funcioanrio = new  Vizualizarfuncionario();
+         Funcioanrio.setVisible(true);
+    }//GEN-LAST:event_jMenuItem35ActionPerformed
+
+    private void jMenuItem36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem36ActionPerformed
+         Vizualizarusuario usuario = new  Vizualizarusuario();
+         usuario.setVisible(true);
+    }//GEN-LAST:event_jMenuItem36ActionPerformed
+
+    private void jMenuItem37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem37ActionPerformed
+       Cadastropedido pedido = new Cadastropedido();
+      pedido.setVisible(true);
+    }//GEN-LAST:event_jMenuItem37ActionPerformed
+
+    private void jMenuItem38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem38ActionPerformed
+       OS os = new OS();
+       os.setVisible(true);
+    }//GEN-LAST:event_jMenuItem38ActionPerformed
+
+    private void jMenuItem39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem39ActionPerformed
+      CadastrodeOrçamentos orçamentos = new CadastrodeOrçamentos();
+     orçamentos.setVisible(true);
+    }//GEN-LAST:event_jMenuItem39ActionPerformed
+
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();
         DefaultTableModel modelo=(DefaultTableModel) tabela.getModel();
@@ -1201,6 +1282,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
@@ -1233,6 +1315,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     private javax.swing.JMenuItem jMenuItem32;
     private javax.swing.JMenuItem jMenuItem33;
     private javax.swing.JMenuItem jMenuItem34;
+    private javax.swing.JMenuItem jMenuItem35;
+    private javax.swing.JMenuItem jMenuItem36;
+    private javax.swing.JMenuItem jMenuItem37;
+    private javax.swing.JMenuItem jMenuItem38;
+    private javax.swing.JMenuItem jMenuItem39;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
