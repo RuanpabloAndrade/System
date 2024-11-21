@@ -317,7 +317,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tw Cen MT Condensed" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Pesquisar Produto(Descri&#xe7;&#xe3;o do Produto)"/>
+                <Property name="text" type="java.lang.String" value="Pesquisar Produto:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">

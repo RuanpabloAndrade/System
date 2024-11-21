@@ -161,7 +161,7 @@ public class Gestaodeestoque extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
-        jLabel2.setText("Pesquisar Produto(Descrição do Produto)");
+        jLabel2.setText("Pesquisar Produto:");
 
         jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 

@@ -25,7 +25,7 @@ public class Daorecebiveis extends Classeconexao{
         List<Modelrecebiveis> listausuario = new ArrayList<>();
         Modelrecebiveis model = new Modelrecebiveis();
         
-       String sql = "SELECT recebercod, "
+       String sql = "SELECT cod, "
             + "cliente, "
             + "telefone, "
             + "valor, "

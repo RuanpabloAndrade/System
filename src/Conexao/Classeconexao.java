@@ -13,7 +13,7 @@ public class Classeconexao {
         java.sql.Connection conexao= null;
         String driver = "com.mysql.jdbc.Driver";
         
-        String url="jdbc:mysql://localhost:3325/dbsystem";
+        String url="jdbc:mysql://localhost:3306/dbsystem";
         String user="root";
         String password="";
         

@@ -14,7 +14,7 @@ import java.awt.Font;
 public class Cdastropeoduto extends javax.swing.JFrame {
     //APÓS O CADASTRO DO PRODUTO NA TELA DE (CADASTRODEPRODUTO) DEVE APARECER UM JOPTIONCONFIRMDIALOG PERGUNTANDO SE O USUARIO DESEJA DAR ENTRADA NA NOTS FISCAL NA TELA NOTADEENTRADA APOS O USUARIO ESCOLHER (SIM) A TELA DEVE APARECER IMEDIATAMENTE
    // O MODULO DE ALIMETNAÇÃO DE ATUALIZAÇÃO DE PRODUTOS NO  ESTOQUE DEVE SER ALIEMTNADO NA TELA DE CADSATRO DE PRODUTO NÃO SENDO NECESSARIO A ATULIA\ZAÇAO DA TELA DE ENTRADADENOTA COM EXCESSÃO DOS MODULOS DE ANALISE DE FORNCEDORES POR QUE TODAS AS INFORMÇÕES DESSE MODULO SERAO ALIMENTADAS PELA TELA DE NOTADEENTRADA
-    
+   // se o usuario cadastrar o produto já existente o sistemas deve apenas atualizará as informaçoes que mudarem ex(Se o usuario cadastrar um prdouto com saldo de 8 já salvo no sistrmea na quantidade, se no cadastro novo ele salvar 6 em quantidade o sistrema deve somar 8+6 no estoque e atualizar o novo estoque  
     /**
      * Creates new form Cdastropeoduto
      */

@@ -16,6 +16,7 @@ public class Pedidos extends javax.swing.JFrame {
     //(ao inserir um item a tela de estoque não pode sumir deve ficar para se o usuario desejar inserir mais)
     //(ao inserir um item depois de dar baixa os produtos devem ser descontados do estoque)
     //depois de dar baixa deve aparecer um joptionconfirmdialog pergutnando se quer dar entrada na nota fiscal se o usuario escolher sim deve aparecer automaticamente a tela de notaentrada(caso seja um pedido de fornecedo e não cliente
+    //Na teabela o campo (Tipo de pedido) Deve especificar se o pedido é de um fornecedor interno ou cliente 
     /**
      * Creates new form Pedidos
      */
@@ -206,15 +207,23 @@ public class Pedidos extends javax.swing.JFrame {
 
         tabelapedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Numero do Pedido", "Cliente/Fornecedor", "Telefone", "Email"
+                "Numero do Pedido", "Cliente/Fornecedor", "Telefone", "Email", "Tipo de Pedido"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tabelapedidos.setFocusable(false);
         tabelapedidos.setRowHeight(25);
         tabelapedidos.setSelectionBackground(new java.awt.Color(232, 57, 95));
