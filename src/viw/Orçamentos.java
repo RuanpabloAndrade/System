@@ -96,7 +96,7 @@ public class Orçamentos extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Financieo (1).png"))); // NOI18N
-        jButton3.setText("Dar Baixa");
+        jButton3.setText("Finalizar");
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
@@ -198,13 +198,13 @@ public class Orçamentos extends javax.swing.JFrame {
 
         tabelaorçamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Cliente", "Telefone", "E-mail"
+                "Código", "Cliente", "Telefone", "E-mail", "Data"
             }
         ));
         tabelaorçamento.setRowHeight(25);

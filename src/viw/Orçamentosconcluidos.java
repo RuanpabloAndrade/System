@@ -53,13 +53,13 @@ public class Orçamentosconcluidos extends javax.swing.JFrame {
 
         tabelacncluidoorçamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Cliente", "Telefone", "E-mail"
+                "Código", "Cliente", "Telefone", "E-mail", "Data "
             }
         ));
         tabelacncluidoorçamentos.setFocusable(false);
