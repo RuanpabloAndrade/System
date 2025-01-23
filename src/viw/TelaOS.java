@@ -165,7 +165,7 @@ public class TelaOS extends javax.swing.JFrame {
         jLabel3.setText("Pesquisar Por:");
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Data de Cadstro", "Equipamento", "Telefone" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Data de Cadstro", "Técnico", "Telefone" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -211,18 +211,23 @@ public class TelaOS extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Cliente", "Telefone", "Data de Cadastro", "Equipamento", "Produto/Peças", "Serviço/Mão de Obra", "Total"
+                "Técnico", "Cliente", "Telefone", "Data de Cadastro", "Produto/Peças", "Serviço/Mão de Obra", "Total"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tabelaos.setFocusable(false);
         tabelaos.setRowHeight(25);
         tabelaos.setSelectionBackground(new java.awt.Color(232, 57, 95));
         tabelaos.setShowVerticalLines(false);
         tabelaos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabelaos);
-        if (tabelaos.getColumnModel().getColumnCount() > 0) {
-            tabelaos.getColumnModel().getColumn(2).setResizable(false);
-        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

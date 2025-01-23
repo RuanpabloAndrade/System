@@ -565,6 +565,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         tabela.setFocusable(false);
         tabela.setRowHeight(25);
         tabela.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabela.setShowHorizontalLines(false);
         tabela.setShowVerticalLines(false);
         tabela.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tabela);
@@ -775,9 +776,19 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenu10.add(jMenuItem38);
 
         jMenuItem39.setText("O.S Concluída");
+        jMenuItem39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem39ActionPerformed(evt);
+            }
+        });
         jMenu10.add(jMenuItem39);
 
         jMenuItem49.setText("O.S Cancelada");
+        jMenuItem49.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem49ActionPerformed(evt);
+            }
+        });
         jMenu10.add(jMenuItem49);
 
         jMenu1.add(jMenu10);
@@ -1288,6 +1299,16 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
        Pedidoscancelados cancelados = new Pedidoscancelados();
        cancelados.setVisible(true);
     }//GEN-LAST:event_jMenuItem42ActionPerformed
+
+    private void jMenuItem39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem39ActionPerformed
+       Telaosconcluidos concluida = new Telaosconcluidos();
+       concluida.setVisible(true);
+    }//GEN-LAST:event_jMenuItem39ActionPerformed
+
+    private void jMenuItem49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem49ActionPerformed
+       Telaoscancelada oscancelada = new Telaoscancelada();
+       oscancelada.setVisible(true);
+    }//GEN-LAST:event_jMenuItem49ActionPerformed
 
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();

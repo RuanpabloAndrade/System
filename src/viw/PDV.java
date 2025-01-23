@@ -90,8 +90,6 @@ public class PDV extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jPanel16 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(250, 250));
@@ -113,9 +111,9 @@ public class PDV extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(383, Short.MAX_VALUE)
+                .addContainerGap(519, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(322, 322, 322))
+                .addGap(496, 496, 496))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +124,7 @@ public class PDV extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(10, 11, 940, 60);
+        jPanel2.setBounds(10, 11, 1250, 60);
         jPanel1.add(jFormattedTextField1);
         jFormattedTextField1.setBounds(240, 100, 270, 60);
 
@@ -228,7 +226,7 @@ public class PDV extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Tabelapdv);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(520, 100, 530, 370);
+        jScrollPane1.setBounds(530, 100, 830, 480);
 
         jPanel7.setBackground(new java.awt.Color(0, 51, 153));
 
@@ -242,7 +240,7 @@ public class PDV extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addComponent(jLabel6)
-                .addGap(0, 444, Short.MAX_VALUE))
+                .addGap(0, 194, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,9 +250,9 @@ public class PDV extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel7);
-        jPanel7.setBounds(530, 480, 520, 20);
+        jPanel7.setBounds(1090, 590, 270, 20);
         jPanel1.add(jFormattedTextField4);
-        jFormattedTextField4.setBounds(530, 500, 520, 60);
+        jFormattedTextField4.setBounds(1090, 610, 270, 60);
 
         jPanel8.setBackground(new java.awt.Color(0, 51, 153));
 
@@ -268,7 +266,7 @@ public class PDV extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jLabel7)
-                .addGap(0, 123, Short.MAX_VALUE))
+                .addGap(0, 153, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,9 +276,9 @@ public class PDV extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel8);
-        jPanel8.setBounds(530, 580, 250, 20);
+        jPanel8.setBounds(530, 590, 280, 20);
         jPanel1.add(jFormattedTextField5);
-        jFormattedTextField5.setBounds(530, 600, 250, 60);
+        jFormattedTextField5.setBounds(530, 610, 280, 60);
 
         jPanel9.setBackground(new java.awt.Color(0, 51, 153));
 
@@ -294,7 +292,7 @@ public class PDV extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addComponent(jLabel8)
-                .addGap(0, 199, Short.MAX_VALUE))
+                .addGap(0, 209, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,9 +302,9 @@ public class PDV extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel9);
-        jPanel9.setBounds(800, 580, 250, 20);
+        jPanel9.setBounds(820, 590, 260, 20);
         jPanel1.add(jFormattedTextField6);
-        jFormattedTextField6.setBounds(800, 600, 250, 60);
+        jFormattedTextField6.setBounds(820, 610, 260, 60);
 
         jPanel10.setBackground(new java.awt.Color(51, 153, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -527,7 +525,7 @@ public class PDV extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel6);
-        jPanel6.setBounds(960, 10, 90, 60);
+        jPanel6.setBounds(1270, 10, 90, 60);
         jPanel1.add(jFormattedTextField7);
         jFormattedTextField7.setBounds(10, 400, 220, 60);
 
@@ -592,8 +590,9 @@ public class PDV extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 362, Short.MAX_VALUE))
+                .addContainerGap(652, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -603,29 +602,7 @@ public class PDV extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel15);
-        jPanel15.setBounds(520, 80, 530, 20);
-
-        jPanel16.setBackground(new java.awt.Color(0, 51, 204));
-
-        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
-        jPanel16.setLayout(jPanel16Layout);
-        jPanel16Layout.setHorizontalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGap(313, 313, 313)
-                .addComponent(jLabel13)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel16Layout.setVerticalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel13)
-                .addContainerGap(625, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel16);
-        jPanel16.setBounds(1060, 10, 310, 690);
+        jPanel15.setBounds(530, 80, 830, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -762,7 +739,6 @@ public class PDV extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -778,7 +754,6 @@ public class PDV extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
