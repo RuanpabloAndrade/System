@@ -218,9 +218,17 @@ public class Gestaodeestoque extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Descrição", "Quantidade", "Est. Crítico", "Categoria", "Validade", "Preço"
+                "Descrição", "Quantidade", "Est. Crítico", "Categoria", "Validade", "Preço", "Lote"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tabelaestoque.setFocusable(false);
         tabelaestoque.setIntercellSpacing(new java.awt.Dimension(0, 0));
         tabelaestoque.setRowHeight(25);
