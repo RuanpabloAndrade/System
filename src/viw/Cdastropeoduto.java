@@ -12,7 +12,7 @@ import java.awt.Font;
  * @author ruan
  */
 public class Cdastropeoduto extends javax.swing.JFrame {
-    // no radio button se escolher sim o campo de quantidade no formularioario deve ser bloqueado e acionado o botão de incluir lote ao lado do campo de quantidade para atualizar a quantidade caso não deve ser desbloqueado o campo de quantidade e bloqueado o botão de incluir lote  para preecnhaer livremente
+    // no radio button se escolher sim o campo de quantidade no formularioario deve ser bloqueado e acionado o botão de incluir lote ao lado do campo de quantidade para atualizar a quantidade caso "não" deve ser desbloqueado o campo de quantidade e bloqueado o botão de incluir lote  para preecnhaer livremente
     //Para cadastrar um lote voce precisa primeiro cadastrar um produto logo apos clicar no produto salvo na tabela abixo e clicar no botão lotes e depois clica no botão cadastrar logo apos issp o campo de prdoduto já vai estar preechido com o nome do produto e deve ser preenchido os campos para cadastrar o lote
     //Logo apos o processo de cadastramento de lotes para preecnher a quantidade deve-se clicar no botão incluir lote e preecnher as informaçoes no formaluario
     //APÓS O CADASTRO DO PRODUTO NA TELA DE (CADASTRODEPRODUTO) DEVE APARECER UM JOPTIONCONFIRMDIALOG PERGUNTANDO SE O USUARIO DESEJA DAR ENTRADA NA NOTS FISCAL NA TELA NOTADEENTRADA APOS O USUARIO ESCOLHER (SIM) A TELA DEVE APARECER IMEDIATAMENTE

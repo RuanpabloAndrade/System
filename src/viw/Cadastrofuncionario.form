@@ -67,17 +67,17 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jFormattedTextField1" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                                      <Component id="datafuncionario" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
                                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jFormattedTextField5" min="-2" pref="164" max="-2" attributes="0"/>
+                                      <Component id="cidadefuncionario" min="-2" pref="164" max="-2" attributes="0"/>
                                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jFormattedTextField8" min="-2" pref="164" max="-2" attributes="0"/>
+                                      <Component id="complementofuncionario" min="-2" pref="164" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jFormattedTextField3" max="32767" attributes="0"/>
-                                      <Component id="jFormattedTextField9" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jFormattedTextField7" max="32767" attributes="0"/>
+                                      <Component id="cpffuncionario" max="32767" attributes="0"/>
+                                      <Component id="cepfuncionario" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="numerofuncionario" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -92,14 +92,14 @@
                                   <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jFormattedTextField11" alignment="0" min="-2" pref="346" max="-2" attributes="0"/>
+                              <Component id="nomefuncionario" alignment="0" min="-2" pref="346" max="-2" attributes="0"/>
                               <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jFormattedTextField4" max="32767" attributes="0"/>
+                                      <Component id="rgfuncionario" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -116,14 +116,14 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jFormattedTextField2" max="32767" attributes="0"/>
+                                  <Component id="telefonefuncionario" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jFormattedTextField6" min="-2" pref="198" max="-2" attributes="0"/>
-                                      <Component id="jFormattedTextField10" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="bairrofuncionario" min="-2" pref="198" max="-2" attributes="0"/>
+                                      <Component id="cargofuncionario" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -147,8 +147,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jFormattedTextField11" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField2" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="nomefuncionario" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="telefonefuncionario" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -158,9 +158,9 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jFormattedTextField1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField4" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="datafuncionario" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="cpffuncionario" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="rgfuncionario" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -170,9 +170,9 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jFormattedTextField5" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField6" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField7" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="cidadefuncionario" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="bairrofuncionario" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="numerofuncionario" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -182,9 +182,9 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jFormattedTextField8" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField9" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField10" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="complementofuncionario" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="cepfuncionario" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="cargofuncionario" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="180" max="-2" attributes="0"/>
@@ -341,7 +341,7 @@
             <Property name="text" type="java.lang.String" value="Nome:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField11">
+        <Component class="javax.swing.JFormattedTextField" name="nomefuncionario">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -358,12 +358,15 @@
             <Property name="text" type="java.lang.String" value="Data de Nascimento:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+        <Component class="javax.swing.JFormattedTextField" name="datafuncionario">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="##/##/####" subtype="-1" type="5"/>
             </Property>
           </Properties>
         </Component>
@@ -375,12 +378,15 @@
             <Property name="text" type="java.lang.String" value="Telefone:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField2">
+        <Component class="javax.swing.JFormattedTextField" name="telefonefuncionario">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="(##)#########" subtype="-1" type="5"/>
             </Property>
           </Properties>
         </Component>
@@ -392,12 +398,15 @@
             <Property name="text" type="java.lang.String" value="CPF:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField3">
+        <Component class="javax.swing.JFormattedTextField" name="cpffuncionario">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="###.###.###-##" subtype="-1" type="5"/>
             </Property>
           </Properties>
         </Component>
@@ -409,7 +418,7 @@
             <Property name="text" type="java.lang.String" value="RG:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField4">
+        <Component class="javax.swing.JFormattedTextField" name="rgfuncionario">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -426,7 +435,7 @@
             <Property name="text" type="java.lang.String" value="Cidade:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField5">
+        <Component class="javax.swing.JFormattedTextField" name="cidadefuncionario">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -443,7 +452,7 @@
             <Property name="text" type="java.lang.String" value="Numero:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField6">
+        <Component class="javax.swing.JFormattedTextField" name="bairrofuncionario">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -460,7 +469,7 @@
             <Property name="text" type="java.lang.String" value="Bairro:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField7">
+        <Component class="javax.swing.JFormattedTextField" name="numerofuncionario">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -477,7 +486,7 @@
             <Property name="text" type="java.lang.String" value="Complemeto:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField8">
+        <Component class="javax.swing.JFormattedTextField" name="complementofuncionario">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -494,12 +503,15 @@
             <Property name="text" type="java.lang.String" value="CEP:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField9">
+        <Component class="javax.swing.JFormattedTextField" name="cepfuncionario">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="#####-###" subtype="-1" type="5"/>
             </Property>
           </Properties>
         </Component>
@@ -508,10 +520,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="UF:"/>
+            <Property name="text" type="java.lang.String" value="Cargo/Fun&#xe7;&#xe3;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField10">
+        <Component class="javax.swing.JFormattedTextField" name="cargofuncionario">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
