@@ -8,7 +8,11 @@ import java.awt.Font;
 import java.sql.Connection;
 import model.Modelfuncionariocadastro;
 import Controler.Controlerfuncionário;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -17,7 +21,7 @@ import javax.swing.JOptionPane;
 public class Cadastrofuncionario extends javax.swing.JFrame {
 Modelfuncionariocadastro modelfuncionario = new Modelfuncionariocadastro();
 Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
-
+List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
     /**
      * Creates new form Cadastrofuncionario
      */
@@ -25,6 +29,8 @@ Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
         initComponents();
          setLocationRelativeTo(this);
          designtabelafuncionario();
+         Carregarusu();
+         //FontescoresVendas();
     }
 
     
@@ -72,7 +78,7 @@ Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
         jLabel10 = new javax.swing.JLabel();
         cargofuncionario = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelafuncionario = new javax.swing.JTable();
+        tabelafuncionariocadastro = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -122,6 +128,11 @@ Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar (1).png"))); // NOI18N
         jButton3.setText("Cancelar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
@@ -234,7 +245,8 @@ Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
 
         cargofuncionario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        tabelafuncionario.setModel(new javax.swing.table.DefaultTableModel(
+        tabelafuncionariocadastro.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        tabelafuncionariocadastro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -245,13 +257,13 @@ Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
                 "Nome", "Telefone", "Data de Nascimento", "CPF"
             }
         ));
-        tabelafuncionario.setFocusable(false);
-        tabelafuncionario.setRowHeight(25);
-        tabelafuncionario.setSelectionBackground(new java.awt.Color(232, 57, 95));
-        tabelafuncionario.setShowVerticalLines(false);
-        tabelafuncionario.getTableHeader().setReorderingAllowed(false);
-        tabelafuncionario.setUpdateSelectionOnSort(false);
-        jScrollPane1.setViewportView(tabelafuncionario);
+        tabelafuncionariocadastro.setFocusable(false);
+        tabelafuncionariocadastro.setRowHeight(28);
+        tabelafuncionariocadastro.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelafuncionariocadastro.setShowVerticalLines(false);
+        tabelafuncionariocadastro.getTableHeader().setReorderingAllowed(false);
+        tabelafuncionariocadastro.setUpdateSelectionOnSort(false);
+        jScrollPane1.setViewportView(tabelafuncionariocadastro);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -384,11 +396,11 @@ Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
     }// </editor-fold>//GEN-END:initComponents
 
     private void designtabelafuncionario(){
-        tabelafuncionario.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-       tabelafuncionario.getTableHeader().setOpaque(false);
-        tabelafuncionario.getTableHeader().setBackground(new Color(32, 136, 203));
-        tabelafuncionario.getTableHeader().setForeground( new Color(255,255,255));
-        tabelafuncionario.setRowHeight(25);
+        tabelafuncionariocadastro.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelafuncionariocadastro.getTableHeader().setOpaque(false);
+        tabelafuncionariocadastro.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelafuncionariocadastro.getTableHeader().setForeground( new Color(255,255,255));
+        tabelafuncionariocadastro.setRowHeight(25);
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -396,7 +408,7 @@ Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
         modelfuncionario.setNome(nomefuncionario.getText());
         modelfuncionario.setTelefone(telefonefuncionario.getText());
         modelfuncionario.setData(datafuncionario.getText());
-        modelfuncionario.setCpf(cpffuncionario.getText());
+        modelfuncionario.setCpf(cpffuncionario.getText().replaceAll("\\D*", ""));
         modelfuncionario.setRg(rgfuncionario.getText());
         modelfuncionario.setCidade(cidadefuncionario.getText());
         modelfuncionario.setNumero(Integer.parseInt(numerofuncionario.getText()));
@@ -412,6 +424,7 @@ Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
         if(controlerfuncionario.Salvarfuncionariocontroler(modelfuncionario)){
             JOptionPane.showMessageDialog(null,"Funcionário cadastrado com Sucesso!");
             Limparformulario();
+            Carregarusu();
         }
         else{
             JOptionPane.showMessageDialog(null,"Funcionário Não cadastrado !");
@@ -419,7 +432,30 @@ Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
     }//GEN-LAST:event_jButton1ActionPerformed
   
     private void Limparformulario(){
+        nomefuncionario.setText("");
+        telefonefuncionario.setText("");
+        datafuncionario.setText("");
         cpffuncionario.setText("");
+        rgfuncionario.setText("");
+        cidadefuncionario.setText("");
+        numerofuncionario.setText("");
+        bairrofuncionario.setText("");
+        complementofuncionario.setText("");
+        cepfuncionario.setText("");
+        cargofuncionario.setText("");
+    }
+    private void Carregarusu(){
+        listafuncionario = controlerfuncionario.Listarusucontroler();
+        DefaultTableModel modelo=(DefaultTableModel) tabelafuncionariocadastro.getModel();
+        modelo.setNumRows(0);
+        for (int i = 0; i <listafuncionario.size(); i++) {
+            modelo.addRow(new Object[]{
+                listafuncionario.get(i).getNome(),
+                listafuncionario.get(i).getTelefone(),
+                listafuncionario.get(i).getData(),
+                listafuncionario.get(i).getCpf()
+            });
+        }
     }
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -427,6 +463,10 @@ Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
       funcionario.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       Limparformulario();
+    }//GEN-LAST:event_jButton3ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -493,7 +533,7 @@ Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
     private javax.swing.JFormattedTextField nomefuncionario;
     private javax.swing.JFormattedTextField numerofuncionario;
     private javax.swing.JFormattedTextField rgfuncionario;
-    private javax.swing.JTable tabelafuncionario;
+    private javax.swing.JTable tabelafuncionariocadastro;
     private javax.swing.JFormattedTextField telefonefuncionario;
     // End of variables declaration//GEN-END:variables
 }

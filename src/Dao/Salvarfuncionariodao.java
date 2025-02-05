@@ -8,10 +8,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Modelfuncionariocadastro;
+
 
 /**
  *
@@ -45,6 +48,38 @@ public class Salvarfuncionariodao extends Classeconexao{
             JOptionPane.showMessageDialog(null, "Usuario Não cadastrado, Veja se Já consta na tabela abaixo");
         }
         return true;
+    }
+
+    public List<Modelfuncionariocadastro> gettabelaFuncionario() {
+        conexao = Classeconexao.conector();
+        List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
+        Modelfuncionariocadastro modelfuncionario = new Modelfuncionariocadastro();
+        
+       String sql = "SELECT Nome, "
+            + "telefone, "
+            + "datas, "
+            + "cpf "
+            + "FROM Funcionarios";
+       
+        try {
+             pst=conexao.prepareStatement(sql);
+             rs=pst.executeQuery();
+             while(rs.next()){
+                 modelfuncionario = new Modelfuncionariocadastro();
+                 modelfuncionario.setNome(rs.getString(1));
+                 modelfuncionario.setTelefone(rs.getString(2));
+                 modelfuncionario.setData(rs.getString(3));
+                 modelfuncionario.setCpf(rs.getString(4));
+                 listafuncionario.add(modelfuncionario);
+             }
+             
+             
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        
+        
+        return listafuncionario;
     }
     
 }

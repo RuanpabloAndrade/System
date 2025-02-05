@@ -4,6 +4,7 @@
  */
 package Controler;
 import Dao.Salvarfuncionariodao;
+import java.util.List;
 import model.Modelfuncionariocadastro;
 
 /**
@@ -16,5 +17,8 @@ public class Controlerfuncionário {
     public boolean Salvarfuncionariocontroler(Modelfuncionariocadastro modelfuncionario) {
         return this.dao.SalvarFuncionarioDao(modelfuncionario);
     }
-    
+
+    public List<Modelfuncionariocadastro> Listarusucontroler() {
+         return this.dao.gettabelaFuncionario();
+    }
 }
