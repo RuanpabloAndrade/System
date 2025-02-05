@@ -21,4 +21,9 @@ public class Controlerfuncionário {
     public List<Modelfuncionariocadastro> Listarusucontroler() {
          return this.dao.gettabelaFuncionario();
     }
+
+
+    public List<Modelfuncionariocadastro> Listarusucontroler2() {
+         return this.dao.gettabelaFuncionario2();
+    }
 }

@@ -5,20 +5,30 @@
 
 package viw;
 
+import Controler.Controlerfuncionário;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import model.Modelfuncionariocadastro;
+import viw.Cadastrofuncionario;
 
 /**
  *
  * @author ruan
  */
 public class Vizualizarfuncionario extends javax.swing.JFrame {
-
+Modelfuncionariocadastro modelfuncionario = new Modelfuncionariocadastro();
+Controlerfuncionário controlerfuncionario2 = new Controlerfuncionário();
+List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
     /** Creates new form Vizualizarfuncionario */
     public Vizualizarfuncionario() {
         initComponents();
          setLocationRelativeTo(this);
          Funcaodesingnfuncao();
+         Carregarusu2();
+        
     }
 
     /** This method is called from within the constructor to
@@ -46,7 +56,7 @@ public class Vizualizarfuncionario extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelafuncionario = new javax.swing.JTable();
+        tabelafuncionario2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -111,8 +121,8 @@ public class Vizualizarfuncionario extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
@@ -192,7 +202,8 @@ public class Vizualizarfuncionario extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        tabelafuncionario.setModel(new javax.swing.table.DefaultTableModel(
+        tabelafuncionario2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tabelafuncionario2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -200,7 +211,7 @@ public class Vizualizarfuncionario extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Nome", "E-mail", "Telefone", "Chave Pix"
+                "Código", "Nome", "Cargo", "Telefone", "Chave Pix"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -211,11 +222,12 @@ public class Vizualizarfuncionario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tabelafuncionario.setFocusable(false);
-        tabelafuncionario.setRowHeight(25);
-        tabelafuncionario.setShowVerticalLines(false);
-        tabelafuncionario.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tabelafuncionario);
+        tabelafuncionario2.setFocusable(false);
+        tabelafuncionario2.setRowHeight(25);
+        tabelafuncionario2.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelafuncionario2.setShowVerticalLines(false);
+        tabelafuncionario2.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelafuncionario2);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -239,8 +251,8 @@ public class Vizualizarfuncionario extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -265,17 +277,32 @@ public class Vizualizarfuncionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Funcaodesingnfuncao(){
-         tabelafuncionario.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        tabelafuncionario.getTableHeader().setOpaque(false);
-        tabelafuncionario.getTableHeader().setBackground(new Color(32, 136, 203));
-        tabelafuncionario.getTableHeader().setForeground( new Color(255,255,255));
-       tabelafuncionario.setRowHeight(25);
+        tabelafuncionario2.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelafuncionario2.getTableHeader().setOpaque(false);
+        tabelafuncionario2.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelafuncionario2.getTableHeader().setForeground( new Color(255,255,255));
+        tabelafuncionario2.setRowHeight(25);
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       Cadastrofuncionario funcionario = new Cadastrofuncionario();
       funcionario.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+     private void Carregarusu2(){
+        listafuncionario = controlerfuncionario2.Listarusucontroler2();
+        DefaultTableModel modelo=(DefaultTableModel) tabelafuncionario2.getModel();
+        modelo.setNumRows(0);
+        for (int i = 0; i <listafuncionario.size(); i++) {
+            modelo.addRow(new Object[]{
+                listafuncionario.get(i).getCodigo(),
+                listafuncionario.get(i).getNome(),
+                listafuncionario.get(i).getCargo(),
+                listafuncionario.get(i).getTelefone(),
+                listafuncionario.get(i).getChavepix()
+            });
+        }
+    }
+     
     /**
      * @param args the command line arguments
      */
@@ -328,7 +355,7 @@ public class Vizualizarfuncionario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelafuncionario;
+    private javax.swing.JTable tabelafuncionario2;
     // End of variables declaration//GEN-END:variables
 
 }

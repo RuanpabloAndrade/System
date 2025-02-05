@@ -28,7 +28,7 @@ public class Salvarfuncionariodao extends Classeconexao{
  
     public boolean SalvarFuncionarioDao(Modelfuncionariocadastro modelfuncionario) {
        conexao=Classeconexao.conector();
-       String sql="insert into Funcionarios (Nome,telefone,datas,cpf,rg,cidade,numero,bairro,complemento,cep,cargo) values(?,?,?,?,?,?,?,?,?,?,?)";
+       String sql="insert into Funcionarios (Nome,telefone,datas,cpf,rg,cidade,numero,bairro,complemento,cep,cargo,chavepix) values(?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             pst=conexao.prepareStatement(sql);
             pst.setString(1,modelfuncionario.getNome());
@@ -42,6 +42,7 @@ public class Salvarfuncionariodao extends Classeconexao{
             pst.setString(9,modelfuncionario.getComplemeto());
             pst.setString(10,modelfuncionario.getCep());
             pst.setString(11,modelfuncionario.getCargo());
+            pst.setString(12,modelfuncionario.getChavepix());
             pst.executeUpdate();
         } catch (Exception e) {
             System.err.println(e);
@@ -70,6 +71,40 @@ public class Salvarfuncionariodao extends Classeconexao{
                  modelfuncionario.setTelefone(rs.getString(2));
                  modelfuncionario.setData(rs.getString(3));
                  modelfuncionario.setCpf(rs.getString(4));
+                 listafuncionario.add(modelfuncionario);
+             }
+             
+             
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        
+        
+        return listafuncionario;
+    }
+
+    public List<Modelfuncionariocadastro> gettabelaFuncionario2() {
+        conexao = Classeconexao.conector();
+        List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
+        Modelfuncionariocadastro modelfuncionario = new Modelfuncionariocadastro();
+        
+       String sql = "SELECT cod, "
+            + "Nome, "
+            + "cargo, "
+            + "telefone, "
+            + "chavepix "
+            + "FROM Funcionarios";
+       
+        try {
+             pst=conexao.prepareStatement(sql);
+             rs=pst.executeQuery();
+             while(rs.next()){
+                 modelfuncionario = new Modelfuncionariocadastro();
+                 modelfuncionario.setCodigo(rs.getInt(1));
+                 modelfuncionario.setNome(rs.getString(2));
+                 modelfuncionario.setCargo(rs.getString(3));
+                 modelfuncionario.setTelefone(rs.getString(4));
+                 modelfuncionario.setChavepix(rs.getString(5));
                  listafuncionario.add(modelfuncionario);
              }
              

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import viw.Vizualizarusuario;
 
 /**
  *
@@ -30,6 +30,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
          setLocationRelativeTo(this);
          designtabelafuncionario();
          Carregarusu();
+         
          //FontescoresVendas();
     }
 
@@ -55,7 +56,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel22 = new javax.swing.JLabel();
+        chavepix = new javax.swing.JLabel();
         nomefuncionario = new javax.swing.JFormattedTextField();
         jLabel23 = new javax.swing.JLabel();
         datafuncionario = new javax.swing.JFormattedTextField();
@@ -79,6 +80,8 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         cargofuncionario = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelafuncionariocadastro = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
+        chave = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -150,8 +153,8 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -170,10 +173,11 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel22.setText("Nome:");
+        chavepix.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        chavepix.setText("Chave pix:");
 
         nomefuncionario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        nomefuncionario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel23.setText("Data de Nascimento:");
@@ -184,6 +188,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        datafuncionario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Telefone:");
@@ -194,6 +199,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        telefonefuncionario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("CPF:");
@@ -204,31 +210,37 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        cpffuncionario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("RG:");
 
         rgfuncionario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        rgfuncionario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Cidade:");
 
         cidadefuncionario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cidadefuncionario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Numero:");
 
         bairrofuncionario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        bairrofuncionario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Bairro:");
 
         numerofuncionario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        numerofuncionario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Complemeto:");
 
         complementofuncionario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        complementofuncionario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("CEP:");
@@ -239,11 +251,13 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        cepfuncionario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel10.setText("Cargo/Função:");
 
         cargofuncionario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cargofuncionario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         tabelafuncionariocadastro.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         tabelafuncionariocadastro.setModel(new javax.swing.table.DefaultTableModel(
@@ -265,6 +279,12 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         tabelafuncionariocadastro.setUpdateSelectionOnSort(false);
         jScrollPane1.setViewportView(tabelafuncionariocadastro);
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel11.setText("Nome:");
+
+        chave.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        chave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -278,51 +298,64 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(datafuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(datafuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                                     .addComponent(jLabel5)
-                                    .addComponent(cidadefuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8)
-                                    .addComponent(complementofuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(complementofuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                    .addComponent(cidadefuncionario))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cpffuncionario)
-                                    .addComponent(cepfuncionario)
-                                    .addComponent(numerofuncionario)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(numerofuncionario)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel9)
+                                        .addComponent(cepfuncionario, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(cpffuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel9))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel23)
-                                .addGap(55, 55, 55)
-                                .addComponent(jLabel3))
-                            .addComponent(nomefuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel22))
+                                            .addComponent(jLabel23)
+                                            .addComponent(jLabel11))
+                                        .addGap(55, 55, 55))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(nomefuncionario)
+                                        .addGap(7, 7, 7)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(chavepix))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(chave, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rgfuncionario)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel2))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(telefonefuncionario))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4)
+                                .addGap(179, 179, 179))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addComponent(bairrofuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cargofuncionario))))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addComponent(jLabel7))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cargofuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(rgfuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel10)
+                                            .addComponent(bairrofuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(telefonefuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -334,16 +367,22 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel2))
+                    .addComponent(chavepix)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomefuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(telefonefuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chave)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(telefonefuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomefuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
-                    .addComponent(jLabel3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel23)
+                        .addComponent(jLabel3))
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -406,19 +445,27 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
 
         modelfuncionario = new Modelfuncionariocadastro();
         modelfuncionario.setNome(nomefuncionario.getText());
+        modelfuncionario.setChavepix(chave.getText());
         modelfuncionario.setTelefone(telefonefuncionario.getText());
         modelfuncionario.setData(datafuncionario.getText());
         modelfuncionario.setCpf(cpffuncionario.getText().replaceAll("\\D*", ""));
         modelfuncionario.setRg(rgfuncionario.getText());
         modelfuncionario.setCidade(cidadefuncionario.getText());
-        modelfuncionario.setNumero(Integer.parseInt(numerofuncionario.getText()));
+        String textoNumero = numerofuncionario.getText().trim(); // Remove espaços em branco no início e no fim
+        if (textoNumero.isEmpty()) {
+        modelfuncionario.setNumero(0); // Define o valor como 0 se o campo estiver vazio
+        }
+        else{
+            modelfuncionario.setNumero(Integer.parseInt(numerofuncionario.getText()));
+        }
         modelfuncionario.setBairro(bairrofuncionario.getText());
         modelfuncionario.setComplemeto(complementofuncionario.getText());
         modelfuncionario.setCep(cepfuncionario.getText());
         modelfuncionario.setCargo(cargofuncionario.getText());
+        
         String cpfRaw = cpffuncionario.getText().replaceAll("[^0-9]", "");
-        if (cpfRaw.length() != 11) {
-            JOptionPane.showMessageDialog(null, "CPF deve ter 11 dígitos numéricos!");
+        if (cpfRaw.length() != 11 || nomefuncionario.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campos Nome, CPF, Obrigatórios");
             return;
          }
         if(controlerfuncionario.Salvarfuncionariocontroler(modelfuncionario)){
@@ -433,6 +480,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
   
     private void Limparformulario(){
         nomefuncionario.setText("");
+        chave.setText("");
         telefonefuncionario.setText("");
         datafuncionario.setText("");
         cpffuncionario.setText("");
@@ -443,6 +491,12 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         complementofuncionario.setText("");
         cepfuncionario.setText("");
         cargofuncionario.setText("");
+        telefonefuncionario.setValue(null); // Define o valor como null
+        telefonefuncionario.setFocusLostBehavior(telefonefuncionario.COMMIT);
+        cpffuncionario.setValue(null); // Define o valor como null
+        cpffuncionario.setFocusLostBehavior(cpffuncionario.COMMIT);
+        datafuncionario.setValue(null); // Define o valor como null
+        datafuncionario.setFocusLostBehavior(datafuncionario.COMMIT);
     }
     private void Carregarusu(){
         listafuncionario = controlerfuncionario.Listarusucontroler();
@@ -506,6 +560,8 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
     private javax.swing.JFormattedTextField bairrofuncionario;
     private javax.swing.JFormattedTextField cargofuncionario;
     private javax.swing.JFormattedTextField cepfuncionario;
+    private javax.swing.JFormattedTextField chave;
+    private javax.swing.JLabel chavepix;
     private javax.swing.JFormattedTextField cidadefuncionario;
     private javax.swing.JFormattedTextField complementofuncionario;
     private javax.swing.JFormattedTextField cpffuncionario;
@@ -516,8 +572,8 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

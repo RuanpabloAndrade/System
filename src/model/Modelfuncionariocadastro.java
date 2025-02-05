@@ -10,6 +10,8 @@ import java.time.LocalDate;
  * @author ruan
  */
 public class Modelfuncionariocadastro {
+    private int Codigo;
+    private String chavepix;
     private String Nome;
     private String telefone;
     private String data;
@@ -25,6 +27,7 @@ public class Modelfuncionariocadastro {
     /**
      * @return the Nome
      */
+    
     public String getNome() {
         return Nome;
     }
@@ -174,6 +177,34 @@ public class Modelfuncionariocadastro {
      */
     public void setCargo(String cargo) {
         this.cargo = cargo;
+    }
+
+    /**
+     * @return the Codigo
+     */
+    public int getCodigo() {
+        return Codigo;
+    }
+
+    /**
+     * @param Codigo the Codigo to set
+     */
+    public void setCodigo(int Codigo) {
+        this.Codigo = Codigo;
+    }
+
+    /**
+     * @return the chavepix
+     */
+    public String getChavepix() {
+        return chavepix;
+    }
+
+    /**
+     * @param chavepix the chavepix to set
+     */
+    public void setChavepix(String chavepix) {
+        this.chavepix = chavepix;
     }
     
 }
