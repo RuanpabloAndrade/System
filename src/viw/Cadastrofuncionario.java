@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import viw.Vizualizarusuario;
+import viw.Vizualizarfuncionario;
 
 /**
  *
@@ -21,6 +21,7 @@ import viw.Vizualizarusuario;
 public class Cadastrofuncionario extends javax.swing.JFrame {
 Modelfuncionariocadastro modelfuncionario = new Modelfuncionariocadastro();
 Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
+Vizualizarfuncionario vizualizar = new Vizualizarfuncionario();
 List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
     /**
      * Creates new form Cadastrofuncionario
@@ -30,8 +31,6 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
          setLocationRelativeTo(this);
          designtabelafuncionario();
          Carregarusu();
-         
-         //FontescoresVendas();
     }
 
     
@@ -472,6 +471,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
             JOptionPane.showMessageDialog(null,"Funcionário cadastrado com Sucesso!");
             Limparformulario();
             Carregarusu();
+            Carregaratualizacao();
         }
         else{
             JOptionPane.showMessageDialog(null,"Funcionário Não cadastrado !");
@@ -510,6 +510,9 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
                 listafuncionario.get(i).getCpf()
             });
         }
+    }
+    public void Carregaratualizacao(){
+        this.vizualizar.Carregarusu2();
     }
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

@@ -107,14 +107,26 @@ public class Salvarfuncionariodao extends Classeconexao{
                  modelfuncionario.setChavepix(rs.getString(5));
                  listafuncionario.add(modelfuncionario);
              }
-             
-             
         } catch (Exception e) {
             System.err.println(e);
         }
         
         
         return listafuncionario;
+        
     }
-    
+
+    public boolean Excluirfuncionario(int codigo) {
+        conexao = Classeconexao.conector();
+        String sql ="delete from Funcionarios where cod ='"+codigo+"'";
+        try {
+            pst=conexao.prepareStatement(sql);
+            pst.execute();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return true;
+    }
+
+   
 }

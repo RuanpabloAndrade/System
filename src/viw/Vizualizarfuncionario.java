@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Modelfuncionariocadastro;
 import viw.Cadastrofuncionario;
@@ -28,7 +29,6 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
          setLocationRelativeTo(this);
          Funcaodesingnfuncao();
          Carregarusu2();
-        
     }
 
     /** This method is called from within the constructor to
@@ -102,6 +102,11 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar (1).png"))); // NOI18N
         jButton2.setText("Deletar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
@@ -287,8 +292,24 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
       Cadastrofuncionario funcionario = new Cadastrofuncionario();
       funcionario.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       int linha = tabelafuncionario2.getSelectedRow();
+       if(linha<0){
+           System.err.println("erro");
+       }
+       else{
+           int codigo =(int) tabelafuncionario2.getValueAt(linha,0);
+           int resposta = JOptionPane.showConfirmDialog(null,"Deseja realmente excluir esse funcionário?","Confirmação",JOptionPane.YES_NO_OPTION);
+           if(resposta == JOptionPane.YES_OPTION){
+               controlerfuncionario2.excluirfuncionario(codigo);
+               Carregarusu2();
+               JOptionPane.showMessageDialog(null,"Funcionario excluido com sucesso!");
+           }
+       }
+    }//GEN-LAST:event_jButton2ActionPerformed
     
-     private void Carregarusu2(){
+     public void Carregarusu2(){
         listafuncionario = controlerfuncionario2.Listarusucontroler2();
         DefaultTableModel modelo=(DefaultTableModel) tabelafuncionario2.getModel();
         modelo.setNumRows(0);
@@ -357,5 +378,10 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelafuncionario2;
     // End of variables declaration//GEN-END:variables
+
+  
+ 
+
+    
 
 }

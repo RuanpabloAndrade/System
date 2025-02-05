@@ -337,4 +337,6 @@ public class Vizualizarusuario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelausuariodesign;
     // End of variables declaration//GEN-END:variables
+
+    
 }

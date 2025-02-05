@@ -6,7 +6,6 @@ package Controler;
 import Dao.Salvarfuncionariodao;
 import java.util.List;
 import model.Modelfuncionariocadastro;
-
 /**
  *
  * @author ruan
@@ -22,8 +21,17 @@ public class Controlerfuncionário {
          return this.dao.gettabelaFuncionario();
     }
 
-
     public List<Modelfuncionariocadastro> Listarusucontroler2() {
          return this.dao.gettabelaFuncionario2();
     }
+
+    public boolean excluirfuncionario(int codigo) {
+       return this.dao.Excluirfuncionario(codigo);
+    }
+
+    
+
+    
+
+    
 }
