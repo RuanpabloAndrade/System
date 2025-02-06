@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package viw;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
@@ -19,25 +20,23 @@ import viw.Vizualizarfuncionario;
  * @author ruan
  */
 public class Cadastrofuncionario extends javax.swing.JFrame {
-Modelfuncionariocadastro modelfuncionario = new Modelfuncionariocadastro();
-Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
-Vizualizarfuncionario vizualizar = new Vizualizarfuncionario();
-List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
+//o botão de atualizar deve ser Funcional nessa tela também, deve clicar no funcionario da tabela automaticamente preecnher os campos com o funcionario selcionado e ao clicar no botão atualizar deve ser atualizado o campo onde foi mudado
+
+    Modelfuncionariocadastro modelfuncionario = new Modelfuncionariocadastro();
+    Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
+    Vizualizarfuncionario vizualizar = new Vizualizarfuncionario();
+    List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
+
     /**
      * Creates new form Cadastrofuncionario
      */
     public Cadastrofuncionario() {
         initComponents();
-         setLocationRelativeTo(this);
-         designtabelafuncionario();
-         Carregarusu();
+        setLocationRelativeTo(this);
+        designtabelafuncionario();
+        Carregarusu();
     }
 
-    
-    
-    
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -276,6 +275,11 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         tabelafuncionariocadastro.setShowVerticalLines(false);
         tabelafuncionariocadastro.getTableHeader().setReorderingAllowed(false);
         tabelafuncionariocadastro.setUpdateSelectionOnSort(false);
+        tabelafuncionariocadastro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelafuncionariocadastroMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelafuncionariocadastro);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -433,11 +437,11 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void designtabelafuncionario(){
+    private void designtabelafuncionario() {
         tabelafuncionariocadastro.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         tabelafuncionariocadastro.getTableHeader().setOpaque(false);
         tabelafuncionariocadastro.getTableHeader().setBackground(new Color(32, 136, 203));
-        tabelafuncionariocadastro.getTableHeader().setForeground( new Color(255,255,255));
+        tabelafuncionariocadastro.getTableHeader().setForeground(new Color(255, 255, 255));
         tabelafuncionariocadastro.setRowHeight(25);
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -452,33 +456,59 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         modelfuncionario.setCidade(cidadefuncionario.getText());
         String textoNumero = numerofuncionario.getText().trim(); // Remove espaços em branco no início e no fim
         if (textoNumero.isEmpty()) {
-        modelfuncionario.setNumero(0); // Define o valor como 0 se o campo estiver vazio
-        }
-        else{
+            modelfuncionario.setNumero(0); // Define o valor como 0 se o campo estiver vazio
+        } else {
             modelfuncionario.setNumero(Integer.parseInt(numerofuncionario.getText()));
         }
         modelfuncionario.setBairro(bairrofuncionario.getText());
         modelfuncionario.setComplemeto(complementofuncionario.getText());
         modelfuncionario.setCep(cepfuncionario.getText());
         modelfuncionario.setCargo(cargofuncionario.getText());
-        
+
         String cpfRaw = cpffuncionario.getText().replaceAll("[^0-9]", "");
         if (cpfRaw.length() != 11 || nomefuncionario.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Campos Nome, CPF, Obrigatórios");
             return;
-         }
-        if(controlerfuncionario.Salvarfuncionariocontroler(modelfuncionario)){
-            JOptionPane.showMessageDialog(null,"Funcionário cadastrado com Sucesso!");
+        }
+        if (controlerfuncionario.Salvarfuncionariocontroler(modelfuncionario)) {
+            JOptionPane.showMessageDialog(null, "Funcionário cadastrado com Sucesso!");
             Limparformulario();
             Carregarusu();
             Carregaratualizacao();
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"Funcionário Não cadastrado !");
+        } else {
+            JOptionPane.showMessageDialog(null, "Funcionário Não cadastrado !");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-  
-    private void Limparformulario(){
+    public void setarcampospelatabela() {
+        int linha = tabelafuncionariocadastro.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+            return;
+        }
+
+        // Supondo que a coluna 0 seja o ID oculto
+        String nome = (String) tabelafuncionariocadastro.getValueAt(linha, 0);
+        modelfuncionario = controlerfuncionario.carregarDadosPorId(nome);
+
+        if (modelfuncionario != null) {
+            nomefuncionario.setText(modelfuncionario.getNome());
+            chave.setText(modelfuncionario.getChavepix());
+            telefonefuncionario.setText(modelfuncionario.getTelefone());
+            datafuncionario.setText(modelfuncionario.getData());
+            cpffuncionario.setText(modelfuncionario.getCpf());
+            rgfuncionario.setText(modelfuncionario.getRg());
+            cidadefuncionario.setText(modelfuncionario.getCidade());
+            numerofuncionario.setText(String.valueOf(modelfuncionario.getNumero()));
+            bairrofuncionario.setText(modelfuncionario.getBairro());
+            complementofuncionario.setText(modelfuncionario.getComplemeto());
+            cepfuncionario.setText(modelfuncionario.getCep());
+            cargofuncionario.setText(modelfuncionario.getCargo());
+
+        }
+
+    }
+
+    private void Limparformulario() {
         nomefuncionario.setText("");
         chave.setText("");
         telefonefuncionario.setText("");
@@ -497,12 +527,14 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         cpffuncionario.setFocusLostBehavior(cpffuncionario.COMMIT);
         datafuncionario.setValue(null); // Define o valor como null
         datafuncionario.setFocusLostBehavior(datafuncionario.COMMIT);
+        
     }
-    private void Carregarusu(){
+
+    private void Carregarusu() {
         listafuncionario = controlerfuncionario.Listarusucontroler();
-        DefaultTableModel modelo=(DefaultTableModel) tabelafuncionariocadastro.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tabelafuncionariocadastro.getModel();
         modelo.setNumRows(0);
-        for (int i = 0; i <listafuncionario.size(); i++) {
+        for (int i = 0; i < listafuncionario.size(); i++) {
             modelo.addRow(new Object[]{
                 listafuncionario.get(i).getNome(),
                 listafuncionario.get(i).getTelefone(),
@@ -511,19 +543,24 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
             });
         }
     }
-    public void Carregaratualizacao(){
+
+    public void Carregaratualizacao() {
         this.vizualizar.Carregarusu2();
     }
-    
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-      Vizualizarfuncionario funcionario = new Vizualizarfuncionario();
-      funcionario.setVisible(true);
+        Vizualizarfuncionario funcionario = new Vizualizarfuncionario();
+        funcionario.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       Limparformulario();
+        Limparformulario();
     }//GEN-LAST:event_jButton3ActionPerformed
-    
+
+    private void tabelafuncionariocadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelafuncionariocadastroMouseClicked
+        setarcampospelatabela();
+    }//GEN-LAST:event_tabelafuncionariocadastroMouseClicked
+
     /**
      * @param args the command line arguments
      */

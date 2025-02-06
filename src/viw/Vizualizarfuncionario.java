@@ -163,7 +163,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         jButton6.setText("Pesquisar");
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "E-mail", "Telefone" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "Telefone" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
@@ -294,6 +294,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
        int linha = tabelafuncionario2.getSelectedRow();
        if(linha<0){
            System.err.println("erro");
