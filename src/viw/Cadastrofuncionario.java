@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import viw.Vizualizarfuncionario;
+
 
 /**
  *
@@ -24,7 +24,6 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
 
     Modelfuncionariocadastro modelfuncionario = new Modelfuncionariocadastro();
     Controlerfuncionário controlerfuncionario = new Controlerfuncionário();
-    Vizualizarfuncionario vizualizar = new Vizualizarfuncionario();
     List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
 
     /**
@@ -36,6 +35,8 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
         designtabelafuncionario();
         Carregarusu();
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,7 +52,7 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        funcaoatualizatfuncionario = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         chavepix = new javax.swing.JLabel();
@@ -122,9 +123,14 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/po (1).png"))); // NOI18N
-        jButton2.setText("Atualizar");
+        funcaoatualizatfuncionario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        funcaoatualizatfuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/po (1).png"))); // NOI18N
+        funcaoatualizatfuncionario.setText("Atualizar");
+        funcaoatualizatfuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                funcaoatualizatfuncionarioActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar (1).png"))); // NOI18N
@@ -152,7 +158,7 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addComponent(funcaoatualizatfuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -165,7 +171,7 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(funcaoatualizatfuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -474,22 +480,20 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Funcionário cadastrado com Sucesso!");
             Limparformulario();
             Carregarusu();
-            Carregaratualizacao();
+            
         } else {
             JOptionPane.showMessageDialog(null, "Funcionário Não cadastrado !");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     public void setarcampospelatabela() {
+        Limparformulario();
         int linha = tabelafuncionariocadastro.getSelectedRow();
         if (linha < 0) {
             JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
             return;
         }
-
-        // Supondo que a coluna 0 seja o ID oculto
         String nome = (String) tabelafuncionariocadastro.getValueAt(linha, 0);
         modelfuncionario = controlerfuncionario.carregarDadosPorId(nome);
-
         if (modelfuncionario != null) {
             nomefuncionario.setText(modelfuncionario.getNome());
             chave.setText(modelfuncionario.getChavepix());
@@ -503,7 +507,6 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
             complementofuncionario.setText(modelfuncionario.getComplemeto());
             cepfuncionario.setText(modelfuncionario.getCep());
             cargofuncionario.setText(modelfuncionario.getCargo());
-
         }
 
     }
@@ -544,9 +547,6 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
         }
     }
 
-    public void Carregaratualizacao() {
-        this.vizualizar.Carregarusu2();
-    }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Vizualizarfuncionario funcionario = new Vizualizarfuncionario();
@@ -560,6 +560,29 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
     private void tabelafuncionariocadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelafuncionariocadastroMouseClicked
         setarcampospelatabela();
     }//GEN-LAST:event_tabelafuncionariocadastroMouseClicked
+
+    private void funcaoatualizatfuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcaoatualizatfuncionarioActionPerformed
+        modelfuncionario = new Modelfuncionariocadastro();
+        modelfuncionario.setNome(nomefuncionario.getText());
+        modelfuncionario.setChavepix(chave.getText());
+        modelfuncionario.setTelefone(telefonefuncionario.getText());
+        modelfuncionario.setData(datafuncionario.getText());
+        modelfuncionario.setCpf(cpffuncionario.getText().replaceAll("\\D*", ""));
+        modelfuncionario.setRg(rgfuncionario.getText());
+        modelfuncionario.setCidade(cidadefuncionario.getText());
+        modelfuncionario.setNumero(Integer.parseInt(numerofuncionario.getText()));
+        modelfuncionario.setBairro(bairrofuncionario.getText());
+        modelfuncionario.setComplemeto(complementofuncionario.getText()); // Corrigido nome do método
+        modelfuncionario.setCep(cepfuncionario.getText());
+        modelfuncionario.setCargo(cargofuncionario.getText());
+        if (controlerfuncionario.Atualizarfuncionariocontroler(modelfuncionario)) {
+        JOptionPane.showMessageDialog(null, "Funcionário atualizado com Sucesso!");
+        Limparformulario();
+        Carregarusu();
+        } else {
+        JOptionPane.showMessageDialog(null, "Erro ao atualizar funcionário!");
+        }
+    }//GEN-LAST:event_funcaoatualizatfuncionarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -606,8 +629,8 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField complementofuncionario;
     private javax.swing.JFormattedTextField cpffuncionario;
     private javax.swing.JFormattedTextField datafuncionario;
+    private javax.swing.JButton funcaoatualizatfuncionario;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

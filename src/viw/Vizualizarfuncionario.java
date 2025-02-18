@@ -14,22 +14,26 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Modelfuncionariocadastro;
 import viw.Cadastrofuncionario;
-
+import viw.Vizualizarfuncionario;
 /**
  *
  * @author ruan
  */
-public class Vizualizarfuncionario extends javax.swing.JFrame {
+public class Vizualizarfuncionario extends javax.swing.JFrame{
 Modelfuncionariocadastro modelfuncionario = new Modelfuncionariocadastro();
 Controlerfuncionário controlerfuncionario2 = new Controlerfuncionário();
+Cadastrofuncionario funcionarioexibicao = new Cadastrofuncionario();
 List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
+
+
     /** Creates new form Vizualizarfuncionario */
     public Vizualizarfuncionario() {
         initComponents();
          setLocationRelativeTo(this);
          Funcaodesingnfuncao();
-         Carregarusu2();
+         Carregarusu2();     
     }
+  
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -111,6 +115,11 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
         jButton3.setText("Exibir Cadastro");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/relatorio (1).png"))); // NOI18N
@@ -281,6 +290,9 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
     private void Funcaodesingnfuncao(){
         tabelafuncionario2.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         tabelafuncionario2.getTableHeader().setOpaque(false);
@@ -294,21 +306,25 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-       int linha = tabelafuncionario2.getSelectedRow();
-       if(linha<0){
-           System.err.println("erro");
-       }
-       else{
-           int codigo =(int) tabelafuncionario2.getValueAt(linha,0);
-           int resposta = JOptionPane.showConfirmDialog(null,"Deseja realmente excluir esse funcionário?","Confirmação",JOptionPane.YES_NO_OPTION);
-           if(resposta == JOptionPane.YES_OPTION){
+        int linha = tabelafuncionario2.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+            return;
+        }
+        int codigo=(int) tabelafuncionario2.getValueAt(linha,0);
+           int entrada = JOptionPane.showConfirmDialog(null, "Deseja excluir", "Confirmação", JOptionPane.YES_NO_OPTION);
+           if(entrada==JOptionPane.YES_OPTION){
                controlerfuncionario2.excluirfuncionario(codigo);
                Carregarusu2();
-               JOptionPane.showMessageDialog(null,"Funcionario excluido com sucesso!");
+               JOptionPane.showMessageDialog(null,"Apagado");
            }
-       }
+      
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+ // Chama o controller
+    
+    }//GEN-LAST:event_jButton3ActionPerformed
     
      public void Carregarusu2(){
         listafuncionario = controlerfuncionario2.Listarusucontroler2();

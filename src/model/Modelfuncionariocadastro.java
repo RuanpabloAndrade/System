@@ -206,5 +206,5 @@ public class Modelfuncionariocadastro {
     public void setChavepix(String chavepix) {
         this.chavepix = chavepix;
     }
-    
+
 }

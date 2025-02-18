@@ -154,6 +154,78 @@ public class Salvarfuncionariodao extends Classeconexao {
         }
         return funcionario;
     }
+
+    public Modelfuncionariocadastro buscarPorCodigo(int codigo) {
+    Modelfuncionariocadastro funcionario = new Modelfuncionariocadastro();
+    Connection conexao = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+
+    try {
+        conexao = Classeconexao.conector();
+        String sql = "SELECT * FROM Funcionarios WHERE Codigo = ?"; // Use Codigo como parâmetro
+        pst = conexao.prepareStatement(sql);
+        pst.setInt(1, codigo); // Busca pelo código, não pelo nome
+        rs = pst.executeQuery();
+
+        if (rs.next()) {
+            funcionario.setCodigo(rs.getInt("Codigo"));
+            funcionario.setNome(rs.getString("Nome"));
+            funcionario.setChavepix(rs.getString("chavepix"));
+            funcionario.setTelefone(rs.getString("telefone"));
+            // Preencha todos os campos...
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
+    } finally {
+        try { if (rs != null) rs.close(); } catch (Exception e) {}
+        try { if (pst != null) pst.close(); } catch (Exception e) {}
+        try { if (conexao != null) conexao.close(); } catch (Exception e) {}
+    }
+
+    return funcionario;
 }
+
+    public boolean Atualizarfuncionario(Modelfuncionariocadastro modelfuncionario) {
+        try {
+        conexao = Classeconexao.conector();
+        String sql = "UPDATE Funcionarios SET Nome=?, chavepix=?, telefone=?, datas=?, cpf=?, rg=?, cidade=?, numero=?, bairro=?, complemento=?, cep=?, cargo=? WHERE cod=?";
+        pst = conexao.prepareStatement(sql);
+        pst.setString(1, modelfuncionario.getNome());
+        pst.setString(2, modelfuncionario.getChavepix());
+        pst.setString(3, modelfuncionario.getTelefone());
+        pst.setString(4, modelfuncionario.getData());
+        pst.setString(5, modelfuncionario.getCpf());
+        pst.setString(6, modelfuncionario.getRg());
+        pst.setString(7, modelfuncionario.getCidade());
+        pst.setInt(8, modelfuncionario.getNumero());
+        pst.setString(9, modelfuncionario.getBairro());
+        pst.setString(10, modelfuncionario.getComplemeto());
+        pst.setString(11, modelfuncionario.getCep());
+        pst.setString(12, modelfuncionario.getCargo());
+        pst.setInt(13, modelfuncionario.getCodigo());
+        pst.executeUpdate();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Erro ao atualizar funcionário: " + e.getMessage());
+        return false;
+    } finally {
+        try {
+            if (pst != null) pst.close();
+            if (conexao != null) conexao.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    
+         }
+        return true;
+    }
+}
+
+  
+
+    
+    
+
 
 

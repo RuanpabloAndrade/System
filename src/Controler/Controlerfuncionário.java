@@ -29,11 +29,27 @@ public class Controlerfuncionário {
        return this.dao.Excluirfuncionario(codigo);
     }
 
-   
-
     public Modelfuncionariocadastro carregarDadosPorId(String nome) {
          return dao.carregarFuncionarioPorId(nome); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public boolean Atualizarfuncionariocontroler(Modelfuncionariocadastro modelfuncionario) {
+          return this.dao.Atualizarfuncionario(modelfuncionario);
+    }
+
+   
+
+    
+    
+    
+
+    
+
+    
+
+   
+
+   
 
    
     
