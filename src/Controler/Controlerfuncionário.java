@@ -33,9 +33,11 @@ public class Controlerfuncionário {
          return dao.carregarFuncionarioPorId(nome); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public boolean Atualizarfuncionariocontroler(Modelfuncionariocadastro modelfuncionario) {
-          return this.dao.Atualizarfuncionario(modelfuncionario);
+    public boolean Editarfuncionariocontroler(Modelfuncionariocadastro modelfuncionario) {
+        return this.dao.EditarFucnionarioDao(modelfuncionario);
     }
+
+    
 
    
 

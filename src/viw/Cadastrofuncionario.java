@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import Dao.Salvarfuncionariodao;
 
 /**
  *
@@ -289,7 +289,7 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabelafuncionariocadastro);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel11.setText("Nome:");
+        jLabel11.setText("Nome Completo:");
 
         chave.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         chave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -572,16 +572,18 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
         modelfuncionario.setCidade(cidadefuncionario.getText());
         modelfuncionario.setNumero(Integer.parseInt(numerofuncionario.getText()));
         modelfuncionario.setBairro(bairrofuncionario.getText());
-        modelfuncionario.setComplemeto(complementofuncionario.getText()); // Corrigido nome do método
+        modelfuncionario.setComplemeto(complementofuncionario.getText());
         modelfuncionario.setCep(cepfuncionario.getText());
         modelfuncionario.setCargo(cargofuncionario.getText());
-        if (controlerfuncionario.Atualizarfuncionariocontroler(modelfuncionario)) {
-        JOptionPane.showMessageDialog(null, "Funcionário atualizado com Sucesso!");
-        Limparformulario();
-        Carregarusu();
+        if (controlerfuncionario.Editarfuncionariocontroler(modelfuncionario)) {
+            JOptionPane.showMessageDialog(null, "Funcionário Atualizado com Sucesso!");
+            Limparformulario();
+            Carregarusu();
+            
         } else {
-        JOptionPane.showMessageDialog(null, "Erro ao atualizar funcionário!");
+            JOptionPane.showMessageDialog(null, "Funcionário Não Atualizado !");
         }
+        
     }//GEN-LAST:event_funcaoatualizatfuncionarioActionPerformed
 
     /**

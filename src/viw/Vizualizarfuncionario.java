@@ -20,10 +20,13 @@ import viw.Vizualizarfuncionario;
  * @author ruan
  */
 public class Vizualizarfuncionario extends javax.swing.JFrame{
+
 Modelfuncionariocadastro modelfuncionario = new Modelfuncionariocadastro();
 Controlerfuncionário controlerfuncionario2 = new Controlerfuncionário();
 Cadastrofuncionario funcionarioexibicao = new Cadastrofuncionario();
 List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
+
+
 
 
     /** Creates new form Vizualizarfuncionario */
@@ -34,7 +37,10 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
          Carregarusu2();     
     }
   
-
+    
+    
+    
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -128,6 +134,11 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sair (1).png"))); // NOI18N
         jButton5.setText("Sair");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -325,6 +336,10 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
  // Chama o controller
     
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+                
+    }//GEN-LAST:event_jButton5ActionPerformed
     
      public void Carregarusu2(){
         listafuncionario = controlerfuncionario2.Listarusucontroler2();
