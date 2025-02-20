@@ -482,7 +482,7 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
             Carregarusu();
             
         } else {
-            JOptionPane.showMessageDialog(null, "Funcionário Não cadastrado !");
+           
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     public void setarcampospelatabela() {

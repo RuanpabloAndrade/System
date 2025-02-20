@@ -15,17 +15,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Modelfuncionariocadastro;
-
 /**
  *
  * @author ruan
  */
 public class Salvarfuncionariodao extends Classeconexao {
-
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-
     public boolean SalvarFuncionarioDao(Modelfuncionariocadastro modelfuncionario) {
         conexao = Classeconexao.conector();
         String sql = "insert into Funcionarios (Nome,telefone,datas,cpf,rg,cidade,numero,bairro,complemento,cep,cargo,chavepix) values(?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -47,6 +44,7 @@ public class Salvarfuncionariodao extends Classeconexao {
         } catch (Exception e) {
             System.err.println(e);
             JOptionPane.showMessageDialog(null, "Usuario Não cadastrado, Veja se Já consta na tabela abaixo");
+            return false;
         }
         return true;
     }

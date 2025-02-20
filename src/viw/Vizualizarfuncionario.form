@@ -270,13 +270,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="438" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="Pesquisar" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton6" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="Pesquisar" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -295,10 +291,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="Pesquisar" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                                  <Component id="jButton6" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="Pesquisar" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="44" max="32767" attributes="0"/>
@@ -322,22 +315,14 @@
                     <LineBorder/>
                   </Border>
                 </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PesquisarActionPerformed"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PesquisarKeyReleased"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton6">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="11" style="1"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagens/lupa (1).png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Pesquisar"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox1">
               <Properties>
@@ -347,7 +332,7 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
                     <StringItem index="0" value="Nome"/>
-                    <StringItem index="1" value="Telefone"/>
+                    <StringItem index="1" value="Cargo"/>
                   </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

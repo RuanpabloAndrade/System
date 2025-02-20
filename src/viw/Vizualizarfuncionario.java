@@ -64,7 +64,6 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         Pesquisar = new javax.swing.JFormattedTextField();
-        jButton6 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -179,6 +178,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         jLabel2.setText("Pesquisar Funcionário:");
 
         Pesquisar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pesquisar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Pesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PesquisarActionPerformed(evt);
@@ -190,12 +190,8 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa (1).png"))); // NOI18N
-        jButton6.setText("Pesquisar");
-
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "Telefone" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "Cargo" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
@@ -214,11 +210,8 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(Pesquisar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)))
+                        .addGap(0, 438, Short.MAX_VALUE))
+                    .addComponent(Pesquisar))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -233,9 +226,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(Pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -421,7 +412,6 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
