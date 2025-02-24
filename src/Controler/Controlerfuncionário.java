@@ -37,6 +37,10 @@ public class Controlerfuncionário {
         return this.dao.EditarFucnionarioDao(modelfuncionario);
     }
 
+    public Modelfuncionariocadastro ExibirFuncionario(String codigo) {
+         return this.dao.ExibirCadastro(codigo);
+    }
+
     
 
    

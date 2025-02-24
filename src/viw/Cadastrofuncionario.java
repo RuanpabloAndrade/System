@@ -657,4 +657,19 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
     private javax.swing.JTable tabelafuncionariocadastro;
     private javax.swing.JFormattedTextField telefonefuncionario;
     // End of variables declaration//GEN-END:variables
+
+   public void preechercampos(Modelfuncionariocadastro modelfuncionario) {
+          nomefuncionario.setText(modelfuncionario.getNome());
+          chave.setText(modelfuncionario.getChavepix());
+          telefonefuncionario.setText(modelfuncionario.getTelefone());
+          datafuncionario.setText(modelfuncionario.getData());
+          cpffuncionario.setText(modelfuncionario.getCpf());
+          rgfuncionario.setText(modelfuncionario.getRg());
+          cidadefuncionario.setText(modelfuncionario.getCidade());
+          numerofuncionario.setText(String.valueOf(modelfuncionario.getNumero()));
+          bairrofuncionario.setText(modelfuncionario.getBairro());
+          complementofuncionario.setText(modelfuncionario.getComplemeto());
+          cepfuncionario.setText(modelfuncionario.getCep());
+          cargofuncionario.setText(modelfuncionario.getCargo());
+    }
 }

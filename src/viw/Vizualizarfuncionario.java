@@ -58,7 +58,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ExibirCadastro = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -119,12 +119,12 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
-        jButton3.setText("Exibir Cadastro");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ExibirCadastro.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ExibirCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
+        ExibirCadastro.setText("Exibir Cadastro");
+        ExibirCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ExibirCadastroActionPerformed(evt);
             }
         });
 
@@ -151,7 +151,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(ExibirCadastro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -165,7 +165,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ExibirCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -335,10 +335,24 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
       
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
- // Chama o controller
-    
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void ExibirCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirCadastroActionPerformed
+       
+        int linha = tabelafuncionario2.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+            return;
+        }
+        String nome = (String) tabelafuncionario2.getValueAt(linha,1);
+        modelfuncionario  = controlerfuncionario2.ExibirFuncionario(nome);
+        if(modelfuncionario != null){
+                Cadastrofuncionario exibircadastro = new  Cadastrofuncionario();
+                exibircadastro.preechercampos(modelfuncionario);
+                
+                exibircadastro.setVisible(true);
+                
+        }
+       
+    }//GEN-LAST:event_ExibirCadastroActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
                 
@@ -406,10 +420,10 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ExibirCadastro;
     private javax.swing.JFormattedTextField Pesquisar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;

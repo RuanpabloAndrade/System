@@ -210,6 +210,37 @@ public class Salvarfuncionariodao extends Classeconexao {
     return funcionario;
 }
 
+    public Modelfuncionariocadastro ExibirCadastro(String nome) {
+        Modelfuncionariocadastro funcionario = new Modelfuncionariocadastro();
+        try {
+            conexao = Classeconexao.conector();
+            String sql = "SELECT * FROM Funcionarios WHERE Nome = ?";
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, nome);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                funcionario.setNome(rs.getString("Nome"));
+                funcionario.setChavepix(rs.getString("chavepix"));
+                funcionario.setTelefone(rs.getString("telefone"));
+                funcionario.setData(rs.getString("datas"));
+                funcionario.setCpf(rs.getString("cpf"));
+                funcionario.setRg(rs.getString("rg"));
+                funcionario.setCidade(rs.getString("cidade"));
+                funcionario.setNumero(rs.getInt("numero"));
+                funcionario.setBairro(rs.getString("bairro"));
+                funcionario.setComplemeto(rs.getString("complemento"));
+                funcionario.setCep(rs.getString("cep"));
+                funcionario.setCargo(rs.getString("cargo"));
+                
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
+        }
+        return funcionario;
+       
+        
+    }
+
 
 }
 
