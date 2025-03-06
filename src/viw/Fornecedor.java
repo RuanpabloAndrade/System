@@ -553,7 +553,8 @@ public class Fornecedor extends javax.swing.JFrame {
        fornecedor.setObservacao(obs.getText());
        fornecedor.setStatus((String) status1.getEditor().getItem());
        fornecedor.setData(data.getText());
-       if (cnpj.getText().trim().isEmpty() || nomefantasia.getText().trim().isEmpty()) {
+       String cnpjRaw = cnpj.getText().replaceAll("[^0-9]", "");
+       if (cnpjRaw.length()!= 14 || nomefantasia.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nome fantasia e CNPJ obrigatórios");
             return;
         }
