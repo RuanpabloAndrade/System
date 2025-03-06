@@ -482,7 +482,7 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
             Carregarusu();
             
         } else {
-           
+            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     public void setarcampospelatabela() {

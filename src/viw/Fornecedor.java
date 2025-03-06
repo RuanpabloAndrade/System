@@ -4,13 +4,16 @@
  */
 
 package viw;
-
+import javax.swing.JOptionPane;
+import model.Modelfornecedor;
+import Controler.Controlerfornecedor;
 /**
  *
  * @author ruan
  */
 public class Fornecedor extends javax.swing.JFrame {
-
+ Modelfornecedor fornecedor = new Modelfornecedor();
+ Controlerfornecedor controlerforncedor = new Controlerfornecedor();
     /** Creates new form Fornecedor */
     public Fornecedor() {
         initComponents();
@@ -31,45 +34,45 @@ public class Fornecedor extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        cancelarformulario = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        razaosocial = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
+        inscricaoestadual = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
+        telefone = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        nomefantasia = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        cnpj = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
-        jFormattedTextField6 = new javax.swing.JFormattedTextField();
+        fax = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
-        jFormattedTextField8 = new javax.swing.JFormattedTextField();
+        email = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
-        jFormattedTextField7 = new javax.swing.JFormattedTextField();
+        chavepix = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
-        jFormattedTextField9 = new javax.swing.JFormattedTextField();
+        logradouro = new javax.swing.JFormattedTextField();
         jLabel13 = new javax.swing.JLabel();
-        jFormattedTextField10 = new javax.swing.JFormattedTextField();
+        numero = new javax.swing.JFormattedTextField();
         jLabel14 = new javax.swing.JLabel();
-        jFormattedTextField11 = new javax.swing.JFormattedTextField();
-        jFormattedTextField13 = new javax.swing.JFormattedTextField();
+        bairro = new javax.swing.JFormattedTextField();
+        complemento = new javax.swing.JFormattedTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jFormattedTextField12 = new javax.swing.JFormattedTextField();
+        cidade = new javax.swing.JFormattedTextField();
         jLabel17 = new javax.swing.JLabel();
-        jFormattedTextField14 = new javax.swing.JFormattedTextField();
         jLabel18 = new javax.swing.JLabel();
-        jFormattedTextField15 = new javax.swing.JFormattedTextField();
+        cep = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
-        jFormattedTextField16 = new javax.swing.JFormattedTextField();
+        obs = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        status1 = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jFormattedTextField17 = new javax.swing.JFormattedTextField();
+        data = new javax.swing.JFormattedTextField();
+        estado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setForeground(java.awt.Color.black);
@@ -114,15 +117,25 @@ public class Fornecedor extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar (1).png"))); // NOI18N
-        jButton1.setText("Cancelar");
+        cancelarformulario.setBackground(new java.awt.Color(255, 255, 255));
+        cancelarformulario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cancelarformulario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar (1).png"))); // NOI18N
+        cancelarformulario.setText("Cancelar");
+        cancelarformulario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarformularioActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Salvar (1).png"))); // NOI18N
         jButton2.setText("Salvar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/po (1).png"))); // NOI18N
@@ -136,7 +149,7 @@ public class Fornecedor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cancelarformulario, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -150,7 +163,7 @@ public class Fornecedor extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelarformulario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -158,72 +171,94 @@ public class Fornecedor extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Razão Social:");
 
-        jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        razaosocial.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        razaosocial.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Incrição Estadual:");
 
-        jFormattedTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        inscricaoestadual.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        inscricaoestadual.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Telefone: ");
 
-        jFormattedTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        telefone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        try {
+            telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        telefone.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Nome Fantasia:");
 
-        jFormattedTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        nomefantasia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        nomefantasia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("CNPJ:");
 
-        jFormattedTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jFormattedTextField3.addActionListener(new java.awt.event.ActionListener() {
+        cnpj.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        try {
+            cnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        cnpj.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cnpj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField3ActionPerformed(evt);
+                cnpjActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Fax:");
 
-        jFormattedTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        fax.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        fax.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel10.setText("Email:");
 
-        jFormattedTextField8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jFormattedTextField8.addActionListener(new java.awt.event.ActionListener() {
+        email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        email.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField8ActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Chave Pix:");
 
-        jFormattedTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        chavepix.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        chavepix.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setText("Logradouro:");
 
-        jFormattedTextField9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        logradouro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        logradouro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel13.setText("Numero:");
 
-        jFormattedTextField10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        numero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        numero.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel14.setText("Bairro: ");
 
-        jFormattedTextField11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        bairro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        bairro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        jFormattedTextField13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jFormattedTextField13.addActionListener(new java.awt.event.ActionListener() {
+        complemento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        complemento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        complemento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField13ActionPerformed(evt);
+                complementoActionPerformed(evt);
             }
         });
 
@@ -233,39 +268,55 @@ public class Fornecedor extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel15.setText("Cidade");
 
-        jFormattedTextField12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cidade.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel17.setText("Estado:");
 
-        jFormattedTextField14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel18.setText("CEP:");
 
-        jFormattedTextField15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cep.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        try {
+            cep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        cep.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Observações:");
 
-        jFormattedTextField16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        obs.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        obs.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Status:");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        status1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        status1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
+        status1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        status1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                status1ActionPerformed(evt);
             }
         });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel11.setText("Data de Cadastro:");
 
-        jFormattedTextField17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        data.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        try {
+            data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        data.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        estado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO." }));
+        estado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -276,21 +327,21 @@ public class Fornecedor extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
+                            .addComponent(nomefantasia, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(razaosocial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inscricaoestadual, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextField5)
+                                .addComponent(telefone)
                                 .addContainerGap())
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jFormattedTextField6)
+                                        .addComponent(fax)
                                         .addContainerGap())
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,16 +366,16 @@ public class Fornecedor extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFormattedTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel12)
-                                    .addComponent(jFormattedTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(logradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFormattedTextField7)
+                                    .addComponent(chavepix)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel13)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jFormattedTextField10))))
+                                    .addComponent(numero))))
                         .addGap(10, 10, 10))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -334,32 +385,31 @@ public class Fornecedor extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jFormattedTextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                                .addComponent(jFormattedTextField11)
+                                .addComponent(cidade, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                                .addComponent(bairro)
                                 .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(jLabel15)
                             .addComponent(jLabel1)
-                            .addComponent(jFormattedTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(obs, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFormattedTextField13)
+                            .addComponent(complemento)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jFormattedTextField14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                                        .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(status1, 0, 224, Short.MAX_VALUE)
+                                    .addComponent(jLabel17)
                                     .addComponent(jLabel16)
-                                    .addComponent(jLabel9))
+                                    .addComponent(jLabel9)
+                                    .addComponent(estado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jFormattedTextField15)
+                                    .addComponent(cep)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel11)
                                             .addComponent(jLabel18))
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jFormattedTextField17))))
+                                    .addComponent(data))))
                         .addContainerGap())))
         );
         jPanel4Layout.setVerticalGroup(
@@ -376,9 +426,9 @@ public class Fornecedor extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(razaosocial, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inscricaoestadual, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -386,33 +436,33 @@ public class Fornecedor extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomefantasia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fax, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chavepix, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(logradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(complemento, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -420,20 +470,21 @@ public class Fornecedor extends javax.swing.JFrame {
                         .addComponent(jLabel18))
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cep, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(estado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(obs, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(data, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(status1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -456,27 +507,93 @@ public class Fornecedor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFormattedTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField3ActionPerformed
+    private void cnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnpjActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField3ActionPerformed
+    }//GEN-LAST:event_cnpjActionPerformed
 
-    private void jFormattedTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField8ActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField8ActionPerformed
+    }//GEN-LAST:event_emailActionPerformed
 
-    private void jFormattedTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField13ActionPerformed
+    private void complementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_complementoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField13ActionPerformed
+    }//GEN-LAST:event_complementoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
       Vizualizarfornecedor fornece = new Vizualizarfornecedor();
       fornece.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void status1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_status1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_status1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       fornecedor = new Modelfornecedor();
+       fornecedor.setRazaosocial(razaosocial.getText());
+       fornecedor.setIncrocaoestadual(inscricaoestadual.getText());
+       fornecedor.setTelefone(telefone.getText());
+       fornecedor.setNomefantasia(nomefantasia.getText());
+       fornecedor.setCnpj(cnpj.getText());
+       fornecedor.setFax(fax.getText());
+       fornecedor.setEmail(email.getText());
+       fornecedor.setPixchave(chavepix.getText());
+       fornecedor.setLogradouto(logradouro.getText());
+       String textoNumero = numero.getText().trim(); // Remove espaços em branco no início e no fim
+        if (textoNumero.isEmpty()) {
+            fornecedor.setNumero(0); // Define o valor como 0 se o campo estiver vazio
+        } else {
+            fornecedor.setNumero(Integer.parseInt(numero.getText()));
+        }
+       fornecedor.setBairro(bairro.getText());
+       fornecedor.setComplemento(complemento.getText());
+       fornecedor.setCidade(cidade.getText());
+       fornecedor.setEstado((String) estado.getEditor().getItem());
+       fornecedor.setCep(cep.getText());
+       fornecedor.setObservacao(obs.getText());
+       fornecedor.setStatus((String) status1.getEditor().getItem());
+       fornecedor.setData(data.getText());
+       if (cnpj.getText().trim().isEmpty() || nomefantasia.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nome fantasia e CNPJ obrigatórios");
+            return;
+        }
+       if (controlerforncedor.Salvarfornecedor(fornecedor)) {
+            JOptionPane.showMessageDialog(null, "Funcionário cadastrado com Sucesso!");
+            Limparformulario();
+        } else {
+            
+        }
+       
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cancelarformularioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarformularioActionPerformed
+       Limparformulario();
+    }//GEN-LAST:event_cancelarformularioActionPerformed
+ 
+    
+    private void Limparformulario(){
+        razaosocial.setText("");
+        inscricaoestadual.setText("");
+        telefone.setValue(null); // Define o valor como null
+        telefone.setFocusLostBehavior(telefone.COMMIT);
+        nomefantasia.setText("");
+        cnpj.setValue(null); 
+        cnpj.setFocusLostBehavior(cnpj.COMMIT);
+        fax.setText("");
+        email.setText("");
+        chavepix.setText("");
+        logradouro.setText("");
+        numero.setText("");
+        bairro.setText("");
+        complemento.setText("");
+        cidade.setText("");
+        cep.setValue(null); // Define o valor como null
+        cep.setFocusLostBehavior(cep.COMMIT);
+        obs.setText("");
+        data.setValue(null); // Define o valor como null
+        data.setFocusLostBehavior(data.COMMIT);
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -513,28 +630,21 @@ public class Fornecedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JFormattedTextField bairro;
+    private javax.swing.JButton cancelarformulario;
+    private javax.swing.JFormattedTextField cep;
+    private javax.swing.JFormattedTextField chavepix;
+    private javax.swing.JFormattedTextField cidade;
+    private javax.swing.JFormattedTextField cnpj;
+    private javax.swing.JFormattedTextField complemento;
+    private javax.swing.JFormattedTextField data;
+    private javax.swing.JFormattedTextField email;
+    private javax.swing.JComboBox<String> estado;
+    private javax.swing.JFormattedTextField fax;
+    private javax.swing.JFormattedTextField inscricaoestadual;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField10;
-    private javax.swing.JFormattedTextField jFormattedTextField11;
-    private javax.swing.JFormattedTextField jFormattedTextField12;
-    private javax.swing.JFormattedTextField jFormattedTextField13;
-    private javax.swing.JFormattedTextField jFormattedTextField14;
-    private javax.swing.JFormattedTextField jFormattedTextField15;
-    private javax.swing.JFormattedTextField jFormattedTextField16;
-    private javax.swing.JFormattedTextField jFormattedTextField17;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
-    private javax.swing.JFormattedTextField jFormattedTextField5;
-    private javax.swing.JFormattedTextField jFormattedTextField6;
-    private javax.swing.JFormattedTextField jFormattedTextField7;
-    private javax.swing.JFormattedTextField jFormattedTextField8;
-    private javax.swing.JFormattedTextField jFormattedTextField9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -557,6 +667,15 @@ public class Fornecedor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JFormattedTextField logradouro;
+    private javax.swing.JFormattedTextField nomefantasia;
+    private javax.swing.JFormattedTextField numero;
+    private javax.swing.JFormattedTextField obs;
+    private javax.swing.JFormattedTextField razaosocial;
+    private javax.swing.JComboBox<String> status1;
+    private javax.swing.JFormattedTextField telefone;
     // End of variables declaration//GEN-END:variables
+
+   
 
 }

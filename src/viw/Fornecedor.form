@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -64,23 +64,23 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jFormattedTextField2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jFormattedTextField1" alignment="0" pref="222" max="32767" attributes="0"/>
+                              <Component id="nomefantasia" alignment="0" max="32767" attributes="0"/>
+                              <Component id="razaosocial" alignment="0" pref="222" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jFormattedTextField4" min="-2" pref="222" max="-2" attributes="0"/>
+                                  <Component id="inscricaoestadual" min="-2" pref="222" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jFormattedTextField5" max="32767" attributes="0"/>
+                                  <Component id="telefone" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jFormattedTextField3" min="-2" pref="222" max="-2" attributes="0"/>
+                                  <Component id="cnpj" min="-2" pref="222" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="jFormattedTextField6" max="32767" attributes="0"/>
+                                          <Component id="fax" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
@@ -116,18 +116,18 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jFormattedTextField8" alignment="0" min="-2" pref="450" max="-2" attributes="0"/>
+                                      <Component id="email" alignment="0" min="-2" pref="450" max="-2" attributes="0"/>
                                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jFormattedTextField9" min="-2" pref="450" max="-2" attributes="0"/>
+                                      <Component id="logradouro" min="-2" pref="450" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jFormattedTextField7" max="32767" attributes="0"/>
+                                      <Component id="chavepix" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jFormattedTextField10" max="32767" attributes="0"/>
+                                      <Component id="numero" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -143,30 +143,28 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jFormattedTextField12" pref="252" max="32767" attributes="0"/>
-                                  <Component id="jFormattedTextField11" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="cidade" pref="252" max="32767" attributes="0"/>
+                                  <Component id="bairro" alignment="1" max="32767" attributes="0"/>
                                   <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jFormattedTextField16" min="-2" pref="252" max="-2" attributes="0"/>
+                              <Component id="obs" min="-2" pref="252" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jFormattedTextField13" max="32767" attributes="0"/>
+                              <Component id="complemento" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jFormattedTextField14" alignment="0" pref="224" max="32767" attributes="0"/>
-                                          <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="status1" alignment="0" pref="224" max="32767" attributes="0"/>
+                                      <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                      <Component id="estado" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jFormattedTextField15" max="32767" attributes="0"/>
+                                      <Component id="cep" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
@@ -174,7 +172,7 @@
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jFormattedTextField17" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="data" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -199,9 +197,9 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jFormattedTextField1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField4" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField5" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="razaosocial" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="inscricaoestadual" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="telefone" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -211,9 +209,9 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jFormattedTextField2" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField6" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="nomefantasia" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="cnpj" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="fax" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -222,8 +220,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jFormattedTextField8" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField7" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="email" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="chavepix" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -232,8 +230,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jFormattedTextField9" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField10" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="logradouro" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="numero" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -242,8 +240,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jFormattedTextField11" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField13" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="bairro" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="complemento" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -254,10 +252,10 @@
                       <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jFormattedTextField14" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField15" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField12" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="cidade" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="cep" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="estado" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -266,10 +264,12 @@
                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jFormattedTextField16" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField17" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="obs" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="data" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="status1" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="31" max="32767" attributes="0"/>
               </Group>
@@ -339,7 +339,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton2" pref="151" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="151" max="-2" attributes="0"/>
+                      <Component id="cancelarformulario" min="-2" pref="151" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton5" min="-2" pref="151" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -355,7 +355,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton3" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
                           <Component id="jButton5" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
+                          <Component id="cancelarformulario" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
                           <Component id="jButton2" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="24" max="32767" attributes="0"/>
@@ -381,7 +381,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="cancelarformulario">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -394,6 +394,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarformularioActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
@@ -408,6 +411,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Salvar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton5">
               <Properties>
@@ -430,12 +436,15 @@
             <Property name="text" type="java.lang.String" value="Raz&#xe3;o Social:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+        <Component class="javax.swing.JFormattedTextField" name="razaosocial">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
         </Component>
@@ -447,12 +456,15 @@
             <Property name="text" type="java.lang.String" value="Incri&#xe7;&#xe3;o Estadual:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField4">
+        <Component class="javax.swing.JFormattedTextField" name="inscricaoestadual">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
         </Component>
@@ -464,12 +476,18 @@
             <Property name="text" type="java.lang.String" value="Telefone: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField5">
+        <Component class="javax.swing.JFormattedTextField" name="telefone">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="(##)#########" subtype="-1" type="5"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
         </Component>
@@ -481,12 +499,15 @@
             <Property name="text" type="java.lang.String" value="Nome Fantasia:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField2">
+        <Component class="javax.swing.JFormattedTextField" name="nomefantasia">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
         </Component>
@@ -498,16 +519,22 @@
             <Property name="text" type="java.lang.String" value="CNPJ:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField3">
+        <Component class="javax.swing.JFormattedTextField" name="cnpj">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
             </Property>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="##.###.###/####-##" subtype="-1" type="5"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedTextField3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cnpjActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
@@ -518,12 +545,15 @@
             <Property name="text" type="java.lang.String" value="Fax:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField6">
+        <Component class="javax.swing.JFormattedTextField" name="fax">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
         </Component>
@@ -535,16 +565,19 @@
             <Property name="text" type="java.lang.String" value="Email:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField8">
+        <Component class="javax.swing.JFormattedTextField" name="email">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
             </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedTextField8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -555,12 +588,15 @@
             <Property name="text" type="java.lang.String" value="Chave Pix:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField7">
+        <Component class="javax.swing.JFormattedTextField" name="chavepix">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
         </Component>
@@ -572,12 +608,15 @@
             <Property name="text" type="java.lang.String" value="Logradouro:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField9">
+        <Component class="javax.swing.JFormattedTextField" name="logradouro">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
         </Component>
@@ -589,12 +628,15 @@
             <Property name="text" type="java.lang.String" value="Numero:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField10">
+        <Component class="javax.swing.JFormattedTextField" name="numero">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
         </Component>
@@ -606,25 +648,31 @@
             <Property name="text" type="java.lang.String" value="Bairro: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField11">
+        <Component class="javax.swing.JFormattedTextField" name="bairro">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField13">
+        <Component class="javax.swing.JFormattedTextField" name="complemento">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
             </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedTextField13ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="complementoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
@@ -643,12 +691,15 @@
             <Property name="text" type="java.lang.String" value="Cidade"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField12">
+        <Component class="javax.swing.JFormattedTextField" name="cidade">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
         </Component>
@@ -660,15 +711,6 @@
             <Property name="text" type="java.lang.String" value="Estado:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField14">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder/>
-              </Border>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel18">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -677,12 +719,18 @@
             <Property name="text" type="java.lang.String" value="CEP:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField15">
+        <Component class="javax.swing.JFormattedTextField" name="cep">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="#####-###" subtype="-1" type="5"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
         </Component>
@@ -694,12 +742,15 @@
             <Property name="text" type="java.lang.String" value="Observa&#xe7;&#xf5;es:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField16">
+        <Component class="javax.swing.JFormattedTextField" name="obs">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
           </Properties>
         </Component>
@@ -711,7 +762,7 @@
             <Property name="text" type="java.lang.String" value="Status:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="status1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
@@ -729,7 +780,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="status1ActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -743,14 +794,66 @@
             <Property name="text" type="java.lang.String" value="Data de Cadastro:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField17">
+        <Component class="javax.swing.JFormattedTextField" name="data">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
               </Border>
             </Property>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="##/##/####" subtype="-1" type="5"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="estado">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="27">
+                <StringItem index="0" value="AC"/>
+                <StringItem index="1" value="AL"/>
+                <StringItem index="2" value="AP"/>
+                <StringItem index="3" value="AM"/>
+                <StringItem index="4" value="BA"/>
+                <StringItem index="5" value="CE"/>
+                <StringItem index="6" value="DF"/>
+                <StringItem index="7" value="ES"/>
+                <StringItem index="8" value="GO"/>
+                <StringItem index="9" value="MA"/>
+                <StringItem index="10" value="MT"/>
+                <StringItem index="11" value="MS"/>
+                <StringItem index="12" value="MG"/>
+                <StringItem index="13" value="PA"/>
+                <StringItem index="14" value="PB"/>
+                <StringItem index="15" value="PR"/>
+                <StringItem index="16" value="PE"/>
+                <StringItem index="17" value="PI"/>
+                <StringItem index="18" value="RJ"/>
+                <StringItem index="19" value="RN"/>
+                <StringItem index="20" value="RS"/>
+                <StringItem index="21" value="RO"/>
+                <StringItem index="22" value="RR"/>
+                <StringItem index="23" value="SC"/>
+                <StringItem index="24" value="SP"/>
+                <StringItem index="25" value="SE"/>
+                <StringItem index="26" value="TO."/>
+              </StringArray>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                <LineBorder/>
+              </Border>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
