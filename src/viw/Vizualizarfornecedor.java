@@ -21,6 +21,7 @@ import model.Modelfornecedor;
 public class Vizualizarfornecedor extends javax.swing.JFrame {
 List<Modelfornecedor> listaFornecedor = new ArrayList<>();
 Controlerfornecedor Forncedorcontroler = new Controlerfornecedor();
+Modelfornecedor fornecedor = new Modelfornecedor();
     /**
      * Creates new form Vizualizarfornecedor
      */
@@ -49,7 +50,7 @@ Controlerfornecedor Forncedorcontroler = new Controlerfornecedor();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelafornecedor = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
+        exibircadastro = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         Deletar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -150,9 +151,14 @@ Controlerfornecedor Forncedorcontroler = new Controlerfornecedor();
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
-        jButton6.setText("Exibir Cadastro");
+        exibircadastro.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        exibircadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
+        exibircadastro.setText("Exibir Cadastro");
+        exibircadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exibircadastroActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/relatorio (1).png"))); // NOI18N
@@ -190,7 +196,7 @@ Controlerfornecedor Forncedorcontroler = new Controlerfornecedor();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Deletar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(exibircadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -204,7 +210,7 @@ Controlerfornecedor Forncedorcontroler = new Controlerfornecedor();
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Deletar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exibircadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
@@ -318,6 +324,23 @@ Controlerfornecedor Forncedorcontroler = new Controlerfornecedor();
            }
       
     }//GEN-LAST:event_DeletarActionPerformed
+
+    private void exibircadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exibircadastroActionPerformed
+       int linha = tabelafornecedor.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+            return;
+        }
+        String nome = (String) tabelafornecedor.getValueAt(linha,1);
+        fornecedor  = Forncedorcontroler.ExibirFornecedor(nome);
+        if(Forncedorcontroler != null){
+                Fornecedor Exibirfornecedor = new Fornecedor();
+                Exibirfornecedor.preechercampos(fornecedor);
+                
+                Exibirfornecedor.setVisible(true);
+                
+        }
+    }//GEN-LAST:event_exibircadastroActionPerformed
     public void CarregarFornecedor(){
         listaFornecedor = Forncedorcontroler.ListarFornecedor();
         DefaultTableModel modelo=(DefaultTableModel) tabelafornecedor.getModel();
@@ -372,9 +395,9 @@ Controlerfornecedor Forncedorcontroler = new Controlerfornecedor();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Deletar;
     private javax.swing.JFormattedTextField Pesquisar1;
+    private javax.swing.JButton exibircadastro;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;

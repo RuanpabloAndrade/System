@@ -7,6 +7,7 @@ package Controler;
 import model.Modelfornecedor;
 import Dao.Daofornecedor;
 import java.util.List;
+import javax.swing.JTable;
 /**
  *
  * @author ruan
@@ -24,5 +25,11 @@ Daofornecedor dao = new Daofornecedor();
     public boolean excluirfornecedor(int codigo) {
         return this.dao.Excluirfornecedor(codigo);
     }
+
+    public Modelfornecedor ExibirFornecedor(String nome) {
+         return this.dao.ExibirCadastro(nome);
+    }
+
+    
     
 }

@@ -7,6 +7,7 @@ package viw;
 import javax.swing.JOptionPane;
 import model.Modelfornecedor;
 import Controler.Controlerfornecedor;
+import model.Modelfuncionariocadastro;
 import viw.Vizualizarfornecedor;
 /**
  *
@@ -16,6 +17,7 @@ public class Fornecedor extends javax.swing.JFrame {
  Modelfornecedor fornecedor = new Modelfornecedor();
  Controlerfornecedor controlerforncedor = new Controlerfornecedor();
  Vizualizarfornecedor vizufornecedor = new Vizualizarfornecedor();
+ 
     /** Creates new form Fornecedor */
     public Fornecedor() {
         initComponents();
@@ -144,6 +146,11 @@ public class Fornecedor extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/po (1).png"))); // NOI18N
         jButton5.setText("Atualizar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -584,6 +591,10 @@ public class Fornecedor extends javax.swing.JFrame {
     private void cancelarformularioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarformularioActionPerformed
        Limparformulario();
     }//GEN-LAST:event_cancelarformularioActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+      
+    }//GEN-LAST:event_jButton5ActionPerformed
  
     
     private void Limparformulario(){
@@ -692,6 +703,14 @@ public class Fornecedor extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> status1;
     private javax.swing.JFormattedTextField telefone;
     // End of variables declaration//GEN-END:variables
+
+    public void preechercampos(Modelfornecedor fornecedor) {
+         razaosocial.setText(fornecedor.getRazaosocial());
+         inscricaoestadual.setText(fornecedor.getIncrocaoestadual());
+         nomefantasia.setText(fornecedor.getNomefantasia());
+    }
+
+   
 
    
 

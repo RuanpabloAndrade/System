@@ -8,6 +8,7 @@ import Conexao.Classeconexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -98,6 +99,26 @@ public class Daofornecedor extends Classeconexao{
             System.err.println(e);
         }
         return true;
+    }
+
+    public Modelfornecedor ExibirCadastro(String nome) {
+         Modelfornecedor modelfornecedor = new Modelfornecedor();
+        try {
+            conexao = Classeconexao.conector();
+            String sql = "SELECT * FROM cadastro_empresa WHERE nome_fantasia = ?";
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, nome);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                modelfornecedor.setRazaosocial(rs.getString("razao_social"));
+                modelfornecedor.setIncrocaoestadual(rs.getString("inscricao_estadual"));
+                modelfornecedor.setNomefantasia(rs.getString("nome_fantasia"));
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
+        }
+        return modelfornecedor;
+       
     }
 
     

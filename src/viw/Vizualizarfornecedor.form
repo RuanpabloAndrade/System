@@ -281,7 +281,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="Deletar" min="-2" pref="122" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton6" min="-2" pref="122" max="-2" attributes="0"/>
+                      <Component id="exibircadastro" min="-2" pref="122" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton5" min="-2" pref="122" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -297,7 +297,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton3" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
                           <Component id="Deletar" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
-                          <Component id="jButton6" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
+                          <Component id="exibircadastro" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
                           <Component id="jButton5" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
                           <Component id="jButton7" alignment="3" min="-2" pref="59" max="-2" attributes="0"/>
                       </Group>
@@ -307,7 +307,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton6">
+            <Component class="javax.swing.JButton" name="exibircadastro">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -317,6 +317,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Exibir Cadastro"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exibircadastroActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton5">
               <Properties>
