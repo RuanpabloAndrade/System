@@ -17,6 +17,7 @@ import javax.swing.table.TableRowSorter;
 import model.Modelfuncionariocadastro;
 import viw.Cadastrofuncionario;
 import viw.Vizualizarfuncionario;
+
 /**
  *
  * @author ruan
@@ -27,8 +28,6 @@ Modelfuncionariocadastro modelfuncionario = new Modelfuncionariocadastro();
 Controlerfuncionário controlerfuncionario2 = new Controlerfuncionário();
 Cadastrofuncionario funcionarioexibicao = new Cadastrofuncionario();
 List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
-
-
 
 
     /** Creates new form Vizualizarfuncionario */
@@ -304,8 +303,6 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
     
     private void Funcaodesingnfuncao(){
         tabelafuncionario2.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));

@@ -6,6 +6,7 @@ package Controler;
 
 import model.Modelfornecedor;
 import Dao.Daofornecedor;
+import java.util.List;
 /**
  *
  * @author ruan
@@ -14,6 +15,14 @@ public class Controlerfornecedor {
 Daofornecedor dao = new Daofornecedor();
     public boolean Salvarfornecedor(Modelfornecedor fornecedor) {
          return this.dao.salvarfornecedor(fornecedor);
+    }
+
+    public List<Modelfornecedor> ListarFornecedor() {
+          return this.dao.gettabelaFornecedor();
+    }
+
+    public boolean excluirfornecedor(int codigo) {
+        return this.dao.Excluirfornecedor(codigo);
     }
     
 }

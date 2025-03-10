@@ -9,6 +9,7 @@ package model;
  * @author ruan
  */
 public class Modelfornecedor {
+    private int codigo;
     private String razaosocial;
     private String incrocaoestadual;
     private String telefone;
@@ -16,6 +17,7 @@ public class Modelfornecedor {
     private String cnpj;
     private String fax;
     private String email;
+    private String categoria;
     private String pixchave;
     private String logradouto;
     private int numero;
@@ -28,9 +30,19 @@ public class Modelfornecedor {
     private String status;
     private String data;
 
+    
+    
+    public String getCategoria() {
+        return categoria;
+    }
+
     /**
      * @return the razaosocial
      */
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
     public String getRazaosocial() {
         return razaosocial;
     }
@@ -279,5 +291,21 @@ public class Modelfornecedor {
     public void setData(String data) {
         this.data = data;
     }
+
+    /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    
     
 }

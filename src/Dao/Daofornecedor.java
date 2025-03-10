@@ -8,8 +8,11 @@ import Conexao.Classeconexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import model.Modelfornecedor;
+import model.Modelfuncionariocadastro;
 
 /**
  *
@@ -23,7 +26,7 @@ public class Daofornecedor extends Classeconexao{
     
     public boolean salvarfornecedor(Modelfornecedor fornecedor) {
         conexao = Classeconexao.conector();
-        String sql = "insert into cadastro_empresa (razao_social,inscricao_estadual,telefone,nome_fantasia,cnpj,fax,email,chave_pix,logradouro,numero,bairro,complemento,cidade,estado,cep,observacoes,status1,data_cadastro) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into cadastro_empresa (razao_social,inscricao_estadual,telefone,nome_fantasia,cnpj,fax,email,chave_pix,logradouro,numero,bairro,complemento,cidade,estado,cep,observacoes,status1,data_cadastro,categoria) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, fornecedor.getRazaosocial());
@@ -44,11 +47,55 @@ public class Daofornecedor extends Classeconexao{
             pst.setString(16, fornecedor.getObservacao());
             pst.setString(17, fornecedor.getStatus());
             pst.setString(18, fornecedor.getData());
+            pst.setString(19, fornecedor.getCategoria());
             pst.executeUpdate();
         } catch (Exception e) {
             System.err.println(e);
             JOptionPane.showMessageDialog(null, "Usuario Não cadastrado! veja se já consta na tabela do banco no botão vizualizar!");
             return false;
+        }
+        return true;
+    }
+
+    public List<Modelfornecedor> gettabelaFornecedor() {
+        conexao = Classeconexao.conector();
+        List<Modelfornecedor> listafornecedor = new ArrayList<>();
+        Modelfornecedor modelfornecedor = new Modelfornecedor();
+
+        String sql = "SELECT id, "
+                + "nome_fantasia, "
+                + "telefone, "
+                + "categoria, "
+                + "cnpj "
+                + "FROM cadastro_empresa";
+
+        try {
+            pst = conexao.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                modelfornecedor = new Modelfornecedor();
+                modelfornecedor.setCodigo(rs.getInt(1));
+                modelfornecedor.setNomefantasia(rs.getString(2));
+                modelfornecedor.setTelefone(rs.getString(3));
+                modelfornecedor.setCategoria(rs.getString(4));
+                modelfornecedor.setCnpj(rs.getString(5));
+                listafornecedor.add(modelfornecedor);
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
+        return listafornecedor;
+    }
+
+    public boolean Excluirfornecedor(int codigo) {
+        conexao = Classeconexao.conector();
+        String sql = "delete from cadastro_empresa where id ='" + codigo + "'";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.execute();
+        } catch (Exception e) {
+            System.err.println(e);
         }
         return true;
     }

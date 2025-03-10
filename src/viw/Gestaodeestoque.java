@@ -13,8 +13,7 @@ import javax.swing.JOptionPane;
  * @author ruan
  */
 public class Gestaodeestoque extends javax.swing.JFrame {
-//Para se fazer a pesquisa o metodo de pesquisa deve estar no botao pesquisar pois irá utilizar a variação de dados sob a escolha do usuario na combobox(replicar a metodologia em todo o sistema)
-    //tentar fazer a pesquisa automatica com a função no video aula do professor jose de assis escolhendo a combobox sem precisar clicar no botão se não der certo fazer a dica de cima
+//colcoar botão de fornecedor para dar acesso direto a pagina de gerenciamento de fornecedores se tiver espaços se não precisar mais dos bototes de inserir pedidos e orçamentos
     
     /**
      * Creates new form Gestaodeestoque

@@ -3,16 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package viw;
-
 import java.awt.Color;
 import java.awt.Font;
-
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import model.Modelfuncionariocadastro;
+import Controler.Controlerfornecedor;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
+import model.Modelfornecedor;
 /**
  *
  * @author ruan
  */
 public class Vizualizarfornecedor extends javax.swing.JFrame {
-
+List<Modelfornecedor> listaFornecedor = new ArrayList<>();
+Controlerfornecedor Forncedorcontroler = new Controlerfornecedor();
     /**
      * Creates new form Vizualizarfornecedor
      */
@@ -20,6 +28,7 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
         initComponents();
          setLocationRelativeTo(this);
          Designtabelafornecedor();
+         CarregarFornecedor();
     }
 
     /**
@@ -34,8 +43,7 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jButton1 = new javax.swing.JButton();
+        Pesquisar1 = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -43,7 +51,7 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Deletar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -61,17 +69,19 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
         jLabel1.setText("Pesquisar Fornecedor:");
 
-        jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa (1).png"))); // NOI18N
-        jButton1.setText("Pesquisar");
+        Pesquisar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pesquisar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Pesquisar1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Pesquisar1KeyReleased(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
         jLabel3.setText("Pesquisar Por:");
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome Fantasia", "E-Mail", "CNPJ", "Telefone" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Categoria", "Nome Fantasia", "CNPJ", "Telefone" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -86,12 +96,9 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jFormattedTextField1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(Pesquisar1))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -103,13 +110,12 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1))
+                    .addComponent(Pesquisar1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1))
                 .addGap(33, 33, 33))
         );
 
+        tabelafornecedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tabelafornecedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -118,11 +124,11 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Nome Fantasia", "Telefone", "Email", "CNPJ"
+                "Código", "Nome Fantasia", "Telefone", "Categoria", "CNPJ"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, true, true, true
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -134,6 +140,11 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
         tabelafornecedor.setSelectionBackground(new java.awt.Color(232, 57, 95));
         tabelafornecedor.setShowVerticalLines(false);
         tabelafornecedor.getTableHeader().setReorderingAllowed(false);
+        tabelafornecedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tabelafornecedorKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelafornecedor);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -147,9 +158,14 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/relatorio (1).png"))); // NOI18N
         jButton5.setText("Relatório");
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/apagar (1).png"))); // NOI18N
-        jButton4.setText("Deletar");
+        Deletar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/apagar (1).png"))); // NOI18N
+        Deletar.setText("Deletar");
+        Deletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeletarActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Salvar (1).png"))); // NOI18N
@@ -172,7 +188,7 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Deletar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -187,7 +203,7 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Deletar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -276,6 +292,48 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
       fornece.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void tabelafornecedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelafornecedorKeyReleased
+       
+    }//GEN-LAST:event_tabelafornecedorKeyReleased
+
+    private void Pesquisar1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pesquisar1KeyReleased
+        DefaultTableModel model = (DefaultTableModel) tabelafornecedor.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        tabelafornecedor.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(Pesquisar1.getText()));
+    }//GEN-LAST:event_Pesquisar1KeyReleased
+
+    private void DeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletarActionPerformed
+        int linha = tabelafornecedor.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+            return;
+        }
+        int codigo=(int) tabelafornecedor.getValueAt(linha,0);
+           int entrada = JOptionPane.showConfirmDialog(null, "Deseja excluir", "Confirmação", JOptionPane.YES_NO_OPTION);
+           if(entrada==JOptionPane.YES_OPTION){
+               Forncedorcontroler.excluirfornecedor(codigo);
+               CarregarFornecedor();
+               JOptionPane.showMessageDialog(null,"Apagado");
+           }
+      
+    }//GEN-LAST:event_DeletarActionPerformed
+    public void CarregarFornecedor(){
+        listaFornecedor = Forncedorcontroler.ListarFornecedor();
+        DefaultTableModel modelo=(DefaultTableModel) tabelafornecedor.getModel();
+        modelo.setNumRows(0);
+        for (int i = 0; i <listaFornecedor.size(); i++) {
+            modelo.addRow(new Object[]{
+                listaFornecedor.get(i).getCodigo(),
+                listaFornecedor.get(i).getNomefantasia(),
+                listaFornecedor.get(i).getTelefone(),
+                listaFornecedor.get(i).getCategoria(),
+                listaFornecedor.get(i).getCnpj()
+            });
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -312,14 +370,13 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Deletar;
+    private javax.swing.JFormattedTextField Pesquisar1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -330,4 +387,8 @@ public class Vizualizarfornecedor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelafornecedor;
     // End of variables declaration//GEN-END:variables
+
+    public void Ponte() {
+         CarregarFornecedor();
+    }
 }

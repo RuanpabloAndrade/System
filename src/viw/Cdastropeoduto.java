@@ -535,7 +535,7 @@ public class Cdastropeoduto extends javax.swing.JFrame {
     private void Funcaotabelaprodutoscadastro(){
         tabelacapro.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         tabelacapro.getTableHeader().setOpaque(false);
-       tabelacapro.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelacapro.getTableHeader().setBackground(new Color(32, 136, 203));
         tabelacapro.getTableHeader().setForeground( new Color(255,255,255));
         tabelacapro.setRowHeight(25);
     }
