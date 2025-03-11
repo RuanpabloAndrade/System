@@ -599,6 +599,18 @@ public class Fornecedor extends javax.swing.JFrame {
         fornecedor.setTelefone(telefone.getText());
         fornecedor.setNomefantasia(nomefantasia.getText());
         fornecedor.setCnpj(cnpj.getText());
+        fornecedor.setFax(fax.getText());
+        fornecedor.setEmail(email.getText());
+        fornecedor.setCategoria((String) categoria.getEditor().getItem());
+        fornecedor.setPixchave(chavepix.getText());
+        fornecedor.setLogradouto(logradouro.getText());
+        fornecedor.setNumero(Integer.parseInt(numero.getText()));
+        fornecedor.setBairro(bairro.getText());
+        fornecedor.setComplemento(complemento.getText());
+        fornecedor.setCidade(cidade.getText());
+        fornecedor.setEstado((String) estado.getEditor().getItem());
+        fornecedor.setCep(cep.getText());
+        fornecedor.setObservacao(obs.getText());
         if (controlerforncedor.Editarfornecedorcontroler(fornecedor)) {
             JOptionPane.showMessageDialog(null, "Funcionário Atualizado com Sucesso!");
             Limparformulario();
