@@ -143,8 +143,8 @@ public class Daofornecedor extends Classeconexao{
         String sql = "update cadastro_empresa set razao_social=?, "
                 + "inscricao_estadual=?, telefone=?, nome_fantasia=?, "
                 + "cnpj=?, fax=?, email=?, categoria=?, "
-                + "chave_pix=?, logradouro=?, numero=?, bairro=?, complemento=?, cidade=?, estado=?, cep=?, observacoes=?"
-                + "where razao_social=?";
+                + "chave_pix=?, logradouro=?, numero=?, bairro=?, complemento=?, cidade=?, estado=?, cep=?, observacoes=?, status1=?, data_cadastro=?"
+                + "where cnpj=?";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, fornecedor.getRazaosocial());
@@ -164,9 +164,9 @@ public class Daofornecedor extends Classeconexao{
             pst.setString(15, fornecedor.getEstado());
             pst.setString(16, fornecedor.getCep());
             pst.setString(17, fornecedor.getObservacao());
-            pst.setString(18, fornecedor.getRazaosocial());
-            
-            
+            pst.setString(18, fornecedor.getStatus());
+            pst.setString(19, fornecedor.getData());
+            pst.setString(20, fornecedor.getCnpj());
             pst.executeUpdate();
         } catch (Exception e) {
             System.err.println(e);

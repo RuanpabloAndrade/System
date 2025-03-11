@@ -611,6 +611,8 @@ public class Fornecedor extends javax.swing.JFrame {
         fornecedor.setEstado((String) estado.getEditor().getItem());
         fornecedor.setCep(cep.getText());
         fornecedor.setObservacao(obs.getText());
+        fornecedor.setStatus((String) status1.getEditor().getItem());
+        fornecedor.setData(data.getText());
         if (controlerforncedor.Editarfornecedorcontroler(fornecedor)) {
             JOptionPane.showMessageDialog(null, "Funcionário Atualizado com Sucesso!");
             Limparformulario();
