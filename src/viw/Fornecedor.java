@@ -40,7 +40,7 @@ public class Fornecedor extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         cancelarformulario = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        atualizarfornecedor = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         razaosocial = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -143,12 +143,12 @@ public class Fornecedor extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/po (1).png"))); // NOI18N
-        jButton5.setText("Atualizar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        atualizarfornecedor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        atualizarfornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/po (1).png"))); // NOI18N
+        atualizarfornecedor.setText("Atualizar");
+        atualizarfornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                atualizarfornecedorActionPerformed(evt);
             }
         });
 
@@ -162,7 +162,7 @@ public class Fornecedor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancelarformulario, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(atualizarfornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -173,7 +173,7 @@ public class Fornecedor extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(atualizarfornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelarformulario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -592,9 +592,22 @@ public class Fornecedor extends javax.swing.JFrame {
        Limparformulario();
     }//GEN-LAST:event_cancelarformularioActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-      
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void atualizarfornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarfornecedorActionPerformed
+        fornecedor = new Modelfornecedor();
+        fornecedor.setRazaosocial(razaosocial.getText());
+        fornecedor.setIncrocaoestadual(inscricaoestadual.getText());
+        fornecedor.setTelefone(telefone.getText());
+        fornecedor.setNomefantasia(nomefantasia.getText());
+        fornecedor.setCnpj(cnpj.getText());
+        if (controlerforncedor.Editarfornecedorcontroler(fornecedor)) {
+            JOptionPane.showMessageDialog(null, "Funcionário Atualizado com Sucesso!");
+            Limparformulario();
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Funcionário Não Atualizado !");
+        }
+        
+    }//GEN-LAST:event_atualizarfornecedorActionPerformed
  
     
     private void Limparformulario(){
@@ -656,6 +669,7 @@ public class Fornecedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atualizarfornecedor;
     private javax.swing.JFormattedTextField bairro;
     private javax.swing.JButton cancelarformulario;
     private javax.swing.JComboBox<String> categoria;
@@ -671,7 +685,6 @@ public class Fornecedor extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField inscricaoestadual;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -707,7 +720,24 @@ public class Fornecedor extends javax.swing.JFrame {
     public void preechercampos(Modelfornecedor fornecedor) {
          razaosocial.setText(fornecedor.getRazaosocial());
          inscricaoestadual.setText(fornecedor.getIncrocaoestadual());
+         telefone.setText(fornecedor.getTelefone());
          nomefantasia.setText(fornecedor.getNomefantasia());
+         cnpj.setText(fornecedor.getCnpj());
+         fax.setText(fornecedor.getFax());
+         email.setText(fornecedor.getEmail());
+         categoria.setSelectedItem(fornecedor.getCategoria());
+         chavepix.setText(fornecedor.getPixchave());         
+         logradouro.setText(fornecedor.getLogradouto());
+         numero.setText(String.valueOf(fornecedor.getNumero()));
+         bairro.setText(fornecedor.getBairro());
+         complemento.setText(fornecedor.getComplemento());
+         cidade.setText(fornecedor.getCidade());
+         estado.setSelectedItem(fornecedor.getEstado());
+         cep.setText(fornecedor.getCep());
+         obs.setText(fornecedor.getObservacao());
+         status1.setSelectedItem(fornecedor.getStatus());
+         data.setText(fornecedor.getData());
+         
     }
 
    

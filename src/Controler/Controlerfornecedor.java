@@ -30,6 +30,11 @@ Daofornecedor dao = new Daofornecedor();
          return this.dao.ExibirCadastro(nome);
     }
 
+    public boolean Editarfornecedorcontroler(Modelfornecedor fornecedor) {
+       return this.dao.EditarFornecedorDao(fornecedor);
+        
+    }
+
     
     
 }

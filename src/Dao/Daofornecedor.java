@@ -112,13 +112,49 @@ public class Daofornecedor extends Classeconexao{
             if (rs.next()) {
                 modelfornecedor.setRazaosocial(rs.getString("razao_social"));
                 modelfornecedor.setIncrocaoestadual(rs.getString("inscricao_estadual"));
+                modelfornecedor.setTelefone(rs.getString("telefone"));
                 modelfornecedor.setNomefantasia(rs.getString("nome_fantasia"));
+                modelfornecedor.setCnpj(rs.getString("cnpj"));
+                modelfornecedor.setFax(rs.getString("fax"));
+                modelfornecedor.setEmail(rs.getString("email"));    
+                modelfornecedor.setPixchave(rs.getString("chave_pix"));
+                modelfornecedor.setLogradouto(rs.getString("logradouro"));
+                modelfornecedor.setNumero(rs.getInt("numero"));
+                modelfornecedor.setBairro(rs.getString("bairro"));
+                modelfornecedor.setComplemento(rs.getString("complemento"));
+                modelfornecedor.setCidade(rs.getString("cidade"));
+                modelfornecedor.setEstado(rs.getString("estado"));
+                modelfornecedor.setCep(rs.getString("cep"));
+                modelfornecedor.setObservacao(rs.getString("observacoes"));
+                modelfornecedor.setStatus(rs.getString("status1"));
+                modelfornecedor.setData(rs.getString("data_cadastro"));
+                modelfornecedor.setCategoria(rs.getString("categoria"));
+                
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
         }
         return modelfornecedor;
        
+    }
+
+    public boolean EditarFornecedorDao(Modelfornecedor fornecedor) {
+        conexao = Classeconexao.conector();
+        String sql = "update cadastro_empresa set razao_social=?, inscricao_estadual=?, telefone=?, nome_fantasia=?, cnpj=? where razao_social=?";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, fornecedor.getRazaosocial());
+            pst.setString(2, fornecedor.getIncrocaoestadual());
+            pst.setString(3, fornecedor.getTelefone());
+            pst.setString(4, fornecedor.getNomefantasia());
+            pst.setString(5, fornecedor.getCnpj());
+            pst.setString(6, fornecedor.getRazaosocial());
+            pst.executeUpdate();
+        } catch (Exception e) {
+            System.err.println(e);
+            JOptionPane.showMessageDialog(null, "Usuario Não cadastrado, Veja se Já consta na tabela abaixo");
+        }
+        return true;
     }
 
     
