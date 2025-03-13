@@ -81,6 +81,8 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
         tabelafuncionariocadastro = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         chave = new javax.swing.JFormattedTextField();
+        id = new javax.swing.JFormattedTextField();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -289,10 +291,17 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabelafuncionariocadastro);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel11.setText("Nome Completo:");
+        jLabel11.setText("Nome");
 
         chave.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         chave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        id.setEditable(false);
+        id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setText("Id:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -322,15 +331,17 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
                                         .addComponent(cepfuncionario, javax.swing.GroupLayout.Alignment.TRAILING))
                                     .addComponent(cpffuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel23)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel23)
-                                            .addComponent(jLabel11))
-                                        .addGap(55, 55, 55))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(nomefuncionario)
-                                        .addGap(7, 7, 7)))
+                                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel12))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel11)
+                                            .addComponent(nomefuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(7, 7, 7)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,14 +389,16 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chavepix)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel11))
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chave)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(telefonefuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nomefuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(id, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(telefonefuncionario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                            .addComponent(nomefuncionario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -489,12 +502,13 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
         Limparformulario();
         int linha = tabelafuncionariocadastro.getSelectedRow();
         if (linha < 0) {
-            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado2!");
             return;
         }
         String nome = (String) tabelafuncionariocadastro.getValueAt(linha, 0);
         modelfuncionario = controlerfuncionario.carregarDadosPorId(nome);
         if (modelfuncionario != null) {
+            id.setText(String.valueOf(modelfuncionario.getCodigo()));
             nomefuncionario.setText(modelfuncionario.getNome());
             chave.setText(modelfuncionario.getChavepix());
             telefonefuncionario.setText(modelfuncionario.getTelefone());
@@ -512,6 +526,7 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
     }
 
     private void Limparformulario() {
+        id.setText("");
         nomefuncionario.setText("");
         chave.setText("");
         telefonefuncionario.setText("");
@@ -563,6 +578,7 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
 
     private void funcaoatualizatfuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcaoatualizatfuncionarioActionPerformed
         modelfuncionario = new Modelfuncionariocadastro();
+        modelfuncionario.setCodigo(Integer.parseInt(id.getText()));
         modelfuncionario.setNome(nomefuncionario.getText());
         modelfuncionario.setChavepix(chave.getText());
         modelfuncionario.setTelefone(telefonefuncionario.getText());
@@ -632,12 +648,14 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField cpffuncionario;
     private javax.swing.JFormattedTextField datafuncionario;
     private javax.swing.JButton funcaoatualizatfuncionario;
+    private javax.swing.JFormattedTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
@@ -659,6 +677,7 @@ public class Cadastrofuncionario extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
    public void preechercampos(Modelfuncionariocadastro modelfuncionario) {
+          id.setText(String.valueOf(modelfuncionario.getCodigo()));
           nomefuncionario.setText(modelfuncionario.getNome());
           chave.setText(modelfuncionario.getChavepix());
           telefonefuncionario.setText(modelfuncionario.getTelefone());

@@ -110,6 +110,7 @@ public class Daofornecedor extends Classeconexao{
             pst.setString(1, nome);
             rs = pst.executeQuery();
             if (rs.next()) {
+                modelfornecedor.setCodigo(rs.getInt("id"));
                 modelfornecedor.setRazaosocial(rs.getString("razao_social"));
                 modelfornecedor.setIncrocaoestadual(rs.getString("inscricao_estadual"));
                 modelfornecedor.setTelefone(rs.getString("telefone"));
@@ -140,33 +141,34 @@ public class Daofornecedor extends Classeconexao{
 
     public boolean EditarFornecedorDao(Modelfornecedor fornecedor) {
         conexao = Classeconexao.conector();
-        String sql = "update cadastro_empresa set razao_social=?, "
+        String sql = "update cadastro_empresa set id=?, razao_social=?, "
                 + "inscricao_estadual=?, telefone=?, nome_fantasia=?, "
                 + "cnpj=?, fax=?, email=?, categoria=?, "
                 + "chave_pix=?, logradouro=?, numero=?, bairro=?, complemento=?, cidade=?, estado=?, cep=?, observacoes=?, status1=?, data_cadastro=?"
-                + "where cnpj=?";
+                + "where id=?";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, fornecedor.getRazaosocial());
-            pst.setString(2, fornecedor.getIncrocaoestadual());
-            pst.setString(3, fornecedor.getTelefone());
-            pst.setString(4, fornecedor.getNomefantasia());
-            pst.setString(5, fornecedor.getCnpj());
-            pst.setString(6, fornecedor.getFax());
-            pst.setString(7, fornecedor.getEmail());
-            pst.setString(8, fornecedor.getCategoria());
-            pst.setString(9, fornecedor.getPixchave());
-            pst.setString(10, fornecedor.getLogradouto());
-            pst.setInt(11, fornecedor.getNumero());
-            pst.setString(12, fornecedor.getBairro());
-            pst.setString(13, fornecedor.getComplemento());
-            pst.setString(14, fornecedor.getCidade());
-            pst.setString(15, fornecedor.getEstado());
-            pst.setString(16, fornecedor.getCep());
-            pst.setString(17, fornecedor.getObservacao());
-            pst.setString(18, fornecedor.getStatus());
-            pst.setString(19, fornecedor.getData());
-            pst.setString(20, fornecedor.getCnpj());
+            pst.setInt(1, fornecedor.getCodigo());
+            pst.setString(2, fornecedor.getRazaosocial());
+            pst.setString(3, fornecedor.getIncrocaoestadual());
+            pst.setString(4, fornecedor.getTelefone());
+            pst.setString(5, fornecedor.getNomefantasia());
+            pst.setString(6, fornecedor.getCnpj());
+            pst.setString(7, fornecedor.getFax());
+            pst.setString(8, fornecedor.getEmail());
+            pst.setString(9, fornecedor.getCategoria());
+            pst.setString(10, fornecedor.getPixchave());
+            pst.setString(11, fornecedor.getLogradouto());
+            pst.setInt(12, fornecedor.getNumero());
+            pst.setString(13, fornecedor.getBairro());
+            pst.setString(14, fornecedor.getComplemento());
+            pst.setString(15, fornecedor.getCidade());
+            pst.setString(16, fornecedor.getEstado());
+            pst.setString(17, fornecedor.getCep());
+            pst.setString(18, fornecedor.getObservacao());
+            pst.setString(19, fornecedor.getStatus());
+            pst.setString(20, fornecedor.getData());
+            pst.setInt(21, fornecedor.getCodigo());
             pst.executeUpdate();
         } catch (Exception e) {
             System.err.println(e);
