@@ -16,5 +16,9 @@ public class controlerusuario {
     public boolean Telalogin(Modelusuario model) {
         return this.dao.Logar(model);
     }
+
+    public boolean Salvarusuarios(Modelusuario usuarios) {
+         return this.dao.Salvarusuario(usuarios);
+    }
     
 }

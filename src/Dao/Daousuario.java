@@ -43,5 +43,29 @@ public class Daousuario extends Classeconexao{
 
     return true;
 }
+
+    public boolean Salvarusuario(Modelusuario usuarios) {
+        con = Classeconexao.conector();
+        String sql = "insert into tbusuario2 (loginusuario,senha,administrador,telefone,data_nascimento,cpf,cargo_funcao,nome_usuario,email,data_admissao) values(?,?,?,?,?,?,?,?,?,?)";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setString(1, usuarios.getUsuario());
+            pst.setString(2, usuarios.getSenha());
+            pst.setString(3, usuarios.getAdm());
+            pst.setString(4, usuarios.getTelefone());
+            pst.setString(5, usuarios.getDatanasimento());
+            pst.setString(6, usuarios.getCpf());
+            pst.setString(7, usuarios.getCargo());
+            pst.setString(8, usuarios.getNomeusuario());
+            pst.setString(9, usuarios.getEmail());
+            pst.setString(10, usuarios.getDataadmissao());
+            pst.executeUpdate();
+        } catch (Exception e) {
+            System.err.println(e);
+            JOptionPane.showMessageDialog(null, "Usuario Não cadastrado, Veja se Já consta na tabela abaixo");
+            return false;
+        }
+        return true;
+    }
     
 }
