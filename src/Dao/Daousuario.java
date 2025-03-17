@@ -129,5 +129,51 @@ public class Daousuario extends Classeconexao{
         }
         return modelusuario;
     }
+
+    public List<Modelusuario> Carregarusuariotabelavizualizar() {
+        con = Classeconexao.conector();
+        List<Modelusuario> listausuario = new ArrayList<>();
+        Modelusuario modelusuario = new Modelusuario();
+
+        String sql = "SELECT cod, "
+                + "loginusuario, "
+                + "telefone, "
+                + "cpf, "
+                + "nome_usuario, "
+                + "email "
+                + "FROM tbusuario2";
+
+        try {
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                modelusuario = new Modelusuario();
+                modelusuario.setCodigo(rs.getInt(1));
+                modelusuario.setUsuario(rs.getString(2));
+                modelusuario.setTelefone(rs.getString(3));
+                modelusuario.setCpf(rs.getString(4));
+                modelusuario.setNomeusuario(rs.getString(5));
+                modelusuario.setEmail(rs.getString(6));
+                listausuario.add(modelusuario);
+            }
+
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
+        return listausuario;
+    }
+
+    public boolean Excluirusuario(int codigo) {
+        con = Classeconexao.conector();
+        String sql = "delete from tbusuario2 where cod ='" + codigo + "'";
+        try {
+            pst = con.prepareStatement(sql);
+            pst.execute();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return true;
+    }
     
 }

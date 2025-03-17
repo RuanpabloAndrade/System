@@ -272,7 +272,7 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="438" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="Pesquisar" max="32767" attributes="0"/>
+                          <Component id="Pesquisarfuncionario" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -291,7 +291,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="Pesquisar" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="Pesquisarfuncionario" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="44" max="32767" attributes="0"/>
@@ -308,7 +308,7 @@
                 <Property name="text" type="java.lang.String" value="Pesquisar Funcion&#xe1;rio:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="Pesquisar">
+            <Component class="javax.swing.JFormattedTextField" name="Pesquisarfuncionario">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -320,8 +320,8 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PesquisarActionPerformed"/>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PesquisarKeyReleased"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PesquisarfuncionarioActionPerformed"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PesquisarfuncionarioKeyReleased"/>
               </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox1">

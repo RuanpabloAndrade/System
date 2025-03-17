@@ -29,5 +29,13 @@ public class controlerusuario {
     public Modelusuario carregarDadosPorId(int codigo) {
        return dao.carregarusuarios(codigo); 
     }
+
+    public List<Modelusuario> Listarusuarioscontrolervizualizar() {
+        return this.dao.Carregarusuariotabelavizualizar();
+    }
+
+    public boolean excluirusuario(int codigo) {
+        return this.dao.Excluirusuario(codigo);
+    }
     
 }

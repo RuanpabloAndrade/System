@@ -62,7 +62,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         jButton5 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        Pesquisar = new javax.swing.JFormattedTextField();
+        Pesquisarfuncionario = new javax.swing.JFormattedTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -176,16 +176,16 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
         jLabel2.setText("Pesquisar Funcionário:");
 
-        Pesquisar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Pesquisar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Pesquisar.addActionListener(new java.awt.event.ActionListener() {
+        Pesquisarfuncionario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pesquisarfuncionario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Pesquisarfuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PesquisarActionPerformed(evt);
+                PesquisarfuncionarioActionPerformed(evt);
             }
         });
-        Pesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
+        Pesquisarfuncionario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                PesquisarKeyReleased(evt);
+                PesquisarfuncionarioKeyReleased(evt);
             }
         });
 
@@ -210,7 +210,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(0, 438, Short.MAX_VALUE))
-                    .addComponent(Pesquisar))
+                    .addComponent(Pesquisarfuncionario))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -225,7 +225,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Pesquisarfuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -355,16 +355,16 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
                 
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void PesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarActionPerformed
+    private void PesquisarfuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarfuncionarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PesquisarActionPerformed
+    }//GEN-LAST:event_PesquisarfuncionarioActionPerformed
 
-    private void PesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PesquisarKeyReleased
+    private void PesquisarfuncionarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PesquisarfuncionarioKeyReleased
         DefaultTableModel model = (DefaultTableModel) tabelafuncionario2.getModel();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
         tabelafuncionario2.setRowSorter(trs);
-        trs.setRowFilter(RowFilter.regexFilter(Pesquisar.getText()));
-    }//GEN-LAST:event_PesquisarKeyReleased
+        trs.setRowFilter(RowFilter.regexFilter(Pesquisarfuncionario.getText()));
+    }//GEN-LAST:event_PesquisarfuncionarioKeyReleased
     
      public void Carregarusu2(){
         listafuncionario = controlerfuncionario2.Listarusucontroler2();
@@ -418,7 +418,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ExibirCadastro;
-    private javax.swing.JFormattedTextField Pesquisar;
+    private javax.swing.JFormattedTextField Pesquisarfuncionario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
