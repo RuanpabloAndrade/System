@@ -7,9 +7,13 @@ import Conexao.Classeconexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.Modelfuncionariocadastro;
 import model.Modelusuario;
 import viw.Telaprincipal;
 
@@ -66,6 +70,64 @@ public class Daousuario extends Classeconexao{
             return false;
         }
         return true;
+    }
+
+    public List<Modelusuario> Carregarusuariotabela() {
+        con = Classeconexao.conector();
+        List<Modelusuario> listausuario = new ArrayList<>();
+        Modelusuario modelusuario = new Modelusuario();
+
+        String sql = "SELECT cod, "
+                + "nome_usuario, "
+                + "telefone, "
+                + "email "
+                + "FROM tbusuario2";
+
+        try {
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                modelusuario = new Modelusuario();
+                modelusuario.setCodigo(rs.getInt(1));
+                modelusuario.setNomeusuario(rs.getString(2));
+                modelusuario.setTelefone(rs.getString(3));
+                modelusuario.setEmail(rs.getString(4));
+                listausuario.add(modelusuario);
+            }
+
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
+        return listausuario;
+    }
+
+    public Modelusuario carregarusuarios(int codigo) {
+        Modelusuario modelusuario = new Modelusuario();
+        try {
+            con = Classeconexao.conector();
+            String sql = "SELECT * FROM tbusuario2 WHERE cod = ?";
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, codigo);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                modelusuario.setCodigo(rs.getInt("cod"));
+                modelusuario.setUsuario(rs.getString("loginusuario"));
+                modelusuario.setSenha(rs.getString("senha"));
+                modelusuario.setAdm(rs.getString("administrador"));
+                modelusuario.setTelefone(rs.getString("telefone"));
+                modelusuario.setDatanasimento(rs.getString("data_nascimento"));
+                modelusuario.setCpf(rs.getString("cpf"));
+                modelusuario.setCargo(rs.getString("cargo_funcao"));
+                modelusuario.setNomeusuario(rs.getString("nome_usuario"));
+                modelusuario.setEmail(rs.getString("email"));
+                modelusuario.setDataadmissao(rs.getString("data_admissao"));
+                
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
+        }
+        return modelusuario;
     }
     
 }

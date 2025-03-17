@@ -4,6 +4,7 @@
  */
 package Controler;
 import Dao.Daousuario;
+import java.util.List;
 import model.Modelusuario;
 
 /**
@@ -19,6 +20,14 @@ public class controlerusuario {
 
     public boolean Salvarusuarios(Modelusuario usuarios) {
          return this.dao.Salvarusuario(usuarios);
+    }
+
+    public List<Modelusuario> Listarusuarioscontroler() {
+        return this.dao.Carregarusuariotabela();
+    }
+
+    public Modelusuario carregarDadosPorId(int codigo) {
+       return dao.carregarusuarios(codigo); 
     }
     
 }

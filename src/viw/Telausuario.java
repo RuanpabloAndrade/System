@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
 import model.Modelfuncionariocadastro;
 import model.Modelusuario;
 import Controler.controlerusuario;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author ruan
@@ -18,6 +21,7 @@ import Controler.controlerusuario;
 public class Telausuario extends javax.swing.JFrame {
     Modelusuario usuarios = new Modelusuario();
     controlerusuario controlerusuarios = new controlerusuario();
+    List<Modelusuario> listausuario = new ArrayList<>();
     /**
      * Creates new form Telausuario
      */
@@ -25,6 +29,7 @@ public class Telausuario extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         designtabelausuario();
+        carregarusuario();
     }
 
     /**
@@ -66,7 +71,7 @@ public class Telausuario extends javax.swing.JFrame {
         tabelausuario = new javax.swing.JTable();
         adm = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        id = new javax.swing.JFormattedTextField();
         usuario = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -244,6 +249,7 @@ public class Telausuario extends javax.swing.JFrame {
         }
         dataadmi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
+        tabelausuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         tabelausuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -260,6 +266,11 @@ public class Telausuario extends javax.swing.JFrame {
         tabelausuario.setSelectionBackground(new java.awt.Color(232, 57, 95));
         tabelausuario.setShowVerticalLines(false);
         tabelausuario.getTableHeader().setReorderingAllowed(false);
+        tabelausuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelausuarioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelausuario);
 
         adm.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -269,10 +280,12 @@ public class Telausuario extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel11.setText("Id:");
 
-        jFormattedTextField1.setEditable(false);
-        jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        id.setEditable(false);
+        id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         usuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        usuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout admissaoLayout = new javax.swing.GroupLayout(admissao);
         admissao.setLayout(admissaoLayout);
@@ -332,7 +345,7 @@ public class Telausuario extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, admissaoLayout.createSequentialGroup()
                         .addGroup(admissaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(admissaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -353,7 +366,7 @@ public class Telausuario extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addGroup(admissaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addComponent(jFormattedTextField1))
+                    .addComponent(id))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(admissaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -428,15 +441,32 @@ public class Telausuario extends javax.swing.JFrame {
         usuarios.setNomeusuario(usuario.getText());
         usuarios.setEmail(email.getText());
         usuarios.setDataadmissao(dataadmi.getText());
+        if (senha.getText().trim().isEmpty() || login.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo Login e senha Obrigatórios");
+            return;
+        }
+        
         if (controlerusuarios.Salvarusuarios(usuarios)) {
            JOptionPane.showMessageDialog(null, "Usuario cadastrado com Sucesso!");
-            
-            
-       } else {
-            
-       }
+            Limpar();
+            carregarusuario();
+        }
 
     }//GEN-LAST:event_metodosalvarusuarioActionPerformed
+    private void carregarusuario(){
+        listausuario = controlerusuarios.Listarusuarioscontroler();
+        DefaultTableModel modelo = (DefaultTableModel) tabelausuario.getModel();
+        modelo.setNumRows(0);
+        for (int i = 0; i < listausuario.size(); i++) {
+            modelo.addRow(new Object[]{
+                listausuario.get(i).getCodigo(),
+                listausuario.get(i).getNomeusuario(),
+                listausuario.get(i).getTelefone(),
+                listausuario.get(i).getEmail()
+            });
+        }
+    }
+    
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Vizualizarusuario vizualizar = new Vizualizarusuario();
@@ -450,15 +480,56 @@ public class Telausuario extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loginActionPerformed
-        private void Limpar(){
+
+    private void tabelausuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelausuarioMouseClicked
+        setarcampospelatabela();
+    }//GEN-LAST:event_tabelausuarioMouseClicked
+    private void setarcampospelatabela() {
+        Limpar();
+        int linha = tabelausuario.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado2!");
+            return;
+        }
+        int codigo = (int) tabelausuario.getValueAt(linha, 0);
+        usuarios = controlerusuarios.carregarDadosPorId(codigo);
+        if (usuarios!= null) {
+            id.setText(String.valueOf(usuarios.getCodigo()));
+            login.setText(usuarios.getUsuario());
+            senha.setText(usuarios.getSenha());
+            adm.setSelectedItem(usuarios.getAdm());
+            telefone.setText(usuarios.getTelefone());
+            nascimento.setText(usuarios.getCpf());
+            cpf.setText(usuarios.getCpf());
+            cargo.setText(usuarios.getCargo());
+            usuario.setText(usuarios.getNomeusuario());
+            email.setText(usuarios.getEmail());
+            dataadmi.setText(usuarios.getDataadmissao());
+            
+        }
+
+    }  
+    
+    private void Limpar(){
+        id.setText("");
         login.setText("");
         senha.setText("");  
+        usuario.setText("");
         telefone.setText("");     
         nascimento.setText(""); 
         cpf.setText(""); 
         dataadmi.setText(""); 
         email.setText(""); 
         cargo.setText(""); 
+        telefone.setValue(null); // Define o valor como null
+        telefone.setFocusLostBehavior(telefone.COMMIT);
+        nascimento.setValue(null); // Define o valor como null
+        nascimento.setFocusLostBehavior(nascimento.COMMIT);
+        cpf.setValue(null); // Define o valor como null
+        cpf.setFocusLostBehavior(cpf.COMMIT);
+        dataadmi.setValue(null); // Define o valor como null
+        dataadmi.setFocusLostBehavior(dataadmi.COMMIT);
+        
     }
     //mudar alguns tipos de dados para o formato date de data
     //e mudar as classes dauusuario e modelususario pois são parecidas confudindo
@@ -505,10 +576,10 @@ public class Telausuario extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField cpf;
     private javax.swing.JFormattedTextField dataadmi;
     private javax.swing.JFormattedTextField email;
+    private javax.swing.JFormattedTextField id;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -532,4 +603,6 @@ public class Telausuario extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField telefone;
     private javax.swing.JFormattedTextField usuario;
     // End of variables declaration//GEN-END:variables
+
+    
 }
