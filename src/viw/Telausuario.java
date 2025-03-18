@@ -14,6 +14,7 @@ import Controler.controlerusuario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import model.Modelfornecedor;
 /**
  *
  * @author ruan
@@ -46,7 +47,7 @@ public class Telausuario extends javax.swing.JFrame {
         metodosalvarusuario = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        atualizarusuario = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         login = new javax.swing.JFormattedTextField();
@@ -115,10 +116,15 @@ public class Telausuario extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/po (1).png"))); // NOI18N
-        jButton3.setText("Atualizar");
+        atualizarusuario.setBackground(new java.awt.Color(255, 255, 255));
+        atualizarusuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        atualizarusuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/po (1).png"))); // NOI18N
+        atualizarusuario.setText("Atualizar");
+        atualizarusuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarusuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -132,7 +138,7 @@ public class Telausuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(atualizarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
         );
         jPanel3Layout.setVerticalGroup(
@@ -143,7 +149,7 @@ public class Telausuario extends javax.swing.JFrame {
                     .addComponent(metodosalvarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(atualizarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -484,6 +490,28 @@ public class Telausuario extends javax.swing.JFrame {
     private void tabelausuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelausuarioMouseClicked
         setarcampospelatabela();
     }//GEN-LAST:event_tabelausuarioMouseClicked
+
+    private void atualizarusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarusuarioActionPerformed
+        usuarios = new Modelusuario();
+        usuarios.setCodigo(Integer.parseInt(id.getText()));
+        usuarios.setUsuario(login.getText());
+        usuarios.setSenha(senha.getText());
+        usuarios.setAdm((String) adm.getEditor().getItem());
+        usuarios.setTelefone(telefone.getText());
+        usuarios.setDatanasimento(nascimento.getText());
+        usuarios.setCpf(cpf.getText());
+        usuarios.setCargo(cargo.getText());
+        usuarios.setNomeusuario(usuario.getText());
+        usuarios.setEmail(email.getText());
+        usuarios.setDataadmissao(dataadmi.getText());
+        if (controlerusuarios.Editarusuariocontroler(usuarios)) {
+            JOptionPane.showMessageDialog(null, "Usuario Atualizado com Sucesso!");
+            Limpar();
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario Não Atualizado !");
+        }
+    }//GEN-LAST:event_atualizarusuarioActionPerformed
     private void setarcampospelatabela() {
         Limpar();
         int linha = tabelausuario.getSelectedRow();
@@ -499,7 +527,7 @@ public class Telausuario extends javax.swing.JFrame {
             senha.setText(usuarios.getSenha());
             adm.setSelectedItem(usuarios.getAdm());
             telefone.setText(usuarios.getTelefone());
-            nascimento.setText(usuarios.getCpf());
+            nascimento.setText(usuarios.getDatanasimento());
             cpf.setText(usuarios.getCpf());
             cargo.setText(usuarios.getCargo());
             usuario.setText(usuarios.getNomeusuario());
@@ -572,12 +600,12 @@ public class Telausuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> adm;
     private javax.swing.JPanel admissao;
+    private javax.swing.JButton atualizarusuario;
     private javax.swing.JFormattedTextField cargo;
     private javax.swing.JFormattedTextField cpf;
     private javax.swing.JFormattedTextField dataadmi;
     private javax.swing.JFormattedTextField email;
     private javax.swing.JFormattedTextField id;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
@@ -603,6 +631,21 @@ public class Telausuario extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField telefone;
     private javax.swing.JFormattedTextField usuario;
     // End of variables declaration//GEN-END:variables
+
+    public void preechercamposusuario(Modelusuario usuarios) {
+          id.setText(String.valueOf(usuarios.getCodigo()));
+          login.setText(usuarios.getUsuario());
+          senha.setText(usuarios.getSenha());
+          adm.setSelectedItem(usuarios.getAdm());
+          telefone.setText(usuarios.getTelefone());
+          nascimento.setText(usuarios.getDatanasimento());
+          cpf.setText(usuarios.getCpf());
+          cargo.setText(usuarios.getCargo());
+          usuario.setText(usuarios.getNomeusuario());
+          email.setText(usuarios.getEmail());
+          dataadmi.setText(usuarios.getDataadmissao());
+          
+    }
 
     
 }

@@ -135,6 +135,11 @@ public class Vizualizarusuario extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
         jButton6.setText("Exibir Cadastro");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/relatorio (1).png"))); // NOI18N
@@ -334,6 +339,23 @@ public class Vizualizarusuario extends javax.swing.JFrame {
     private void tabelausuariovizualizarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelausuariovizualizarKeyReleased
 
     }//GEN-LAST:event_tabelausuariovizualizarKeyReleased
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        int linha = tabelausuariovizualizar.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+            return;
+        }
+        int codigo = (int) tabelausuariovizualizar.getValueAt(linha,0);
+        
+        usuarios = controlerusuarios.Exibircadastrousuario(codigo);
+        if(usuarios != null){
+                Telausuario exibircadastrousuario = new  Telausuario();
+                exibircadastrousuario.preechercamposusuario(usuarios); 
+                exibircadastrousuario.setVisible(true);
+                
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

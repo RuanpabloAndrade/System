@@ -232,7 +232,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton4" min="-2" pref="130" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="atualizarusuario" min="-2" pref="130" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -245,7 +245,7 @@
                           <Component id="metodosalvarusuario" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                           <Component id="jButton5" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                           <Component id="jButton4" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="atualizarusuario" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="21" max="32767" attributes="0"/>
                   </Group>
@@ -304,7 +304,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="atualizarusuario">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -317,6 +317,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Atualizar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atualizarusuarioActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -343,8 +343,7 @@ List<Modelfuncionariocadastro> listafuncionario = new ArrayList<>();
         modelfuncionario  = controlerfuncionario2.ExibirFuncionario(nome);
         if(modelfuncionario != null){
                 Cadastrofuncionario exibircadastro = new  Cadastrofuncionario();
-                exibircadastro.preechercampos(modelfuncionario);
-                
+                exibircadastro.preechercampos(modelfuncionario); 
                 exibircadastro.setVisible(true);
                 
         }

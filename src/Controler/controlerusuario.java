@@ -37,5 +37,13 @@ public class controlerusuario {
     public boolean excluirusuario(int codigo) {
         return this.dao.Excluirusuario(codigo);
     }
+
+    public Modelusuario Exibircadastrousuario(int codigo) {
+        return this.dao.ExibirCadastrousuario(codigo);
+    }
+
+    public boolean Editarusuariocontroler(Modelusuario usuarios) {
+      return this.dao.EditarUsuario(usuarios);
+    }
     
 }

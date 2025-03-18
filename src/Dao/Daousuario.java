@@ -121,8 +121,7 @@ public class Daousuario extends Classeconexao{
                 modelusuario.setCargo(rs.getString("cargo_funcao"));
                 modelusuario.setNomeusuario(rs.getString("nome_usuario"));
                 modelusuario.setEmail(rs.getString("email"));
-                modelusuario.setDataadmissao(rs.getString("data_admissao"));
-                
+                modelusuario.setDataadmissao(rs.getString("data_admissao")); 
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
@@ -175,5 +174,59 @@ public class Daousuario extends Classeconexao{
         }
         return true;
     }
+
+    public Modelusuario ExibirCadastrousuario(int codigo) {
+          Modelusuario modelusuario = new Modelusuario();
+        try {
+            con = Classeconexao.conector();
+            String sql = "SELECT * FROM tbusuario2 WHERE cod = ?";
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, codigo);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                modelusuario.setCodigo(rs.getInt("cod"));
+                modelusuario.setUsuario(rs.getString("loginusuario"));
+                modelusuario.setSenha(rs.getString("senha"));
+                modelusuario.setAdm(rs.getString("administrador"));
+                modelusuario.setTelefone(rs.getString("telefone"));
+                modelusuario.setDatanasimento(rs.getString("data_nascimento"));
+                modelusuario.setCpf(rs.getString("cpf"));
+                modelusuario.setCargo(rs.getString("cargo_funcao"));
+                modelusuario.setNomeusuario(rs.getString("nome_usuario"));
+                modelusuario.setEmail(rs.getString("email"));
+                modelusuario.setDataadmissao(rs.getString("data_admissao"));
+                
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
+        }
+        return modelusuario;
+    }
+
+   public boolean EditarUsuario(Modelusuario usuarios) {
+    con = Classeconexao.conector();
+    String sql = "update tbusuario2 set cod=?, loginusuario=?, senha=?, administrador=?, telefone=?, data_nascimento=?, cpf=?, cargo_funcao=?, nome_usuario=?, email=?, data_admissao=? where cod=?";
+    try {
+        pst = con.prepareStatement(sql);
+        pst.setInt(1, usuarios.getCodigo());
+        pst.setString(2, usuarios.getUsuario());
+        pst.setString(3, usuarios.getSenha());
+        pst.setString(4, usuarios.getAdm());
+        pst.setString(5, usuarios.getTelefone());
+        pst.setString(6, usuarios.getDatanasimento());
+        pst.setString(7, usuarios.getCpf());
+        pst.setString(8, usuarios.getCargo());
+        pst.setString(9, usuarios.getNomeusuario());
+        pst.setString(10, usuarios.getEmail());
+        pst.setString(11, usuarios.getDataadmissao());
+        pst.setInt(12, usuarios.getCodigo()); // O código para o WHERE vem por ultimo.
+        pst.executeUpdate();
+    } catch (Exception e) {
+        System.err.println(e);
+        JOptionPane.showMessageDialog(null, "Usuario Não cadastrado, Veja se Já consta na tabela abaixo");
+        return false;
+    }
+    return true;
+}
     
 }
