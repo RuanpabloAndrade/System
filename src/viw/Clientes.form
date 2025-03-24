@@ -162,9 +162,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="112" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="113" max="-2" attributes="0"/>
+                      <Component id="Exibircadastro" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton11" min="-2" pref="113" max="-2" attributes="0"/>
+                      <Component id="Deletarcliente" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton10" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -183,12 +183,12 @@
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton1" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="Exibircadastro" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="jButton5" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="jButton6" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="jButton8" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="jButton10" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                          <Component id="jButton11" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="Deletarcliente" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="24" max="32767" attributes="0"/>
                   </Group>
@@ -210,7 +210,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="Exibircadastro">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -220,6 +220,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cadastro"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExibircadastroActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton5">
               <Properties>
@@ -277,7 +280,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton11">
+            <Component class="javax.swing.JButton" name="Deletarcliente">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -287,6 +290,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Deletar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeletarclienteActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -317,7 +323,7 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jFormattedTextField1" max="32767" attributes="0"/>
+                          <Component id="pesquisarcliente" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -333,7 +339,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jFormattedTextField1" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="pesquisarcliente" min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jComboBox1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="37" max="32767" attributes="0"/>
@@ -350,14 +356,20 @@
                 <Property name="text" type="java.lang.String" value="Pesquisar Cliente:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+            <Component class="javax.swing.JFormattedTextField" name="pesquisarcliente">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder/>
                   </Border>
                 </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pesquisarclienteKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -373,11 +385,10 @@
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
+                  <StringArray count="3">
                     <StringItem index="0" value="Nome"/>
-                    <StringItem index="1" value="Telefone"/>
-                    <StringItem index="2" value="CPF"/>
-                    <StringItem index="3" value="E-Mail"/>
+                    <StringItem index="1" value="CPF"/>
+                    <StringItem index="2" value="E-Mail"/>
                   </StringArray>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -401,6 +412,9 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tabelacliente">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="4">
                     <Column editable="true" title="C&#xf3;digo" type="java.lang.Object"/>
@@ -456,6 +470,9 @@
                 </Property>
                 <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabelaclienteMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

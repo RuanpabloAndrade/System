@@ -9,6 +9,7 @@ import java.awt.Font;
 import javax.swing.JOptionPane;
 import model.modelclientes;
 import Controler.controlerclientes;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -206,7 +207,7 @@ List<modelclientes> listacliente = new ArrayList<>();
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Nome:");
+        jLabel1.setText("Nome Completo:");
 
         nome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         nome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -349,40 +350,43 @@ List<modelclientes> listacliente = new ArrayList<>();
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(389, 389, 389))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(bairro)
+                                .addGap(7, 7, 7)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(bairro, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cidade)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(cidade)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(id, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-                                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(jLabel6))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel1)
-                                            .addComponent(nome)))
-                                    .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(telefone))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cpf)
+                                    .addComponent(cpf, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel5)
-                                    .addComponent(rg, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)))
+                                    .addComponent(rg)))
                             .addComponent(jLabel11)
                             .addComponent(jLabel7)
-                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rua, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(email)
+                            .addComponent(rua))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(datacadastro, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -534,8 +538,8 @@ List<modelclientes> listacliente = new ArrayList<>();
        clientes.setBairro(bairro.getText());
        clientes.setCidade(cidade.getText());
        String cnpjRaw = cpf.getText().replaceAll("[^0-9]", "");
-       if (cnpjRaw.length()!= 11 || nome.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Nome do Cliente e Cpf obrigatórios!");
+       if (nome.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Pelo menos o nome do Cliente deve ser informado!");
             return;
         }
        if (clientescontroler.Salvarcliente(clientes)) {
@@ -561,8 +565,8 @@ List<modelclientes> listacliente = new ArrayList<>();
             JOptionPane.showMessageDialog(this, "Nenhum registro selecionado2!");
             return;
         }
-        String cpfvariavel = (String) tabelaclientesca.getValueAt(linha, 2);
-        clientes = clientescontroler.carregarDadosclientes(cpfvariavel);
+        String nomevariavel = (String) tabelaclientesca.getValueAt(linha, 0);
+        clientes = clientescontroler.carregarDadosclientes(nomevariavel);
         if (clientes != null) {
             id.setText(String.valueOf(clientes.getCodigo()));
             nome.setText(clientes.getNome());
@@ -692,4 +696,21 @@ List<modelclientes> listacliente = new ArrayList<>();
     private javax.swing.JTable tabelaclientesca;
     private javax.swing.JFormattedTextField telefone;
     // End of variables declaration//GEN-END:variables
+
+    public void preechercamposclientes(modelclientes clientes) {
+         id.setText(String.valueOf(clientes.getCodigo()));
+         nome.setText(clientes.getNome());
+         rg.setText(clientes.getRg());
+         nascimento.setText(clientes.getNascimento());
+         telefone.setText(clientes.getTelefone());
+         cpf.setText(clientes.getCpf());
+         sexo.setSelectedItem(clientes.getSexo());
+         email.setText(clientes.getEmail());
+         datacadastro.setText(clientes.getDatacadastro());
+         rua.setText(clientes.getRua());         
+         complemento.setText(clientes.getComplemento());
+         bairro.setText(clientes.getBairro());
+         cidade.setText(clientes.getCidade());
+         
+    }
 }

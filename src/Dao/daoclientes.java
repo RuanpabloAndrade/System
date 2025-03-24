@@ -82,13 +82,13 @@ public class daoclientes extends Classeconexao{
         return listacliente;
     }
 
-    public modelclientes carregarusuarios(String cpfvariavel) {
+    public modelclientes carregarusuarios(String nomevariavel) {
             modelclientes clientes = new modelclientes();
         try {
             conexao = Classeconexao.conector();
-            String sql = "SELECT * FROM tabelaclientes WHERE cpf = ?";
+            String sql = "SELECT * FROM tabelaclientes WHERE nome = ?";
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, cpfvariavel);
+            pst.setString(1, nomevariavel);
             rs = pst.executeQuery();
             if (rs.next()) {
                 clientes.setCodigo(rs.getInt("id"));
@@ -137,6 +137,82 @@ public class daoclientes extends Classeconexao{
         return false;
     }
     return true;
+    }
+
+    public List<modelclientes> Carregarclientetabelavizualizar() {
+        conexao = Classeconexao.conector();
+        List<modelclientes> listacliente = new ArrayList<>();
+        modelclientes clientes = new modelclientes();
+
+        String sql = "SELECT id, "
+                + "nome, "
+                + "telefone, "
+                + "cpf, "
+                + "email, "
+                + "datanasimento "
+                + "FROM tabelaclientes";
+
+        try {
+            pst = conexao.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                clientes = new modelclientes();
+                clientes.setCodigo(rs.getInt(1));
+                clientes.setNome(rs.getString(2));
+                clientes.setTelefone(rs.getString(3));
+                clientes.setCpf(rs.getString(4));
+                clientes.setEmail(rs.getString(5));
+                clientes.setNascimento(rs.getString(6));
+                listacliente.add(clientes);
+            }
+
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
+        return listacliente;
+    }
+
+    public boolean Excluircliente(int codigo) {
+         conexao = Classeconexao.conector();
+        String sql = "delete from tabelaclientes where id ='" + codigo + "'";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.execute();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return true;
+    }
+
+    public modelclientes ExibirCadastro(int codigo) {
+         modelclientes clientes = new modelclientes();
+        try {
+            conexao = Classeconexao.conector();
+            String sql = "SELECT * FROM tabelaclientes WHERE id = ?";
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, codigo);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                clientes.setCodigo(rs.getInt("id"));
+                clientes.setNome(rs.getString("nome"));
+                clientes.setRg(rs.getString("rg"));
+                clientes.setCpf(rs.getString("cpf"));
+                clientes.setSexo(rs.getString("sexo"));
+                clientes.setEmail(rs.getString("email"));
+                clientes.setDatacadastro(rs.getString("data_cadastro"));
+                clientes.setRua(rs.getString("rua"));    
+                clientes.setComplemento(rs.getString("complemento"));
+                clientes.setBairro(rs.getString("bairro"));
+                clientes.setCidade(rs.getString("cidadde"));
+                clientes.setTelefone(rs.getString("telefone"));
+                clientes.setNascimento(rs.getString("datanasimento"));
+               
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
+        }
+        return clientes;
     }
     
 }

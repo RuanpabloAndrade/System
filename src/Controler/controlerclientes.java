@@ -23,12 +23,24 @@ public class controlerclientes {
         return this.dao.Carregarclientetabela();
     }
 
-    public modelclientes carregarDadosclientes(String cpfvariavel) {
-        return dao.carregarusuarios(cpfvariavel);  
+    public modelclientes carregarDadosclientes(String nomevariavel) {
+        return dao.carregarusuarios(nomevariavel);  
     }
 
     public boolean Editarclientecontroler(modelclientes clientes) {
         return this.dao.EditarClienteDao(clientes);
+    }
+
+    public List<modelclientes> ListarclientesClientes() {
+       return this.dao.Carregarclientetabelavizualizar();
+    }
+
+    public boolean excluircliente(int codigo) {
+        return this.dao.Excluircliente(codigo); 
+    }
+
+    public modelclientes ExibirFornecedor(int codigo) {
+       return this.dao.ExibirCadastro(codigo); 
     }
     
 }

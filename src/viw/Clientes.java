@@ -4,15 +4,25 @@
  */
 package viw;
 
+import Controler.controlerclientes;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import model.modelclientes;
 
 /**
  *
  * @author ruan
  */
 public class Clientes extends javax.swing.JFrame {
-
+modelclientes clientes = new modelclientes();
+controlerclientes clientescontroler = new controlerclientes();
+List<modelclientes> listacliente = new ArrayList<>();
     /**
      * Creates new form Clientes
      */
@@ -20,6 +30,7 @@ public class Clientes extends javax.swing.JFrame {
         initComponents();
          setLocationRelativeTo(this);
          designtabelaclientes();
+         carregarclientes();
     }
 
     /**
@@ -36,15 +47,15 @@ public class Clientes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        Exibircadastro = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        Deletarcliente = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        pesquisarcliente = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -94,9 +105,14 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
-        jButton3.setText("Cadastro");
+        Exibircadastro.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Exibircadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
+        Exibircadastro.setText("Cadastro");
+        Exibircadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExibircadastroActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/extrato (1).png"))); // NOI18N
@@ -134,9 +150,14 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
 
-        jButton11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/apagar (1).png"))); // NOI18N
-        jButton11.setText("Deletar");
+        Deletarcliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Deletarcliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/apagar (1).png"))); // NOI18N
+        Deletarcliente.setText("Deletar");
+        Deletarcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeletarclienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -146,9 +167,9 @@ public class Clientes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Exibircadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Deletarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -165,12 +186,12 @@ public class Clientes extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Exibircadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Deletarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -180,13 +201,19 @@ public class Clientes extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
         jLabel2.setText("Pesquisar Cliente:");
 
-        jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pesquisarcliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pesquisarcliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        pesquisarcliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pesquisarclienteKeyReleased(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
         jLabel3.setText("Pesquisar Por:");
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "Telefone", "CPF", "E-Mail" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "E-Mail" }));
         jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -203,7 +230,7 @@ public class Clientes extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jFormattedTextField1))
+                    .addComponent(pesquisarcliente))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -215,11 +242,12 @@ public class Clientes extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pesquisarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
+        tabelacliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tabelacliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -237,6 +265,11 @@ public class Clientes extends javax.swing.JFrame {
         tabelacliente.setShowVerticalLines(false);
         tabelacliente.getTableHeader().setReorderingAllowed(false);
         tabelacliente.setVerifyInputWhenFocusTarget(false);
+        tabelacliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaclienteMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelacliente);
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -324,9 +357,28 @@ public class Clientes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+     private void carregarclientes(){
+        listacliente = clientescontroler.ListarclientesClientes();
+        DefaultTableModel modelo = (DefaultTableModel) tabelacliente.getModel();
+        modelo.setNumRows(0);
+        for (int i = 0; i < listacliente.size(); i++) {
+            modelo.addRow(new Object[]{
+                listacliente.get(i).getCodigo(),
+                listacliente.get(i).getNome(),
+                listacliente.get(i).getTelefone(),
+                listacliente.get(i).getCpf(),
+                listacliente.get(i).getEmail(),
+                listacliente.get(i).getNascimento()
+            });
+        }
+    }
+    
+    
+    
+    
+    
     private void  designtabelaclientes(){
-        tabelacliente.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+       tabelacliente.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         tabelacliente.getTableHeader().setOpaque(false);
         tabelacliente.getTableHeader().setBackground(new Color(32, 136, 203));
         tabelacliente.getTableHeader().setForeground( new Color(255,255,255));
@@ -371,6 +423,49 @@ public class Clientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void pesquisarclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesquisarclienteKeyReleased
+        DefaultTableModel model = (DefaultTableModel) tabelacliente.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        tabelacliente.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(pesquisarcliente.getText()));
+    }//GEN-LAST:event_pesquisarclienteKeyReleased
+
+    private void DeletarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletarclienteActionPerformed
+          int linha = tabelacliente.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+            return;
+        }
+        int codigo=(int) tabelacliente.getValueAt(linha,0);
+           int entrada = JOptionPane.showConfirmDialog(null, "Deseja excluir", "Confirmação", JOptionPane.YES_NO_OPTION);
+           if(entrada==JOptionPane.YES_OPTION){
+               clientescontroler.excluircliente(codigo);
+               carregarclientes();
+               JOptionPane.showMessageDialog(null,"Apagado");
+           }
+      
+    }//GEN-LAST:event_DeletarclienteActionPerformed
+
+    private void ExibircadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibircadastroActionPerformed
+         int linha = tabelacliente.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+            return;
+        }
+        int codigo = (int) tabelacliente.getValueAt(linha,0);
+        clientes = clientescontroler.ExibirFornecedor(codigo);
+        if(clientes != null){
+                Cadastrocli telacadastroclientes = new Cadastrocli();
+                telacadastroclientes.preechercamposclientes(clientes);
+                telacadastroclientes.setVisible(true);
+                
+        }
+    }//GEN-LAST:event_ExibircadastroActionPerformed
+
+    private void tabelaclienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaclienteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabelaclienteMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -407,18 +502,17 @@ public class Clientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Deletarcliente;
+    private javax.swing.JButton Exibircadastro;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -427,6 +521,9 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JFormattedTextField pesquisarcliente;
     private javax.swing.JTable tabelacliente;
     // End of variables declaration//GEN-END:variables
+
+    
 }

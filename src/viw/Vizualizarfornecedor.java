@@ -336,7 +336,6 @@ Modelfornecedor fornecedor = new Modelfornecedor();
         if(Forncedorcontroler != null){
                 Fornecedor Exibirfornecedor = new Fornecedor();
                 Exibirfornecedor.preechercampos(fornecedor);
-                
                 Exibirfornecedor.setVisible(true);
                 
         }
