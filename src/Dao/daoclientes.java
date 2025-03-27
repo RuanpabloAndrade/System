@@ -13,6 +13,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import model.Modelusuario;
 import model.modelclientes;
+import model.modelhistóricoclientes;
 
 /**
  *
@@ -186,7 +187,7 @@ public class daoclientes extends Classeconexao{
     }
 
     public modelclientes ExibirCadastro(int codigo) {
-         modelclientes clientes = new modelclientes();
+        modelclientes clientes = new modelclientes();
         try {
             conexao = Classeconexao.conector();
             String sql = "SELECT * FROM tabelaclientes WHERE id = ?";
@@ -207,12 +208,46 @@ public class daoclientes extends Classeconexao{
                 clientes.setCidade(rs.getString("cidadde"));
                 clientes.setTelefone(rs.getString("telefone"));
                 clientes.setNascimento(rs.getString("datanasimento"));
-               
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
         }
         return clientes;
     }
+
+    public List<modelhistóricoclientes> lisarhistoricocliente(int codigo) {
+    conexao = Classeconexao.conector();
+    List<modelhistóricoclientes> historico = new ArrayList<>();
+    modelhistóricoclientes modelhistoricocliente = new modelhistóricoclientes();
     
+    String sql = "select clientehistorico.id, Clientehistorico.produto, Clientehistorico.quantidade, Clientehistorico.preço_unitario, Clientehistorico.total, Clientehistorico.datas   from tabelaclientes join Clientehistorico on tabelaclientes.id = Clientehistorico.chavecliente where tabelaclientes.id = ?;";
+    try {
+        pst = conexao.prepareStatement(sql);
+        pst.setInt(1, codigo);
+        rs = pst.executeQuery();
+        
+        while (rs.next()) {
+            modelhistoricocliente = new modelhistóricoclientes();
+            modelhistoricocliente.setId(1);
+            modelhistoricocliente.setProduto(rs.getString(2));
+            modelhistoricocliente.setQuantidade(rs.getInt(3));
+            modelhistoricocliente.setPreco(rs.getInt(4));
+            modelhistoricocliente.setTotal(rs.getInt(5));
+            modelhistoricocliente.setData(rs.getString(6));
+            historico.add(modelhistoricocliente);
+        }
+    } catch (Exception e) {
+        System.err.println(e);
+    } 
+    
+    return historico;
 }
+    
+
+
+}
+
+    
+
+    
+

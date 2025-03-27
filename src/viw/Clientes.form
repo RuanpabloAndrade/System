@@ -166,7 +166,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="Deletarcliente" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton10" min="-2" pref="113" max="-2" attributes="0"/>
+                      <Component id="historicocliente" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton5" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -187,7 +187,7 @@
                           <Component id="jButton5" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="jButton6" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="jButton8" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                          <Component id="jButton10" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="historicocliente" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="Deletarcliente" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="24" max="32767" attributes="0"/>
@@ -266,7 +266,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton10">
+            <Component class="javax.swing.JButton" name="historicocliente">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -277,7 +277,7 @@
                 <Property name="text" type="java.lang.String" value="Hist&#xf3;rico"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="historicoclienteActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Deletarcliente">

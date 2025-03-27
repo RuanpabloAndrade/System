@@ -7,6 +7,7 @@ package Controler;
 import model.modelclientes;
 import Dao.daoclientes;
 import java.util.List;
+import model.modelhistóricoclientes;
 /**
  *
  * @author ruan
@@ -41,6 +42,10 @@ public class controlerclientes {
 
     public modelclientes ExibirFornecedor(int codigo) {
        return this.dao.ExibirCadastro(codigo); 
+    }
+
+    public List<modelhistóricoclientes> Exibirhistoricocliente(int codigo) {
+         return this.dao.lisarhistoricocliente(codigo);
     }
     
 }

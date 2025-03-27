@@ -243,13 +243,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jFormattedTextField4" min="-2" pref="363" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="376" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <Component id="pesquisarhistorico" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -263,9 +262,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton1" max="32767" attributes="0"/>
-                          <Component id="jFormattedTextField4" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pesquisarhistorico" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jComboBox1" alignment="0" pref="33" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="46" max="32767" attributes="0"/>
                   </Group>
@@ -281,7 +279,7 @@
                 <Property name="text" type="java.lang.String" value="Buscar Compra:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField4">
+            <Component class="javax.swing.JFormattedTextField" name="pesquisarhistorico">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -289,15 +287,13 @@
                   </Border>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagens/lupa (1).png"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Pesquisar"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pesquisarhistoricoKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
@@ -340,9 +336,12 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tabelahisotrico">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="4">
-                    <Column editable="true" title="N&#xfa;mero da Compra" type="java.lang.Object"/>
+                    <Column editable="true" title="Id compra" type="java.lang.Object"/>
                     <Column editable="true" title="Produto" type="java.lang.Object"/>
                     <Column editable="true" title="Quantidade" type="java.lang.Object"/>
                     <Column editable="true" title="Pre&#xe7;o Unit&#xe1;rio" type="java.lang.Object"/>

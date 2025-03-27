@@ -14,15 +14,17 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.modelclientes;
-
+import model.modelhistóricoclientes;
 /**
  *
  * @author ruan
  */
 public class Clientes extends javax.swing.JFrame {
 modelclientes clientes = new modelclientes();
+modelhistóricoclientes historico = new modelhistóricoclientes();
 controlerclientes clientescontroler = new controlerclientes();
 List<modelclientes> listacliente = new ArrayList<>();
+List<modelhistóricoclientes> hitoricocliente = new ArrayList<>();
     /**
      * Creates new form Clientes
      */
@@ -51,7 +53,7 @@ List<modelclientes> listacliente = new ArrayList<>();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        historicocliente = new javax.swing.JButton();
         Deletarcliente = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -141,12 +143,12 @@ List<modelclientes> listacliente = new ArrayList<>();
             }
         });
 
-        jButton10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Financieo (1).png"))); // NOI18N
-        jButton10.setText("Histórico");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        historicocliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        historicocliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Financieo (1).png"))); // NOI18N
+        historicocliente.setText("Histórico");
+        historicocliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                historicoclienteActionPerformed(evt);
             }
         });
 
@@ -171,7 +173,7 @@ List<modelclientes> listacliente = new ArrayList<>();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Deletarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historicocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -190,7 +192,7 @@ List<modelclientes> listacliente = new ArrayList<>();
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(historicocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Deletarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -394,10 +396,22 @@ List<modelclientes> listacliente = new ArrayList<>();
        cliente.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-       Modulohistoricocliente historico = new Modulohistoricocliente();
-       historico.setVisible(true);
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void historicoclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoclienteActionPerformed
+        int linha = tabelacliente.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+            return;
+        }
+        int codigo = (int) tabelacliente.getValueAt(linha,0);
+        hitoricocliente = clientescontroler.Exibirhistoricocliente(codigo);
+        if(hitoricocliente != null){
+                Modulohistoricocliente historicos = new Modulohistoricocliente();
+                historicos.preencherlistahistoricocliente(hitoricocliente);
+                historicos.setVisible(true);
+        }    
+      
+      
+    }//GEN-LAST:event_historicoclienteActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
       Moduloparcelamentocliente parcelamento = new Moduloparcelamentocliente();
@@ -447,7 +461,7 @@ List<modelclientes> listacliente = new ArrayList<>();
     }//GEN-LAST:event_DeletarclienteActionPerformed
 
     private void ExibircadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibircadastroActionPerformed
-         int linha = tabelacliente.getSelectedRow();
+        int linha = tabelacliente.getSelectedRow();
         if (linha < 0) {
             JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
             return;
@@ -504,8 +518,8 @@ List<modelclientes> listacliente = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Deletarcliente;
     private javax.swing.JButton Exibircadastro;
+    private javax.swing.JButton historicocliente;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
