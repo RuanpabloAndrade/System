@@ -6,10 +6,13 @@ package viw;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import model.modelclientes;
 import model.modelhistóricoclientes;
 
 /**
@@ -39,11 +42,11 @@ public class Modulohistoricocliente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        id = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        nome = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        telefone = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -66,17 +69,23 @@ public class Modulohistoricocliente extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Código:");
 
-        jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        id.setEditable(false);
+        id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Nome do Cliente:");
 
-        jFormattedTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        nome.setEditable(false);
+        nome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        nome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Telefone");
 
-        jFormattedTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        telefone.setEditable(false);
+        telefone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        telefone.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -90,15 +99,15 @@ public class Modulohistoricocliente extends javax.swing.JFrame {
                         .addGap(74, 74, 74)
                         .addComponent(jLabel3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jFormattedTextField3))
+                    .addComponent(telefone))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -111,9 +120,9 @@ public class Modulohistoricocliente extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                    .addComponent(jFormattedTextField3)
-                    .addComponent(jFormattedTextField1))
+                    .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(telefone)
+                    .addComponent(id))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -295,10 +304,8 @@ public class Modulohistoricocliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField id;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -310,23 +317,32 @@ public class Modulohistoricocliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JFormattedTextField nome;
     private javax.swing.JFormattedTextField pesquisarhistorico;
     private javax.swing.JTable tabelahisotrico;
+    private javax.swing.JFormattedTextField telefone;
     // End of variables declaration//GEN-END:variables
 
     public void preencherlistahistoricocliente(List<modelhistóricoclientes> hitoricocliente) {
         DefaultTableModel modelo = (DefaultTableModel) tabelahisotrico.getModel();
         modelo.setNumRows(0);
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
         for (int i = 0; i < hitoricocliente.size(); i++) {
             modelo.addRow(new Object[]{
                 hitoricocliente.get(i).getId(),
                 hitoricocliente.get(i).getProduto(),
                 hitoricocliente.get(i).getQuantidade(),
-                hitoricocliente.get(i).getPreco(),
-                hitoricocliente.get(i).getTotal(),
+                formatoMoeda.format(hitoricocliente.get(i).getPreco()), 
+                formatoMoeda.format(hitoricocliente.get(i).getTotal()),
                 hitoricocliente.get(i).getData()
             });
         }
+    }
+
+    public void preenchercabeçalhos(modelclientes clientes) {
+         id.setText(String.valueOf(clientes.getCodigo()));
+         nome.setText(clientes.getNome());
+         telefone.setText(clientes.getTelefone());
     }
 
     

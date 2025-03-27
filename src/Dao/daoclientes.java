@@ -220,7 +220,10 @@ public class daoclientes extends Classeconexao{
     List<modelhistóricoclientes> historico = new ArrayList<>();
     modelhistóricoclientes modelhistoricocliente = new modelhistóricoclientes();
     
-    String sql = "select clientehistorico.id, Clientehistorico.produto, Clientehistorico.quantidade, Clientehistorico.preço_unitario, Clientehistorico.total, Clientehistorico.datas   from tabelaclientes join Clientehistorico on tabelaclientes.id = Clientehistorico.chavecliente where tabelaclientes.id = ?;";
+    String sql = "SELECT Clientehistorico.id, Clientehistorico.produto, Clientehistorico.quantidade, Clientehistorico.preço_unitario, "
+            + "(Clientehistorico.quantidade * Clientehistorico.preço_unitario) AS total_calculado, Clientehistorico.datas "
+            + "FROM tabelaclientes JOIN Clientehistorico "
+            + "ON tabelaclientes.id = Clientehistorico.chavecliente where tabelaclientes.id=?";
     try {
         pst = conexao.prepareStatement(sql);
         pst.setInt(1, codigo);
@@ -228,7 +231,7 @@ public class daoclientes extends Classeconexao{
         
         while (rs.next()) {
             modelhistoricocliente = new modelhistóricoclientes();
-            modelhistoricocliente.setId(1);
+            modelhistoricocliente.setId(rs.getInt(1));
             modelhistoricocliente.setProduto(rs.getString(2));
             modelhistoricocliente.setQuantidade(rs.getInt(3));
             modelhistoricocliente.setPreco(rs.getInt(4));
@@ -242,6 +245,25 @@ public class daoclientes extends Classeconexao{
     
     return historico;
 }
+
+    public modelclientes ExibirCadastrocliente(int codigo) {
+       modelclientes clientes = new modelclientes();
+        try {
+            conexao = Classeconexao.conector();
+            String sql = "SELECT * FROM tabelaclientes WHERE id = ?";
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, codigo);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                clientes.setCodigo(rs.getInt("id"));
+                clientes.setNome(rs.getString("nome"));
+                clientes.setTelefone(rs.getString("telefone"));
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
+        }
+        return clientes;
+    }
     
 
 

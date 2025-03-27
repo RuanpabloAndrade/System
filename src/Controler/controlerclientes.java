@@ -47,5 +47,9 @@ public class controlerclientes {
     public List<modelhistóricoclientes> Exibirhistoricocliente(int codigo) {
          return this.dao.lisarhistoricocliente(codigo);
     }
+
+    public modelclientes exibircampos(int codigo) {
+        return this.dao.ExibirCadastrocliente(codigo); 
+    }
     
 }

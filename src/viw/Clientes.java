@@ -404,9 +404,11 @@ List<modelhistóricoclientes> hitoricocliente = new ArrayList<>();
         }
         int codigo = (int) tabelacliente.getValueAt(linha,0);
         hitoricocliente = clientescontroler.Exibirhistoricocliente(codigo);
+        clientes = clientescontroler.exibircampos(codigo);
         if(hitoricocliente != null){
                 Modulohistoricocliente historicos = new Modulohistoricocliente();
                 historicos.preencherlistahistoricocliente(hitoricocliente);
+                historicos.preenchercabeçalhos(clientes);
                 historicos.setVisible(true);
         }    
       
