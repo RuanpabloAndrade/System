@@ -392,8 +392,21 @@ List<modelhistóricoclientes> hitoricocliente = new ArrayList<>();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-       Extratocliente cliente =new Extratocliente();
-       cliente.setVisible(true);
+        int linha = tabelacliente.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+            return;
+        }
+        int codigo = (int) tabelacliente.getValueAt(linha,0);
+        clientes = clientescontroler.exibircampos(codigo);
+        historico = clientescontroler.exibir(codigo);
+        if(clientes != null){
+                Extratocliente cliente =new Extratocliente();
+                cliente.preenchercabeçalhos(clientes);
+                cliente.exibicamposhome(historico);
+                cliente.setVisible(true);
+        }    
+       
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void historicoclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoclienteActionPerformed

@@ -15,7 +15,11 @@ public class modelhistóricoclientes {
     private double preco;
     private double total;
     private String data;
-
+    private double preçototal;
+    private double valores;
+    
+    
+    
     /**
      * @return the id
      */
@@ -98,6 +102,34 @@ public class modelhistóricoclientes {
      */
     public void setData(String data) {
         this.data = data;
+    }
+
+    /**
+     * @return the preçototal
+     */
+    public double getPreçototal() {
+        return preçototal;
+    }
+
+    /**
+     * @param preçototal the preçototal to set
+     */
+    public void setPreçototal(double preçototal) {
+        this.preçototal = preçototal;
+    }
+
+    /**
+     * @return the valores
+     */
+    public double getValores() {
+        return valores;
+    }
+
+    /**
+     * @param valores the valores to set
+     */
+    public void setValores(double valores) {
+        this.valores = valores;
     }
     
     

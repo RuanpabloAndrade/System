@@ -234,8 +234,8 @@ public class daoclientes extends Classeconexao{
             modelhistoricocliente.setId(rs.getInt(1));
             modelhistoricocliente.setProduto(rs.getString(2));
             modelhistoricocliente.setQuantidade(rs.getInt(3));
-            modelhistoricocliente.setPreco(rs.getInt(4));
-            modelhistoricocliente.setTotal(rs.getInt(5));
+            modelhistoricocliente.setPreco(rs.getDouble(4));
+            modelhistoricocliente.setTotal(rs.getDouble(5));
             modelhistoricocliente.setData(rs.getString(6));
             historico.add(modelhistoricocliente);
         }
@@ -263,6 +263,29 @@ public class daoclientes extends Classeconexao{
             JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
         }
         return clientes;
+    }
+
+    public modelhistóricoclientes Exibircampos(int codigo) {
+        conexao = Classeconexao.conector();
+        modelhistóricoclientes modelhistoricocliente = new modelhistóricoclientes();
+    
+    String sql = "SELECT (SELECT SUM(quantidade * preço_unitario) FROM Clientehistorico WHERE chavecliente = ?) AS total_compras, (SELECT SUM(valor) FROM Contasreceber WHERE chavecliente = ?) AS total_a_receber;";
+    try {
+        pst = conexao.prepareStatement(sql);
+        pst.setInt(1, codigo);
+        pst.setInt(2, codigo); 
+        rs = pst.executeQuery();
+        
+        while (rs.next()) {
+            modelhistoricocliente = new modelhistóricoclientes();
+            modelhistoricocliente.setPreçototal(rs.getDouble(1));
+            modelhistoricocliente.setValores(rs.getDouble(2));
+        }
+    } catch (Exception e) {
+        System.err.println(e);
+    } 
+    
+    return modelhistoricocliente;
     }
     
 

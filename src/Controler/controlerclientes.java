@@ -51,5 +51,9 @@ public class controlerclientes {
     public modelclientes exibircampos(int codigo) {
         return this.dao.ExibirCadastrocliente(codigo); 
     }
+
+    public modelhistóricoclientes exibir(int codigo) {
+         return this.dao.Exibircampos(codigo); 
+    }
     
 }
