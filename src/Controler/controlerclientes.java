@@ -7,6 +7,7 @@ package Controler;
 import model.modelclientes;
 import Dao.daoclientes;
 import java.util.List;
+import javax.swing.JButton;
 import model.modelhistóricoclientes;
 /**
  *
@@ -55,5 +56,12 @@ public class controlerclientes {
     public modelhistóricoclientes exibir(int codigo) {
          return this.dao.Exibircampos(codigo); 
     }
+
+    public List<modelhistóricoclientes> Exibirextratocliente(int codigo) {
+        return this.dao.listarextratocliente(codigo);
+    }
+
+    
+    
     
 }

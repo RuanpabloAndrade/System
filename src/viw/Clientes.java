@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -50,7 +51,7 @@ List<modelhistóricoclientes> hitoricocliente = new ArrayList<>();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         Exibircadastro = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        Extratocliente = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         historicocliente = new javax.swing.JButton();
@@ -116,12 +117,12 @@ List<modelhistóricoclientes> hitoricocliente = new ArrayList<>();
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/extrato (1).png"))); // NOI18N
-        jButton5.setText("Extrato");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        Extratocliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Extratocliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/extrato (1).png"))); // NOI18N
+        Extratocliente.setText("Extrato");
+        Extratocliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                ExtratoclienteActionPerformed(evt);
             }
         });
 
@@ -175,7 +176,7 @@ List<modelhistóricoclientes> hitoricocliente = new ArrayList<>();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(historicocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Extratocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -189,7 +190,7 @@ List<modelhistóricoclientes> hitoricocliente = new ArrayList<>();
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Exibircadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Extratocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(historicocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,23 +392,25 @@ List<modelhistóricoclientes> hitoricocliente = new ArrayList<>();
        cliente.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void ExtratoclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExtratoclienteActionPerformed
         int linha = tabelacliente.getSelectedRow();
         if (linha < 0) {
             JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
             return;
         }
         int codigo = (int) tabelacliente.getValueAt(linha,0);
+        hitoricocliente = clientescontroler.Exibirextratocliente(codigo);
         clientes = clientescontroler.exibircampos(codigo);
         historico = clientescontroler.exibir(codigo);
         if(clientes != null){
                 Extratocliente cliente =new Extratocliente();
                 cliente.preenchercabeçalhos(clientes);
                 cliente.exibicamposhome(historico);
+                cliente.Exibirextrato(hitoricocliente);
                 cliente.setVisible(true);
         }    
        
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_ExtratoclienteActionPerformed
 
     private void historicoclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoclienteActionPerformed
         int linha = tabelacliente.getSelectedRow();
@@ -533,11 +536,11 @@ List<modelhistóricoclientes> hitoricocliente = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Deletarcliente;
     private javax.swing.JButton Exibircadastro;
+    private javax.swing.JButton Extratocliente;
     private javax.swing.JButton historicocliente;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;

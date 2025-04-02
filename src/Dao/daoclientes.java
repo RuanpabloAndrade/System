@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import model.Modelusuario;
 import model.modelclientes;
 import model.modelhistóricoclientes;
 
@@ -269,23 +268,53 @@ public class daoclientes extends Classeconexao{
         conexao = Classeconexao.conector();
         modelhistóricoclientes modelhistoricocliente = new modelhistóricoclientes();
     
-    String sql = "SELECT (SELECT SUM(quantidade * preço_unitario) FROM Clientehistorico WHERE chavecliente = ?) AS total_compras, (SELECT SUM(valor) FROM Contasreceber WHERE chavecliente = ?) AS total_a_receber;";
+    String sql = "SELECT \n" +
+"    (SELECT SUM(quantidade * preço_unitario) FROM Clientehistorico WHERE chavecliente = ?) AS total_compras, \n" +
+"    (SELECT SUM(valor) FROM Contasreceber WHERE chavecliente = ?) AS total_a_receber, \n" +
+"    (SELECT COUNT(*) FROM Clientehistorico WHERE chavecliente = ?) AS quantidade_compras;";
     try {
         pst = conexao.prepareStatement(sql);
         pst.setInt(1, codigo);
         pst.setInt(2, codigo); 
+        pst.setInt(3, codigo); 
         rs = pst.executeQuery();
         
         while (rs.next()) {
             modelhistoricocliente = new modelhistóricoclientes();
             modelhistoricocliente.setPreçototal(rs.getDouble(1));
             modelhistoricocliente.setValores(rs.getDouble(2));
+            modelhistoricocliente.setQuantidade(rs.getInt(3));
         }
     } catch (Exception e) {
         System.err.println(e);
     } 
     
     return modelhistoricocliente;
+    }
+
+    public List<modelhistóricoclientes> listarextratocliente(int codigo) {
+    conexao = Classeconexao.conector();
+    List<modelhistóricoclientes> historico = new ArrayList<>();
+    modelhistóricoclientes modelhistoricocliente = new modelhistóricoclientes();
+    
+    String sql = "SELECT Clientehistorico.produto, Clientehistorico.quantidade, (Clientehistorico.quantidade * Clientehistorico.preço_unitario) AS total, Clientehistorico.datas FROM tabelaclientes JOIN Clientehistorico ON tabelaclientes.id = Clientehistorico.chavecliente WHERE tabelaclientes.id = ?;";
+    try {
+        pst = conexao.prepareStatement(sql);
+        pst.setInt(1, codigo);
+        rs = pst.executeQuery();
+        while (rs.next()) {
+            modelhistoricocliente = new modelhistóricoclientes();
+            modelhistoricocliente.setProduto(rs.getString(1));
+            modelhistoricocliente.setQuantidade(rs.getInt(2));
+            modelhistoricocliente.setTotal(rs.getDouble(3));
+            modelhistoricocliente.setData(rs.getString(4));
+            historico.add(modelhistoricocliente);
+        }
+    } catch (Exception e) {
+        System.err.println(e);
+    } 
+    
+    return historico;
     }
     
 

@@ -6,6 +6,11 @@ package viw;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.NumberFormat;
+import java.util.List;
+import java.util.Locale;
+import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
 import model.modelclientes;
 import model.modelhistóricoclientes;
 
@@ -46,7 +51,7 @@ public class Extratocliente extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         saldocliente = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
-        jFormattedTextField6 = new javax.swing.JFormattedTextField();
+        quantidade = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jFormattedTextField7 = new javax.swing.JFormattedTextField();
@@ -128,6 +133,7 @@ public class Extratocliente extends javax.swing.JFrame {
         comprasprazo.setEditable(false);
         comprasprazo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         comprasprazo.setForeground(new java.awt.Color(255, 0, 0));
+        comprasprazo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         comprasprazo.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -137,13 +143,17 @@ public class Extratocliente extends javax.swing.JFrame {
         saldocliente.setEditable(false);
         saldocliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         saldocliente.setForeground(new java.awt.Color(0, 102, 255));
+        saldocliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         saldocliente.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 102, 204));
         jLabel6.setText("Saldo Total de Compras");
 
-        jFormattedTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        quantidade.setEditable(false);
+        quantidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        quantidade.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        quantidade.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Quantidade de Compras Realizadas:");
@@ -151,8 +161,11 @@ public class Extratocliente extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Saldo Devedor com Juros:");
 
+        jFormattedTextField7.setEditable(false);
         jFormattedTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jFormattedTextField7.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
 
+        tabelaextratocliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tabelaextratocliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -161,9 +174,17 @@ public class Extratocliente extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Produto", "Total", "Valor Pago", "Troco"
+                "Produto", "Quantidade", "Total", "Data"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tabelaextratocliente.setFocusable(false);
         tabelaextratocliente.setRowHeight(25);
         tabelaextratocliente.setSelectionBackground(new java.awt.Color(232, 57, 95));
@@ -198,7 +219,7 @@ public class Extratocliente extends javax.swing.JFrame {
                             .addComponent(saldocliente, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFormattedTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,9 +252,9 @@ public class Extratocliente extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addGap(5, 5, 5)
@@ -309,7 +330,6 @@ public class Extratocliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField comprasprazo;
     private javax.swing.JFormattedTextField id;
-    private javax.swing.JFormattedTextField jFormattedTextField6;
     private javax.swing.JFormattedTextField jFormattedTextField7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -324,6 +344,7 @@ public class Extratocliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JFormattedTextField nome;
+    private javax.swing.JFormattedTextField quantidade;
     private javax.swing.JFormattedTextField saldocliente;
     private javax.swing.JTable tabelaextratocliente;
     private javax.swing.JFormattedTextField telefone;
@@ -338,5 +359,22 @@ public class Extratocliente extends javax.swing.JFrame {
     void exibicamposhome(modelhistóricoclientes historico) {
         saldocliente.setText("R$ " + String.valueOf(historico.getPreçototal()));
         comprasprazo.setText("R$ " + String.valueOf(historico.getValores()));
+        quantidade.setText(String.valueOf(historico.getQuantidade()));
     }
+
+    public void Exibirextrato(List<modelhistóricoclientes> hitoricocliente) {
+        DefaultTableModel modelo = (DefaultTableModel) tabelaextratocliente.getModel();
+        modelo.setNumRows(0);
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        for (int i = 0; i < hitoricocliente.size(); i++) {
+            modelo.addRow(new Object[]{
+                hitoricocliente.get(i).getProduto(),
+                hitoricocliente.get(i).getQuantidade(),
+                formatoMoeda.format(hitoricocliente.get(i).getTotal()),
+                hitoricocliente.get(i).getData()
+            });
+        }
+    }
+
+    
 }

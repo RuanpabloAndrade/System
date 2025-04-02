@@ -17,6 +17,10 @@ public class modelhistóricoclientes {
     private String data;
     private double preçototal;
     private double valores;
+    private int quantidadecompras;
+    
+    
+    
     
     
     
@@ -130,6 +134,20 @@ public class modelhistóricoclientes {
      */
     public void setValores(double valores) {
         this.valores = valores;
+    }
+
+    /**
+     * @return the quantidadecompras
+     */
+    public int getQuantidadecompras() {
+        return quantidadecompras;
+    }
+
+    /**
+     * @param quantidadecompras the quantidadecompras to set
+     */
+    public void setQuantidadecompras(int quantidadecompras) {
+        this.quantidadecompras = quantidadecompras;
     }
     
     

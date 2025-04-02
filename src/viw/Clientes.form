@@ -168,7 +168,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="historicocliente" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" pref="113" max="-2" attributes="0"/>
+                      <Component id="Extratocliente" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton6" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -184,7 +184,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton1" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="Exibircadastro" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                          <Component id="jButton5" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="Extratocliente" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="jButton6" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="jButton8" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="historicocliente" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
@@ -224,7 +224,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExibircadastroActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton5">
+            <Component class="javax.swing.JButton" name="Extratocliente">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -235,7 +235,7 @@
                 <Property name="text" type="java.lang.String" value="Extrato"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExtratoclienteActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton6">
