@@ -121,6 +121,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenuItem38 = new javax.swing.JMenuItem();
         jMenuItem39 = new javax.swing.JMenuItem();
         jMenuItem49 = new javax.swing.JMenuItem();
+        jMenuItem33 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem20 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
@@ -793,6 +794,15 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
 
         jMenu1.add(jMenu10);
 
+        jMenuItem33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/crm (1).png"))); // NOI18N
+        jMenuItem33.setText("Cadastro de Juros");
+        jMenuItem33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem33ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem33);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/relatorio (1).png"))); // NOI18N
@@ -1310,6 +1320,11 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
        oscancelada.setVisible(true);
     }//GEN-LAST:event_jMenuItem49ActionPerformed
 
+    private void jMenuItem33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem33ActionPerformed
+        Cdastrodejuros juros = new Cdastrodejuros();
+        juros.setVisible(true);
+    }//GEN-LAST:event_jMenuItem33ActionPerformed
+
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();
         DefaultTableModel modelo=(DefaultTableModel) tabela.getModel();
@@ -1500,6 +1515,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     private javax.swing.JMenuItem jMenuItem30;
     private javax.swing.JMenuItem jMenuItem31;
     private javax.swing.JMenuItem jMenuItem32;
+    private javax.swing.JMenuItem jMenuItem33;
     private javax.swing.JMenuItem jMenuItem34;
     private javax.swing.JMenuItem jMenuItem37;
     private javax.swing.JMenuItem jMenuItem38;
