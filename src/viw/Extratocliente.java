@@ -6,11 +6,13 @@ package viw;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
+import model.Modelrecebiveis;
 import model.modelclientes;
 import model.modelhistóricoclientes;
 
@@ -54,7 +56,7 @@ public class Extratocliente extends javax.swing.JFrame {
         quantidade = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jFormattedTextField7 = new javax.swing.JFormattedTextField();
+        saldojuros = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaextratocliente = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
@@ -161,9 +163,10 @@ public class Extratocliente extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Saldo Devedor com Juros:");
 
-        jFormattedTextField7.setEditable(false);
-        jFormattedTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jFormattedTextField7.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        saldojuros.setEditable(false);
+        saldojuros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        saldojuros.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        saldojuros.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
 
         tabelaextratocliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tabelaextratocliente.setModel(new javax.swing.table.DefaultTableModel(
@@ -226,7 +229,7 @@ public class Extratocliente extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jFormattedTextField7)))
+                            .addComponent(saldojuros)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -253,7 +256,7 @@ public class Extratocliente extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saldojuros, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
@@ -330,7 +333,6 @@ public class Extratocliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField comprasprazo;
     private javax.swing.JFormattedTextField id;
-    private javax.swing.JFormattedTextField jFormattedTextField7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -346,6 +348,7 @@ public class Extratocliente extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField nome;
     private javax.swing.JFormattedTextField quantidade;
     private javax.swing.JFormattedTextField saldocliente;
+    private javax.swing.JFormattedTextField saldojuros;
     private javax.swing.JTable tabelaextratocliente;
     private javax.swing.JFormattedTextField telefone;
     // End of variables declaration//GEN-END:variables
@@ -374,6 +377,11 @@ public class Extratocliente extends javax.swing.JFrame {
                 hitoricocliente.get(i).getData()
             });
         }
+    }
+
+   public void Exibirjuros(Modelrecebiveis recebiveis) {
+         DecimalFormat df = new DecimalFormat("#0.00");
+         saldojuros.setText("R$ " + df.format(recebiveis.getJuros()));
     }
 
     

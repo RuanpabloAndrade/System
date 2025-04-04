@@ -19,6 +19,9 @@ public class Modelrecebiveis {
     private String emissaao;
     private String vencimento;
     private String parcelas;
+    private double juros;
+    
+    
 
     /**
      * @return the cod
@@ -158,6 +161,20 @@ public class Modelrecebiveis {
      */
     public void setParcelas(String parcelas) {
         this.parcelas = parcelas;
+    }
+
+    /**
+     * @return the juros
+     */
+    public double getJuros() {
+        return juros;
+    }
+
+    /**
+     * @param juros the juros to set
+     */
+    public void setJuros(double juros) {
+        this.juros = juros;
     }
     
     

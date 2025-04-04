@@ -8,6 +8,7 @@ import model.modelclientes;
 import Dao.daoclientes;
 import java.util.List;
 import javax.swing.JButton;
+import model.Modelrecebiveis;
 import model.modelhistóricoclientes;
 /**
  *
@@ -59,6 +60,10 @@ public class controlerclientes {
 
     public List<modelhistóricoclientes> Exibirextratocliente(int codigo) {
         return this.dao.listarextratocliente(codigo);
+    }
+
+    public Modelrecebiveis Recebiveisdao(int codigo) {
+        return this.dao.Exibirrecebiveis(codigo); 
     }
 
     

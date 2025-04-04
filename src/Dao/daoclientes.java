@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import model.Modelrecebiveis;
 import model.modelclientes;
 import model.modelhistóricoclientes;
 
@@ -315,6 +316,35 @@ public class daoclientes extends Classeconexao{
     } 
     
     return historico;
+    }
+
+    public Modelrecebiveis Exibirrecebiveis(int codigo) {
+       conexao = Classeconexao.conector();
+       Modelrecebiveis recebiveis = new Modelrecebiveis();
+    
+    String sql = "SELECT \n" +
+"    SUM(\n" +
+"        CAST(cr.valor AS DECIMAL(10,2)) * \n" +
+"        (1 + ((j.jurosmensal / j.diasmensal) / 100 * \n" +
+"        GREATEST(0, DATEDIFF(CURDATE(), STR_TO_DATE(cr.vencimento, '%Y-%m-%d')))))\n" +
+"    ) AS total_valor_com_juros\n" +
+"FROM Contasreceber cr\n" +
+"LEFT JOIN juros j ON cr.chavejuros = j.id\n" +
+"WHERE cr.chavecliente = ?;";
+    try {
+        pst = conexao.prepareStatement(sql);
+        pst.setInt(1, codigo);
+        rs = pst.executeQuery();
+        while (rs.next()) {
+            recebiveis = new Modelrecebiveis();
+            recebiveis.setJuros(rs.getDouble(1));
+            
+        }
+    } catch (Exception e) {
+        System.err.println(e);
+    } 
+    
+    return recebiveis;
     }
     
 

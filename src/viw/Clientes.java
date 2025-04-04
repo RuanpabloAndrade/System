@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.modelclientes;
 import model.modelhistóricoclientes;
+import model.Modelrecebiveis;
 /**
  *
  * @author ruan
@@ -23,6 +24,7 @@ import model.modelhistóricoclientes;
 public class Clientes extends javax.swing.JFrame {
 modelclientes clientes = new modelclientes();
 modelhistóricoclientes historico = new modelhistóricoclientes();
+Modelrecebiveis recebiveis = new Modelrecebiveis();
 controlerclientes clientescontroler = new controlerclientes();
 List<modelclientes> listacliente = new ArrayList<>();
 List<modelhistóricoclientes> hitoricocliente = new ArrayList<>();
@@ -402,11 +404,13 @@ List<modelhistóricoclientes> hitoricocliente = new ArrayList<>();
         hitoricocliente = clientescontroler.Exibirextratocliente(codigo);
         clientes = clientescontroler.exibircampos(codigo);
         historico = clientescontroler.exibir(codigo);
+        recebiveis = clientescontroler.Recebiveisdao(codigo);
         if(clientes != null){
                 Extratocliente cliente =new Extratocliente();
                 cliente.preenchercabeçalhos(clientes);
                 cliente.exibicamposhome(historico);
                 cliente.Exibirextrato(hitoricocliente);
+                cliente.Exibirjuros(recebiveis);
                 cliente.setVisible(true);
         }    
        
