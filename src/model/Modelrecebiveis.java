@@ -20,12 +20,18 @@ public class Modelrecebiveis {
     private String vencimento;
     private String parcelas;
     private double juros;
+    private int jurosdiasmensal;
+    private double diario;
+    
+    
     
     
 
     /**
      * @return the cod
      */
+    
+    
     public int getCod() {
         return cod;
     }
@@ -175,6 +181,34 @@ public class Modelrecebiveis {
      */
     public void setJuros(double juros) {
         this.juros = juros;
+    }
+
+    /**
+     * @return the jurosdiasmensal
+     */
+    public int getJurosdiasmensal() {
+        return jurosdiasmensal;
+    }
+
+    /**
+     * @param jurosdiasmensal the jurosdiasmensal to set
+     */
+    public void setJurosdiasmensal(int jurosdiasmensal) {
+        this.jurosdiasmensal = jurosdiasmensal;
+    }
+
+    /**
+     * @return the diario
+     */
+    public double getDiario() {
+        return diario;
+    }
+
+    /**
+     * @param diario the diario to set
+     */
+    public void setDiario(double diario) {
+        this.diario = diario;
     }
     
     

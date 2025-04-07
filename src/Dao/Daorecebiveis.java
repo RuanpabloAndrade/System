@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.Modelrecebiveis;
 
 /**
@@ -52,6 +53,57 @@ public class Daorecebiveis extends Classeconexao{
         
         
         return listausuario;
+    }
+
+    public boolean salvarjurosdao(Modelrecebiveis recebuveus) {
+        conexao = Classeconexao.conector();
+        String sql = "INSERT INTO juros (id, jurosmensal, diasmensal)\n" +
+"VALUES (?, ?, ?)\n" +
+"ON DUPLICATE KEY UPDATE\n" +
+"jurosmensal = VALUES(jurosmensal),\n" +
+"diasmensal = VALUES(diasmensal);";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, 1);
+            pst.setDouble(2, recebuveus.getJuros());
+            pst.setInt(3, recebuveus.getJurosdiasmensal());
+            pst.executeUpdate();
+        } catch (Exception e) {
+            System.err.println(e);
+            JOptionPane.showMessageDialog(null, "Usuario Não cadastrado, Veja se Já consta na tabela abaixo");
+            return false;
+        }
+        return true;
+    }
+
+    public List<Modelrecebiveis> GetListajuros() {
+        conexao = Classeconexao.conector();
+        List<Modelrecebiveis> listajuros = new ArrayList<>();
+        Modelrecebiveis model = new Modelrecebiveis();
+        
+       String sql = "SELECT \n" +
+"    jurosmensal,\n" +
+"    diasmensal,\n" +
+"    (jurosmensal / diasmensal) AS jurosdiario\n" +
+"FROM \n" +
+"    juros;";
+       
+        try {
+             pst=conexao.prepareStatement(sql);
+             rs=pst.executeQuery();
+             while(rs.next()){
+                 model = new Modelrecebiveis();
+                 model.setJuros(rs.getDouble(1));
+                 model.setJurosdiasmensal(rs.getInt(2));
+                 model.setDiario(rs.getDouble(3));
+                 listajuros.add(model);
+             }
+             
+             
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return listajuros;
     }
     
 }

@@ -16,5 +16,13 @@ public class Controlerrecebiveis {
     public List<Modelrecebiveis> Listarusucontroler() {
         return this.dao.GetListausuariodao();
     }
+
+    public boolean Salvarjuros(Modelrecebiveis recebuveus) {
+       return this.dao.salvarjurosdao(recebuveus);
+    }
+
+    public List<Modelrecebiveis> ListarJuros() {
+        return this.dao.GetListajuros();
+    }
     
 }

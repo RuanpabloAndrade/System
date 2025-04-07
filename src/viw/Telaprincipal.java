@@ -139,6 +139,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuItem35 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
@@ -150,6 +151,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem32 = new javax.swing.JMenuItem();
+        jMenuItem36 = new javax.swing.JMenuItem();
         Finança = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -903,6 +905,10 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         });
         jMenu3.add(jMenuItem18);
 
+        jMenuItem35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/orça (1).png"))); // NOI18N
+        jMenuItem35.setText("Gerar Boleto");
+        jMenu3.add(jMenuItem35);
+
         jMenuBar1.add(jMenu3);
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/orça (1).png"))); // NOI18N
@@ -992,6 +998,10 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jMenu4.add(jMenuItem32);
 
         jMenu7.add(jMenu4);
+
+        jMenuItem36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
+        jMenuItem36.setText("Gerar Etiquetas ");
+        jMenu7.add(jMenuItem36);
 
         jMenuBar1.add(jMenu7);
 
@@ -1517,6 +1527,8 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     private javax.swing.JMenuItem jMenuItem32;
     private javax.swing.JMenuItem jMenuItem33;
     private javax.swing.JMenuItem jMenuItem34;
+    private javax.swing.JMenuItem jMenuItem35;
+    private javax.swing.JMenuItem jMenuItem36;
     private javax.swing.JMenuItem jMenuItem37;
     private javax.swing.JMenuItem jMenuItem38;
     private javax.swing.JMenuItem jMenuItem39;
