@@ -205,7 +205,10 @@ public class modelclientes {
         this.codigo = codigo;
     }
     
-    
+    @Override 
+    public String toString(){
+        return this.getNome();
+    }
     
     
     

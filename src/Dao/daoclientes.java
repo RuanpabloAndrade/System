@@ -151,7 +151,7 @@ public class daoclientes extends Classeconexao{
                 + "cpf, "
                 + "email, "
                 + "datanasimento "
-                + "FROM tabelaclientes";
+                + "FROM tabelaclientes ORDER BY nome ASC";
 
         try {
             pst = conexao.prepareStatement(sql);
