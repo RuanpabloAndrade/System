@@ -39,9 +39,9 @@ public class Daorecebiveis extends Classeconexao{
              while(rs.next()){
                  model = new Modelrecebiveis();
                  model.setCod(rs.getInt(1));
-                 model.setCliente(rs.getString(2)+"rs");
+                 //model.setChavecliente(rs.getString(2)+"rs");
                  model.setTelefone(rs.getString(3));
-                 model.setValor(rs.getString(4));
+                 //model.setValor(rs.getString(4));
                  model.setVencimento(rs.getString(5));
                  listausuario.add(model);
              }
@@ -104,6 +104,30 @@ public class Daorecebiveis extends Classeconexao{
             System.err.println(e);
         }
         return listajuros;
+    }
+
+    public boolean salvarcontadao(Modelrecebiveis recebiveis) {
+         conexao = Classeconexao.conector();
+        String sql = "INSERT INTO Contasreceber (chavecliente, rua, cpf, telefone,origem,descricao_venda,valor,data_emissao,vencimento,chavejuros) values(?,?,?,?,?,?,?,?,?,?)";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, recebiveis.getChavecliente());
+            pst.setString(2, recebiveis.getEndereco());
+            pst.setString(3, recebiveis.getCpf());
+            pst.setString(4, recebiveis.getTelefone());
+            pst.setString(5, recebiveis.getOrigem());
+            pst.setString(6, recebiveis.getDescricao());
+            pst.setDouble(7, recebiveis.getValor());
+            pst.setString(8, recebiveis.getEmissaao());
+            pst.setString(9, recebiveis.getVencimento());
+            pst.setInt(10, 1);
+            pst.executeUpdate();
+        } catch (Exception e) {
+            System.err.println(e);
+            JOptionPane.showMessageDialog(null, "Usuario Não cadastrado! veja se já consta na tabela do banco no botão vizualizar!");
+            return false;
+        }
+        return true;
     }
     
 }

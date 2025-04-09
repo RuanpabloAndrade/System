@@ -510,7 +510,7 @@ List<modelclientes> listacliente = new ArrayList<>();
         if (clientescontroler.Editarclientecontroler(clientes)) {
             JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso!");
             Limparformulario();
-             carregarclientes();
+            carregarclientes();
             
         } else {
             JOptionPane.showMessageDialog(null, "Cliente Não Atualizado !");

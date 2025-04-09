@@ -24,5 +24,9 @@ public class Controlerrecebiveis {
     public List<Modelrecebiveis> ListarJuros() {
         return this.dao.GetListajuros();
     }
+
+    public boolean Salvarconta(Modelrecebiveis recebiveis) {
+        return this.dao.salvarcontadao(recebiveis);
+    }
     
 }

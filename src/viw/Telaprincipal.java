@@ -1342,7 +1342,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         for (int i = 0; i <listausuario.size(); i++) {
             modelo.addRow(new Object[]{
                 listausuario.get(i).getCod(),
-                listausuario.get(i).getCliente(),
+                listausuario.get(i).getChavecliente(),
                 listausuario.get(i).getTelefone(),
                 listausuario.get(i).getValor(),
                 listausuario.get(i).getVencimento(),

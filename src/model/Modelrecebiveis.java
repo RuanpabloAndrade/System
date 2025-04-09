@@ -10,19 +10,19 @@ package model;
  */
 public class Modelrecebiveis {
     private int cod;
-    private String cliente;
+    private int chavecliente;
     private String endereco;
     private String cpf;
     private String telefone;
     private String origem;
-    private String valor;
+    private Double valor;
     private String emissaao;
     private String vencimento;
-    private String parcelas;
+    private int parcelas;
     private double juros;
     private int jurosdiasmensal;
     private double diario;
-    
+    private String descricao;
     
     
     
@@ -46,16 +46,12 @@ public class Modelrecebiveis {
     /**
      * @return the cliente
      */
-    public String getCliente() {
-        return cliente;
-    }
+   
 
     /**
      * @param cliente the cliente to set
      */
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
+    
 
     /**
      * @return the endereco
@@ -116,14 +112,14 @@ public class Modelrecebiveis {
     /**
      * @return the valor
      */
-    public String getValor() {
+    public Double getValor() {
         return valor;
     }
 
     /**
      * @param valor the valor to set
      */
-    public void setValor(String valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
@@ -158,14 +154,14 @@ public class Modelrecebiveis {
     /**
      * @return the parcelas
      */
-    public String getParcelas() {
+    public int getParcelas() {
         return parcelas;
     }
 
     /**
      * @param parcelas the parcelas to set
      */
-    public void setParcelas(String parcelas) {
+    public void setParcelas(int parcelas) {
         this.parcelas = parcelas;
     }
 
@@ -209,6 +205,34 @@ public class Modelrecebiveis {
      */
     public void setDiario(double diario) {
         this.diario = diario;
+    }
+
+    /**
+     * @return the descricao
+     */
+    public String getDescricao() {
+        return descricao;
+    }
+
+    /**
+     * @param descricao the descricao to set
+     */
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    /**
+     * @return the chavecliente
+     */
+    public int getChavecliente() {
+        return chavecliente;
+    }
+
+    /**
+     * @param chavecliente the chavecliente to set
+     */
+    public void setChavecliente(int chavecliente) {
+        this.chavecliente = chavecliente;
     }
     
     
