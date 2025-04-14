@@ -108,7 +108,8 @@ public class Daorecebiveis extends Classeconexao{
 
     public boolean salvarcontadao(Modelrecebiveis recebiveis) {
          conexao = Classeconexao.conector();
-        String sql = "INSERT INTO Contasreceber (chavecliente, rua, cpf, telefone,origem,descricao_venda,valor,data_emissao,vencimento,chavejuros) values(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Contasreceber (chavecliente, rua, cpf, telefone, origem, descricao_venda, valor, data_emissao, vencimento, numero_parcelas, chavejuros) " +
+             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?)";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setInt(1, recebiveis.getChavecliente());
@@ -120,7 +121,8 @@ public class Daorecebiveis extends Classeconexao{
             pst.setDouble(7, recebiveis.getValor());
             pst.setString(8, recebiveis.getEmissaao());
             pst.setString(9, recebiveis.getVencimento());
-            pst.setInt(10, 1);
+            pst.setInt(10, recebiveis.getParcelas());
+            pst.setInt(11, 1);
             pst.executeUpdate();
         } catch (Exception e) {
             System.err.println(e);

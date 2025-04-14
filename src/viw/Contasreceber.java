@@ -14,6 +14,10 @@ import Controler.controlerclientes;
 import javax.swing.JOptionPane;
 import model.Modelrecebiveis;
 import Controler.Controlerrecebiveis;
+import java.text.NumberFormat;
+import java.util.Locale;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.NumberFormatter;
 /**
  *
  * @author ruan
@@ -30,9 +34,15 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         initComponents();
         setLocationRelativeTo(this);
         designtabelacontasreceber();
-        
+        desiggvalor();
     }
-
+     
+    public void  desiggvalor(){
+        valor.setText("R$");
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,7 +57,7 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         gerarconta = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Limparformulario = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -118,9 +128,14 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar (1).png"))); // NOI18N
-        jButton2.setText("Cancelar");
+        Limparformulario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Limparformulario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar (1).png"))); // NOI18N
+        Limparformulario.setText("Cancelar");
+        Limparformulario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimparformularioActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/po (1).png"))); // NOI18N
@@ -143,7 +158,7 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
                 .addGap(18, 18, 18)
                 .addComponent(gerarconta, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Limparformulario, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -156,7 +171,7 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
                 .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gerarconta, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Limparformulario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
@@ -199,6 +214,7 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         });
 
         origem.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        origem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Origem:");
@@ -207,6 +223,9 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         jLabel7.setText("Valor:");
 
         valor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        valor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        valor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        valor.setValue(0.00);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Data de Emissão:");
@@ -217,16 +236,18 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        dataemissao.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Vencimento:");
 
         vencimento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
-            vencimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-##")));
+            vencimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        vencimento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel10.setText("Numero de Parcelas:");
@@ -239,9 +260,17 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
                 {null, null, null, null}
             },
             new String [] {
-                "Código", "N. Parcela/Valor", "Vencimento", "Valor total"
+                "Código", "Parcela", "Vencimento", "Valor total"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         contasreceber.setFocusable(false);
         contasreceber.setRowHeight(25);
         contasreceber.setSelectionBackground(new java.awt.Color(232, 57, 95));
@@ -276,13 +305,15 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
 
         jFormattedTextField1.setEditable(false);
         jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jFormattedTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setText("Descrição da Venda:");
 
         descricaovenda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        descricaovenda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        jSpinner1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jSpinner1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jSpinner1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -290,7 +321,7 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
 
         chavecliente.setEditable(false);
         chavecliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        chavecliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        chavecliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         chavecliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chaveclienteActionPerformed(evt);
@@ -316,9 +347,7 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(combocliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(1, 1, 1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel2))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
@@ -419,10 +448,11 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dataemissao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(vencimento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(dataemissao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(vencimento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -468,8 +498,8 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         daoclientes clientescombo = new daoclientes();
         List<modelclientes> listacliente = clientescombo.Carregarclientetabelavizualizar();
         combocliente.removeAll();
-        
         for(modelclientes c: listacliente){
+           Limpar();
             combocliente.addItem(c);
         }
         
@@ -481,12 +511,11 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
 
     private void comboclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboclienteActionPerformed
        modelclientes clienteSelecionado = (modelclientes) combocliente.getSelectedItem();
-
     if (clienteSelecionado != null) {
         String nomevariavel = clienteSelecionado.getNome(); // pega o nome
         clientes = clientescontroler.carregarDadosclientes(nomevariavel);
-        
         if (clientes != null) {
+            Limpar();
             chavecliente.setText(String.valueOf(clientes.getCodigo()));
             rua.setText(clientes.getRua());
             cpf.setText(clientes.getCpf());
@@ -503,24 +532,58 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
 
     private void gerarcontaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarcontaActionPerformed
         recebiveis = new Modelrecebiveis();
-        recebiveis.setChavecliente(Integer.parseInt(chavecliente.getText()));
+        if (chavecliente.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "'Escolha um cliente em 'Pesquisar Cliente'");
+            return;
+        }
+         else {
+            recebiveis.setChavecliente(Integer.parseInt(chavecliente.getText()));
+        }
         recebiveis.setEndereco(rua.getText());
         recebiveis.setCpf(cpf.getText());
         recebiveis.setTelefone(telefone.getText());
         recebiveis.setOrigem(origem.getText());
         recebiveis.setDescricao(descricaovenda.getText());
-        recebiveis.setValor(Double.parseDouble(valor.getText()));
+         if (valor.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "'Digite um Valor para Salvar a Conta'");
+            return;
+        }
+         else {
+            recebiveis.setValor(Double.parseDouble(valor.getText()));
+        }
         recebiveis.setEmissaao(dataemissao.getText());
         recebiveis.setVencimento(vencimento.getText());
+        recebiveis.setParcelas(Integer.parseInt(jSpinner1.getValue().toString()));
          if (controlerrecebiveis.Salvarconta(recebiveis)) {
             JOptionPane.showMessageDialog(null, "Conta cadastrado com Sucesso!");
-            
+            Limpar();
         } else {
-            JOptionPane.showMessageDialog(null, "não Conta cadastrado com Sucesso!");
+            JOptionPane.showMessageDialog(null, "Conta Não cadastrada!");
+             Limpar();
         }
         
     }//GEN-LAST:event_gerarcontaActionPerformed
 
+    private void LimparformularioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparformularioActionPerformed
+        Limpar();
+    }//GEN-LAST:event_LimparformularioActionPerformed
+    public void Limpar(){
+        chavecliente.setText("");
+        rua.setText("");
+        cpf.setValue(null); 
+        cpf.setFocusLostBehavior(cpf.COMMIT);
+        telefone.setValue(null); 
+        telefone.setFocusLostBehavior(telefone.COMMIT);
+        origem.setText("");
+        descricaovenda.setText("");
+        valor.setText("");
+        dataemissao.setValue(null);
+        dataemissao.setFocusLostBehavior(dataemissao.COMMIT);
+        vencimento.setValue(null);
+        vencimento.setFocusLostBehavior(vencimento.COMMIT);
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -557,6 +620,7 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Limparformulario;
     private javax.swing.JFormattedTextField chavecliente;
     private javax.swing.JComboBox combocliente;
     private javax.swing.JTable contasreceber;
@@ -564,7 +628,6 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
     private javax.swing.JFormattedTextField dataemissao;
     private javax.swing.JFormattedTextField descricaovenda;
     private javax.swing.JButton gerarconta;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JFormattedTextField jFormattedTextField1;
