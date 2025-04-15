@@ -552,7 +552,13 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
             recebiveis.setValor(Double.parseDouble(valor.getText()));
         }
         recebiveis.setEmissaao(dataemissao.getText());
+        String venc = vencimento.getText().replaceAll("[^0-9]", ""); 
+        if (venc.isEmpty() || venc.length() < 8) {
+        JOptionPane.showMessageDialog(null, "Digite uma data de vencimento válida!");
+        return;
+        } else {
         recebiveis.setVencimento(vencimento.getText());
+        }
         recebiveis.setParcelas(Integer.parseInt(jSpinner1.getValue().toString()));
          if (controlerrecebiveis.Salvarconta(recebiveis)) {
             JOptionPane.showMessageDialog(null, "Conta cadastrado com Sucesso!");
