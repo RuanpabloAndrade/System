@@ -28,5 +28,9 @@ public class Controlerrecebiveis {
     public boolean Salvarconta(Modelrecebiveis recebiveis) {
         return this.dao.salvarcontadao(recebiveis);
     }
+
+    public List<Modelrecebiveis> Listarrecebivel() {
+        return this.dao.listarecebiveis();
+    }
     
 }

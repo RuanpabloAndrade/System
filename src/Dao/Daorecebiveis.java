@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.Modelrecebiveis;
+import model.modelclientes;
 
 /**
  *
@@ -119,7 +120,6 @@ try {
     int totalParcelas = recebiveis.getParcelas();
     double valorTotal = recebiveis.getValor();
     double valorParcela = valorTotal / totalParcelas;
-
     for (int i = 1; i <= totalParcelas; i++) {
         pst.setInt(1, recebiveis.getChavecliente());
         pst.setString(2, recebiveis.getEndereco());
@@ -153,6 +153,42 @@ try {
     return false;
 }
 return true;
+    }
+
+    public List<Modelrecebiveis> listarecebiveis() {
+        conexao = Classeconexao.conector();
+        List<Modelrecebiveis> listarecebiveis = new ArrayList<>();
+        Modelrecebiveis recebiveis = new Modelrecebiveis();
+
+        String sql = "SELECT \n" +
+"    c.id AS id_conta,\n" +
+"    t.nome AS nome_cliente,\n" +
+"    c.descricao_venda,\n" +
+"    CAST(c.valor AS DECIMAL(10,2)) AS valor,\n" +
+"    DATE_FORMAT(c.vencimento, '%d/%m/%Y') AS vencimento\n" +
+"FROM \n" +
+"    Contasreceber c\n" +
+"JOIN \n" +
+"    tabelaclientes t ON c.chavecliente = t.id;";
+
+        try {
+            pst = conexao.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                recebiveis = new Modelrecebiveis();
+                recebiveis.setCod(rs.getInt(1));
+                recebiveis.setNomecliente(rs.getString(2));
+                recebiveis.setDescricao(rs.getString(3));
+                recebiveis.setValor(rs.getDouble(4));
+                recebiveis.setVencimento(rs.getString(5));
+                listarecebiveis.add(recebiveis);
+            }
+
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
+        return listarecebiveis;
     }
     
 }

@@ -16,6 +16,7 @@ import model.Modelrecebiveis;
 import Controler.Controlerrecebiveis;
 import java.text.NumberFormat;
 import java.util.Locale;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
 /**
@@ -308,7 +309,7 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         jFormattedTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel12.setText("Descrição da Venda:");
+        jLabel12.setText("Produto:");
 
         descricaovenda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         descricaovenda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -527,7 +528,7 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
     }//GEN-LAST:event_comboclienteActionPerformed
 
     private void chaveclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chaveclienteActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_chaveclienteActionPerformed
 
     private void gerarcontaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarcontaActionPerformed
@@ -543,7 +544,14 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         recebiveis.setCpf(cpf.getText());
         recebiveis.setTelefone(telefone.getText());
         recebiveis.setOrigem(origem.getText());
-        recebiveis.setDescricao(descricaovenda.getText());
+        String descricao = descricaovenda.getText().trim();
+        if (descricao.isEmpty()) {
+        descricao = "Compra não identificada";
+        recebiveis.setDescricao(descricao);
+        }
+        else{
+            recebiveis.setDescricao(descricaovenda.getText());
+        }
          if (valor.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "'Digite um Valor para Salvar a Conta'");
             return;
@@ -570,6 +578,10 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         
     }//GEN-LAST:event_gerarcontaActionPerformed
 
+    
+    
+    
+    
     private void LimparformularioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparformularioActionPerformed
         Limpar();
     }//GEN-LAST:event_LimparformularioActionPerformed

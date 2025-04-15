@@ -6,13 +6,23 @@ package viw;
 
 import java.awt.Color;
 import java.awt.Font;
-
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import model.modelclientes;
+import model.Modelrecebiveis;
+import Controler.Controlerrecebiveis;
+import java.text.NumberFormat;
+import java.util.Locale;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author ruan
  */
 public class Vizualizarcontasreceber extends javax.swing.JFrame {
-
+List<Modelrecebiveis> listarecebivel = new ArrayList<>();
+Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
     /**
      * Creates new form Vizualizarcontasreceber
      */
@@ -20,8 +30,29 @@ public class Vizualizarcontasreceber extends javax.swing.JFrame {
         initComponents();
          setLocationRelativeTo(this);
          Designtabelacontasreceber();
+         carregarcontasrecebivel();
     }
-
+    
+    private void carregarcontasrecebivel(){
+        listarecebivel = recebiveiscontroler.Listarrecebivel();
+        DefaultTableModel modelo = (DefaultTableModel) tabelacontasreceber.getModel();
+        modelo.setNumRows(0);
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        for (int i = 0; i <  listarecebivel.size(); i++) {
+            modelo.addRow(new Object[]{
+                listarecebivel.get(i).getCod(),
+                listarecebivel.get(i).getNomecliente(),
+                listarecebivel.get(i).getDescricao(),
+                formatoMoeda.format(listarecebivel.get(i).getValor()),
+                listarecebivel.get(i).getVencimento(),
+            });
+        }
+    }
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,8 +73,7 @@ public class Vizualizarcontasreceber extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jButton5 = new javax.swing.JButton();
+        pesquisarconta = new javax.swing.JFormattedTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -142,11 +172,13 @@ public class Vizualizarcontasreceber extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
         jLabel2.setText("Pesquisar Conta: ");
 
-        jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa (1).png"))); // NOI18N
-        jButton5.setText("Pesquisar");
+        pesquisarconta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pesquisarconta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        pesquisarconta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pesquisarcontaKeyReleased(evt);
+            }
+        });
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "Vencimento", "Valor" }));
@@ -170,10 +202,7 @@ public class Vizualizarcontasreceber extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)))
+                    .addComponent(pesquisarconta, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -186,12 +215,11 @@ public class Vizualizarcontasreceber extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton5)))
+                    .addComponent(pesquisarconta, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
+        tabelacontasreceber.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tabelacontasreceber.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -200,15 +228,28 @@ public class Vizualizarcontasreceber extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Nome", "Parcela", "Valor total", "Vencimento"
+                "Código", "Nome", "Parcela/Descrição", "Valor total/Parcela", "Vencimento"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tabelacontasreceber.setFocusable(false);
         tabelacontasreceber.setRowHeight(25);
         tabelacontasreceber.setSelectionBackground(new java.awt.Color(232, 57, 95));
         tabelacontasreceber.setShowVerticalLines(false);
         tabelacontasreceber.getTableHeader().setReorderingAllowed(false);
         tabelacontasreceber.setVerifyInputWhenFocusTarget(false);
+        tabelacontasreceber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tabelacontasreceberKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelacontasreceber);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -233,9 +274,9 @@ public class Vizualizarcontasreceber extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -259,6 +300,11 @@ public class Vizualizarcontasreceber extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void  Designtabelacontasreceber(){
+       tabelacontasreceber.getColumnModel().getColumn(0).setPreferredWidth(60);   // Código
+tabelacontasreceber.getColumnModel().getColumn(1).setPreferredWidth(200);  // Nome
+tabelacontasreceber.getColumnModel().getColumn(2).setPreferredWidth(280);  // Parcela/Descrição
+tabelacontasreceber.getColumnModel().getColumn(3).setPreferredWidth(90);   // Valor total
+tabelacontasreceber.getColumnModel().getColumn(4).setPreferredWidth(100);
        tabelacontasreceber.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
        tabelacontasreceber.getTableHeader().setOpaque(false);
        tabelacontasreceber.getTableHeader().setBackground(new Color(32, 136, 203));
@@ -271,6 +317,17 @@ public class Vizualizarcontasreceber extends javax.swing.JFrame {
        Contasreceber receber = new Contasreceber();
        receber.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tabelacontasreceberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tabelacontasreceberKeyReleased
+       
+    }//GEN-LAST:event_tabelacontasreceberKeyReleased
+
+    private void pesquisarcontaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesquisarcontaKeyReleased
+       DefaultTableModel model = (DefaultTableModel) tabelacontasreceber.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        tabelacontasreceber.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(pesquisarconta.getText()));
+    }//GEN-LAST:event_pesquisarcontaKeyReleased
 
     /**
      * @param args the command line arguments
@@ -312,10 +369,8 @@ public class Vizualizarcontasreceber extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -324,6 +379,7 @@ public class Vizualizarcontasreceber extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JFormattedTextField pesquisarconta;
     private javax.swing.JTable tabelacontasreceber;
     // End of variables declaration//GEN-END:variables
 }

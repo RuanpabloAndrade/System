@@ -23,6 +23,7 @@ public class Modelrecebiveis {
     private int jurosdiasmensal;
     private double diario;
     private String descricao;
+    private String nomecliente;
     
     
     
@@ -233,6 +234,20 @@ public class Modelrecebiveis {
      */
     public void setChavecliente(int chavecliente) {
         this.chavecliente = chavecliente;
+    }
+
+    /**
+     * @return the nomecliente
+     */
+    public String getNomecliente() {
+        return nomecliente;
+    }
+
+    /**
+     * @param nomecliente the nomecliente to set
+     */
+    public void setNomecliente(String nomecliente) {
+        this.nomecliente = nomecliente;
     }
     
     
