@@ -32,5 +32,13 @@ public class Controlerrecebiveis {
     public List<Modelrecebiveis> Listarrecebivel() {
         return this.dao.listarecebiveis();
     }
+
+    public List<Modelrecebiveis> cadastrorecebivel(int codigoCliente) {
+         return this.dao.listarecebivelcadastro(codigoCliente);
+    }
+
+    
+
+    
     
 }

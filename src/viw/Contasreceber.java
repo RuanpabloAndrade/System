@@ -14,7 +14,12 @@ import Controler.controlerclientes;
 import javax.swing.JOptionPane;
 import model.Modelrecebiveis;
 import Controler.Controlerrecebiveis;
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.DefaultFormatterFactory;
@@ -28,14 +33,17 @@ modelclientes clientes = new modelclientes();
 controlerclientes clientescontroler = new controlerclientes();
 Modelrecebiveis recebiveis = new Modelrecebiveis();
 Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
+List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
     /**
      * Creates new form Contasreceber
      */
     public Contasreceber() {
         initComponents();
+         preencherDataEmissaoAutomatica();
         setLocationRelativeTo(this);
         designtabelacontasreceber();
         desiggvalor();
+       
     }
      
     public void  desiggvalor(){
@@ -78,7 +86,7 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         vencimento = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        contasreceber = new javax.swing.JTable();
+        tabelarecebivelcadastro = new javax.swing.JTable();
         combocliente = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
@@ -253,7 +261,8 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel10.setText("Numero de Parcelas:");
 
-        contasreceber.setModel(new javax.swing.table.DefaultTableModel(
+        tabelarecebivelcadastro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        tabelarecebivelcadastro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -272,22 +281,22 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
                 return canEdit [columnIndex];
             }
         });
-        contasreceber.setFocusable(false);
-        contasreceber.setRowHeight(25);
-        contasreceber.setSelectionBackground(new java.awt.Color(232, 57, 95));
-        contasreceber.setShowVerticalLines(false);
-        contasreceber.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(contasreceber);
+        tabelarecebivelcadastro.setFocusable(false);
+        tabelarecebivelcadastro.setRowHeight(25);
+        tabelarecebivelcadastro.setSelectionBackground(new java.awt.Color(232, 57, 95));
+        tabelarecebivelcadastro.setShowVerticalLines(false);
+        tabelarecebivelcadastro.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tabelarecebivelcadastro);
 
         combocliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         combocliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         combocliente.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 comboclienteAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         combocliente.addActionListener(new java.awt.event.ActionListener() {
@@ -481,11 +490,11 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
 
     
     private void designtabelacontasreceber(){
-        contasreceber.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        contasreceber.getTableHeader().setOpaque(false);
-        contasreceber.getTableHeader().setBackground(new Color(32, 136, 203));
-        contasreceber.getTableHeader().setForeground( new Color(255,255,255));
-        contasreceber.setRowHeight(25);
+        tabelarecebivelcadastro.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        tabelarecebivelcadastro.getTableHeader().setOpaque(false);
+        tabelarecebivelcadastro.getTableHeader().setBackground(new Color(32, 136, 203));
+        tabelarecebivelcadastro.getTableHeader().setForeground( new Color(255,255,255));
+        tabelarecebivelcadastro.setRowHeight(25);
     }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -500,7 +509,7 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         List<modelclientes> listacliente = clientescombo.Carregarclientetabelavizualizar();
         combocliente.removeAll();
         for(modelclientes c: listacliente){
-           Limpar();
+            Limpar();
             combocliente.addItem(c);
         }
         
@@ -539,6 +548,7 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         }
          else {
             recebiveis.setChavecliente(Integer.parseInt(chavecliente.getText()));
+            
         }
         recebiveis.setEndereco(rua.getText());
         recebiveis.setCpf(cpf.getText());
@@ -570,17 +580,45 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
         recebiveis.setParcelas(Integer.parseInt(jSpinner1.getValue().toString()));
          if (controlerrecebiveis.Salvarconta(recebiveis)) {
             JOptionPane.showMessageDialog(null, "Conta cadastrado com Sucesso!");
+            Carregarcontas();
             Limpar();
+           
         } else {
             JOptionPane.showMessageDialog(null, "Conta Não cadastrada!");
              Limpar();
         }
         
     }//GEN-LAST:event_gerarcontaActionPerformed
+    private void Carregarcontas(){
+        int codigoCliente = Integer.parseInt(chavecliente.getText()); 
+        listarecebiveltelacadastro = controlerrecebiveis.cadastrorecebivel(codigoCliente);
+        DefaultTableModel modelo = (DefaultTableModel) tabelarecebivelcadastro.getModel();
+        modelo.setNumRows(0);
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        for (int i = 0; i <  listarecebiveltelacadastro.size(); i++) {
+             modelo.addRow(new Object[]{
+                listarecebiveltelacadastro.get(i).getCod(),
+                listarecebiveltelacadastro.get(i).getDescricao(), 
+                listarecebiveltelacadastro.get(i).getVencimento(),
+                formatoMoeda.format(listarecebiveltelacadastro.get(i).getValor())
+            });
+        }
+    }
+    
+    
+    
+    private void preencherDataEmissaoAutomatica() {
+       SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+    String dataFormatada = formatoData.format(new Date());
+    dataemissao.setText(dataFormatada);  // Aqui é 100% compatível com a máscara
+}
+   
+    
 
+ 
     
     
-    
+
     
     private void LimparformularioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparformularioActionPerformed
         Limpar();
@@ -641,7 +679,6 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
     private javax.swing.JButton Limparformulario;
     private javax.swing.JFormattedTextField chavecliente;
     private javax.swing.JComboBox combocliente;
-    private javax.swing.JTable contasreceber;
     private javax.swing.JFormattedTextField cpf;
     private javax.swing.JFormattedTextField dataemissao;
     private javax.swing.JFormattedTextField descricaovenda;
@@ -669,6 +706,7 @@ Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JFormattedTextField origem;
     private javax.swing.JFormattedTextField rua;
+    private javax.swing.JTable tabelarecebivelcadastro;
     private javax.swing.JFormattedTextField telefone;
     private javax.swing.JFormattedTextField valor;
     private javax.swing.JFormattedTextField vencimento;

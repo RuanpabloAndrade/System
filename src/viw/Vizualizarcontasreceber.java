@@ -39,12 +39,12 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
         modelo.setNumRows(0);
         NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
         for (int i = 0; i <  listarecebivel.size(); i++) {
-            modelo.addRow(new Object[]{
-                listarecebivel.get(i).getCod(),
+             modelo.addRow(new Object[]{
                 listarecebivel.get(i).getNomecliente(),
-                listarecebivel.get(i).getDescricao(),
+                listarecebivel.get(i).getDescricao(), 
                 formatoMoeda.format(listarecebivel.get(i).getValor()),
                 listarecebivel.get(i).getVencimento(),
+                formatoMoeda.format(listarecebivel.get(i).getJuros())
             });
         }
     }
@@ -228,7 +228,7 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
                 {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Nome", "Parcela/Descrição", "Valor total/Parcela", "Vencimento"
+                "Nome", "Parcela/Descrição", "Valor Original", "Vencimento", "Valor Com juros"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -300,11 +300,11 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
     }// </editor-fold>//GEN-END:initComponents
 
     private void  Designtabelacontasreceber(){
-       tabelacontasreceber.getColumnModel().getColumn(0).setPreferredWidth(60);   // Código
-tabelacontasreceber.getColumnModel().getColumn(1).setPreferredWidth(200);  // Nome
-tabelacontasreceber.getColumnModel().getColumn(2).setPreferredWidth(280);  // Parcela/Descrição
-tabelacontasreceber.getColumnModel().getColumn(3).setPreferredWidth(90);   // Valor total
-tabelacontasreceber.getColumnModel().getColumn(4).setPreferredWidth(100);
+tabelacontasreceber.getColumnModel().getColumn(0).setPreferredWidth(200);
+tabelacontasreceber.getColumnModel().getColumn(1).setPreferredWidth(280);
+tabelacontasreceber.getColumnModel().getColumn(2).setPreferredWidth(90);
+tabelacontasreceber.getColumnModel().getColumn(3).setPreferredWidth(100);
+tabelacontasreceber.getColumnModel().getColumn(4).setPreferredWidth(110);
        tabelacontasreceber.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
        tabelacontasreceber.getTableHeader().setOpaque(false);
        tabelacontasreceber.getTableHeader().setBackground(new Color(32, 136, 203));

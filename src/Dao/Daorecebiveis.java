@@ -156,31 +156,38 @@ return true;
     }
 
     public List<Modelrecebiveis> listarecebiveis() {
-        conexao = Classeconexao.conector();
+       conexao = Classeconexao.conector();
         List<Modelrecebiveis> listarecebiveis = new ArrayList<>();
         Modelrecebiveis recebiveis = new Modelrecebiveis();
 
         String sql = "SELECT \n" +
-"    c.id AS id_conta,\n" +
 "    t.nome AS nome_cliente,\n" +
 "    c.descricao_venda,\n" +
 "    CAST(c.valor AS DECIMAL(10,2)) AS valor,\n" +
-"    DATE_FORMAT(c.vencimento, '%d/%m/%Y') AS vencimento\n" +
+"    DATE_FORMAT(c.vencimento, '%d/%m/%Y') AS vencimento,\n" +
+"    ROUND(\n" +
+"        CAST(c.valor AS DECIMAL(10,2)) * \n" +
+"        (1 + ((IFNULL(j.jurosmensal, 0) / IFNULL(j.diasmensal, 30)) / 100 * \n" +
+"        GREATEST(0, DATEDIFF(CURDATE(), c.vencimento)))),\n" +
+"        2\n" +
+"    ) AS valor_com_juros\n" +
 "FROM \n" +
 "    Contasreceber c\n" +
 "JOIN \n" +
-"    tabelaclientes t ON c.chavecliente = t.id;";
+"    tabelaclientes t ON c.chavecliente = t.id\n" +
+"LEFT JOIN \n" +
+"    juros j ON c.chavejuros = j.id\n";
 
         try {
             pst = conexao.prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {
                 recebiveis = new Modelrecebiveis();
-                recebiveis.setCod(rs.getInt(1));
-                recebiveis.setNomecliente(rs.getString(2));
-                recebiveis.setDescricao(rs.getString(3));
-                recebiveis.setValor(rs.getDouble(4));
-                recebiveis.setVencimento(rs.getString(5));
+                recebiveis.setNomecliente(rs.getString(1));
+               recebiveis.setDescricao(rs.getString(2));
+                recebiveis.setValor(rs.getDouble(3));
+                recebiveis.setVencimento(rs.getString(4));
+                recebiveis.setJuros(rs.getDouble(5));
                 listarecebiveis.add(recebiveis);
             }
 
@@ -190,5 +197,40 @@ return true;
 
         return listarecebiveis;
     }
+
+    public List<Modelrecebiveis> listarecebivelcadastro(int codigoCliente) {
+            conexao = Classeconexao.conector();
+    List<Modelrecebiveis> listarecebivel = new ArrayList<>();
+    Modelrecebiveis modelrecebiveis = new Modelrecebiveis();
     
+    String sql = "SELECT \n" +
+"    c.id AS codigo,\n" +
+"    c.descricao_venda AS parcela_descricao,\n" +
+"    DATE_FORMAT(c.vencimento, '%d/%m/%Y') AS vencimento,\n" +
+"    CAST(c.valor AS DECIMAL(10,2)) AS valor_original\n" +
+"FROM \n" +
+"    Contasreceber c\n" +
+"LEFT JOIN \n" +
+"    juros j ON c.chavejuros = j.id\n" +
+"WHERE \n" +
+"    c.chavecliente = ?;";
+    try {
+        pst = conexao.prepareStatement(sql);
+        pst.setInt(1, codigoCliente);
+        rs = pst.executeQuery();
+        
+        while (rs.next()) {
+            modelrecebiveis = new Modelrecebiveis();
+            modelrecebiveis.setCod(rs.getInt(1));
+            modelrecebiveis.setDescricao(rs.getString(2));
+            modelrecebiveis.setVencimento(rs.getString(3));
+            modelrecebiveis.setValor(rs.getDouble(4));
+            listarecebivel.add(modelrecebiveis);
+        }
+    } catch (Exception e) {
+        System.err.println(e);
+    } 
+    
+    return listarecebivel;
+    }
 }
