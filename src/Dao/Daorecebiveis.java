@@ -30,23 +30,27 @@ public class Daorecebiveis extends Classeconexao{
         List<Modelrecebiveis> listausuario = new ArrayList<>();
         Modelrecebiveis model = new Modelrecebiveis();
         
-       String sql = "SELECT cod, "
-            + "cliente, "
-            + "telefone, "
-            + "valor, "
-            + "vencimento "
-            + "FROM Contasreceber";
+       String sql = "SELECT\n" +
+"    t.nome AS nome_cliente,                      -- Nome do Cliente\n" +
+"    t.telefone,                                  -- Telefone do Cliente (verifique o nome exato da coluna)\n" +
+"    CAST(c.valor AS DECIMAL(10,2)) AS valor,     -- Valor da conta\n" +
+"    DATE_FORMAT(c.vencimento, '%d/%m/%Y') AS vencimento_formatado -- Data de vencimento formatada\n" +
+"FROM\n" +
+"    Contasreceber c\n" +
+"JOIN\n" +
+"    tabelaclientes t ON c.chavecliente = t.id    -- Junta com a tabela de clientes para obter nome e telefone\n" +
+"ORDER BY\n" +
+"    c.vencimento ASC ";
        
         try {
              pst=conexao.prepareStatement(sql);
              rs=pst.executeQuery();
              while(rs.next()){
                  model = new Modelrecebiveis();
-                 model.setCod(rs.getInt(1));
-                 //model.setChavecliente(rs.getString(2)+"rs");
-                 model.setTelefone(rs.getString(3));
-                 //model.setValor(rs.getString(4));
-                 model.setVencimento(rs.getString(5));
+                 model.setNomecliente(rs.getString(1));
+                 model.setTelefone(rs.getString(2));
+                 model.setValor(rs.getDouble(3));
+                 model.setVencimento(rs.getString(4));
                  listausuario.add(model);
              }
              
@@ -161,6 +165,7 @@ return true;
         Modelrecebiveis recebiveis = new Modelrecebiveis();
 
         String sql = "SELECT \n" +
+"    c.id AS id_conta_receber,  -- Incluindo o id da tabela Contasreceber\n" +
 "    t.nome AS nome_cliente,\n" +
 "    c.descricao_venda,\n" +
 "    CAST(c.valor AS DECIMAL(10,2)) AS valor,\n" +
@@ -176,18 +181,21 @@ return true;
 "JOIN \n" +
 "    tabelaclientes t ON c.chavecliente = t.id\n" +
 "LEFT JOIN \n" +
-"    juros j ON c.chavejuros = j.id\n";
+"    juros j ON c.chavejuros = j.id\n" +
+"ORDER BY\n" +
+"    c.vencimento ASC;";
 
         try {
             pst = conexao.prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {
                 recebiveis = new Modelrecebiveis();
-                recebiveis.setNomecliente(rs.getString(1));
-               recebiveis.setDescricao(rs.getString(2));
-                recebiveis.setValor(rs.getDouble(3));
-                recebiveis.setVencimento(rs.getString(4));
-                recebiveis.setJuros(rs.getDouble(5));
+                recebiveis.setCod(rs.getInt(1));
+                recebiveis.setNomecliente(rs.getString(2));
+                recebiveis.setDescricao(rs.getString(3));
+                recebiveis.setValor(rs.getDouble(4));
+                recebiveis.setVencimento(rs.getString(5));
+                recebiveis.setJuros(rs.getDouble(6));
                 listarecebiveis.add(recebiveis);
             }
 
@@ -232,5 +240,17 @@ return true;
     } 
     
     return listarecebivel;
+    }
+
+    public boolean Quitarconta(int codigo) {
+        conexao = Classeconexao.conector();
+        String sql = "DELETE FROM Contasreceber WHERE id = '" + codigo + "'";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.execute();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return true;
     }
 }

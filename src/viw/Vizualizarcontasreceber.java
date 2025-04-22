@@ -12,9 +12,16 @@ import javax.swing.table.DefaultTableModel;
 import model.modelclientes;
 import model.Modelrecebiveis;
 import Controler.Controlerrecebiveis;
+import java.awt.Component;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableRowSorter;
 /**
  *
@@ -40,6 +47,7 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
         NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
         for (int i = 0; i <  listarecebivel.size(); i++) {
              modelo.addRow(new Object[]{
+                listarecebivel.get(i).getCod(), 
                 listarecebivel.get(i).getNomecliente(),
                 listarecebivel.get(i).getDescricao(), 
                 formatoMoeda.format(listarecebivel.get(i).getValor()),
@@ -47,6 +55,42 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
                 formatoMoeda.format(listarecebivel.get(i).getJuros())
             });
         }
+        int colunaVencimento = 4;
+
+    tabelacontasreceber.getColumnModel().getColumn(colunaVencimento)
+        .setCellRenderer(new DefaultTableCellRenderer() {
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
+
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+                try {
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    Date vencimento = sdf.parse(value.toString());
+                    Date hoje = new Date();
+
+                    if (vencimento.before(hoje)) {
+                        c.setForeground(Color.RED); // 🔴 Texto vermelho se vencido
+                    } else {
+                        c.setForeground(Color.BLACK); // Texto normal
+                    }
+
+                    if (isSelected) {
+                        c.setBackground(table.getSelectionBackground());
+                    } else {
+                        c.setBackground(Color.WHITE);
+                    }
+
+                } catch (ParseException e) {
+                    c.setForeground(Color.BLACK);
+                    c.setBackground(Color.WHITE);
+                }
+
+                return c;
+            }
+        });
+        
+        
     }
     
     
@@ -67,7 +111,7 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Quitarconta = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -120,9 +164,14 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/apagar (1).png"))); // NOI18N
-        jButton2.setText("Quitar");
+        Quitarconta.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Quitarconta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/apagar (1).png"))); // NOI18N
+        Quitarconta.setText("Quitar");
+        Quitarconta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QuitarcontaActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
@@ -144,7 +193,7 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
                 .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Quitarconta, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -159,7 +208,7 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
                 .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Quitarconta, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -222,17 +271,17 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
         tabelacontasreceber.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tabelacontasreceber.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Parcela/Descrição", "Valor Original", "Vencimento", "Valor Com juros"
+                "Id", "Nome", "Parcela/Descrição", "Valor Original", "Vencimento", "Valor Com juros"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -251,6 +300,9 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
             }
         });
         jScrollPane1.setViewportView(tabelacontasreceber);
+        if (tabelacontasreceber.getColumnModel().getColumnCount() > 0) {
+            tabelacontasreceber.getColumnModel().getColumn(0).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -300,11 +352,12 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
     }// </editor-fold>//GEN-END:initComponents
 
     private void  Designtabelacontasreceber(){
-tabelacontasreceber.getColumnModel().getColumn(0).setPreferredWidth(200);
-tabelacontasreceber.getColumnModel().getColumn(1).setPreferredWidth(280);
-tabelacontasreceber.getColumnModel().getColumn(2).setPreferredWidth(90);
-tabelacontasreceber.getColumnModel().getColumn(3).setPreferredWidth(100);
-tabelacontasreceber.getColumnModel().getColumn(4).setPreferredWidth(110);
+tabelacontasreceber.getColumnModel().getColumn(0).setPreferredWidth(50);        
+tabelacontasreceber.getColumnModel().getColumn(1).setPreferredWidth(150);
+tabelacontasreceber.getColumnModel().getColumn(2).setPreferredWidth(280);
+tabelacontasreceber.getColumnModel().getColumn(3).setPreferredWidth(90);
+tabelacontasreceber.getColumnModel().getColumn(4).setPreferredWidth(100);
+tabelacontasreceber.getColumnModel().getColumn(5).setPreferredWidth(110);
        tabelacontasreceber.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
        tabelacontasreceber.getTableHeader().setOpaque(false);
        tabelacontasreceber.getTableHeader().setBackground(new Color(32, 136, 203));
@@ -328,6 +381,21 @@ tabelacontasreceber.getColumnModel().getColumn(4).setPreferredWidth(110);
         tabelacontasreceber.setRowSorter(trs);
         trs.setRowFilter(RowFilter.regexFilter(pesquisarconta.getText()));
     }//GEN-LAST:event_pesquisarcontaKeyReleased
+
+    private void QuitarcontaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitarcontaActionPerformed
+        int linha = tabelacontasreceber.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+            return;
+        }
+        int codigo=(int) tabelacontasreceber.getValueAt(linha,0);
+           int entrada = JOptionPane.showConfirmDialog(null, "Deseja Quitar essa conta?", "Confirmação", JOptionPane.YES_NO_OPTION);
+           if(entrada==JOptionPane.YES_OPTION){
+               recebiveiscontroler.excluirConta(codigo); 
+               carregarcontasrecebivel();
+               JOptionPane.showMessageDialog(null,"Conta Quitada!");
+           }
+    }//GEN-LAST:event_QuitarcontaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,8 +433,8 @@ tabelacontasreceber.getColumnModel().getColumn(4).setPreferredWidth(110);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Quitarconta;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;

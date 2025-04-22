@@ -148,7 +148,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="145" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="145" max="-2" attributes="0"/>
+                      <Component id="Quitarconta" min="-2" pref="145" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton3" min="-2" pref="145" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -165,7 +165,7 @@
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton1" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                          <Component id="Quitarconta" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                           <Component id="jButton3" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                           <Component id="jButton4" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                           <Component id="jButton7" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
@@ -190,7 +190,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="Quitarconta">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -200,6 +200,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Quitar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="QuitarcontaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">
               <Properties>
@@ -357,7 +360,8 @@
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="4">
+                  <Table columnCount="6" rowCount="4">
+                    <Column editable="false" title="Id" type="java.lang.Object"/>
                     <Column editable="false" title="Nome" type="java.lang.Object"/>
                     <Column editable="false" title="Parcela/Descri&#xe7;&#xe3;o" type="java.lang.Object"/>
                     <Column editable="false" title="Valor Original" type="java.lang.Object"/>
@@ -367,6 +371,11 @@
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>

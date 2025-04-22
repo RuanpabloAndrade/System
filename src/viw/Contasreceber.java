@@ -291,12 +291,12 @@ List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
         combocliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         combocliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         combocliente.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 comboclienteAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         combocliente.addActionListener(new java.awt.event.ActionListener() {
@@ -318,7 +318,7 @@ List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
         jFormattedTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel12.setText("Produto:");
+        jLabel12.setText("Descrição da Venda:");
 
         descricaovenda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         descricaovenda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -490,6 +490,10 @@ List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
 
     
     private void designtabelacontasreceber(){
+        tabelarecebivelcadastro.getColumnModel().getColumn(0).setPreferredWidth(60);   // Código
+tabelarecebivelcadastro.getColumnModel().getColumn(1).setPreferredWidth(270);  // Parcela
+tabelarecebivelcadastro.getColumnModel().getColumn(2).setPreferredWidth(100);  // Vencimento
+tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100); 
         tabelarecebivelcadastro.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         tabelarecebivelcadastro.getTableHeader().setOpaque(false);
         tabelarecebivelcadastro.getTableHeader().setBackground(new Color(32, 136, 203));
@@ -562,11 +566,11 @@ List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
         else{
             recebiveis.setDescricao(descricaovenda.getText());
         }
-         if (valor.getText().trim().isEmpty()) {
+        if (valor.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "'Digite um Valor para Salvar a Conta'");
             return;
         }
-         else {
+        else {
             recebiveis.setValor(Double.parseDouble(valor.getText()));
         }
         recebiveis.setEmissaao(dataemissao.getText());
@@ -577,7 +581,14 @@ List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
         } else {
         recebiveis.setVencimento(vencimento.getText());
         }
-        recebiveis.setParcelas(Integer.parseInt(jSpinner1.getValue().toString()));
+        int valor = (int) jSpinner1.getValue();
+        if(valor <=0){
+            JOptionPane.showMessageDialog(null, "Escolha um numero no campo: 'Numero de Parcelas' Caso seja uma conta sem parcelamento Escolha o numero 1 para conta única");
+            return;
+        }
+        else{
+             recebiveis.setParcelas(Integer.parseInt(jSpinner1.getValue().toString()));
+        }
          if (controlerrecebiveis.Salvarconta(recebiveis)) {
             JOptionPane.showMessageDialog(null, "Conta cadastrado com Sucesso!");
             Carregarcontas();
@@ -632,11 +643,13 @@ List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
         telefone.setFocusLostBehavior(telefone.COMMIT);
         origem.setText("");
         descricaovenda.setText("");
-        valor.setText("");
+        valor.setValue(null);
+        valor.setFocusLostBehavior(valor.COMMIT);
         dataemissao.setValue(null);
         dataemissao.setFocusLostBehavior(dataemissao.COMMIT);
         vencimento.setValue(null);
         vencimento.setFocusLostBehavior(vencimento.COMMIT);
+        jSpinner1.setValue(0);
     }
     
     

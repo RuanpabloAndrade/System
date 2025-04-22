@@ -6,9 +6,17 @@ package viw;
 import model.Modelrecebiveis;
 import Controler.Controlerrecebiveis;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 //NO MENU ITEM ESTOQUE NO BOTAO ESTOQUE NO SUBBOTAO DE NOTA DE ENTRADA O MODULO DE FLUXO DE FORNECEDORAS
 //LOCALIZADO NA TELA (ANALISE FINANCEIRA) DEVE SER ALIMENTADO PELAS FUNCIONALIADES, RESULTADO E VARIAVEIS DE NOTA DE ENTRADA LOCALIZADO POR SUA VEZ NO NOTAO ESTOQUE
@@ -547,18 +555,18 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jPanel7.setBounds(160, 420, 350, 140);
 
         tabela.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tabela.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tabela.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Código", "Cliente", "Telefone", "Valor", "Vencimento"
+                "Cliente", "Telefone", "Valor", "Vencimento"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1339,16 +1347,53 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         listausuario = controler.Listarusucontroler();
         DefaultTableModel modelo=(DefaultTableModel) tabela.getModel();
         modelo.setNumRows(0);
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
         for (int i = 0; i <listausuario.size(); i++) {
             modelo.addRow(new Object[]{
-                listausuario.get(i).getCod(),
-                listausuario.get(i).getChavecliente(),
+                listausuario.get(i).getNomecliente(),
                 listausuario.get(i).getTelefone(),
-                listausuario.get(i).getValor(),
-                listausuario.get(i).getVencimento(),
+                formatoMoeda.format(listausuario.get(i).getValor()),
+                listausuario.get(i).getVencimento()
             });
             
         }
+           int colunaVencimento = 3;
+
+        tabela.getColumnModel().getColumn(colunaVencimento)
+        .setCellRenderer(new DefaultTableCellRenderer() {
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
+
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+                try {
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    Date vencimento = sdf.parse(value.toString());
+                    Date hoje = new Date();
+
+                    if (vencimento.before(hoje)) {
+                        c.setForeground(Color.RED); // 🔴 Texto vermelho se vencido
+                    } else {
+                        c.setForeground(Color.BLACK); // Texto normal
+                    }
+
+                    if (isSelected) {
+                        c.setBackground(table.getSelectionBackground());
+                    } else {
+                        c.setBackground(Color.WHITE);
+                    }
+
+                } catch (ParseException e) {
+                    c.setForeground(Color.BLACK);
+                    c.setBackground(Color.WHITE);
+                }
+
+                return c;
+            }
+        });
+        
+        
+        
     }
     private void Contaspagar(){
         double varia= 0.00;
