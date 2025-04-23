@@ -14,13 +14,18 @@ import Controler.controlerclientes;
 import javax.swing.JOptionPane;
 import model.Modelrecebiveis;
 import Controler.Controlerrecebiveis;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
@@ -39,17 +44,47 @@ List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
      */
     public Contasreceber() {
         initComponents();
-         preencherDataEmissaoAutomatica();
+        preencherDataEmissaoAutomatica();
         setLocationRelativeTo(this);
         designtabelacontasreceber();
-        desiggvalor();
-       
+        jSpinner1.addChangeListener(new ChangeListener() {
+        public void stateChanged(ChangeEvent e) {
+        gerarParcelas();//gera parcelas automaticamente ao selecionar um numero no spinner e mostrar na tabela
     }
-     
-    public void  desiggvalor(){
-        valor.setText("R$");
+         });
     }
     
+    private void gerarParcelas() {
+         try {
+        double valorTotal = Double.parseDouble(valor.getText());
+        int numeroParcelas = (Integer) jSpinner1.getValue();
+        String vencimentoStr = vencimento.getText();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataVencimento = sdf.parse(vencimentoStr);
+        double valorParcela = valorTotal / numeroParcelas;
+
+        DefaultTableModel modelo = (DefaultTableModel) tabelarecebivelcadastro.getModel();
+        modelo.setColumnIdentifiers(new Object[]{"Código", "Parcela", "Vencimento", "Valor total"});
+        modelo.setRowCount(0);
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dataVencimento);
+
+        for (int i = 1; i <= numeroParcelas; i++) {
+            String parcela = i + "/" + numeroParcelas;
+            String venc = sdf.format(cal.getTime());
+            modelo.addRow(new Object[]{i, parcela, venc, String.format("R$ %.2f", valorParcela)});
+            cal.add(Calendar.MONTH, 1);
+        }
+
+        modelo.fireTableDataChanged();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro ao gerar parcelas: " + e.getMessage());
+        e.printStackTrace(); // opcional para ver no console
+    }
+}
+     
     
     
     /**
@@ -591,7 +626,7 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
         }
          if (controlerrecebiveis.Salvarconta(recebiveis)) {
             JOptionPane.showMessageDialog(null, "Conta cadastrado com Sucesso!");
-            Carregarcontas();
+            //Carregarcontas();
             Limpar();
            
         } else {
