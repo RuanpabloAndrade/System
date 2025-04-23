@@ -41,6 +41,10 @@ public class Controlerrecebiveis {
          return this.dao.Quitarconta(codigo);
     }
 
+    public Modelrecebiveis ExibirContas(int codigo) {
+        return this.dao.ExibirContas(codigo);
+    }
+
     
 
     

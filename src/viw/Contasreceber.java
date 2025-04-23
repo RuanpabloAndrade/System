@@ -39,6 +39,7 @@ controlerclientes clientescontroler = new controlerclientes();
 Modelrecebiveis recebiveis = new Modelrecebiveis();
 Controlerrecebiveis controlerrecebiveis = new Controlerrecebiveis();
 List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
+private boolean carregandoCombo = true;
     /**
      * Creates new form Contasreceber
      */
@@ -47,15 +48,17 @@ List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
         preencherDataEmissaoAutomatica();
         setLocationRelativeTo(this);
         designtabelacontasreceber();
-        jSpinner1.addChangeListener(new ChangeListener() {
+       jSpinner1.addChangeListener(new ChangeListener() {
         public void stateChanged(ChangeEvent e) {
         gerarParcelas();//gera parcelas automaticamente ao selecionar um numero no spinner e mostrar na tabela
     }
-         });
+        });
+       
+       
     }
     
     private void gerarParcelas() {
-         try {
+        try {
         double valorTotal = Double.parseDouble(valor.getText());
         int numeroParcelas = (Integer) jSpinner1.getValue();
         String vencimentoStr = vencimento.getText();
@@ -124,7 +127,7 @@ List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
         tabelarecebivelcadastro = new javax.swing.JTable();
         combocliente = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        codigo = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
         descricaovenda = new javax.swing.JFormattedTextField();
         jSpinner1 = new javax.swing.JSpinner();
@@ -348,9 +351,9 @@ List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel11.setText("Código:");
 
-        jFormattedTextField1.setEditable(false);
-        jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jFormattedTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        codigo.setEditable(false);
+        codigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        codigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setText("Descrição da Venda:");
@@ -386,7 +389,7 @@ List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -463,7 +466,7 @@ List<Modelrecebiveis> listarecebiveltelacadastro = new ArrayList<>();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(combocliente, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                     .addComponent(chavecliente)
-                    .addComponent(jFormattedTextField1))
+                    .addComponent(codigo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -544,14 +547,17 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
     }//GEN-LAST:event_telefoneActionPerformed
 
     private void comboclienteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_comboclienteAncestorAdded
+      
+        carregandoCombo = true;
         daoclientes clientescombo = new daoclientes();
         List<modelclientes> listacliente = clientescombo.Carregarclientetabelavizualizar();
         combocliente.removeAll();
+        
         for(modelclientes c: listacliente){
-            Limpar();
+           
             combocliente.addItem(c);
         }
-        
+         carregandoCombo = false;
     }//GEN-LAST:event_comboclienteAncestorAdded
 
     private void comboclienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboclienteKeyReleased
@@ -559,10 +565,12 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
     }//GEN-LAST:event_comboclienteKeyReleased
 
     private void comboclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboclienteActionPerformed
-       modelclientes clienteSelecionado = (modelclientes) combocliente.getSelectedItem();
+       if (carregandoCombo) return;
+        modelclientes clienteSelecionado = (modelclientes) combocliente.getSelectedItem();
     if (clienteSelecionado != null) {
         String nomevariavel = clienteSelecionado.getNome(); // pega o nome
         clientes = clientescontroler.carregarDadosclientes(nomevariavel);
+        
         if (clientes != null) {
             Limpar();
             chavecliente.setText(String.valueOf(clientes.getCodigo()));
@@ -726,6 +734,7 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Limparformulario;
     private javax.swing.JFormattedTextField chavecliente;
+    private javax.swing.JFormattedTextField codigo;
     private javax.swing.JComboBox combocliente;
     private javax.swing.JFormattedTextField cpf;
     private javax.swing.JFormattedTextField dataemissao;
@@ -733,7 +742,6 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
     private javax.swing.JButton gerarconta;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -759,4 +767,17 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
     private javax.swing.JFormattedTextField valor;
     private javax.swing.JFormattedTextField vencimento;
     // End of variables declaration//GEN-END:variables
+
+    public void preechercamposconta(Modelrecebiveis recebieisexibição) {
+         codigo.setText(String.valueOf(recebieisexibição.getCod()));
+         rua.setText(recebieisexibição.getEndereco());
+         cpf.setText(recebieisexibição.getCpf());
+         telefone.setText(recebieisexibição.getTelefone());
+         origem.setText(recebieisexibição.getOrigem());
+         descricaovenda.setText(recebieisexibição.getDescricao());
+         valor.setText(String.valueOf(recebieisexibição.getValor()));
+         dataemissao.setText(recebieisexibição.getEmissaao());
+         vencimento.setText(recebieisexibição.getVencimento());
+         jSpinner1.setValue(recebieisexibição.getParcelas());
+    }
 }

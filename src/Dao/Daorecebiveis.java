@@ -7,6 +7,7 @@ import Conexao.Classeconexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Types;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -252,5 +253,50 @@ return true;
             System.err.println(e);
         }
         return true;
+    }
+
+    public Modelrecebiveis ExibirContas(int codigo) {
+           Modelrecebiveis modelrecebiveis = new Modelrecebiveis();
+        try {
+            conexao = Classeconexao.conector();
+            String sql = "SELECT \n" +
+"    c.id AS id_conta_receber,\n" +
+"    t.rua,\n" +
+"    t.cpf,\n" +
+"    t.telefone,\n" +
+"    c.origem,\n" +
+"    c.descricao_venda,\n" +
+"    -- Valor total original da venda (valor da parcela × número de parcelas)\n" +
+"    CAST(c.valor * c.numero_parcelas AS DECIMAL(10,2)) AS valor_total,\n" +
+"    DATE_FORMAT(c.data_emissao, '%d/%m/%Y') AS data_emissao,\n" +
+"    DATE_FORMAT(c.vencimento, '%d/%m/%Y') AS vencimento,\n" +
+"    c.numero_parcelas\n" +
+"FROM \n" +
+"    Contasreceber c\n" +
+"JOIN \n" +
+"    tabelaclientes t ON c.chavecliente = t.id\n" +
+"WHERE\n" +
+"    c.id = ?\n" +
+"ORDER BY \n" +
+"    c.vencimento ASC;";
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, codigo);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                modelrecebiveis.setCod(rs.getInt("id_conta_receber"));
+                modelrecebiveis.setEndereco(rs.getString("rua"));
+                modelrecebiveis.setCpf(rs.getString("cpf"));
+                modelrecebiveis.setTelefone(rs.getString("telefone"));
+                modelrecebiveis.setOrigem(rs.getString("origem"));
+                modelrecebiveis.setDescricao(rs.getString("descricao_venda"));
+                modelrecebiveis.setValor(rs.getDouble("valor_total"));
+                modelrecebiveis.setEmissaao(rs.getString("data_emissao"));    
+                modelrecebiveis.setVencimento(rs.getString("vencimento"));
+                modelrecebiveis.setParcelas(rs.getInt("numero_parcelas"));
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
+        }
+        return modelrecebiveis;
     }
 }

@@ -30,6 +30,7 @@ import javax.swing.table.TableRowSorter;
 public class Vizualizarcontasreceber extends javax.swing.JFrame {
 List<Modelrecebiveis> listarecebivel = new ArrayList<>();
 Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
+Modelrecebiveis recebieisexibição = new Modelrecebiveis();
     /**
      * Creates new form Vizualizarcontasreceber
      */
@@ -112,7 +113,7 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         Quitarconta = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        Exibircontas = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -173,9 +174,14 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
-        jButton3.setText("Exibir Conta");
+        Exibircontas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Exibircontas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
+        Exibircontas.setText("Exibir Conta");
+        Exibircontas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExibircontasActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/relatorio (1).png"))); // NOI18N
@@ -195,7 +201,7 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Quitarconta, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Exibircontas, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -209,7 +215,7 @@ Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Quitarconta, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Exibircontas, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
@@ -397,6 +403,21 @@ tabelacontasreceber.getColumnModel().getColumn(5).setPreferredWidth(110);
            }
     }//GEN-LAST:event_QuitarcontaActionPerformed
 
+    private void ExibircontasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibircontasActionPerformed
+        int linha = tabelacontasreceber.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+            return;
+        }
+        int codigo = (int) tabelacontasreceber.getValueAt(linha,0);
+        recebieisexibição = recebiveiscontroler.ExibirContas(codigo);
+        if(recebieisexibição != null){
+                Contasreceber exibircontas = new Contasreceber();
+                exibircontas.preechercamposconta(recebieisexibição);
+                exibircontas.setVisible(true);
+        }
+    }//GEN-LAST:event_ExibircontasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -433,9 +454,9 @@ tabelacontasreceber.getColumnModel().getColumn(5).setPreferredWidth(110);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Exibircontas;
     private javax.swing.JButton Quitarconta;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
