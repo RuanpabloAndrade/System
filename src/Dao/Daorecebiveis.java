@@ -121,7 +121,17 @@ String sql = "INSERT INTO Contasreceber (chavecliente, rua, cpf, telefone, orige
              "VALUES (?, ?, ?, ?, ?, ?, ?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?)";
 try {
     pst = conexao.prepareStatement(sql);
-
+    System.out.println("Preparando para salvar no banco:");
+System.out.println("Chave Cliente: " + recebiveis.getChavecliente());
+System.out.println("Rua: " + recebiveis.getEndereco());
+System.out.println("CPF: " + recebiveis.getCpf());
+System.out.println("Telefone: " + recebiveis.getTelefone());
+System.out.println("Origem: " + recebiveis.getOrigem());
+System.out.println("Descrição base: " + recebiveis.getDescricao());
+System.out.println("Valor total: " + recebiveis.getValor());
+System.out.println("Data Emissão: " + recebiveis.getEmissaao());
+System.out.println("Data Vencimento base: " + recebiveis.getVencimento());
+System.out.println("Parcelas: " + recebiveis.getParcelas());
     int totalParcelas = recebiveis.getParcelas();
     double valorTotal = recebiveis.getValor();
     double valorParcela = valorTotal / totalParcelas;
@@ -153,7 +163,7 @@ try {
 
     pst.executeBatch(); // executa todas as parcelas
 } catch (Exception e) {
-    System.err.println(e);
+     e.printStackTrace();
     JOptionPane.showMessageDialog(null, "Usuário Não cadastrado! Veja se já consta na tabela do banco no botão visualizar!");
     return false;
 }
@@ -261,12 +271,12 @@ return true;
             conexao = Classeconexao.conector();
             String sql = "SELECT \n" +
 "    c.id AS id_conta_receber,\n" +
-"    t.rua,\n" +
-"    t.cpf,\n" +
-"    t.telefone,\n" +
+"    t.nome, -- Nome do cliente\n" +
+"    c.rua,  -- ← ALTERADO para pegar da tabela Contasreceber\n" +
+"    c.cpf,  -- ←\n" +
+"    c.telefone,  -- ←\n" +
 "    c.origem,\n" +
 "    c.descricao_venda,\n" +
-"    -- Valor total original da venda (valor da parcela × número de parcelas)\n" +
 "    CAST(c.valor * c.numero_parcelas AS DECIMAL(10,2)) AS valor_total,\n" +
 "    DATE_FORMAT(c.data_emissao, '%d/%m/%Y') AS data_emissao,\n" +
 "    DATE_FORMAT(c.vencimento, '%d/%m/%Y') AS vencimento,\n" +
@@ -284,6 +294,7 @@ return true;
             rs = pst.executeQuery();
             if (rs.next()) {
                 modelrecebiveis.setCod(rs.getInt("id_conta_receber"));
+                modelrecebiveis.setNomecliente(rs.getString("nome"));
                 modelrecebiveis.setEndereco(rs.getString("rua"));
                 modelrecebiveis.setCpf(rs.getString("cpf"));
                 modelrecebiveis.setTelefone(rs.getString("telefone"));

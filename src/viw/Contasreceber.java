@@ -632,6 +632,18 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
         else{
              recebiveis.setParcelas(Integer.parseInt(jSpinner1.getValue().toString()));
         }
+        // Antes de salvar, vamos verificar os dados que estão no objeto
+System.out.println("Dados antes de salvar:");
+System.out.println("Cliente: " + recebiveis.getChavecliente());
+System.out.println("Rua: " + recebiveis.getEndereco());
+System.out.println("CPF: " + recebiveis.getCpf());
+System.out.println("Telefone: " + recebiveis.getTelefone());
+System.out.println("Origem: " + recebiveis.getOrigem());
+System.out.println("Descrição: " + recebiveis.getDescricao());
+System.out.println("Valor: " + recebiveis.getValor());
+System.out.println("Emissão: " + recebiveis.getEmissaao());
+System.out.println("Vencimento: " + recebiveis.getVencimento());
+System.out.println("Parcelas: " + recebiveis.getParcelas());
          if (controlerrecebiveis.Salvarconta(recebiveis)) {
             JOptionPane.showMessageDialog(null, "Conta cadastrado com Sucesso!");
             //Carregarcontas();
@@ -662,7 +674,7 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
     
     
     private void preencherDataEmissaoAutomatica() {
-       SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
     String dataFormatada = formatoData.format(new Date());
     dataemissao.setText(dataFormatada);  // Aqui é 100% compatível com a máscara
 }
@@ -678,6 +690,7 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
         Limpar();
     }//GEN-LAST:event_LimparformularioActionPerformed
     public void Limpar(){
+        jSpinner1.setValue(0);
         chavecliente.setText("");
         rua.setText("");
         cpf.setValue(null); 
@@ -688,11 +701,8 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
         descricaovenda.setText("");
         valor.setValue(null);
         valor.setFocusLostBehavior(valor.COMMIT);
-        dataemissao.setValue(null);
-        dataemissao.setFocusLostBehavior(dataemissao.COMMIT);
         vencimento.setValue(null);
         vencimento.setFocusLostBehavior(vencimento.COMMIT);
-        jSpinner1.setValue(0);
     }
     
     
@@ -770,6 +780,14 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
 
     public void preechercamposconta(Modelrecebiveis recebieisexibição) {
          codigo.setText(String.valueOf(recebieisexibição.getCod()));
+         System.out.println("Nome vindo do banco: '" + recebieisexibição.getNomecliente() + "'");
+
+for (int i = 0; i < combocliente.getItemCount(); i++) {
+    System.out.println("Item[" + i + "]: '" + combocliente.getItemAt(i) + "'");
+}
+         combocliente.setSelectedItem(recebieisexibição.getNomecliente());
+         combocliente.requestFocus();
+         combocliente.repaint();
          rua.setText(recebieisexibição.getEndereco());
          cpf.setText(recebieisexibição.getCpf());
          telefone.setText(recebieisexibição.getTelefone());
