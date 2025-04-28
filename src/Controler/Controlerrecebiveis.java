@@ -37,8 +37,8 @@ public class Controlerrecebiveis {
          return this.dao.listarecebivelcadastro(codigoCliente);
     }
 
-    public boolean excluirConta(int codigo) {
-         return this.dao.Quitarconta(codigo);
+    public boolean excluirConta(int codigo, double valor) {
+         return this.dao.Quitarconta(codigo, valor);
     }
 
     public Modelrecebiveis ExibirContas(int codigo) {

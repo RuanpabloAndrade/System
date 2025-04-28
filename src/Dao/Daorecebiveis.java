@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Types;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -116,60 +117,65 @@ public class Daorecebiveis extends Classeconexao{
     }
 
     public boolean salvarcontadao(Modelrecebiveis recebiveis) {
-       conexao = Classeconexao.conector();
-String sql = "INSERT INTO Contasreceber (chavecliente, rua, cpf, telefone, origem, descricao_venda, valor, data_emissao, vencimento, numero_parcelas, chavejuros) " +
-             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?)";
+conexao = Classeconexao.conector();
+
 try {
-    pst = conexao.prepareStatement(sql);
-    System.out.println("Preparando para salvar no banco:");
-System.out.println("Chave Cliente: " + recebiveis.getChavecliente());
-System.out.println("Rua: " + recebiveis.getEndereco());
-System.out.println("CPF: " + recebiveis.getCpf());
-System.out.println("Telefone: " + recebiveis.getTelefone());
-System.out.println("Origem: " + recebiveis.getOrigem());
-System.out.println("Descrição base: " + recebiveis.getDescricao());
-System.out.println("Valor total: " + recebiveis.getValor());
-System.out.println("Data Emissão: " + recebiveis.getEmissaao());
-System.out.println("Data Vencimento base: " + recebiveis.getVencimento());
-System.out.println("Parcelas: " + recebiveis.getParcelas());
+    // Primeiro, buscar o maior id_conta atual no banco
+    String sqlBuscaIdConta = "SELECT IFNULL(MAX(id_conta), 0) + 1 AS novo_id_conta FROM Contasreceber";
+    PreparedStatement pstBuscaIdConta = conexao.prepareStatement(sqlBuscaIdConta);
+    ResultSet rsBuscaId = pstBuscaIdConta.executeQuery();
+
+    int novoIdConta = 1; // valor padrão caso não tenha nenhuma conta ainda
+    if (rsBuscaId.next()) {
+        novoIdConta = rsBuscaId.getInt("novo_id_conta");
+    }
+
+    // Agora, salva as parcelas usando o novo id_conta
+    String sqlParcelas = "INSERT INTO Contasreceber (id_conta, chavecliente, rua, cpf, telefone, origem, descricao_venda, valor, data_emissao, vencimento, numero_parcelas, chavejuros) " +
+                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?)";
+
+    PreparedStatement pstParcelas = conexao.prepareStatement(sqlParcelas);
+
     int totalParcelas = recebiveis.getParcelas();
     double valorTotal = recebiveis.getValor();
     double valorParcela = valorTotal / totalParcelas;
+
     for (int i = 1; i <= totalParcelas; i++) {
-        pst.setInt(1, recebiveis.getChavecliente());
-        pst.setString(2, recebiveis.getEndereco());
-        pst.setString(3, recebiveis.getCpf());
-        pst.setString(4, recebiveis.getTelefone());
-        pst.setString(5, recebiveis.getOrigem());
+        pstParcelas.setInt(1, novoIdConta); // Gerado automaticamente
+        pstParcelas.setInt(2, recebiveis.getChavecliente());
+        pstParcelas.setString(3, recebiveis.getEndereco());
+        pstParcelas.setString(4, recebiveis.getCpf());
+        pstParcelas.setString(5, recebiveis.getTelefone());
+        pstParcelas.setString(6, recebiveis.getOrigem());
 
-        // Descrição personalizada com número da parcela
         String descricao = recebiveis.getDescricao() + " - Parcela " + i + "/" + totalParcelas;
-        pst.setString(6, descricao);
+        pstParcelas.setString(7, descricao);
 
-        pst.setDouble(7, valorParcela);
-        pst.setString(8, recebiveis.getEmissaao());
+        pstParcelas.setDouble(8, valorParcela);
 
-        // Adiciona meses conforme número da parcela (ex: 1ª parcela = vencimento base, 2ª = +1 mês, etc.)
+        pstParcelas.setString(9, recebiveis.getEmissaao());
+
         LocalDate dataBase = LocalDate.parse(recebiveis.getVencimento(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         LocalDate vencParcela = dataBase.plusMonths(i - 1);
         String vencimentoFormatado = vencParcela.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        pst.setString(9, vencimentoFormatado);
+        pstParcelas.setString(10, vencimentoFormatado);
 
-        pst.setInt(10, totalParcelas);
-        pst.setInt(11, 1); // chavejuros
+        pstParcelas.setInt(11, totalParcelas);
+        pstParcelas.setInt(12, 1);
 
-        pst.addBatch(); // adiciona ao lote
+        pstParcelas.addBatch();
     }
 
-    pst.executeBatch(); // executa todas as parcelas
-} catch (Exception e) {
-     e.printStackTrace();
-    JOptionPane.showMessageDialog(null, "Usuário Não cadastrado! Veja se já consta na tabela do banco no botão visualizar!");
+    pstParcelas.executeBatch();
+
+    return true;
+
+} catch (SQLException e) {
+    System.err.println("Erro ao salvar no banco: " + e.getMessage());
+    e.printStackTrace();
     return false;
-}
-return true;
     }
-
+    }
     public List<Modelrecebiveis> listarecebiveis() {
        conexao = Classeconexao.conector();
         List<Modelrecebiveis> listarecebiveis = new ArrayList<>();
@@ -253,12 +259,19 @@ return true;
     return listarecebivel;
     }
 
-    public boolean Quitarconta(int codigo) {
+    public boolean Quitarconta(int codigo, double valor) {
         conexao = Classeconexao.conector();
         String sql = "DELETE FROM Contasreceber WHERE id = '" + codigo + "'";
         try {
             pst = conexao.prepareStatement(sql);
             pst.execute();
+            
+             String sqlAtualizar = "UPDATE Contasreceber SET numero_parcelas = numero_parcelas - 1 WHERE id = ?";
+             PreparedStatement pstAtualizar = conexao.prepareStatement(sqlAtualizar);
+             pstAtualizar.setInt(1, codigo);
+             pstAtualizar.executeUpdate();
+            
+            
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -269,7 +282,7 @@ return true;
            Modelrecebiveis modelrecebiveis = new Modelrecebiveis();
         try {
             conexao = Classeconexao.conector();
-            String sql = "SELECT \n" +
+            String sql = "SELECT\n" +
 "    c.id AS id_conta_receber,\n" +
 "    t.nome, -- Nome do cliente\n" +
 "    c.rua,  -- ← ALTERADO para pegar da tabela Contasreceber\n" +
@@ -278,17 +291,16 @@ return true;
 "    c.origem,\n" +
 "    c.descricao_venda,\n" +
 "    CAST(c.valor * c.numero_parcelas AS DECIMAL(10,2)) AS valor_total,\n" +
-"    DATE_FORMAT(c.data_emissao, '%d/%m/%Y') AS data_emissao,\n" +
-"    DATE_FORMAT(c.vencimento, '%d/%m/%Y') AS vencimento,\n" +
+"    -- Convertendo a string VARCHAR para DATE e depois formatando para DD/MM/YYYY\n" +
+"    DATE_FORMAT(STR_TO_DATE(c.data_emissao, '%d/%m/%Y'), '%d/%m/%Y') AS data_emissao,\n" +
+"    DATE_FORMAT(c.vencimento, '%d/%m/%Y') AS vencimento, -- Assumindo que vencimento também precisa de tratamento similar se for VARCHAR\n" +
 "    c.numero_parcelas\n" +
-"FROM \n" +
+"FROM\n" +
 "    Contasreceber c\n" +
-"JOIN \n" +
+"JOIN\n" +
 "    tabelaclientes t ON c.chavecliente = t.id\n" +
 "WHERE\n" +
-"    c.id = ?\n" +
-"ORDER BY \n" +
-"    c.vencimento ASC;";
+"    c.id = ?;\n";
             pst = conexao.prepareStatement(sql);
             pst.setInt(1, codigo);
             rs = pst.executeQuery();

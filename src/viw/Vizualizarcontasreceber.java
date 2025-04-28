@@ -57,15 +57,15 @@ Modelrecebiveis recebieisexibição = new Modelrecebiveis();
             });
         }
         int colunaVencimento = 4;
+tabelacontasreceber.getColumnModel().getColumn(colunaVencimento)
+    .setCellRenderer(new DefaultTableCellRenderer() {
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
 
-    tabelacontasreceber.getColumnModel().getColumn(colunaVencimento)
-        .setCellRenderer(new DefaultTableCellRenderer() {
-            public Component getTableCellRendererComponent(JTable table, Object value,
-                    boolean isSelected, boolean hasFocus, int row, int column) {
+            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-
-                try {
+            try {
+                if (value != null) { // <<<<<<<<<<<<<< ADICIONE ESTA VERIFICAÇÃO
                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                     Date vencimento = sdf.parse(value.toString());
                     Date hoje = new Date();
@@ -75,22 +75,25 @@ Modelrecebiveis recebieisexibição = new Modelrecebiveis();
                     } else {
                         c.setForeground(Color.BLACK); // Texto normal
                     }
-
-                    if (isSelected) {
-                        c.setBackground(table.getSelectionBackground());
-                    } else {
-                        c.setBackground(Color.WHITE);
-                    }
-
-                } catch (ParseException e) {
+                } else {
+                    // Se value é null, define cores padrão
                     c.setForeground(Color.BLACK);
+                }
+
+                if (isSelected) {
+                    c.setBackground(table.getSelectionBackground());
+                } else {
                     c.setBackground(Color.WHITE);
                 }
 
-                return c;
+            } catch (ParseException e) {
+                c.setForeground(Color.BLACK);
+                c.setBackground(Color.WHITE);
             }
-        });
-        
+
+            return c;
+        }
+    });
         
     }
     
@@ -395,9 +398,10 @@ tabelacontasreceber.getColumnModel().getColumn(5).setPreferredWidth(110);
             return;
         }
         int codigo=(int) tabelacontasreceber.getValueAt(linha,0);
+        double valor = (double) tabelacontasreceber.getValueAt(linha,3);
            int entrada = JOptionPane.showConfirmDialog(null, "Deseja Quitar essa conta?", "Confirmação", JOptionPane.YES_NO_OPTION);
            if(entrada==JOptionPane.YES_OPTION){
-               recebiveiscontroler.excluirConta(codigo); 
+               recebiveiscontroler.excluirConta(codigo, valor); 
                carregarcontasrecebivel();
                JOptionPane.showMessageDialog(null,"Conta Quitada!");
            }

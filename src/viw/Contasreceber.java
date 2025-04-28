@@ -45,7 +45,7 @@ private boolean carregandoCombo = true;
      */
     public Contasreceber() {
         initComponents();
-        preencherDataEmissaoAutomatica();
+       preencherDataEmissaoAutomatica();
         setLocationRelativeTo(this);
         designtabelacontasreceber();
        jSpinner1.addChangeListener(new ChangeListener() {
