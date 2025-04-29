@@ -53,8 +53,12 @@ Modelrecebiveis recebieisexibição = new Modelrecebiveis();
                 listarecebivel.get(i).getDescricao(), 
                 formatoMoeda.format(listarecebivel.get(i).getValor()),
                 listarecebivel.get(i).getVencimento(),
-                formatoMoeda.format(listarecebivel.get(i).getJuros())
+                formatoMoeda.format(listarecebivel.get(i).getJuros()),
+                listarecebivel.get(i).getIdconta()//coluna oculta 
             });
+             tabelacontasreceber.getColumnModel().getColumn(6).setMinWidth(0);///coluna oculta /
+             tabelacontasreceber.getColumnModel().getColumn(6).setMaxWidth(0);//coluna oculta 
+             tabelacontasreceber.getColumnModel().getColumn(6).setWidth(0);//coluna oculta para deixar invisicel 
         }
         int colunaVencimento = 4;
 tabelacontasreceber.getColumnModel().getColumn(colunaVencimento)
@@ -280,17 +284,17 @@ tabelacontasreceber.getColumnModel().getColumn(colunaVencimento)
         tabelacontasreceber.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tabelacontasreceber.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "Parcela/Descrição", "Valor Original", "Vencimento", "Valor Com juros"
+                "Id", "Nome", "Parcela/Descrição", "Valor Original", "Vencimento", "Valor Com juros", "idconta"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -398,10 +402,10 @@ tabelacontasreceber.getColumnModel().getColumn(5).setPreferredWidth(110);
             return;
         }
         int codigo=(int) tabelacontasreceber.getValueAt(linha,0);
-        double valor = (double) tabelacontasreceber.getValueAt(linha,3);
+        int idconta = (int) tabelacontasreceber.getValueAt(linha,6);
            int entrada = JOptionPane.showConfirmDialog(null, "Deseja Quitar essa conta?", "Confirmação", JOptionPane.YES_NO_OPTION);
            if(entrada==JOptionPane.YES_OPTION){
-               recebiveiscontroler.excluirConta(codigo, valor); 
+               recebiveiscontroler.excluirConta(codigo, idconta); 
                carregarcontasrecebivel();
                JOptionPane.showMessageDialog(null,"Conta Quitada!");
            }

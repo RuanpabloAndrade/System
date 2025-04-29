@@ -181,8 +181,9 @@ try {
         List<Modelrecebiveis> listarecebiveis = new ArrayList<>();
         Modelrecebiveis recebiveis = new Modelrecebiveis();
 
-        String sql = "SELECT \n" +
-"    c.id AS id_conta_receber,  -- Incluindo o id da tabela Contasreceber\n" +
+        String sql =  "SELECT \n" +
+"    c.id AS id_parcela,\n" +
+"    c.id_conta,\n" +//coluna oculta
 "    t.nome AS nome_cliente,\n" +
 "    c.descricao_venda,\n" +
 "    CAST(c.valor AS DECIMAL(10,2)) AS valor,\n" +
@@ -207,12 +208,13 @@ try {
             rs = pst.executeQuery();
             while (rs.next()) {
                 recebiveis = new Modelrecebiveis();
-                recebiveis.setCod(rs.getInt(1));
-                recebiveis.setNomecliente(rs.getString(2));
-                recebiveis.setDescricao(rs.getString(3));
-                recebiveis.setValor(rs.getDouble(4));
-                recebiveis.setVencimento(rs.getString(5));
-                recebiveis.setJuros(rs.getDouble(6));
+                recebiveis.setCod(rs.getInt(1));         // id_parcela
+                recebiveis.setIdconta(rs.getInt(2));     // novo: id_conta coluna oculta 
+                recebiveis.setNomecliente(rs.getString(3));
+                recebiveis.setDescricao(rs.getString(4));
+                recebiveis.setValor(rs.getDouble(5));
+                recebiveis.setVencimento(rs.getString(6));
+                recebiveis.setJuros(rs.getDouble(7));
                 listarecebiveis.add(recebiveis);
             }
 
@@ -259,24 +261,64 @@ try {
     return listarecebivel;
     }
 
-    public boolean Quitarconta(int codigo, double valor) {
-        conexao = Classeconexao.conector();
-        String sql = "DELETE FROM Contasreceber WHERE id = '" + codigo + "'";
-        try {
-            pst = conexao.prepareStatement(sql);
-            pst.execute();
-            
-             String sqlAtualizar = "UPDATE Contasreceber SET numero_parcelas = numero_parcelas - 1 WHERE id = ?";
-             PreparedStatement pstAtualizar = conexao.prepareStatement(sqlAtualizar);
-             pstAtualizar.setInt(1, codigo);
-             pstAtualizar.executeUpdate();
-            
-            
-        } catch (Exception e) {
-            System.err.println(e);
+   public boolean Quitarconta(int codigo, int idconta) {
+    conexao = Classeconexao.conector();
+    boolean sucesso = false;
+    Statement stmt = null; // Defina o Statement aqui, para fechá-lo depois
+
+    try {
+        // Começa uma transação
+        conexao.setAutoCommit(false);
+
+        // Desabilita o SQL_SAFE_UPDATES
+        stmt = conexao.createStatement();
+        stmt.execute("SET SQL_SAFE_UPDATES = 0");
+
+        // Atualizar o número de parcelas antes de apagar
+        String sqlAtualizar = "UPDATE Contasreceber SET numero_parcelas = numero_parcelas - 1 WHERE id_conta = ?";
+        PreparedStatement pstAtualizar = conexao.prepareStatement(sqlAtualizar);
+        pstAtualizar.setInt(1, idconta);
+
+        // Executa a atualização, independentemente do número de parcelas
+        int linhasAtualizadas = pstAtualizar.executeUpdate();
+
+        if (linhasAtualizadas > 0 || true) { // Permitir o update mesmo quando for a última parcela
+            // Apaga a parcela paga
+            String sqlDelete = "DELETE FROM Contasreceber WHERE id = ?";
+            PreparedStatement pstDelete = conexao.prepareStatement(sqlDelete);
+            pstDelete.setInt(1, codigo);
+            pstDelete.execute();
+
+            // Se tudo ocorreu bem, comita a transação
+            conexao.commit();
+            sucesso = true;
+        } else {
+            // Se não houve atualização nas parcelas, faz o rollback
+            conexao.rollback();
         }
-        return true;
+
+        // Reabilita o SQL_SAFE_UPDATES
+        stmt.execute("SET SQL_SAFE_UPDATES = 1");
+
+    } catch (Exception e) {
+        System.err.println("Erro: " + e.getMessage());
+        try {
+            // Caso haja erro, faz o rollback da transação
+            conexao.rollback();
+        } catch (SQLException rollbackException) {
+            System.err.println("Erro ao fazer rollback: " + rollbackException.getMessage());
+        }
+    } finally {
+        // Fecha o Statement e restaura o autocommit após a transação
+        try {
+            if (stmt != null) stmt.close();
+            conexao.setAutoCommit(true);
+        } catch (SQLException e) {
+            System.err.println("Erro ao restaurar autocommit ou fechar o statement: " + e.getMessage());
+        }
     }
+    return sucesso;
+}
 
     public Modelrecebiveis ExibirContas(int codigo) {
            Modelrecebiveis modelrecebiveis = new Modelrecebiveis();

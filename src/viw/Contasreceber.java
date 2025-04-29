@@ -45,10 +45,10 @@ private boolean carregandoCombo = true;
      */
     public Contasreceber() {
         initComponents();
-       preencherDataEmissaoAutomatica();
+        preencherDataEmissaoAutomatica();
         setLocationRelativeTo(this);
         designtabelacontasreceber();
-       jSpinner1.addChangeListener(new ChangeListener() {
+        jSpinner1.addChangeListener(new ChangeListener() {
         public void stateChanged(ChangeEvent e) {
         gerarParcelas();//gera parcelas automaticamente ao selecionar um numero no spinner e mostrar na tabela
     }

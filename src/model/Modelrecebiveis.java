@@ -24,7 +24,7 @@ public class Modelrecebiveis {
     private double diario;
     private String descricao;
     private String nomecliente;
-    
+    private int idconta;
     
     
 
@@ -248,6 +248,20 @@ public class Modelrecebiveis {
      */
     public void setNomecliente(String nomecliente) {
         this.nomecliente = nomecliente;
+    }
+
+    /**
+     * @return the idconta
+     */
+    public int getIdconta() {
+        return idconta;
+    }
+
+    /**
+     * @param idconta the idconta to set
+     */
+    public void setIdconta(int idconta) {
+        this.idconta = idconta;
     }
     
     
