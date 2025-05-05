@@ -117,7 +117,6 @@ private boolean carregandoCombo = true;
         origem = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        valor = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
         dataemissao = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -133,6 +132,7 @@ private boolean carregandoCombo = true;
         jSpinner1 = new javax.swing.JSpinner();
         jLabel13 = new javax.swing.JLabel();
         chavecliente = new javax.swing.JFormattedTextField();
+        valor = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -269,11 +269,6 @@ private boolean carregandoCombo = true;
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Valor:");
 
-        valor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        valor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        valor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        valor.setValue(0.00);
-
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Data de Emissão:");
 
@@ -376,6 +371,9 @@ private boolean carregandoCombo = true;
             }
         });
 
+        valor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        valor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -434,16 +432,18 @@ private boolean carregandoCombo = true;
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(telefone)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel5)
                                             .addComponent(jLabel7))
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(valor)
-                                    .addComponent(telefone)))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner1)))))
+                                .addComponent(jSpinner1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(valor)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -478,8 +478,11 @@ private boolean carregandoCombo = true;
                     .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(valor))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -487,8 +490,7 @@ private boolean carregandoCombo = true;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(origem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(descricaovenda, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(descricaovenda, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
@@ -785,7 +787,7 @@ System.out.println("Parcelas: " + recebiveis.getParcelas());
 for (int i = 0; i < combocliente.getItemCount(); i++) {
     System.out.println("Item[" + i + "]: '" + combocliente.getItemAt(i) + "'");
 }
-         combocliente.setSelectedItem(recebieisexibição.getNomecliente());
+        
          combocliente.requestFocus();
          combocliente.repaint();
          rua.setText(recebieisexibição.getEndereco());
@@ -796,6 +798,20 @@ for (int i = 0; i < combocliente.getItemCount(); i++) {
          valor.setText(String.valueOf(recebieisexibição.getValor()));
          dataemissao.setText(recebieisexibição.getEmissaao());
          vencimento.setText(recebieisexibição.getVencimento());
-         jSpinner1.setValue(recebieisexibição.getParcelas());
+       //  jSpinner1.setValue(recebieisexibição.getParcelas());
+    }
+
+    public void selecaodeconta(List<Modelrecebiveis> Selecaocontas) {
+        DefaultTableModel modelo = (DefaultTableModel) tabelarecebivelcadastro.getModel();
+        modelo.setNumRows(0);
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        for (int i = 0; i < Selecaocontas.size(); i++) {
+            modelo.addRow(new Object[]{
+                Selecaocontas.get(i).getCod(),
+                Selecaocontas.get(i).getDescricao(),
+                Selecaocontas.get(i).getVencimento(),
+                formatoMoeda.format(Selecaocontas.get(i).getValor()), 
+            });
+        }
     }
 }

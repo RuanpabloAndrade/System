@@ -45,6 +45,10 @@ public class Controlerrecebiveis {
         return this.dao.ExibirContas(codigo);
     }
 
+    public List<Modelrecebiveis> Exibirselecao(int id_codigo) {
+         return this.dao.selecaoconta(id_codigo);
+    }
+
     
 
     

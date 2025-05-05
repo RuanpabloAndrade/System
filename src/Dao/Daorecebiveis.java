@@ -364,4 +364,42 @@ try {
         }
         return modelrecebiveis;
     }
+
+    public List<Modelrecebiveis> selecaoconta(int id_codigo) {
+    conexao = Classeconexao.conector();
+    List<Modelrecebiveis> selecaocontas = new ArrayList<>();
+
+    String sql = "SELECT \n" +
+        "    c.id AS codigo,\n" +
+        "    c.descricao_venda AS parcela,\n" +
+        "    DATE_FORMAT(c.vencimento, '%d/%m/%Y') AS vencimento,\n" +
+        "    CAST(c.valor AS DECIMAL(10,2)) AS valor\n" +
+        "FROM \n" +
+        "    Contasreceber c\n" +
+        "WHERE \n" +
+        "    c.id_conta = ?\n" +
+        "ORDER BY \n" +
+        "    c.vencimento ASC;";
+    
+    try {
+        pst = conexao.prepareStatement(sql);
+        pst.setInt(1, id_codigo);
+        rs = pst.executeQuery();
+
+        while (rs.next()) {
+            Modelrecebiveis recebiveis = new Modelrecebiveis();
+            recebiveis.setCod(rs.getInt("codigo"));
+            recebiveis.setDescricao(rs.getString("parcela"));
+            recebiveis.setVencimento(rs.getString("vencimento"));
+            recebiveis.setValor(rs.getDouble("valor"));
+            
+            // Adiciona cada registro à lista
+            selecaocontas.add(recebiveis);
+        }
+    } catch (Exception e) {
+        System.err.println("Erro ao buscar parcelas: " + e.getMessage());
+    }
+
+    return selecaocontas;
+}
 }

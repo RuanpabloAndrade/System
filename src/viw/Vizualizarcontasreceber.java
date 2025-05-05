@@ -31,6 +31,7 @@ public class Vizualizarcontasreceber extends javax.swing.JFrame {
 List<Modelrecebiveis> listarecebivel = new ArrayList<>();
 Controlerrecebiveis recebiveiscontroler = new Controlerrecebiveis();
 Modelrecebiveis recebieisexibição = new Modelrecebiveis();
+List<Modelrecebiveis> Selecaocontas = new ArrayList<>();
     /**
      * Creates new form Vizualizarcontasreceber
      */
@@ -418,10 +419,13 @@ tabelacontasreceber.getColumnModel().getColumn(5).setPreferredWidth(110);
             return;
         }
         int codigo = (int) tabelacontasreceber.getValueAt(linha,0);
+        int id_codigo = (int) tabelacontasreceber.getValueAt(linha,6);
         recebieisexibição = recebiveiscontroler.ExibirContas(codigo);
+        Selecaocontas = recebiveiscontroler.Exibirselecao(id_codigo);
         if(recebieisexibição != null){
                 Contasreceber exibircontas = new Contasreceber();
                 exibircontas.preechercamposconta(recebieisexibição);
+                exibircontas.selecaodeconta(Selecaocontas);
                 exibircontas.setVisible(true);
         }
     }//GEN-LAST:event_ExibircontasActionPerformed
