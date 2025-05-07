@@ -87,7 +87,7 @@ private boolean carregandoCombo = true;
         e.printStackTrace(); // opcional para ver no console
     }
 }
-     
+    
     
     
     /**
@@ -267,7 +267,7 @@ private boolean carregandoCombo = true;
         jLabel6.setText("Origem:");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel7.setText("Valor:");
+        jLabel7.setText("Valor Total(R$):");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Data de Emissão:");
@@ -303,11 +303,11 @@ private boolean carregandoCombo = true;
                 {null, null, null, null}
             },
             new String [] {
-                "Código", "Parcela", "Vencimento", "Valor total"
+                "Código", "Parcela", "Vencimento", "Valor Parcela"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -790,6 +790,7 @@ for (int i = 0; i < combocliente.getItemCount(); i++) {
         
          combocliente.requestFocus();
          combocliente.repaint();
+         chavecliente.setText(String.valueOf(recebieisexibição.getChavecliente()));
          rua.setText(recebieisexibição.getEndereco());
          cpf.setText(recebieisexibição.getCpf());
          telefone.setText(recebieisexibição.getTelefone());

@@ -326,29 +326,30 @@ try {
             conexao = Classeconexao.conector();
             String sql = "SELECT\n" +
 "    c.id AS id_conta_receber,\n" +
-"    t.nome, -- Nome do cliente\n" +
-"    c.rua,  -- ← ALTERADO para pegar da tabela Contasreceber\n" +
-"    c.cpf,  -- ←\n" +
-"    c.telefone,  -- ←\n" +
+"    t.id AS id_cliente,               -- ← Adicionado\n" +
+"    t.nome,                           -- Nome do cliente\n" +
+"    c.rua,                            -- Da tabela Contasreceber\n" +
+"    c.cpf,\n" +
+"    c.telefone,\n" +
 "    c.origem,\n" +
 "    c.descricao_venda,\n" +
 "    CAST(c.valor * c.numero_parcelas AS DECIMAL(10,2)) AS valor_total,\n" +
-"    -- Convertendo a string VARCHAR para DATE e depois formatando para DD/MM/YYYY\n" +
 "    DATE_FORMAT(STR_TO_DATE(c.data_emissao, '%d/%m/%Y'), '%d/%m/%Y') AS data_emissao,\n" +
-"    DATE_FORMAT(c.vencimento, '%d/%m/%Y') AS vencimento, -- Assumindo que vencimento também precisa de tratamento similar se for VARCHAR\n" +
+"    DATE_FORMAT(c.vencimento, '%d/%m/%Y') AS vencimento,\n" +
 "    c.numero_parcelas\n" +
 "FROM\n" +
 "    Contasreceber c\n" +
 "JOIN\n" +
 "    tabelaclientes t ON c.chavecliente = t.id\n" +
 "WHERE\n" +
-"    c.id = ?;\n";
+"    c.id = ?";
             pst = conexao.prepareStatement(sql);
             pst.setInt(1, codigo);
             rs = pst.executeQuery();
             if (rs.next()) {
                 modelrecebiveis.setCod(rs.getInt("id_conta_receber"));
                 modelrecebiveis.setNomecliente(rs.getString("nome"));
+                modelrecebiveis.setChavecliente(rs.getInt("id_cliente"));
                 modelrecebiveis.setEndereco(rs.getString("rua"));
                 modelrecebiveis.setCpf(rs.getString("cpf"));
                 modelrecebiveis.setTelefone(rs.getString("telefone"));
