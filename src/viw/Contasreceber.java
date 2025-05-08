@@ -781,26 +781,35 @@ System.out.println("Parcelas: " + recebiveis.getParcelas());
     // End of variables declaration//GEN-END:variables
 
     public void preechercamposconta(Modelrecebiveis recebieisexibição) {
-         codigo.setText(String.valueOf(recebieisexibição.getCod()));
-         System.out.println("Nome vindo do banco: '" + recebieisexibição.getNomecliente() + "'");
+    codigo.setText(String.valueOf(recebieisexibição.getCod()));
+    chavecliente.setText(String.valueOf(recebieisexibição.getChavecliente()));
+    rua.setText(recebieisexibição.getEndereco());
+    cpf.setText(recebieisexibição.getCpf());
+    telefone.setText(recebieisexibição.getTelefone());
+    origem.setText(recebieisexibição.getOrigem());
+    descricaovenda.setText(recebieisexibição.getDescricao());
+    valor.setText(String.valueOf(recebieisexibição.getValor()));
+    dataemissao.setText(recebieisexibição.getEmissaao());
+    vencimento.setText(recebieisexibição.getVencimento());
 
-for (int i = 0; i < combocliente.getItemCount(); i++) {
-    System.out.println("Item[" + i + "]: '" + combocliente.getItemAt(i) + "'");
-}
-        
-         combocliente.requestFocus();
-         combocliente.repaint();
-         chavecliente.setText(String.valueOf(recebieisexibição.getChavecliente()));
-         rua.setText(recebieisexibição.getEndereco());
-         cpf.setText(recebieisexibição.getCpf());
-         telefone.setText(recebieisexibição.getTelefone());
-         origem.setText(recebieisexibição.getOrigem());
-         descricaovenda.setText(recebieisexibição.getDescricao());
-         valor.setText(String.valueOf(recebieisexibição.getValor()));
-         dataemissao.setText(recebieisexibição.getEmissaao());
-         vencimento.setText(recebieisexibição.getVencimento());
-       //  jSpinner1.setValue(recebieisexibição.getParcelas());
+     for (int i = 0; i < combocliente.getItemCount(); i++) {//primeira alteração para setar um cliente na combobox pelo outro jframe 
+        modelclientes cliente = (modelclientes) combocliente.getItemAt(i);
+        if (cliente.getNome().equalsIgnoreCase(recebieisexibição.getNomecliente())) {
+            combocliente.setSelectedIndex(i);
+            break;
+        }
     }
+   
+    }
+    
+    public void carregarClientesCombo() {//terceira alteração para setar um cliente na combobox pelo outro jframe 
+    combocliente.removeAllItems();
+    daoclientes clientescombo = new daoclientes();
+    List<modelclientes> lista = clientescombo.Carregarclientetabelavizualizar();
+    for (modelclientes c : lista) {
+        combocliente.addItem(c);
+    }
+}
 
     public void selecaodeconta(List<Modelrecebiveis> Selecaocontas) {
         DefaultTableModel modelo = (DefaultTableModel) tabelarecebivelcadastro.getModel();

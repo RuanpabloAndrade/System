@@ -424,6 +424,7 @@ tabelacontasreceber.getColumnModel().getColumn(5).setPreferredWidth(110);
         Selecaocontas = recebiveiscontroler.Exibirselecao(id_codigo);
         if(recebieisexibição != null){
                 Contasreceber exibircontas = new Contasreceber();
+                exibircontas.carregarClientesCombo();//segunda alteração para setar um cliente na combobox pelo outro jframe 
                 exibircontas.preechercamposconta(recebieisexibição);
                 exibircontas.selecaodeconta(Selecaocontas);
                 exibircontas.setVisible(true);
