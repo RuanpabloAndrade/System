@@ -413,6 +413,8 @@ tabelacontasreceber.getColumnModel().getColumn(5).setPreferredWidth(110);
     }//GEN-LAST:event_QuitarcontaActionPerformed
 
     private void ExibircontasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibircontasActionPerformed
+
+        
         int linha = tabelacontasreceber.getSelectedRow();
         if (linha < 0) {
             JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");

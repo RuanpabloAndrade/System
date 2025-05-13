@@ -326,14 +326,18 @@ try {
             conexao = Classeconexao.conector();
             String sql = "SELECT\n" +
 "    c.id AS id_conta_receber,\n" +
-"    t.id AS id_cliente,               -- ← Adicionado\n" +
-"    t.nome,                           -- Nome do cliente\n" +
-"    c.rua,                            -- Da tabela Contasreceber\n" +
+"    t.id AS id_cliente,\n" +
+"    t.nome,\n" +
+"    c.rua,\n" +
 "    c.cpf,\n" +
 "    c.telefone,\n" +
 "    c.origem,\n" +
 "    c.descricao_venda,\n" +
-"    CAST(c.valor * c.numero_parcelas AS DECIMAL(10,2)) AS valor_total,\n" +
+"    (\n" +
+"        SELECT CAST(SUM(cr.valor) AS DECIMAL(10,2))\n" +
+"        FROM Contasreceber cr\n" +
+"        WHERE cr.id_conta = c.id_conta\n" +
+"    ) AS valor_total,\n" +
 "    DATE_FORMAT(STR_TO_DATE(c.data_emissao, '%d/%m/%Y'), '%d/%m/%Y') AS data_emissao,\n" +
 "    DATE_FORMAT(c.vencimento, '%d/%m/%Y') AS vencimento,\n" +
 "    c.numero_parcelas\n" +
@@ -342,7 +346,7 @@ try {
 "JOIN\n" +
 "    tabelaclientes t ON c.chavecliente = t.id\n" +
 "WHERE\n" +
-"    c.id = ?";
+"    c.id = ?;";
             pst = conexao.prepareStatement(sql);
             pst.setInt(1, codigo);
             rs = pst.executeQuery();
@@ -403,4 +407,67 @@ try {
 
     return selecaocontas;
 }
+
+    public boolean Editarrecebiveis(Modelrecebiveis recebiveis) {
+       Connection conexao = Classeconexao.conector();
+boolean sucesso = false;
+Statement stmt = null;
+
+try {
+    conexao.setAutoCommit(false);
+    stmt = conexao.createStatement();
+    stmt.execute("SET SQL_SAFE_UPDATES = 0");
+
+    // 1º UPDATE: Atualiza rua, CPF, origem e descrição para TODAS as parcelas com o mesmo id_conta
+   // String sqlAtualizarGeral = "UPDATE Contasreceber SET rua = ?, cpf = ?, origem = ?, descricao_venda = ? WHERE id_conta = ?";
+   // PreparedStatement pstGeral = conexao.prepareStatement(sqlAtualizarGeral);
+   // pstGeral.setString(1, rua);
+   // pstGeral.setString(2, cpf);
+   // pstGeral.setString(3, origem);
+   // pstGeral.setString(4, descricaoVenda);
+  //  pstGeral.setInt(5, idconta);
+  //  pstGeral.executeUpdate();
+
+    // 2º UPDATE: Atualiza vencimento, valor e número de parcelas apenas para a conta específica
+    String sqlAtualizarParcela = "UPDATE Contasreceber\n" +
+"SET\n" +
+"    vencimento = ?,\n" +
+"    valor = ?\n" +
+"WHERE\n" +
+"    id = ?\n" +
+"    AND (valor <> ? OR valor IS NULL);";
+    PreparedStatement pstParcela = conexao.prepareStatement(sqlAtualizarParcela);
+    pstParcela.setString(1, (recebiveis.getVencimento())); // Ex: "2025-05-20"
+    pstParcela.setDouble(2, recebiveis.getValor());
+    pstParcela.setInt(3, recebiveis.getCod());
+    pstParcela.setDouble(4, recebiveis.getValor());
+    pstParcela.executeUpdate();
+int linhas = pstParcela.executeUpdate();
+    System.out.println("Linhas atualizadas: " + linhas);
+    
+    
+    conexao.commit();
+    sucesso = true;
+
+    stmt.execute("SET SQL_SAFE_UPDATES = 1");
+
+} catch (Exception e) {
+    System.err.println("Erro: " + e.getMessage());
+     e.printStackTrace();
+    try {
+        conexao.rollback();
+    } catch (SQLException rollbackException) {
+        System.err.println("Erro ao fazer rollback: " + rollbackException.getMessage());
+    }
+} finally {
+    try {
+        if (stmt != null) stmt.close();
+        conexao.setAutoCommit(true);
+    } catch (SQLException e) {
+        System.err.println("Erro ao restaurar autocommit ou fechar statement: " + e.getMessage());
+    }
+}
+
+return sucesso;
+    }
 }

@@ -48,6 +48,7 @@ private boolean carregandoCombo = true;
         preencherDataEmissaoAutomatica();
         setLocationRelativeTo(this);
         designtabelacontasreceber();
+        metodoeditavel();// metodo para depois dos campos estarem não editaveis ao clicar na tabela ele ficar editavel
         jSpinner1.addChangeListener(new ChangeListener() {
         public void stateChanged(ChangeEvent e) {
         gerarParcelas();//gera parcelas automaticamente ao selecionar um numero no spinner e mostrar na tabela
@@ -105,7 +106,7 @@ private boolean carregandoCombo = true;
         jPanel3 = new javax.swing.JPanel();
         gerarconta = new javax.swing.JButton();
         Limparformulario = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        atualizar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -184,12 +185,12 @@ private boolean carregandoCombo = true;
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/po (1).png"))); // NOI18N
-        jButton3.setText("Modificar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        atualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/po (1).png"))); // NOI18N
+        atualizar.setText("Modificar");
+        atualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                atualizarActionPerformed(evt);
             }
         });
 
@@ -207,7 +208,7 @@ private boolean carregandoCombo = true;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Limparformulario, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -219,7 +220,7 @@ private boolean carregandoCombo = true;
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gerarconta, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Limparformulario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -540,9 +541,37 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
         tabelarecebivelcadastro.getTableHeader().setForeground( new Color(255,255,255));
         tabelarecebivelcadastro.setRowHeight(25);
     }
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarActionPerformed
+  
+        String dataDigitada = vencimento.getText().trim(); // pega o texto já formatado
+         String dataFormatada;
+    try {
+        java.text.SimpleDateFormat formatoEntrada = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        java.text.SimpleDateFormat formatoSaida = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date data = formatoEntrada.parse(dataDigitada);
+        dataFormatada = formatoSaida.format(data);
+    } catch (java.text.ParseException ex) {
+        JOptionPane.showMessageDialog(null, "Erro ao converter a data.");
+        return;
+    }
+
+        
+        recebiveis = new Modelrecebiveis();
+        recebiveis.setCod((Integer.parseInt(codigo.getText())));
+        recebiveis.setEndereco(rua.getText());
+        recebiveis.setCpf(cpf.getText());
+        recebiveis.setTelefone(telefone.getText());
+        recebiveis.setOrigem(origem.getText());
+        recebiveis.setDescricao(descricaovenda.getText());
+        recebiveis.setValor(Double.parseDouble(valor.getText()));
+        recebiveis.setVencimento(dataFormatada);
+        if (controlerrecebiveis.Editarrecebiveis(recebiveis)) {
+            JOptionPane.showMessageDialog(null, "Conta Atualizada com Sucesso!");
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Conta Não Atualizado !");
+        }
+    }//GEN-LAST:event_atualizarActionPerformed
 
     private void telefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefoneActionPerformed
         // TODO add your handling code here:
@@ -745,6 +774,7 @@ System.out.println("Parcelas: " + recebiveis.getParcelas());
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Limparformulario;
+    private javax.swing.JButton atualizar;
     private javax.swing.JFormattedTextField chavecliente;
     private javax.swing.JFormattedTextField codigo;
     private javax.swing.JComboBox combocliente;
@@ -752,7 +782,6 @@ System.out.println("Parcelas: " + recebiveis.getParcelas());
     private javax.swing.JFormattedTextField dataemissao;
     private javax.swing.JFormattedTextField descricaovenda;
     private javax.swing.JButton gerarconta;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -779,8 +808,28 @@ System.out.println("Parcelas: " + recebiveis.getParcelas());
     private javax.swing.JFormattedTextField valor;
     private javax.swing.JFormattedTextField vencimento;
     // End of variables declaration//GEN-END:variables
+    
+    public void metodoeditavel(){
+         tabelarecebivelcadastro.getSelectionModel().addListSelectionListener(event -> {
+    if (!event.getValueIsAdjusting() && tabelarecebivelcadastro.getSelectedRow() != -1) {
+        valor.setEditable(true);
+        vencimento.setEditable(true);
 
+        // (opcional) preencher os campos com os dados da parcela selecionada:
+       
+    }
+});
+    }
+    
+    
+    
+    
+    
+    
+    
     public void preechercamposconta(Modelrecebiveis recebieisexibição) {
+    valor.setEditable(false);
+    vencimento.setEditable(false);
     codigo.setText(String.valueOf(recebieisexibição.getCod()));
     chavecliente.setText(String.valueOf(recebieisexibição.getChavecliente()));
     rua.setText(recebieisexibição.getEndereco());

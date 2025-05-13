@@ -49,6 +49,10 @@ public class Controlerrecebiveis {
          return this.dao.selecaoconta(id_codigo);
     }
 
+    public boolean Editarrecebiveis(Modelrecebiveis recebiveis) {
+        return this.dao.Editarrecebiveis(recebiveis); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 
     
