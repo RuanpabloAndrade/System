@@ -419,31 +419,26 @@ try {
     stmt.execute("SET SQL_SAFE_UPDATES = 0");
 
     // 1º UPDATE: Atualiza rua, CPF, origem e descrição para TODAS as parcelas com o mesmo id_conta
-   // String sqlAtualizarGeral = "UPDATE Contasreceber SET rua = ?, cpf = ?, origem = ?, descricao_venda = ? WHERE id_conta = ?";
-   // PreparedStatement pstGeral = conexao.prepareStatement(sqlAtualizarGeral);
-   // pstGeral.setString(1, rua);
-   // pstGeral.setString(2, cpf);
-   // pstGeral.setString(3, origem);
-   // pstGeral.setString(4, descricaoVenda);
-  //  pstGeral.setInt(5, idconta);
-  //  pstGeral.executeUpdate();
+     String sqlAtualizarGeral = "UPDATE Contasreceber SET rua = ?, cpf = ?, origem = ?, telefone=? WHERE id_conta = ?";
+     PreparedStatement pstGeral = conexao.prepareStatement(sqlAtualizarGeral);
+     pstGeral.setString(1, recebiveis.getEndereco());
+     pstGeral.setString(2, recebiveis.getCpf());
+     pstGeral.setString(3, recebiveis.getOrigem());
+     pstGeral.setString(4, recebiveis.getTelefone());
+     pstGeral.setInt(5, recebiveis.getIdconta());
+     pstGeral.executeUpdate();
 
     // 2º UPDATE: Atualiza vencimento, valor e número de parcelas apenas para a conta específica
-    String sqlAtualizarParcela = "UPDATE Contasreceber\n" +
-"SET\n" +
-"    vencimento = ?,\n" +
-"    valor = ?\n" +
-"WHERE\n" +
-"    id = ?\n" +
-"    AND (valor <> ? OR valor IS NULL);";
+    String sqlAtualizarParcela = "UPDATE Contasreceber SET vencimento = ?, valor = ?, descricao_venda= ? WHERE id = ?";
     PreparedStatement pstParcela = conexao.prepareStatement(sqlAtualizarParcela);
-    pstParcela.setString(1, (recebiveis.getVencimento())); // Ex: "2025-05-20"
+    pstParcela.setString(1, (recebiveis.getVencimento()));
+    System.out.println("Data formatada recebida: " + recebiveis.getVencimento());// Ex: "2025-05-20"
     pstParcela.setDouble(2, recebiveis.getValor());
-    pstParcela.setInt(3, recebiveis.getCod());
-    pstParcela.setDouble(4, recebiveis.getValor());
+    pstParcela.setString(3, recebiveis.getDescricao());
+    pstParcela.setInt(4, recebiveis.getCod());
     pstParcela.executeUpdate();
 int linhas = pstParcela.executeUpdate();
-    System.out.println("Linhas atualizadas: " + linhas);
+System.out.println("Linhas atualizadas: " + linhas);
     
     
     conexao.commit();
@@ -469,5 +464,35 @@ int linhas = pstParcela.executeUpdate();
 }
 
 return sucesso;
+    }
+
+    public Modelrecebiveis carregarconta(int codigo) {
+              Modelrecebiveis recebiveis = new Modelrecebiveis();
+        try {
+            conexao = Classeconexao.conector();
+            String sql = "SELECT \n" +
+"    id,\n" +
+"    id_conta, \n" +
+"    valor,\n" +
+"    descricao_venda,\n" +
+"    DATE_FORMAT(vencimento, '%d/%m/%Y') AS vencimento\n" +
+"FROM \n" +
+"    Contasreceber \n" +
+"WHERE \n" +
+"    id = ?;";
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, codigo);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                recebiveis.setCod(rs.getInt(1));
+                recebiveis.setIdconta(rs.getInt(2));
+                recebiveis.setValor(rs.getDouble(3));
+                recebiveis.setDescricao(rs.getString(4));
+                recebiveis.setVencimento(rs.getString(5));
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
+        }
+        return recebiveis;
     }
 }

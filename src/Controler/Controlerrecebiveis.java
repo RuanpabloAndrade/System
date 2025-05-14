@@ -53,6 +53,10 @@ public class Controlerrecebiveis {
         return this.dao.Editarrecebiveis(recebiveis); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public Modelrecebiveis carregarDadosconta(int codigo) {
+          return dao.carregarconta(codigo);
+    }
+
     
 
     

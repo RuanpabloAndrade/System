@@ -47,6 +47,8 @@ private boolean carregandoCombo = true;
         initComponents();
         preencherDataEmissaoAutomatica();
         setLocationRelativeTo(this);
+        idconta.setVisible(false);
+        descricaovenda.setEditable(false);
         designtabelacontasreceber();
         metodoeditavel();// metodo para depois dos campos estarem não editaveis ao clicar na tabela ele ficar editavel
         jSpinner1.addChangeListener(new ChangeListener() {
@@ -134,6 +136,7 @@ private boolean carregandoCombo = true;
         jLabel13 = new javax.swing.JLabel();
         chavecliente = new javax.swing.JFormattedTextField();
         valor = new javax.swing.JFormattedTextField();
+        idconta = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -268,7 +271,7 @@ private boolean carregandoCombo = true;
         jLabel6.setText("Origem:");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel7.setText("Valor Total(R$):");
+        jLabel7.setText("Valor Total/Parcela(R$):");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Data de Emissão:");
@@ -320,6 +323,11 @@ private boolean carregandoCombo = true;
         tabelarecebivelcadastro.setSelectionBackground(new java.awt.Color(232, 57, 95));
         tabelarecebivelcadastro.setShowVerticalLines(false);
         tabelarecebivelcadastro.getTableHeader().setReorderingAllowed(false);
+        tabelarecebivelcadastro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelarecebivelcadastroMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelarecebivelcadastro);
 
         combocliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -394,7 +402,11 @@ private boolean carregandoCombo = true;
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(combocliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(1, 1, 1))
-                            .addComponent(jLabel2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(idconta, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
@@ -403,11 +415,15 @@ private boolean carregandoCombo = true;
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(rua, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(132, 132, 132))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(rua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -455,14 +471,18 @@ private boolean carregandoCombo = true;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(16, 16, 16)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel11)
+                                .addComponent(jLabel2)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel13)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel2)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel13)))
+                        .addComponent(idconta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(combocliente, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
@@ -543,7 +563,7 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
     }
     private void atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarActionPerformed
   
-        String dataDigitada = vencimento.getText().trim(); // pega o texto já formatado
+         String dataDigitada = vencimento.getText().trim(); // pega o texto já formatado
          String dataFormatada;
     try {
         java.text.SimpleDateFormat formatoEntrada = new java.text.SimpleDateFormat("dd/MM/yyyy");
@@ -554,9 +574,8 @@ tabelarecebivelcadastro.getColumnModel().getColumn(3).setPreferredWidth(100);
         JOptionPane.showMessageDialog(null, "Erro ao converter a data.");
         return;
     }
-
-        
         recebiveis = new Modelrecebiveis();
+        recebiveis.setIdconta((Integer.parseInt(idconta.getText())));
         recebiveis.setCod((Integer.parseInt(codigo.getText())));
         recebiveis.setEndereco(rua.getText());
         recebiveis.setCpf(cpf.getText());
@@ -720,6 +739,29 @@ System.out.println("Parcelas: " + recebiveis.getParcelas());
     private void LimparformularioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparformularioActionPerformed
         Limpar();
     }//GEN-LAST:event_LimparformularioActionPerformed
+
+    private void tabelarecebivelcadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelarecebivelcadastroMouseClicked
+      Setarcamposconta();
+    }//GEN-LAST:event_tabelarecebivelcadastroMouseClicked
+    private void Setarcamposconta(){
+        
+        int linha = tabelarecebivelcadastro.getSelectedRow();
+        if (linha < 0) {
+            JOptionPane.showMessageDialog(this, "Nenhum registro selecionado2!");
+            return;
+        }
+        int codigos = (int) tabelarecebivelcadastro.getValueAt(linha, 0);
+        recebiveis = controlerrecebiveis.carregarDadosconta(codigos);
+        if (recebiveis != null) {
+            idconta.setText(String.valueOf(recebiveis.getIdconta()));
+            descricaovenda.setText(recebiveis.getDescricao());
+            codigo.setText (String.valueOf(recebiveis.getCod()));
+            valor.setText (String.valueOf(recebiveis.getValor()));
+            vencimento.setText(recebiveis.getVencimento());
+        }
+    }
+    
+    
     public void Limpar(){
         jSpinner1.setValue(0);
         chavecliente.setText("");
@@ -782,6 +824,7 @@ System.out.println("Parcelas: " + recebiveis.getParcelas());
     private javax.swing.JFormattedTextField dataemissao;
     private javax.swing.JFormattedTextField descricaovenda;
     private javax.swing.JButton gerarconta;
+    private javax.swing.JFormattedTextField idconta;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -812,10 +855,11 @@ System.out.println("Parcelas: " + recebiveis.getParcelas());
     public void metodoeditavel(){
          tabelarecebivelcadastro.getSelectionModel().addListSelectionListener(event -> {
     if (!event.getValueIsAdjusting() && tabelarecebivelcadastro.getSelectedRow() != -1) {
-        valor.setEditable(true);
+        valor.setEditable(true);//ativa ao clicar na linha da jtable
         vencimento.setEditable(true);
-
-        // (opcional) preencher os campos com os dados da parcela selecionada:
+        atualizar.setEnabled(true);
+        descricaovenda.setEditable(true);
+     
        
     }
 });
@@ -829,7 +873,8 @@ System.out.println("Parcelas: " + recebiveis.getParcelas());
     
     public void preechercamposconta(Modelrecebiveis recebieisexibição) {
     valor.setEditable(false);
-    vencimento.setEditable(false);
+    vencimento.setEditable(false);//desativa e ativa botoes e campos
+    atualizar.setEnabled(false);
     codigo.setText(String.valueOf(recebieisexibição.getCod()));
     chavecliente.setText(String.valueOf(recebieisexibição.getChavecliente()));
     rua.setText(recebieisexibição.getEndereco());
