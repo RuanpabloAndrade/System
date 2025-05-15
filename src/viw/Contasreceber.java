@@ -696,7 +696,7 @@ System.out.println("Vencimento: " + recebiveis.getVencimento());
 System.out.println("Parcelas: " + recebiveis.getParcelas());
          if (controlerrecebiveis.Salvarconta(recebiveis)) {
             JOptionPane.showMessageDialog(null, "Conta cadastrado com Sucesso!");
-            //Carregarcontas();
+         //   Carregarcontas();
             Limpar();
            
         } else {
@@ -706,19 +706,8 @@ System.out.println("Parcelas: " + recebiveis.getParcelas());
         
     }//GEN-LAST:event_gerarcontaActionPerformed
     private void Carregarcontas(){
-        int codigoCliente = Integer.parseInt(chavecliente.getText()); 
-        listarecebiveltelacadastro = controlerrecebiveis.cadastrorecebivel(codigoCliente);
-        DefaultTableModel modelo = (DefaultTableModel) tabelarecebivelcadastro.getModel();
-        modelo.setNumRows(0);
-        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-        for (int i = 0; i <  listarecebiveltelacadastro.size(); i++) {
-             modelo.addRow(new Object[]{
-                listarecebiveltelacadastro.get(i).getCod(),
-                listarecebiveltelacadastro.get(i).getDescricao(), 
-                listarecebiveltelacadastro.get(i).getVencimento(),
-                formatoMoeda.format(listarecebiveltelacadastro.get(i).getValor())
-            });
-        }
+            
+          
     }
     
     

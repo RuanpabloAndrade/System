@@ -15,8 +15,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import model.Modeldashboard;
 import model.Modelrecebiveis;
 import model.modelclientes;
+import model.Modeldashboard;
 
 /**
  *
@@ -494,5 +496,47 @@ return sucesso;
             JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
         }
         return recebiveis;
+    }
+
+    public Modeldashboard carregardahsboard() {
+           Modeldashboard dashboardcontas = new Modeldashboard();
+        try {
+            conexao = Classeconexao.conector();
+            String sql = "SELECT\n" +
+"    SUM(valor) AS total_geral,\n" +
+"    \n" +
+"    SUM(CASE \n" +
+"            WHEN STR_TO_DATE(vencimento, '%Y-%m-%d') = CURDATE()\n" +
+"            THEN valor\n" +
+"            ELSE 0\n" +
+"        END) AS total_hoje,\n" +
+"        \n" +
+"    SUM(CASE \n" +
+"            WHEN MONTH(STR_TO_DATE(vencimento, '%Y-%m-%d')) = MONTH(CURDATE())\n" +
+"             AND YEAR(STR_TO_DATE(vencimento, '%Y-%m-%d')) = YEAR(CURDATE())\n" +
+"            THEN valor\n" +
+"            ELSE 0\n" +
+"        END) AS total_mes,\n" +
+"        \n" +
+"    SUM(CASE \n" +
+"            WHEN STR_TO_DATE(vencimento, '%Y-%m-%d') < CURDATE()\n" +
+"            THEN valor\n" +
+"            ELSE 0\n" +
+"        END) AS total_vencidas\n" +
+"FROM ContasReceber;";
+            
+            pst = conexao.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                dashboardcontas.setTotalcontas(rs.getDouble("total_geral"));
+dashboardcontas.setTotaldodia(rs.getDouble("total_hoje"));
+dashboardcontas.setTotaldomes(rs.getDouble("total_mes"));
+dashboardcontas.setTotalvencidas(rs.getDouble("total_vencidas"));
+                
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar funcionário: " + e.getMessage());
+        }
+        return dashboardcontas;
     }
 }

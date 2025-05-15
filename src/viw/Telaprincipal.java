@@ -15,9 +15,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import model.Modeldashboard;
 //NO MENU ITEM ESTOQUE NO BOTAO ESTOQUE NO SUBBOTAO DE NOTA DE ENTRADA O MODULO DE FLUXO DE FORNECEDORAS
 //LOCALIZADO NA TELA (ANALISE FINANCEIRA) DEVE SER ALIMENTADO PELAS FUNCIONALIADES, RESULTADO E VARIAVEIS DE NOTA DE ENTRADA LOCALIZADO POR SUA VEZ NO NOTAO ESTOQUE
 //O BOTAO DE CERTIFICADO DE GARANTIA DEVE SER EMITIDO UM PDF ESTILO RELATORIO
@@ -30,6 +32,8 @@ public class Telaprincipal extends javax.swing.JFrame {
 Modelrecebiveis recebiveis = new Modelrecebiveis();
 List<Modelrecebiveis> listausuario = new ArrayList<>();
 Controlerrecebiveis controler = new Controlerrecebiveis();
+Modeldashboard dashboardcontas = new Modeldashboard();
+
 
     public Telaprincipal() {
         initComponents();
@@ -42,6 +46,7 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         ContasreceberLogico();
         Carregarusu();
         DesignTabela();
+        Funcaodashboard();
     }
 
     /**
@@ -308,22 +313,26 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
         jLabel3.setText("Total:");
 
         recebertotal.setEditable(false);
+        recebertotal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 51, 51));
         jLabel5.setText("Vencidas:");
 
         recebertotalvencidas.setEditable(false);
+        recebertotalvencidas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Total (Mes):");
 
         recebertotalmes.setEditable(false);
+        recebertotalmes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Total (Dia)");
 
         recebertotaldia.setEditable(false);
+        recebertotaldia.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1077,6 +1086,20 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void Funcaodashboard(){
+        dashboardcontas = controler.carregarDashboarconta();
+        if (dashboardcontas != null) {
+           NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+
+recebertotal.setText(formatoMoeda.format(dashboardcontas.getTotalcontas()));
+recebertotalvencidas.setText(formatoMoeda.format(dashboardcontas.getTotalvencidas()));
+recebertotalmes.setText(formatoMoeda.format(dashboardcontas.getTotaldomes()));
+recebertotaldia.setText(formatoMoeda.format(dashboardcontas.getTotaldodia()));
+        }
+    }
+    
+    
+    
     private void DesignTabela(){
         tabela.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         tabela.getTableHeader().setOpaque(false);
@@ -1448,26 +1471,10 @@ Controlerrecebiveis controler = new Controlerrecebiveis();
     }
     
     private void Fontesecorescontasreceber(){
-        Font Recebertotal= new Font("Arial", Font.BOLD, 14);
-        recebertotal.setFont(Recebertotal);
-        Font Recebertotalmes = new Font("Arial", Font.BOLD, 14);
-        recebertotalmes.setFont(Recebertotalmes);
-        Font Recebertotalvencidas = new Font("Arial", Font.BOLD, 14);
-        recebertotalvencidas.setFont(Recebertotalvencidas);
-        Color Vencidas = Color.RED;
-        recebertotalvencidas.setForeground(Vencidas);
-        Font Recebertotaldia = new Font("Arial", Font.BOLD, 14);
-        recebertotaldia.setFont(Recebertotaldia);
+        
     }
     private void ContasreceberLogico(){
-        double Recebertotal=0.00;
-        double Recebertotalmes=0.00;
-        double Recebertotalvencidas=0.00;
-        double Recebertotaldia=0.00;
-        recebertotal.setText("R$ " + String.valueOf( Recebertotal));
-        recebertotalmes.setText("R$ " + String.valueOf(Recebertotalmes));
-        recebertotalvencidas.setText("R$ " + String.valueOf(Recebertotalvencidas));
-        recebertotaldia.setText("R$ " + String.valueOf(Recebertotaldia));
+       
     }
     
     /**

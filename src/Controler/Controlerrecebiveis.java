@@ -7,6 +7,7 @@ package Controler;
 import java.util.List;
 import model.Modelrecebiveis;
 import Dao.Daorecebiveis;
+import model.Modeldashboard;
 /**
  *
  * @author ruan
@@ -55,6 +56,10 @@ public class Controlerrecebiveis {
 
     public Modelrecebiveis carregarDadosconta(int codigo) {
           return dao.carregarconta(codigo);
+    }
+
+    public Modeldashboard carregarDashboarconta() {
+         return dao.carregardahsboard();
     }
 
     

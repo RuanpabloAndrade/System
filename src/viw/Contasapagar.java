@@ -354,7 +354,7 @@ public class Contasapagar extends javax.swing.JFrame {
         tabelacontaspagar.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         tabelacontaspagar.getTableHeader().setOpaque(false);
         tabelacontaspagar.getTableHeader().setBackground(new Color(32, 136, 203));
-       tabelacontaspagar.getTableHeader().setForeground( new Color(255,255,255));
+        tabelacontaspagar.getTableHeader().setForeground( new Color(255,255,255));
         tabelacontaspagar.setRowHeight(25);
     }
     /**
