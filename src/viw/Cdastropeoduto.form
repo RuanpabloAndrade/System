@@ -70,7 +70,7 @@
                       <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jFormattedTextField3" alignment="0" min="-2" pref="330" max="-2" attributes="0"/>
+                              <Component id="codigobarras" alignment="0" min="-2" pref="330" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -79,7 +79,7 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jFormattedTextField1" max="32767" attributes="0"/>
+                                      <Component id="codigoitem" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -89,7 +89,7 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jFormattedTextField2" max="32767" attributes="0"/>
+                              <Component id="descricao" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -105,7 +105,7 @@
                                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jFormattedTextField4" max="32767" attributes="0"/>
+                                      <Component id="quantidade" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButton7" min="-2" pref="117" max="-2" attributes="0"/>
@@ -115,23 +115,23 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jFormattedTextField6" max="32767" attributes="0"/>
-                              <Component id="jFormattedTextField8" alignment="1" pref="154" max="32767" attributes="0"/>
+                              <Component id="custo" alignment="1" pref="154" max="32767" attributes="0"/>
                               <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jFormattedTextField12" alignment="1" pref="154" max="32767" attributes="0"/>
-                              <Component id="jComboBox2" alignment="1" pref="154" max="32767" attributes="0"/>
+                              <Component id="critico" alignment="1" pref="154" max="32767" attributes="0"/>
+                              <Component id="unimedida" alignment="1" pref="154" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jFormattedTextField13" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lucro" alignment="0" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jFormattedTextField9" alignment="0" pref="164" max="32767" attributes="0"/>
-                                                  <Component id="jFormattedTextField5" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="venda" alignment="0" pref="164" max="32767" attributes="0"/>
+                                                  <Component id="validade" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -141,9 +141,9 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jFormattedTextField10" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jFormattedTextField14" max="32767" attributes="0"/>
-                                      <Component id="jComboBox3" max="32767" attributes="0"/>
+                                      <Component id="atacado" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="peso" max="32767" attributes="0"/>
+                                      <Component id="fornecedor" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -154,8 +154,8 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jFormattedTextField11" max="32767" attributes="0"/>
-                                      <Component id="jComboBox1" alignment="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="promocao" max="32767" attributes="0"/>
+                                      <Component id="categoria" alignment="0" pref="0" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
@@ -163,7 +163,7 @@
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jFormattedTextField7" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="lote" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -198,8 +198,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jFormattedTextField1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="jFormattedTextField2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="codigoitem" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="descricao" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -210,8 +210,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jFormattedTextField3" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField4" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="codigobarras" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="quantidade" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="jButton7" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -223,12 +223,12 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jComboBox3" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="fornecedor" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jFormattedTextField5" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="jFormattedTextField7" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="validade" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="lote" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jComboBox2" max="32767" attributes="0"/>
+                      <Component id="unimedida" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -239,10 +239,10 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jFormattedTextField8" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField9" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField10" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="jFormattedTextField11" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="custo" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="venda" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="atacado" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="promocao" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -253,11 +253,11 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jComboBox1" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="categoria" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jFormattedTextField13" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="jFormattedTextField12" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="jFormattedTextField14" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="lucro" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="critico" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="peso" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -335,7 +335,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="116" max="-2" attributes="0"/>
+                      <Component id="Salvarproduto" min="-2" pref="116" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -355,7 +355,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton3" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                           <Component id="jButton2" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                          <Component id="Salvarproduto" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                           <Component id="jButton4" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                           <Component id="jButton5" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
                       </Group>
@@ -390,7 +390,7 @@
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="Salvarproduto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
@@ -400,6 +400,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Salvar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SalvarprodutoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton4">
               <Properties>
@@ -436,8 +439,9 @@
             <Property name="text" type="java.lang.String" value="C&#xf3;digo item:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+        <Component class="javax.swing.JFormattedTextField" name="codigoitem">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder/>
@@ -453,7 +457,7 @@
             <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o do produto:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField2">
+        <Component class="javax.swing.JFormattedTextField" name="descricao">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -470,7 +474,7 @@
             <Property name="text" type="java.lang.String" value="C&#xf3;digo de barras:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField3">
+        <Component class="javax.swing.JFormattedTextField" name="codigobarras">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -487,7 +491,7 @@
             <Property name="text" type="java.lang.String" value="Quantidade:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField4">
+        <Component class="javax.swing.JFormattedTextField" name="quantidade">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -512,7 +516,7 @@
             <Property name="text" type="java.lang.String" value="Data de validade"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField5">
+        <Component class="javax.swing.JFormattedTextField" name="validade">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -537,7 +541,7 @@
             <Property name="text" type="java.lang.String" value="Lote:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField7">
+        <Component class="javax.swing.JFormattedTextField" name="lote">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -554,7 +558,7 @@
             <Property name="text" type="java.lang.String" value="Pre&#xe7;o de custo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField8">
+        <Component class="javax.swing.JFormattedTextField" name="custo">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -571,7 +575,7 @@
             <Property name="text" type="java.lang.String" value="Pre&#xe7;o de Venda:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField9">
+        <Component class="javax.swing.JFormattedTextField" name="venda">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -588,7 +592,7 @@
             <Property name="text" type="java.lang.String" value="Pre&#xe7;o de Atacado:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField10">
+        <Component class="javax.swing.JFormattedTextField" name="atacado">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -605,7 +609,7 @@
             <Property name="text" type="java.lang.String" value="Pre&#xe7;o Promo&#xe7;&#xe3;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField11">
+        <Component class="javax.swing.JFormattedTextField" name="promocao">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -622,7 +626,7 @@
             <Property name="text" type="java.lang.String" value="Estoque Cr&#xed;tico:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField12">
+        <Component class="javax.swing.JFormattedTextField" name="critico">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -639,7 +643,7 @@
             <Property name="text" type="java.lang.String" value="Lucro de Venda:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField13">
+        <Component class="javax.swing.JFormattedTextField" name="lucro">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -656,7 +660,7 @@
             <Property name="text" type="java.lang.String" value="Peso:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField14">
+        <Component class="javax.swing.JFormattedTextField" name="peso">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -727,7 +731,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="categoria">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
@@ -757,7 +761,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox2">
+        <Component class="javax.swing.JComboBox" name="unimedida">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
@@ -786,7 +790,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox3">
+        <Component class="javax.swing.JComboBox" name="fornecedor">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
