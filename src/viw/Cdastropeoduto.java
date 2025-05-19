@@ -8,6 +8,9 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JOptionPane;
 import Controler.Controlerproduto;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ButtonGroup;
 
 /**
  *
@@ -29,7 +32,39 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         initComponents();
          setLocationRelativeTo(this);
          Funcaotabelaprodutoscadastro();
+          // Agrupa os radio buttons
+        ButtonGroup grupoControleLote = new ButtonGroup();
+        grupoControleLote.add(sim);
+        grupoControleLote.add(nao);
+
+        Funcaotabelaprodutoscadastro();
+
+        sim.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                atualizarCampoQuantidadePorLote();
+            }
+        });
+
+        nao.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                atualizarCampoQuantidadePorLote();
+            }
+        });
+
+        // Define o estado inicial do campo "quantidade"
+        atualizarCampoQuantidadePorLote();
     }
+
+    private void atualizarCampoQuantidadePorLote() {
+        if (sim.isSelected()) {
+            quantidade.setEditable(false);
+            quantidade.setText("");
+        } else {
+            quantidade.setEditable(true);
+        }
+    }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +81,7 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        limparform = new javax.swing.JButton();
         Salvarproduto = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -89,8 +124,8 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        sim = new javax.swing.JRadioButton();
+        nao = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
 
         jLabel12.setText("jLabel12");
@@ -136,9 +171,14 @@ public class Cdastropeoduto extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/apagar (1).png"))); // NOI18N
-        jButton2.setText("Cancelar");
+        limparform.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        limparform.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/apagar (1).png"))); // NOI18N
+        limparform.setText("Cancelar");
+        limparform.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limparformActionPerformed(evt);
+            }
+        });
 
         Salvarproduto.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         Salvarproduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Salvar (1).png"))); // NOI18N
@@ -170,7 +210,7 @@ public class Cdastropeoduto extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(Salvarproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(limparform)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -185,7 +225,7 @@ public class Cdastropeoduto extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(limparform, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Salvarproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -197,21 +237,25 @@ public class Cdastropeoduto extends javax.swing.JFrame {
 
         codigoitem.setEditable(false);
         codigoitem.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        codigoitem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Descrição do produto:");
 
         descricao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        descricao.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Código de barras:");
 
         codigobarras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        codigobarras.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Quantidade:");
 
         quantidade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        quantidade.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel21.setText("Unidade de medida:");
@@ -220,6 +264,12 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         jLabel7.setText("Data de validade");
 
         validade.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        try {
+            validade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        validade.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Fornecedor:");
@@ -228,41 +278,49 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         jLabel9.setText("Lote:");
 
         lote.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lote.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel10.setText("Preço de custo:");
+        jLabel10.setText("Preço de custo (R$):");
 
         custo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        custo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel11.setText("Preço de Venda:");
+        jLabel11.setText("Preço de Venda (R$):");
 
         venda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        venda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel13.setText("Preço de Atacado:");
+        jLabel13.setText("Preço de Atacado (R$):");
 
         atacado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        atacado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel14.setText("Preço Promoção:");
+        jLabel14.setText("Preço Promoção (R$):");
 
         promocao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        promocao.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel15.setText("Estoque Crítico:");
 
         critico.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        critico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel16.setText("Lucro de Venda:");
 
         lucro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lucro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel17.setText("Peso:");
 
         peso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        peso.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel18.setText("Categoria:");
@@ -297,11 +355,11 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentícios", "Bebidas", "Higiene e beleza", "Limpeza", "Saúde", "Artigos para Casa", "Eletronicos", "Moda e Acessorios", "Brinquedos e Jogos", "Petróleo e Lubrificantes", "Frutas e Legumes" }));
         categoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        unimedida.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        unimedida.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         unimedida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unidade(UN)", "Quilograma(KG)", "Grama(G)", "Litro(L)", "Metro(M)", "Metro Quadrado(M2x)", "Caixa(CX)", "Pacote(PT)", "Conjunto(CJ)", "Par(PR)" }));
         unimedida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        fornecedor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        fornecedor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         fornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         fornecedor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -325,12 +383,12 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("Sim");
+        sim.setBackground(new java.awt.Color(255, 255, 255));
+        sim.setText("Sim");
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton2.setText("Não");
+        nao.setBackground(new java.awt.Color(255, 255, 255));
+        nao.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        nao.setText("Não");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -338,17 +396,17 @@ public class Cdastropeoduto extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton1)
+                .addComponent(sim)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nao, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1))
+                    .addComponent(nao)
+                    .addComponent(sim))
                 .addGap(0, 1, Short.MAX_VALUE))
         );
 
@@ -566,6 +624,27 @@ public class Cdastropeoduto extends javax.swing.JFrame {
 
     private void SalvarprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarprodutoActionPerformed
        produto = new modelproduto();
+       if (descricao.getText().trim().isEmpty()) {
+    JOptionPane.showMessageDialog(null, "O campo Descrição do Produto é obrigatório.");
+    return;
+}
+
+if (codigobarras.getText().trim().isEmpty()) {
+    JOptionPane.showMessageDialog(null, "O campo Código de Barras é obrigatório.");
+    return;
+}
+
+if (quantidade.getText().trim().isEmpty()) {
+    JOptionPane.showMessageDialog(null, "O campo Quantidade é obrigatório.");
+    return;
+}
+
+if (venda.getText().trim().isEmpty()) {
+    JOptionPane.showMessageDialog(null, "O campo Preço de Venda é obrigatório.");
+    return;
+}
+       
+       
       produto.setDescricaoProduto(descricao.getText());
 produto.setCodigoBarras(codigobarras.getText());
 
@@ -592,11 +671,38 @@ produto.setCategoria((String) categoria.getEditor().getItem());
 
 if (controlerproduto.Salvarproduto(produto)) {
     JOptionPane.showMessageDialog(null, "Produto cadastrado com Sucesso!");
+    LimparformularioProduto();
 } else {
     JOptionPane.showMessageDialog(null, "Produto Não cadastrado");
 }
     }//GEN-LAST:event_SalvarprodutoActionPerformed
 
+    private void limparformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparformActionPerformed
+       LimparformularioProduto();
+    }//GEN-LAST:event_limparformActionPerformed
+ private void LimparformularioProduto() {
+    descricao.setText("");
+    codigobarras.setText("");
+    quantidade.setText("");
+    unimedida.setSelectedIndex(0);
+    
+    validade.setValue(null); 
+    validade.setFocusLostBehavior(validade.COMMIT);
+    
+    fornecedor.setSelectedIndex(0);
+    lote.setText("");
+    custo.setText("");
+    venda.setText("");
+    atacado.setText("");
+    promocao.setText("");
+    critico.setText("");
+    lucro.setText("");
+    peso.setText("");
+    categoria.setSelectedIndex(0);
+}
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -642,7 +748,6 @@ if (controlerproduto.Salvarproduto(produto)) {
     private javax.swing.JFormattedTextField custo;
     private javax.swing.JFormattedTextField descricao;
     private javax.swing.JComboBox<String> fornecedor;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -673,14 +778,15 @@ if (controlerproduto.Salvarproduto(produto)) {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton limparform;
     private javax.swing.JFormattedTextField lote;
     private javax.swing.JFormattedTextField lucro;
+    private javax.swing.JRadioButton nao;
     private javax.swing.JFormattedTextField peso;
     private javax.swing.JFormattedTextField promocao;
     private javax.swing.JFormattedTextField quantidade;
+    private javax.swing.JRadioButton sim;
     private javax.swing.JTable tabelacapro;
     private javax.swing.JComboBox<String> unimedida;
     private javax.swing.JFormattedTextField validade;
