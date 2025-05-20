@@ -8,7 +8,10 @@ import Conexao.Classeconexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import model.modelclientes;
 import model.modelproduto;
 
 /**
@@ -48,6 +51,36 @@ try {
     return false;
 }
 return true;
+    }
+
+    public List<modelproduto> Carregarprodutos() {
+        conexao = Classeconexao.conector();
+        List<modelproduto> listaproduto = new ArrayList<>();
+        modelproduto produto = new modelproduto();
+
+        String sql = "SELECT descricao_produto, "
+                + "quantidade, "
+                + "validade, "
+                + "venda "
+                + "FROM Produto";
+
+        try {
+            pst = conexao.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                produto = new modelproduto();
+                produto.setDescricaoProduto(rs.getString(1));
+                produto.setQuantidade(rs.getInt(2));
+                produto.setDataValidade(rs.getString(3));
+                produto.setPrecoVenda(rs.getDouble(4));
+                listaproduto.add(produto);
+            }
+
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
+        return listaproduto;
     }
     
     

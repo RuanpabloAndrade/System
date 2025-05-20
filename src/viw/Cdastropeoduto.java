@@ -10,7 +10,13 @@ import javax.swing.JOptionPane;
 import Controler.Controlerproduto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ButtonGroup;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import model.modelclientes;
 
 /**
  *
@@ -19,6 +25,7 @@ import javax.swing.ButtonGroup;
 public class Cdastropeoduto extends javax.swing.JFrame {
     modelproduto produto = new modelproduto();
     Controlerproduto controlerproduto = new Controlerproduto();
+    List<modelproduto> listaprodutos = new ArrayList<>();
     // no radio button se escolher sim o campo de quantidade no formularioario deve ser bloqueado e acionado o botão de incluir lote ao lado do campo de quantidade para atualizar a quantidade caso "não" deve ser desbloqueado o campo de quantidade e bloqueado o botão de incluir lote  para preecnhaer livremente
     //Para cadastrar um lote voce precisa primeiro cadastrar um produto logo apos clicar no produto salvo na tabela abixo e clicar no botão lotes e depois clica no botão cadastrar logo apos issp o campo de prdoduto já vai estar preechido com o nome do produto e deve ser preenchido os campos para cadastrar o lote
     //Logo apos o processo de cadastramento de lotes para preecnher a quantidade deve-se clicar no botão incluir lote e preecnher as informaçoes no formaluario
@@ -30,9 +37,9 @@ public class Cdastropeoduto extends javax.swing.JFrame {
      */
     public Cdastropeoduto() {
         initComponents();
-         setLocationRelativeTo(this);
-         Funcaotabelaprodutoscadastro();
-          // Agrupa os radio buttons
+        setLocationRelativeTo(this);
+        Funcaotabelaprodutoscadastro();
+        Listarprodutos();
         ButtonGroup grupoControleLote = new ButtonGroup();
         grupoControleLote.add(sim);
         grupoControleLote.add(nao);
@@ -55,15 +62,37 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         atualizarCampoQuantidadePorLote();
     }
 
-    private void atualizarCampoQuantidadePorLote() {
-        if (sim.isSelected()) {
-            quantidade.setEditable(false);
-            quantidade.setText("");
-        } else {
-            quantidade.setEditable(true);
-        }
+   private void atualizarCampoQuantidadePorLote() {
+    if (sim.isSelected()) {
+        quantidade.setEditable(false);
+        quantidade.setText("");
+        descricao.setEditable(false);
+        fornecedor.setEnabled(false);
+        codigobarras.setEnabled(false);// Desabilita a combobox
+    } else {
+        quantidade.setEditable(true);
+        lote.setEditable(false);
+        descricao.setEditable(true);
+        fornecedor.setEnabled(true); 
+        codigobarras.setEnabled(true);
     }
 
+
+}
+
+      public void Listarprodutos(){
+        listaprodutos = controlerproduto.Listarproduto();
+        DefaultTableModel modelo = (DefaultTableModel) tabelacapro.getModel();
+        modelo.setNumRows(0);
+        for (int i = 0; i < listaprodutos.size(); i++) {
+            modelo.addRow(new Object[]{
+                listaprodutos.get(i).getDescricaoProduto(),
+                listaprodutos.get(i).getQuantidade(),
+                listaprodutos.get(i).getDataValidade(),
+                listaprodutos.get(i).getPrecoVenda()
+            });
+        }
+    }
     
 
     /**
@@ -120,8 +149,7 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         unimedida = new javax.swing.JComboBox<>();
         fornecedor = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jFormattedTextField6 = new javax.swing.JFormattedTextField();
-        jButton6 = new javax.swing.JButton();
+        pesquisarproduto = new javax.swing.JFormattedTextField();
         jButton7 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         sim = new javax.swing.JRadioButton();
@@ -325,6 +353,7 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel18.setText("Categoria:");
 
+        tabelacapro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tabelacapro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -366,11 +395,13 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Pesquisar Produto:");
 
-        jFormattedTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa (1).png"))); // NOI18N
-        jButton6.setText("Pesquisar");
+        pesquisarproduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pesquisarproduto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        pesquisarproduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pesquisarprodutoKeyReleased(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton7.setText("Incluir em Lote");
@@ -456,7 +487,7 @@ public class Cdastropeoduto extends javax.swing.JFrame {
                                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jFormattedTextField6)
+                            .addComponent(pesquisarproduto)
                             .addComponent(custo, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                             .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
@@ -465,40 +496,35 @@ public class Cdastropeoduto extends javax.swing.JFrame {
                             .addComponent(unimedida, 0, 154, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(lucro, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(lucro, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(venda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                                                .addComponent(validade, javax.swing.GroupLayout.Alignment.LEADING))
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel7)))
-                                    .addComponent(jLabel16))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(atacado)
-                                    .addComponent(peso)
-                                    .addComponent(fornecedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel13)
-                                            .addComponent(jLabel17))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(promocao)
-                                    .addComponent(categoria, 0, 0, Short.MAX_VALUE)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel14)
-                                            .addComponent(jLabel18))
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(lote)))
+                                        .addComponent(venda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                        .addComponent(validade, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel7)))
+                            .addComponent(jLabel16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(atacado)
+                            .addComponent(peso)
+                            .addComponent(fornecedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jButton6)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel17))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(promocao)
+                            .addComponent(categoria, 0, 0, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel18))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(lote)))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -573,12 +599,10 @@ public class Cdastropeoduto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pesquisarproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -593,8 +617,8 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         pack();
@@ -672,6 +696,7 @@ produto.setCategoria((String) categoria.getEditor().getItem());
 if (controlerproduto.Salvarproduto(produto)) {
     JOptionPane.showMessageDialog(null, "Produto cadastrado com Sucesso!");
     LimparformularioProduto();
+     Listarprodutos();
 } else {
     JOptionPane.showMessageDialog(null, "Produto Não cadastrado");
 }
@@ -680,6 +705,13 @@ if (controlerproduto.Salvarproduto(produto)) {
     private void limparformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparformActionPerformed
        LimparformularioProduto();
     }//GEN-LAST:event_limparformActionPerformed
+
+    private void pesquisarprodutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesquisarprodutoKeyReleased
+       DefaultTableModel model = (DefaultTableModel) tabelacapro.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        tabelacapro.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(pesquisarproduto.getText()));
+    }//GEN-LAST:event_pesquisarprodutoKeyReleased
  private void LimparformularioProduto() {
     descricao.setText("");
     codigobarras.setText("");
@@ -751,9 +783,7 @@ if (controlerproduto.Salvarproduto(produto)) {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JFormattedTextField jFormattedTextField6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -784,6 +814,7 @@ if (controlerproduto.Salvarproduto(produto)) {
     private javax.swing.JFormattedTextField lucro;
     private javax.swing.JRadioButton nao;
     private javax.swing.JFormattedTextField peso;
+    private javax.swing.JFormattedTextField pesquisarproduto;
     private javax.swing.JFormattedTextField promocao;
     private javax.swing.JFormattedTextField quantidade;
     private javax.swing.JRadioButton sim;

@@ -74,7 +74,7 @@ public class Cadastrodelotrs extends javax.swing.JFrame {
         jLabel4.setText("Validade:");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Observação:");
+        jLabel5.setText("Codigo de Barras:");
 
         jFormattedTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 

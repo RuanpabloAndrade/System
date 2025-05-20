@@ -4,6 +4,7 @@
  */
 package Controler;
 import Dao.Produtodao;
+import java.util.List;
 import model.modelproduto;
 /**
  *
@@ -14,5 +15,9 @@ public class Controlerproduto {
 
     public boolean Salvarproduto(modelproduto produto) {
         return this.dao.SalvarFuncionarioDao(produto);
+    }
+
+    public List<modelproduto> Listarproduto() {
+         return this.dao.Carregarprodutos();
     }
 }
