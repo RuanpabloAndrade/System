@@ -25,7 +25,12 @@ public class modelproduto {
     private double lucroVenda;
     private double peso;
     private String categoria;
+    private String datafabricacao;
+    private String nomeacaolote;
+    
 
+    
+    
     /**
      * @return the id
      */
@@ -248,6 +253,34 @@ public class modelproduto {
      */
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    /**
+     * @return the datafabricacao
+     */
+    public String getDatafabricacao() {
+        return datafabricacao;
+    }
+
+    /**
+     * @param datafabricacao the datafabricacao to set
+     */
+    public void setDatafabricacao(String datafabricacao) {
+        this.datafabricacao = datafabricacao;
+    }
+
+    /**
+     * @return the nomeacaolote
+     */
+    public String getNomeacaolote() {
+        return nomeacaolote;
+    }
+
+    /**
+     * @param nomeacaolote the nomeacaolote to set
+     */
+    public void setNomeacaolote(String nomeacaolote) {
+        this.nomeacaolote = nomeacaolote;
     }
     
     

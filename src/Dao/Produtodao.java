@@ -82,6 +82,28 @@ return true;
 
         return listaproduto;
     }
+
+    public boolean SalvarloteDao(modelproduto produto) {
+          conexao = Classeconexao.conector();
+String sql = "INSERT INTO Lotes (fornecedor, nomeacao_lote, lote, validade, codigo_barras, data_fabricacao) VALUES (?, ?, ?, ?, ?, ?)";
+
+try {
+    pst = conexao.prepareStatement(sql);
+    pst.setString(1, produto.getFornecedor());
+    pst.setString(2, produto.getNomeacaolote());
+    pst.setString(3, produto.getLote());
+    pst.setString(4, produto.getDataValidade());
+    pst.setString(5, produto.getCodigoBarras());
+    pst.setString(6, produto.getDatafabricacao());
+
+    pst.executeUpdate();
+} catch (Exception e) {
+    System.err.println(e);
+    JOptionPane.showMessageDialog(null, "Produto não cadastrado. Verifique os dados e tente novamente.");
+    return false;
+}
+return true;
+    }
     
     
     

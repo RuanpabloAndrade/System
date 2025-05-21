@@ -165,6 +165,7 @@ Modeldashboard dashboardcontas = new Modeldashboard();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem32 = new javax.swing.JMenuItem();
         jMenuItem36 = new javax.swing.JMenuItem();
+        jMenuItem53 = new javax.swing.JMenuItem();
         Finança = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -1020,6 +1021,15 @@ Modeldashboard dashboardcontas = new Modeldashboard();
         jMenuItem36.setText("Gerar Etiquetas ");
         jMenu7.add(jMenuItem36);
 
+        jMenuItem53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pro (1).png"))); // NOI18N
+        jMenuItem53.setText("Gerenciamento de Lotes");
+        jMenuItem53.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem53ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem53);
+
         jMenuBar1.add(jMenu7);
 
         Finança.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fun (1).png"))); // NOI18N
@@ -1366,6 +1376,11 @@ recebertotaldia.setText(formatoMoeda.format(dashboardcontas.getTotaldodia()));
         juros.setVisible(true);
     }//GEN-LAST:event_jMenuItem33ActionPerformed
 
+    private void jMenuItem53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem53ActionPerformed
+        Gerenciementolotes lotes = new Gerenciementolotes();
+        lotes.setVisible(true);
+    }//GEN-LAST:event_jMenuItem53ActionPerformed
+
     private void Carregarusu(){
         listausuario = controler.Listarusucontroler();
         DefaultTableModel modelo=(DefaultTableModel) tabela.getModel();
@@ -1604,6 +1619,7 @@ recebertotaldia.setText(formatoMoeda.format(dashboardcontas.getTotaldodia()));
     private javax.swing.JMenuItem jMenuItem50;
     private javax.swing.JMenuItem jMenuItem51;
     private javax.swing.JMenuItem jMenuItem52;
+    private javax.swing.JMenuItem jMenuItem53;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
