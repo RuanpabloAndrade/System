@@ -25,7 +25,7 @@ public class Produtodao  extends Classeconexao{
 
     public boolean SalvarFuncionarioDao(modelproduto produto) {
         conexao = Classeconexao.conector();
-String sql = "INSERT INTO Produto (descricao_produto, codigo_barras, quantidade, unidade_medida, validade, fornecedor, lote, custo, venda, atacado, promocao, estoque_critico, lucro_venda, peso, categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+String sql = "INSERT INTO Produto (descricao_produto, codigo_barras, quantidade, unidade_medida, validade, fornecedor, lote, custo, venda, atacado, promocao, estoque_critico, datafabricacao, peso, categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 try {
     pst = conexao.prepareStatement(sql);
@@ -41,7 +41,7 @@ try {
     pst.setDouble(10, produto.getPrecoAtacado());
     pst.setDouble(11, produto.getPrecoPromocao());
     pst.setInt(12, produto.getEstoqueCritico());
-    pst.setDouble(13, produto.getLucroVenda());
+    pst.setString(13, produto.getDatafabricacao());
     pst.setDouble(14, produto.getPeso());
     pst.setString(15, produto.getCategoria());
     pst.executeUpdate();
@@ -103,6 +103,42 @@ try {
     return false;
 }
 return true;
+    }
+
+    public List<modelproduto> Carregarlotes() {
+        conexao = Classeconexao.conector();
+        List<modelproduto> listalotes = new ArrayList<>();
+        modelproduto produto = new modelproduto();
+
+        String sql = "SELECT \n" +
+"    p.descricao_produto,\n" +
+"    l.nomeacao_lote,\n" +
+"    l.lote,\n" +
+"    l.validade,\n" +
+"    p.quantidade\n" +
+"FROM \n" +
+"    Produto p\n" +
+"RIGHT JOIN \n" +
+"    Lotes l ON p.lote_id = l.id;";
+
+        try {
+            pst = conexao.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                produto = new modelproduto();
+                produto.setDescricaoProduto(rs.getString(1));
+                produto.setNomeacaolote(rs.getString(2));
+                produto.setLote(rs.getString(3));
+                produto.setDataValidade(rs.getString(4));
+                 produto.setQuantidade(rs.getInt(5));
+                listalotes.add(produto);
+            }
+
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
+        return listalotes;
     }
     
     

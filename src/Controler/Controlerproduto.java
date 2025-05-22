@@ -24,4 +24,8 @@ public class Controlerproduto {
     public boolean Salvarlote(modelproduto produto) {
          return this.dao.SalvarloteDao(produto);
     }
+
+    public List<modelproduto> Listarlotes() {
+        return this.dao.Carregarlotes(); 
+    }
 }

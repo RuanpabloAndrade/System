@@ -4,15 +4,23 @@
  */
 package viw;
 
+import Controler.Controlerproduto;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import model.modelproduto;
 
 /**
  *
  * @author ruan
  */
 public class Gerenciementolotes extends javax.swing.JFrame {
-
+    Controlerproduto controlerlotes = new Controlerproduto();
+    List<modelproduto> listalotes = new ArrayList<>();
     /**
      * Creates new form Gerenciementolotes
      */
@@ -20,6 +28,7 @@ public class Gerenciementolotes extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         funcaotabelalotes();
+        carregarlotes();
     }
 
     
@@ -44,7 +53,7 @@ public class Gerenciementolotes extends javax.swing.JFrame {
         tabelalote = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        pesquisar = new javax.swing.JFormattedTextField();
         inserir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -125,6 +134,7 @@ public class Gerenciementolotes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        tabelalote.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tabelalote.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -157,7 +167,12 @@ public class Gerenciementolotes extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Pesquisar Lotes:");
 
-        jFormattedTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pesquisar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pesquisarKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -169,7 +184,7 @@ public class Gerenciementolotes extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jFormattedTextField1))
+                    .addComponent(pesquisar))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -178,12 +193,17 @@ public class Gerenciementolotes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
         inserir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         inserir.setText("Inserir Lote em cadastro de Porduto");
+        inserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inserirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -237,6 +257,23 @@ public class Gerenciementolotes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void carregarlotes(){
+        listalotes = controlerlotes.Listarlotes();
+        DefaultTableModel modelo = (DefaultTableModel) tabelalote.getModel();
+        modelo.setNumRows(0);
+        for (int i = 0; i < listalotes.size(); i++) {
+            modelo.addRow(new Object[]{
+                listalotes.get(i).getDescricaoProduto(),
+                listalotes.get(i).getNomeacaolote(),
+                listalotes.get(i).getLote(),
+                listalotes.get(i).getDataValidade(),
+                listalotes.get(i).getQuantidade()
+            });
+        }
+    }
+    
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        Cadastrodelotrs lotes = new Cadastrodelotrs();
        lotes.setVisible(true);
@@ -246,6 +283,18 @@ public class Gerenciementolotes extends javax.swing.JFrame {
         Cadastrodelotrs lotes = new Cadastrodelotrs();
        lotes.setVisible(true);
     }//GEN-LAST:event_atualizarActionPerformed
+
+    private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
+        inclusãolote lote = new inclusãolote();
+        lote.setVisible(true);
+    }//GEN-LAST:event_inserirActionPerformed
+
+    private void pesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesquisarKeyReleased
+        DefaultTableModel model = (DefaultTableModel) tabelalote.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        tabelalote.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(pesquisar.getText()));
+    }//GEN-LAST:event_pesquisarKeyReleased
  
     private void funcaotabelalotes(){
          tabelalote.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
@@ -294,7 +343,6 @@ public class Gerenciementolotes extends javax.swing.JFrame {
     private javax.swing.JButton deletar;
     private javax.swing.JButton inserir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -302,6 +350,7 @@ public class Gerenciementolotes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JFormattedTextField pesquisar;
     private javax.swing.JTable tabelalote;
     // End of variables declaration//GEN-END:variables
 

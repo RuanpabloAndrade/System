@@ -139,7 +139,7 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         critico = new javax.swing.JFormattedTextField();
         jLabel16 = new javax.swing.JLabel();
-        lucro = new javax.swing.JFormattedTextField();
+        fabricação = new javax.swing.JFormattedTextField();
         jLabel17 = new javax.swing.JLabel();
         peso = new javax.swing.JFormattedTextField();
         jLabel18 = new javax.swing.JLabel();
@@ -337,10 +337,15 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         critico.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel16.setText("Lucro de Venda:");
+        jLabel16.setText("Data de Fabricação:");
 
-        lucro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lucro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        fabricação.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        try {
+            fabricação.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        fabricação.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel17.setText("Peso:");
@@ -483,7 +488,7 @@ public class Cdastropeoduto extends javax.swing.JFrame {
                                             .addComponent(validade, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                                             .addComponent(jLabel11)
                                             .addComponent(jLabel16)
-                                            .addComponent(lucro)
+                                            .addComponent(fabricação)
                                             .addComponent(venda))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -571,7 +576,7 @@ public class Cdastropeoduto extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(peso, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lucro, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fabricação, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(critico, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -616,8 +621,9 @@ public class Cdastropeoduto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       inclusãolote lote = new inclusãolote();
-       lote.setVisible(true);
+      Gerenciementolotes estoques = new Gerenciementolotes();
+         estoques.funcaobotoes();
+         estoques.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void SalvarprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarprodutoActionPerformed
@@ -659,7 +665,7 @@ produto.setPrecoCusto(custo.getText().isEmpty() ? 0.0 : Double.parseDouble(custo
 produto.setPrecoVenda(venda.getText().isEmpty() ? 0.0 : Double.parseDouble(venda.getText()));
 produto.setPrecoAtacado(atacado.getText().isEmpty() ? 0.0 : Double.parseDouble(atacado.getText()));
 produto.setPrecoPromocao(promocao.getText().isEmpty() ? 0.0 : Double.parseDouble(promocao.getText()));
-produto.setLucroVenda(venda.getText().isEmpty() ? 0.0 : Double.parseDouble(venda.getText()));
+produto.setDatafabricacao(fabricação.getText());
 produto.setPeso(peso.getText().isEmpty() ? 0.0 : Double.parseDouble(peso.getText()));
 
 // Campo int
@@ -695,7 +701,7 @@ if (controlerproduto.Salvarproduto(produto)) {
     atacado.setText("");
     promocao.setText("");
     critico.setText("");
-    lucro.setText("");
+    fabricação.setText("");
     peso.setText("");
     categoria.setSelectedIndex(0);
 }
@@ -746,6 +752,7 @@ if (controlerproduto.Salvarproduto(produto)) {
     private javax.swing.JFormattedTextField critico;
     private javax.swing.JFormattedTextField custo;
     private javax.swing.JFormattedTextField descricao;
+    private javax.swing.JFormattedTextField fabricação;
     private javax.swing.JComboBox<String> fornecedor;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -777,7 +784,6 @@ if (controlerproduto.Salvarproduto(produto)) {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton limparform;
     private javax.swing.JFormattedTextField lote;
-    private javax.swing.JFormattedTextField lucro;
     private javax.swing.JRadioButton nao;
     private javax.swing.JFormattedTextField peso;
     private javax.swing.JFormattedTextField promocao;
