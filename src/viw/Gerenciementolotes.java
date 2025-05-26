@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -21,6 +22,7 @@ import model.modelproduto;
 public class Gerenciementolotes extends javax.swing.JFrame {
     Controlerproduto controlerlotes = new Controlerproduto();
     List<modelproduto> listalotes = new ArrayList<>();
+    modelproduto produto = new modelproduto();
     /**
      * Creates new form Gerenciementolotes
      */
@@ -30,6 +32,8 @@ public class Gerenciementolotes extends javax.swing.JFrame {
         funcaotabelalotes();
         carregarlotes();
     }
+
+    
 
     
    
@@ -137,17 +141,17 @@ public class Gerenciementolotes extends javax.swing.JFrame {
         tabelalote.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tabelalote.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Produto", "Nome Lote", "Lote", "Validade", "Quantidade atual"
+                "id", "Produto", "idproduto", "Nome Lote", "Lote", "Validade", "Quantidade"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false
+                false, false, true, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -263,7 +267,9 @@ public class Gerenciementolotes extends javax.swing.JFrame {
         modelo.setNumRows(0);
         for (int i = 0; i < listalotes.size(); i++) {
             modelo.addRow(new Object[]{
+                listalotes.get(i).getId(),
                 listalotes.get(i).getDescricaoProduto(),
+                listalotes.get(i).getId(),
                 listalotes.get(i).getNomeacaolote(),
                 listalotes.get(i).getLote(),
                 listalotes.get(i).getDataValidade(),
@@ -272,7 +278,7 @@ public class Gerenciementolotes extends javax.swing.JFrame {
         }
     }
     
-    
+
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        Cadastrodelotrs lotes = new Cadastrodelotrs();
@@ -285,8 +291,19 @@ public class Gerenciementolotes extends javax.swing.JFrame {
     }//GEN-LAST:event_atualizarActionPerformed
 
     private void inserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserirActionPerformed
-        inclusãolote lote = new inclusãolote();
-        lote.setVisible(true);
+        int linha = tabelalote.getSelectedRow();
+    if (linha < 0) {
+        JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
+        return;
+    }
+    int codigo = (int) tabelalote.getValueAt(linha, 2);
+    produto = controlerlotes.setarcampos(codigo);
+    if (produto != null) {
+        Cdastropeoduto cadastroProduto = new Cdastropeoduto();
+        cadastroProduto.setarcampos(produto);
+        cadastroProduto.setVisible(true);
+        this.dispose();
+    }         
     }//GEN-LAST:event_inserirActionPerformed
 
     private void pesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesquisarKeyReleased

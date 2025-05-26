@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import model.Modelrecebiveis;
 import model.modelclientes;
 import model.modelproduto;
 
@@ -110,27 +111,30 @@ return true;
         List<modelproduto> listalotes = new ArrayList<>();
         modelproduto produto = new modelproduto();
 
-        String sql = "SELECT \n" +
+        String sql = "SELECT\n" +
+"    l.id AS id_lote,\n" +
 "    p.descricao_produto,\n" +
+"    p.id AS id_produto,\n" +
 "    l.nomeacao_lote,\n" +
 "    l.lote,\n" +
 "    l.validade,\n" +
 "    p.quantidade\n" +
-"FROM \n" +
+"FROM\n" +
 "    Produto p\n" +
-"RIGHT JOIN \n" +
+"RIGHT JOIN\n" +
 "    Lotes l ON p.lote_id = l.id;";
-
         try {
             pst = conexao.prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {
                 produto = new modelproduto();
-                produto.setDescricaoProduto(rs.getString(1));
-                produto.setNomeacaolote(rs.getString(2));
-                produto.setLote(rs.getString(3));
-                produto.setDataValidade(rs.getString(4));
-                 produto.setQuantidade(rs.getInt(5));
+                produto.setId(rs.getInt(1));
+                produto.setDescricaoProduto(rs.getString(2));
+                produto.setId(rs.getInt(3));
+                produto.setNomeacaolote(rs.getString(4));
+                produto.setLote(rs.getString(5));
+                produto.setDataValidade(rs.getString(6));
+                produto.setQuantidade(rs.getInt(7));
                 listalotes.add(produto);
             }
 
@@ -140,8 +144,31 @@ return true;
 
         return listalotes;
     }
+
+    public modelproduto Exibircamposproduto(int codigo) {
+        conexao = Classeconexao.conector();
+        modelproduto produto = new modelproduto();
+    
+    String sql = "SELECT * FROM produto WHERE id = ?";
+    try {
+        pst = conexao.prepareStatement(sql);
+        pst.setInt(1, codigo);
+        rs = pst.executeQuery();
+        while (rs.next()) {
+            produto = new modelproduto();
+            produto.setDescricaoProduto(rs.getString(1));
+        }
+    } catch (Exception e) {
+        System.err.println(e);
+    } 
+    
+    return produto;
+    }
+    
+
+    }
     
     
     
-    
-}
+
+

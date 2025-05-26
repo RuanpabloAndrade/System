@@ -282,6 +282,7 @@ public class modelproduto {
     public void setNomeacaolote(String nomeacaolote) {
         this.nomeacaolote = nomeacaolote;
     }
+
     
     
     

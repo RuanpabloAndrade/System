@@ -621,9 +621,10 @@ public class Cdastropeoduto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-      Gerenciementolotes estoques = new Gerenciementolotes();
+         Gerenciementolotes estoques = new Gerenciementolotes();
          estoques.funcaobotoes();
          estoques.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void SalvarprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarprodutoActionPerformed
@@ -794,4 +795,8 @@ if (controlerproduto.Salvarproduto(produto)) {
     private javax.swing.JFormattedTextField validade;
     private javax.swing.JFormattedTextField venda;
     // End of variables declaration//GEN-END:variables
+
+    public void setarcampos(modelproduto produto) {
+         descricao.setText(produto.getDescricaoProduto());
+    }
 }

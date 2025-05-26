@@ -28,4 +28,8 @@ public class Controlerproduto {
     public List<modelproduto> Listarlotes() {
         return this.dao.Carregarlotes(); 
     }
+
+    public modelproduto setarcampos(int codigo) {
+          return this.dao.Exibircamposproduto(codigo); 
+    }
 }
