@@ -797,6 +797,23 @@ if (controlerproduto.Salvarproduto(produto)) {
     // End of variables declaration//GEN-END:variables
 
     public void setarcampos(modelproduto produto) {
-         descricao.setText(produto.getDescricaoProduto());
+    sim.setSelected(true);
+    codigoitem.setText(String.valueOf(produto.getId()));
+    descricao.setText(produto.getDescricaoProduto());
+    codigobarras.setText(produto.getCodigoBarras());
+    quantidade.setText(String.valueOf(produto.getQuantidade()));
+    unimedida.setSelectedItem(produto.getUnidadeMedida());
+    validade.setText(produto.getDataValidade());
+    fornecedor.setSelectedItem(produto.getFornecedor());
+    lote.setText(produto.getLote());
+    custo.setText(String.valueOf(produto.getPrecoCusto()));
+    venda.setText(String.valueOf(produto.getPrecoVenda()));
+    atacado.setText(String.valueOf(produto.getPrecoAtacado()));
+    promocao.setText(String.valueOf(produto.getPrecoPromocao()));
+    critico.setText(String.valueOf(produto.getEstoqueCritico()));
+    fabricação.setText(produto.getDatafabricacao());
+    peso.setText(String.valueOf(produto.getPeso()));
+    categoria.setSelectedItem(produto.getCategoria());
+         
     }
 }

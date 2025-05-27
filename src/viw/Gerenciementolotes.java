@@ -141,17 +141,17 @@ public class Gerenciementolotes extends javax.swing.JFrame {
         tabelalote.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tabelalote.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "id", "Produto", "idproduto", "Nome Lote", "Lote", "Validade", "Quantidade"
+                "id", "Produto", "Nome Lote", "Lote", "Validade", "Quantidade"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -261,23 +261,29 @@ public class Gerenciementolotes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void carregarlotes(){
-        listalotes = controlerlotes.Listarlotes();
-        DefaultTableModel modelo = (DefaultTableModel) tabelalote.getModel();
-        modelo.setNumRows(0);
-        for (int i = 0; i < listalotes.size(); i++) {
-            modelo.addRow(new Object[]{
-                listalotes.get(i).getId(),
-                listalotes.get(i).getDescricaoProduto(),
-                listalotes.get(i).getId(),
-                listalotes.get(i).getNomeacaolote(),
-                listalotes.get(i).getLote(),
-                listalotes.get(i).getDataValidade(),
-                listalotes.get(i).getQuantidade()
-            });
-        }
+   private void carregarlotes(){
+    listalotes = controlerlotes.Listarlotes();
+    DefaultTableModel modelo = (DefaultTableModel) tabelalote.getModel();
+    modelo.setNumRows(0);
+
+    for (int i = 0; i < listalotes.size(); i++) {
+        modelo.addRow(new Object[]{
+            listalotes.get(i).getId(),                // Oculto (opcional)
+            listalotes.get(i).getDescricaoProduto(),  // Produto
+            listalotes.get(i).getNomeacaolote(),      // Nome Lote
+            listalotes.get(i).getLote(),              // Lote
+            listalotes.get(i).getDataValidade(),      // Validade
+            listalotes.get(i).getQuantidade()         // Quantidade
+        });
     }
+
+    // Ocultar apenas a coluna ID (coluna 0)
+    tabelalote.getColumnModel().getColumn(0).setMinWidth(0);
+    tabelalote.getColumnModel().getColumn(0).setMaxWidth(0);
+    tabelalote.getColumnModel().getColumn(0).setWidth(0);
     
+    // NÃO ocultar a coluna 2 (Nome Lote) - Removido!
+}
 
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -296,7 +302,7 @@ public class Gerenciementolotes extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Nenhum registro selecionado!");
         return;
     }
-    int codigo = (int) tabelalote.getValueAt(linha, 2);
+    int codigo = (int) tabelalote.getValueAt(linha, 0);
     produto = controlerlotes.setarcampos(codigo);
     if (produto != null) {
         Cdastropeoduto cadastroProduto = new Cdastropeoduto();

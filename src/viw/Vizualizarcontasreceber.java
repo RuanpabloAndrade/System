@@ -61,7 +61,7 @@ List<Modelrecebiveis> Selecaocontas = new ArrayList<>();
              tabelacontasreceber.getColumnModel().getColumn(6).setMaxWidth(0);//coluna oculta 
              tabelacontasreceber.getColumnModel().getColumn(6).setWidth(0);//coluna oculta para deixar invisicel 
         }
-        int colunaVencimento = 4;
+        int colunaVencimento = 4;//para deixar vencimento em vermelho
 tabelacontasreceber.getColumnModel().getColumn(colunaVencimento)
     .setCellRenderer(new DefaultTableCellRenderer() {
         public Component getTableCellRendererComponent(JTable table, Object value,

@@ -130,7 +130,7 @@ return true;
                 produto = new modelproduto();
                 produto.setId(rs.getInt(1));
                 produto.setDescricaoProduto(rs.getString(2));
-                produto.setId(rs.getInt(3));
+             //   produto.setId(rs.getInt(3));
                 produto.setNomeacaolote(rs.getString(4));
                 produto.setLote(rs.getString(5));
                 produto.setDataValidade(rs.getString(6));
@@ -149,22 +149,56 @@ return true;
         conexao = Classeconexao.conector();
         modelproduto produto = new modelproduto();
     
-    String sql = "SELECT * FROM produto WHERE id = ?";
+    String sql = "SELECT \n" +
+"    lotes.id,\n" +
+"    lotes.fornecedor,\n" +
+"    lotes.lote,\n" +
+"    lotes.validade,\n" +
+"    lotes.codigo_barras,\n" +
+"    lotes.data_fabricacao,\n" +
+"    produto.descricao_produto AS nome_produto,\n" +
+"    produto.unidade_medida,\n" +
+"    produto.custo AS preco_custo,\n" +
+"    produto.venda AS preco_venda,\n" +
+"    produto.atacado AS preco_atacado,\n" +
+"    produto.promocao AS preco_promocao,\n" +
+"    produto.estoque_critico,\n" +
+"    produto.peso,\n" +
+"    produto.categoria\n" +
+"FROM \n" +
+"    lotes\n" +
+"LEFT JOIN \n" +
+"    produto ON produto.lote_id = lotes.id\n" +
+"WHERE \n" +
+"    lotes.id = ?;";
     try {
         pst = conexao.prepareStatement(sql);
         pst.setInt(1, codigo);
         rs = pst.executeQuery();
         while (rs.next()) {
             produto = new modelproduto();
-            produto.setDescricaoProduto(rs.getString(1));
+           produto.setId(rs.getInt("id"));
+produto.setDescricaoProduto(rs.getString("nome_produto"));
+produto.setFornecedor(rs.getString("fornecedor"));
+produto.setLote(rs.getString("lote"));
+produto.setDataValidade(rs.getString("validade"));
+produto.setCodigoBarras(rs.getString("codigo_barras"));
+produto.setDatafabricacao(rs.getString("data_fabricacao"));
+produto.setUnidadeMedida(rs.getString("unidade_medida"));
+produto.setPrecoCusto(rs.getDouble("preco_custo"));
+produto.setPrecoVenda(rs.getDouble("preco_venda"));
+produto.setPrecoAtacado(rs.getDouble("preco_atacado"));
+produto.setPrecoPromocao(rs.getDouble("preco_promocao"));
+produto.setEstoqueCritico(rs.getInt("estoque_critico"));
+produto.setPeso(rs.getDouble("peso"));
+produto.setCategoria(rs.getString("categoria"));
         }
     } catch (Exception e) {
         System.err.println(e);
-    } 
-    
+    }
+
     return produto;
     }
-    
 
     }
     
