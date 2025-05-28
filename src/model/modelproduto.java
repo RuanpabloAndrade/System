@@ -27,7 +27,7 @@ public class modelproduto {
     private String categoria;
     private String datafabricacao;
     private String nomeacaolote;
-    
+    private Integer idlote;
 
     
     
@@ -282,6 +282,23 @@ public class modelproduto {
     public void setNomeacaolote(String nomeacaolote) {
         this.nomeacaolote = nomeacaolote;
     }
+
+    /**
+     * @return the idlote
+     */
+    public Integer getIdlote() {
+        return idlote;
+    }
+
+    /**
+     * @param idlote the idlote to set
+     */
+    public void setIdlote(Integer idlote) {
+        this.idlote = idlote;
+    }
+
+   
+
 
     
     

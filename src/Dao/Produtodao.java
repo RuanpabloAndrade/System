@@ -26,7 +26,7 @@ public class Produtodao  extends Classeconexao{
 
     public boolean SalvarFuncionarioDao(modelproduto produto) {
         conexao = Classeconexao.conector();
-String sql = "INSERT INTO Produto (descricao_produto, codigo_barras, quantidade, unidade_medida, validade, fornecedor, lote, custo, venda, atacado, promocao, estoque_critico, datafabricacao, peso, categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+String sql = "INSERT INTO Produto (descricao_produto, codigo_barras, quantidade, unidade_medida, validade, fornecedor, lote, custo, venda, atacado, promocao, estoque_critico, datafabricacao, peso, categoria, lote_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 try {
     pst = conexao.prepareStatement(sql);
@@ -45,6 +45,12 @@ try {
     pst.setString(13, produto.getDatafabricacao());
     pst.setDouble(14, produto.getPeso());
     pst.setString(15, produto.getCategoria());
+        if (produto.getIdlote() != null) {// codigo para permitir que a chave estrangeira fique como null
+            pst.setObject(16, produto.getIdlote(), java.sql.Types.INTEGER);
+        } else {
+            pst.setNull(16, java.sql.Types.INTEGER);
+        }
+
     pst.executeUpdate();
 } catch (Exception e) {
     System.err.println(e);
@@ -59,11 +65,15 @@ return true;
         List<modelproduto> listaproduto = new ArrayList<>();
         modelproduto produto = new modelproduto();
 
-        String sql = "SELECT descricao_produto, "
-                + "quantidade, "
-                + "validade, "
-                + "venda "
-                + "FROM Produto";
+        String sql = "SELECT \n" +
+"    produto.descricao_produto,\n" +
+"    produto.quantidade,\n" +
+"    COALESCE(lotes.validade, produto.validade) AS validade,\n" +
+"    produto.venda\n" +
+"FROM \n" +
+"    produto\n" +
+"LEFT JOIN \n" +
+"    lotes ON produto.lote_id = lotes.id;";
 
         try {
             pst = conexao.prepareStatement(sql);
@@ -164,7 +174,8 @@ return true;
 "    produto.promocao AS preco_promocao,\n" +
 "    produto.estoque_critico,\n" +
 "    produto.peso,\n" +
-"    produto.categoria\n" +
+"    produto.categoria,\n" +
+"    produto.quantidade\n" +
 "FROM \n" +
 "    lotes\n" +
 "LEFT JOIN \n" +
@@ -192,6 +203,7 @@ produto.setPrecoPromocao(rs.getDouble("preco_promocao"));
 produto.setEstoqueCritico(rs.getInt("estoque_critico"));
 produto.setPeso(rs.getDouble("peso"));
 produto.setCategoria(rs.getString("categoria"));
+produto.setQuantidade(rs.getInt("quantidade"));
         }
     } catch (Exception e) {
         System.err.println(e);

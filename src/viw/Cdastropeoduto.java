@@ -109,11 +109,11 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        vizualizar = new javax.swing.JButton();
         limparform = new javax.swing.JButton();
         Salvarproduto = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        atualizar = new javax.swing.JButton();
+        Lotess = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         codigoitem = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -188,12 +188,12 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
-        jButton3.setText("Vizualizar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        vizualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        vizualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ca (2).png"))); // NOI18N
+        vizualizar.setText("Vizualizar");
+        vizualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                vizualizarActionPerformed(evt);
             }
         });
 
@@ -215,16 +215,16 @@ public class Cdastropeoduto extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/po (1).png"))); // NOI18N
-        jButton4.setText("Atualizar");
+        atualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/po (1).png"))); // NOI18N
+        atualizar.setText("Atualizar");
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pro (1).png"))); // NOI18N
-        jButton5.setText("Lotes");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        Lotess.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Lotess.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pro (1).png"))); // NOI18N
+        Lotess.setText("Lotes");
+        Lotess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                LotessActionPerformed(evt);
             }
         });
 
@@ -238,11 +238,11 @@ public class Cdastropeoduto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(limparform)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(vizualizar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(atualizar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Lotess, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -250,11 +250,11 @@ public class Cdastropeoduto extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vizualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(limparform, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Salvarproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(atualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Lotess, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -610,15 +610,15 @@ public class Cdastropeoduto extends javax.swing.JFrame {
         tabelacapro.getTableHeader().setForeground( new Color(255,255,255));
         tabelacapro.setRowHeight(25);
     }
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void vizualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vizualizarActionPerformed
        Gestaodeestoque estoque = new Gestaodeestoque();
        estoque.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_vizualizarActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void LotessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LotessActionPerformed
         Cadastrodelotrs cadastro = new Cadastrodelotrs();
         cadastro.setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_LotessActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
          Gerenciementolotes estoques = new Gerenciementolotes();
@@ -648,10 +648,17 @@ if (venda.getText().trim().isEmpty()) {
     JOptionPane.showMessageDialog(null, "O campo Preço de Venda é obrigatório.");
     return;
 }
-       
-       
+     
+     String codigoTexto = codigoitem.getText().trim();
+
+if (!codigoTexto.isEmpty()) {// codigo para permitir que a chave estrangeira fique como null
+    int idLote = Integer.parseInt(codigoTexto);
+    produto.setIdlote(idLote);
+} else {
+    produto.setIdlote(null);  // SE o atributo for Integer, aceita null
+}
       produto.setDescricaoProduto(descricao.getText());
-produto.setCodigoBarras(codigobarras.getText());
+      produto.setCodigoBarras(codigobarras.getText());
 
 // Verifica se o campo está vazio antes de converter
 produto.setQuantidade(quantidade.getText().isEmpty() ? 0 : Integer.parseInt(quantidade.getText()));
@@ -687,6 +694,7 @@ if (controlerproduto.Salvarproduto(produto)) {
        LimparformularioProduto();
     }//GEN-LAST:event_limparformActionPerformed
  private void LimparformularioProduto() {
+    codigoitem.setText("");
     descricao.setText("");
     codigobarras.setText("");
     quantidade.setText("");
@@ -705,6 +713,9 @@ if (controlerproduto.Salvarproduto(produto)) {
     fabricação.setText("");
     peso.setText("");
     categoria.setSelectedIndex(0);
+     Salvarproduto.setEnabled(true);
+    vizualizar.setEnabled(true);
+    Lotess.setEnabled(true);
 }
     
     
@@ -745,8 +756,10 @@ if (controlerproduto.Salvarproduto(produto)) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Lotess;
     private javax.swing.JButton Salvarproduto;
     private javax.swing.JFormattedTextField atacado;
+    private javax.swing.JButton atualizar;
     private javax.swing.JComboBox<String> categoria;
     private javax.swing.JFormattedTextField codigobarras;
     private javax.swing.JFormattedTextField codigoitem;
@@ -755,9 +768,6 @@ if (controlerproduto.Salvarproduto(produto)) {
     private javax.swing.JFormattedTextField descricao;
     private javax.swing.JFormattedTextField fabricação;
     private javax.swing.JComboBox<String> fornecedor;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -794,9 +804,13 @@ if (controlerproduto.Salvarproduto(produto)) {
     private javax.swing.JComboBox<String> unimedida;
     private javax.swing.JFormattedTextField validade;
     private javax.swing.JFormattedTextField venda;
+    private javax.swing.JButton vizualizar;
     // End of variables declaration//GEN-END:variables
 
     public void setarcampos(modelproduto produto) {
+    Salvarproduto.setEnabled(false);
+    vizualizar.setEnabled(false);
+    Lotess.setEnabled(false);
     sim.setSelected(true);
     codigoitem.setText(String.valueOf(produto.getId()));
     descricao.setText(produto.getDescricaoProduto());
